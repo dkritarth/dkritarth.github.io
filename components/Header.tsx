@@ -62,6 +62,9 @@ export const Header: React.FC = () => {
           <a href={SITE_URLS.notebook} className="text-xs font-medium text-slate-600 hover:text-sky-600">
             Notebook
           </a>
+          <a href={`${SITE_URLS.hub}/configs/`} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+            Configs
+          </a>
           <a href="#/personal-statement" className="text-xs font-medium text-slate-600 hover:text-sky-600">
             PS
           </a>
