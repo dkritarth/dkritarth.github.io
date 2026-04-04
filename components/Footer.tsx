@@ -1,8 +1,10 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
+import { getSiteUrls } from '../siteUrls';
 import { Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const site = getSiteUrls();
   return (
     <footer className="bg-slate-900 text-slate-300 py-16">
       <div className="max-w-6xl mx-auto px-6 text-center">
@@ -29,6 +31,11 @@ export const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-slate-800 text-sm text-slate-500">
           <p>&copy; {new Date().getFullYear()} {CONTACT_INFO.name}. All rights reserved.</p>
+          <p className="mt-2">
+            <a href={site.hub} className="text-slate-400 hover:text-sky-400 transition-colors">
+              Hub
+            </a>
+          </p>
           <p className="mt-2">Built with React & Tailwind CSS.</p>
         </div>
       </div>

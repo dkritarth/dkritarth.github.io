@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Footer } from './Footer';
-import { PortfolioSiteStrip } from './PortfolioSiteStrip';
 
 type WritingChromeProps = {
   title: string;
@@ -11,25 +10,17 @@ type WritingChromeProps = {
 export const WritingChrome: React.FC<WritingChromeProps> = ({ title, children }) => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      <div className="sticky top-0 z-40 flex flex-col shadow-sm">
-        <PortfolioSiteStrip showWritingLinks />
-        <header className="border-b border-slate-200 bg-white/95 backdrop-blur-md">
-          <div className="max-w-3xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-sky-700/90">
-                Portfolio · long-form
-              </span>
-              <a
-                href="#/"
-                className="inline-flex items-center gap-2 text-sm font-medium text-sky-700 hover:text-sky-900"
-              >
-                <ArrowLeft size={18} aria-hidden />
-                Back to portfolio home
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm">
+        <div className="max-w-3xl mx-auto px-6 py-3">
+          <a
+            href="#/"
+            className="inline-flex items-center gap-2 text-sm font-medium text-sky-700 hover:text-sky-900"
+          >
+            <ArrowLeft size={18} aria-hidden />
+            Back to portfolio home
+          </a>
+        </div>
+      </header>
 
       <article className="max-w-3xl mx-auto px-6 py-12 md:py-16">
         <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-2">{title}</h1>

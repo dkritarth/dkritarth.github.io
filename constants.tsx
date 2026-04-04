@@ -1,4 +1,4 @@
-import { BookOpen, Code, GraduationCap, Microscope, Users } from 'lucide-react';
+import { BookOpen, Code, FileText, GraduationCap, Microscope, Users } from 'lucide-react';
 import { BlogPost, Education, Experience, Project, Publication, SkillCategory } from './types';
 
 export const CONTACT_INFO = {
@@ -292,4 +292,6 @@ export const NAV_LINKS = [
   { label: 'Insights', href: '#insights', icon: <BookOpen size={18} /> },
   { label: 'Projects', href: '#projects', icon: <Code size={18} /> },
   { label: 'Timeline', href: '#education', icon: <GraduationCap size={18} /> },
+  { label: 'Personal statement', href: '#/personal-statement', icon: <FileText size={18} /> },
+  { label: 'Statement of purpose', href: '#/statement-of-purpose', icon: <FileText size={18} /> },
 ];
