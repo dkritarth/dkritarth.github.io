@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download } from 'lucide-react';
-import { NAV_LINKS, CONTACT_INFO } from '../constants';
+import { NAV_LINKS } from '../constants';
+import { SITE_URLS } from '../siteUrls';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,31 +16,74 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-3' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-3 text-2xl font-bold text-slate-800 font-serif tracking-tight">
-          <img 
-            src="/data/My%20Studio%20Photo.JPG" 
-            alt="Profile" 
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-3' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
+        <a
+          href="#/"
+          className="flex items-center gap-3 text-2xl font-bold text-slate-800 font-serif tracking-tight shrink-0"
+        >
+          <img
+            src="/data/My%20Studio%20Photo.JPG"
+            alt=""
             className="w-10 h-10 rounded-full object-cover border-2 border-sky-600 shadow-sm"
           />
-          <span>K<span className="text-sky-600">.</span> Dandapat</span>
+          <span>
+            K<span className="text-sky-600">.</span> Dandapat
+          </span>
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-5 text-xs font-medium text-slate-600 uppercase tracking-wider">
+          <a href={SITE_URLS.hub} className="hover:text-sky-600">
+            Hub
+          </a>
+          <a href={SITE_URLS.notebook} className="hover:text-sky-600">
+            Notebook
+          </a>
+          <a href={`${SITE_URLS.hub}/configs/`} className="hover:text-sky-600">
+            Configs
+          </a>
+          <span className="text-slate-300">|</span>
+          <a href="#/personal-statement" className="hover:text-sky-600 normal-case tracking-normal">
+            Personal statement
+          </a>
+          <a href="#/statement-of-purpose" className="hover:text-sky-600 normal-case tracking-normal">
+            Statement of purpose
+          </a>
+        </nav>
+
+        <nav className="hidden md:flex xl:hidden items-center gap-4 flex-wrap justify-end">
+          <a href={SITE_URLS.hub} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+            Hub
+          </a>
+          <a href={SITE_URLS.notebook} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+            Notebook
+          </a>
+          <a href="#/personal-statement" className="text-xs font-medium text-slate-600 hover:text-sky-600">
+            PS
+          </a>
+          <a href="#/statement-of-purpose" className="text-xs font-medium text-slate-600 hover:text-sky-600">
+            SOP
+          </a>
+        </nav>
+
+        <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href} 
+            <a
+              key={link.label}
+              href={link.href}
               className="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors uppercase tracking-wider"
             >
               {link.label}
             </a>
           ))}
-          <a 
-            href="/data/CV.pdf" 
+          <a
+            href="/data/CV.pdf"
             target="_blank"
+            rel="noopener noreferrer"
             download
             className="flex items-center gap-2 bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-700 transition-colors text-sm font-medium shadow-lg shadow-sky-600/20"
           >
@@ -47,8 +91,8 @@ export const Header: React.FC = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
+        <button
+          type="button"
           className="md:hidden text-slate-800 p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
@@ -57,13 +101,48 @@ export const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100">
-          <nav className="flex flex-col p-6 gap-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 max-h-[85vh] overflow-y-auto">
+          <nav className="flex flex-col p-6 gap-3">
+            <a
+              href={SITE_URLS.hub}
+              className="text-sm font-medium text-slate-700 hover:text-sky-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Hub (dkritarth.com)
+            </a>
+            <a
+              href={SITE_URLS.notebook}
+              className="text-sm font-medium text-slate-700 hover:text-sky-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Notebook
+            </a>
+            <a
+              href={`${SITE_URLS.hub}/configs/`}
+              className="text-sm font-medium text-slate-700 hover:text-sky-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Configs
+            </a>
+            <a
+              href="#/personal-statement"
+              className="text-sm font-medium text-slate-700 hover:text-sky-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Personal statement
+            </a>
+            <a
+              href="#/statement-of-purpose"
+              className="text-sm font-medium text-slate-700 hover:text-sky-600"
+              onClick={() => setIsOpen(false)}
+            >
+              Statement of purpose
+            </a>
+            <hr className="border-slate-200" />
             {NAV_LINKS.map((link) => (
-              <a 
-                key={link.label} 
+              <a
+                key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="text-lg font-medium text-slate-700 hover:text-sky-600"
@@ -71,11 +150,13 @@ export const Header: React.FC = () => {
                 {link.label}
               </a>
             ))}
-            <a 
-               href="/data/CV.pdf" 
-               target="_blank"
-               download
-               className="flex justify-center items-center gap-2 bg-sky-600 text-white px-4 py-3 rounded-md hover:bg-sky-700 transition-colors"
+            <a
+              href="/data/CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="flex justify-center items-center gap-2 bg-sky-600 text-white px-4 py-3 rounded-md hover:bg-sky-700 transition-colors"
+              onClick={() => setIsOpen(false)}
             >
               <Download size={18} /> Download CV
             </a>

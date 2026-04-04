@@ -8,7 +8,8 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-serif font-bold text-white mb-6">Ready to Collaborate?</h2>
         <p className="max-w-2xl mx-auto mb-10 text-slate-400">
-          I am actively applying for Ph.D. positions and seeking opportunities to contribute to cutting-edge research in AI and Computer Vision.
+          Incoming PhD student at Michigan State University (Fall 2026). Open to collaborations in AI, computer vision,
+          and computational science.
         </p>
         
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">

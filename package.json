@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Kritarth-Dandapat.github.io",
+  "homepage": "https://portfolio.dkritarth.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

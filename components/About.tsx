@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { CONTACT_INFO, SKILLS, AWARDS, CERTIFICATIONS } from '../constants';
+import { CONTACT_INFO, SKILLS, AWARDS, CERTIFICATIONS, RESEARCH_INTERESTS } from '../constants';
 import { Trophy, Award } from 'lucide-react';
 
 export const About: React.FC = () => {
@@ -17,7 +17,36 @@ export const About: React.FC = () => {
             My undergraduate research at the University at Buffalo has built a strong foundation in AI, but I am driven to move beyond applying known techniques to creating original, high-impact research. A doctoral program is the next essential step to strengthen my technical expertise and develop the independent research skills required to contribute meaningfully to the fields of AI and computational science.
           </p>
           <p>
-            I have managed an accelerated academic path, on track to graduate in three years while taking 21-22 credit semesters. During this time, I have maintained academic excellence (3.8+ GPA) while working in two different research labs simultaneously. This rigorous schedule has proven my endurance and capacity for the sustained, high-level effort required for a successful research career.
+            I have managed an accelerated academic path, on track to graduate in three years while taking 21–22 credit
+            semesters. During this time, I have maintained academic excellence (3.8+ GPA) while working in two research
+            labs, TAing computer architecture, and tutoring statistics. This schedule has reinforced endurance and focus
+            for doctoral study.
+          </p>
+
+          <div className="mt-8">
+            <h3 className="text-xl font-bold text-slate-800 mb-3">Research interests</h3>
+            <ul className="flex flex-wrap gap-2">
+              {RESEARCH_INTERESTS.map((interest) => (
+                <li
+                  key={interest}
+                  className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 shadow-sm"
+                >
+                  {interest}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="text-sm text-slate-600 mt-6">
+            Long-form writing:{' '}
+            <a href="#/personal-statement" className="text-sky-600 font-medium hover:underline">
+              personal statement
+            </a>
+            {' · '}
+            <a href="#/statement-of-purpose" className="text-sky-600 font-medium hover:underline">
+              statement of purpose
+            </a>
+            .
           </p>
           
           <div className="mt-8">

@@ -15,7 +15,7 @@ export const Hero: React.FC = () => {
         {/* Text Content */}
         <div className="space-y-8">
           <div className="space-y-2">
-            <p className="text-sky-600 font-semibold tracking-widest uppercase text-sm">Portfolio & Research</p>
+            <p className="text-sky-600 font-semibold tracking-widest uppercase text-sm">Portfolio &amp; research</p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 font-serif leading-tight">
               {CONTACT_INFO.name}
             </h1>
@@ -25,8 +25,7 @@ export const Hero: React.FC = () => {
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed max-w-xl">
-            Aspiring Ph.D. candidate specializing in <span className="font-semibold text-slate-900">Computer Vision, GNNs,</span> and <span className="font-semibold text-slate-900">AI for Science</span>. 
-            Currently designing AI-driven healthcare diagnostics and symmetry-aware material discovery systems.
+            {CONTACT_INFO.bio}
           </p>
 
           <div className="flex flex-wrap gap-4">

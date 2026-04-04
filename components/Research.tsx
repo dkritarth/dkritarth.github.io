@@ -3,6 +3,51 @@ import { Section } from './Section';
 import { RESEARCH_EXPERIENCE, PUBLICATIONS, PRESENTATIONS } from '../constants';
 import { FileText, ArrowUpRight, Mic2 } from 'lucide-react';
 
+const BOLD_TERMS = ['OralScan', 'YOLOv8', 'GNNs', 'ALIGNN', 'mRehab', 'wandb'];
+
+function formatBoldTerms(s: string): React.ReactNode[] {
+  if (!s) return [];
+  const escaped = BOLD_TERMS.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const re = new RegExp(`(${escaped})`, 'g');
+  return s.split(re).map((part, i) =>
+    BOLD_TERMS.includes(part) ? (
+      <strong key={i} className="text-slate-900">
+        {part}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
+function formatBullet(text: string): React.ReactNode {
+  const nodes: React.ReactNode[] = [];
+  let last = 0;
+  let linkIdx = 0;
+  const re = /(https?:\/\/[^\s]+)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const before = text.slice(last, m.index);
+    nodes.push(...formatBoldTerms(before));
+    const href = m[1];
+    linkIdx += 1;
+    nodes.push(
+      <a
+        key={`link-${linkIdx}-${m.index}`}
+        href={href}
+        className="text-sky-600 hover:underline break-all"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {href}
+      </a>
+    );
+    last = m.index + m[0].length;
+  }
+  nodes.push(...formatBoldTerms(text.slice(last)));
+  return <>{nodes}</>;
+}
+
 export const Research: React.FC = () => {
   return (
     <Section id="research" title="Research Experience" subtitle="Deep dives into Healthcare AI and Material Science.">
@@ -27,7 +72,7 @@ export const Research: React.FC = () => {
               {exp.description.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-slate-700">
                   <span className="mt-2 w-1.5 h-1.5 bg-sky-500 rounded-full shrink-0"></span>
-                  <span className="leading-relaxed">{item.replace(/(OralScan|YOLOv8|GNNs|ALIGNN)/g, (match) => `**${match}**`).split('**').map((part, i) => i % 2 === 1 ? <strong key={i} className="text-slate-900">{part}</strong> : part)}</span>
+                  <span className="leading-relaxed">{formatBullet(item)}</span>
                 </li>
               ))}
             </ul>
