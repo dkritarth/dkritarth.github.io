@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Footer } from './Footer';
-import { getSiteUrls } from '../siteUrls';
+import { PortfolioSiteStrip } from './PortfolioSiteStrip';
 
 type WritingChromeProps = {
   title: string;
@@ -9,31 +9,27 @@ type WritingChromeProps = {
 };
 
 export const WritingChrome: React.FC<WritingChromeProps> = ({ title, children }) => {
-  const site = getSiteUrls();
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      <header className="border-b border-slate-200 bg-white/90 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-3xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-          <a
-            href="#/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-sky-700 hover:text-sky-900"
-          >
-            <ArrowLeft size={18} aria-hidden />
-            Portfolio home
-          </a>
-          <nav className="flex flex-wrap gap-4 text-sm text-slate-600">
-            <a href={site.hub} className="hover:text-sky-600">
-              Hub
-            </a>
-            <a href={site.notebook} className="hover:text-sky-600">
-              Notebook
-            </a>
-            <a href={`${site.hub}/configs/`} className="hover:text-sky-600">
-              Configs
-            </a>
-          </nav>
-        </div>
-      </header>
+      <div className="sticky top-0 z-40 flex flex-col shadow-sm">
+        <PortfolioSiteStrip showWritingLinks />
+        <header className="border-b border-slate-200 bg-white/95 backdrop-blur-md">
+          <div className="max-w-3xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-sky-700/90">
+                Portfolio · long-form
+              </span>
+              <a
+                href="#/"
+                className="inline-flex items-center gap-2 text-sm font-medium text-sky-700 hover:text-sky-900"
+              >
+                <ArrowLeft size={18} aria-hidden />
+                Back to portfolio home
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
 
       <article className="max-w-3xl mx-auto px-6 py-12 md:py-16">
         <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-2">{title}</h1>

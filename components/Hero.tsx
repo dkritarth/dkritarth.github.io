@@ -4,7 +4,7 @@ import { CONTACT_INFO } from '../constants';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-sky-50 to-white">
+    <section className="relative min-h-screen flex items-center pt-36 sm:pt-40 overflow-hidden bg-gradient-to-b from-sky-50 to-white">
       
       {/* Abstract background elements */}
       <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-sky-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
