@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
-import { SITE_URLS } from '../siteUrls';
+import { getSiteUrls } from '../siteUrls';
 
 export const Header: React.FC = () => {
+  const site = getSiteUrls();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const hubLabel =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'Hub (local preview)'
+      : 'Hub (dkritarth.com)';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,13 +43,13 @@ export const Header: React.FC = () => {
         </a>
 
         <nav className="hidden xl:flex items-center gap-5 text-xs font-medium text-slate-600 uppercase tracking-wider">
-          <a href={SITE_URLS.hub} className="hover:text-sky-600">
+          <a href={site.hub} className="hover:text-sky-600">
             Hub
           </a>
-          <a href={SITE_URLS.notebook} className="hover:text-sky-600">
+          <a href={site.notebook} className="hover:text-sky-600">
             Notebook
           </a>
-          <a href={`${SITE_URLS.hub}/configs/`} className="hover:text-sky-600">
+          <a href={`${site.hub}/configs/`} className="hover:text-sky-600">
             Configs
           </a>
           <span className="text-slate-300">|</span>
@@ -56,13 +62,13 @@ export const Header: React.FC = () => {
         </nav>
 
         <nav className="hidden md:flex xl:hidden items-center gap-4 flex-wrap justify-end">
-          <a href={SITE_URLS.hub} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+          <a href={site.hub} className="text-xs font-medium text-slate-600 hover:text-sky-600">
             Hub
           </a>
-          <a href={SITE_URLS.notebook} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+          <a href={site.notebook} className="text-xs font-medium text-slate-600 hover:text-sky-600">
             Notebook
           </a>
-          <a href={`${SITE_URLS.hub}/configs/`} className="text-xs font-medium text-slate-600 hover:text-sky-600">
+          <a href={`${site.hub}/configs/`} className="text-xs font-medium text-slate-600 hover:text-sky-600">
             Configs
           </a>
           <a href="#/personal-statement" className="text-xs font-medium text-slate-600 hover:text-sky-600">
@@ -108,21 +114,21 @@ export const Header: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 max-h-[85vh] overflow-y-auto">
           <nav className="flex flex-col p-6 gap-3">
             <a
-              href={SITE_URLS.hub}
+              href={site.hub}
               className="text-sm font-medium text-slate-700 hover:text-sky-600"
               onClick={() => setIsOpen(false)}
             >
-              Hub (dkritarth.com)
+              {hubLabel}
             </a>
             <a
-              href={SITE_URLS.notebook}
+              href={site.notebook}
               className="text-sm font-medium text-slate-700 hover:text-sky-600"
               onClick={() => setIsOpen(false)}
             >
               Notebook
             </a>
             <a
-              href={`${SITE_URLS.hub}/configs/`}
+              href={`${site.hub}/configs/`}
               className="text-sm font-medium text-slate-700 hover:text-sky-600"
               onClick={() => setIsOpen(false)}
             >

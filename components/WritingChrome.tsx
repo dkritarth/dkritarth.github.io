@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Footer } from './Footer';
-import { SITE_URLS } from '../siteUrls';
+import { getSiteUrls } from '../siteUrls';
 
 type WritingChromeProps = {
   title: string;
@@ -9,6 +9,7 @@ type WritingChromeProps = {
 };
 
 export const WritingChrome: React.FC<WritingChromeProps> = ({ title, children }) => {
+  const site = getSiteUrls();
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur-sm sticky top-0 z-40">
@@ -21,13 +22,13 @@ export const WritingChrome: React.FC<WritingChromeProps> = ({ title, children })
             Portfolio home
           </a>
           <nav className="flex flex-wrap gap-4 text-sm text-slate-600">
-            <a href={SITE_URLS.hub} className="hover:text-sky-600">
+            <a href={site.hub} className="hover:text-sky-600">
               Hub
             </a>
-            <a href={SITE_URLS.notebook} className="hover:text-sky-600">
+            <a href={site.notebook} className="hover:text-sky-600">
               Notebook
             </a>
-            <a href={`${SITE_URLS.hub}/configs/`} className="hover:text-sky-600">
+            <a href={`${site.hub}/configs/`} className="hover:text-sky-600">
               Configs
             </a>
           </nav>
