@@ -1,0 +1,1 @@
+See **[../research/README.md](../research/README.md)** — same workflow: put files under `public/data/projects/<slug>/` and add an `images` array on the matching entry in `PROJECTS` inside `constants.tsx`.
