@@ -1,9 +1,23 @@
 import React from 'react';
 import { Section } from './Section';
-import { RESEARCH_EXPERIENCE, PUBLICATIONS, PRESENTATIONS } from '../constants';
+import { RESEARCH_PLACEMENTS, PUBLICATIONS, PRESENTATIONS } from '../constants';
+import type { ResearchSubproject } from '../types';
+import { ContentImageGrid } from './ContentImageGrid';
 import { FileText, ArrowUpRight, Mic2 } from 'lucide-react';
 
-const BOLD_TERMS = ['OralScan', 'YOLOv8', 'GNNs', 'ALIGNN', 'mRehab', 'wandb'];
+const BOLD_TERMS = [
+  'OralScan',
+  'OrthoScan',
+  'YOLOv8',
+  'YOLO',
+  'GNNs',
+  'ALIGNN',
+  'mRehab',
+  'wandb',
+  'MACE',
+  'UMA',
+  'ESC Lab',
+];
 
 function formatBoldTerms(s: string): React.ReactNode[] {
   if (!s) return [];
@@ -11,20 +25,20 @@ function formatBoldTerms(s: string): React.ReactNode[] {
   const re = new RegExp(`(${escaped})`, 'g');
   return s.split(re).map((part, i) =>
     BOLD_TERMS.includes(part) ? (
-      <strong key={i} className="text-slate-900">
+      <strong key={i} className="text-ink-900 font-semibold">
         {part}
       </strong>
     ) : (
       <span key={i}>{part}</span>
-    )
+    ),
   );
 }
 
-function formatBullet(text: string): React.ReactNode {
+function formatRichLine(text: string): React.ReactNode {
   const nodes: React.ReactNode[] = [];
   let last = 0;
   let linkIdx = 0;
-  const re = /(https?:\/\/[^\s]+)/g;
+  const re = /(https?:\/\/[^\s)]+)/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     const before = text.slice(last, m.index);
@@ -35,12 +49,12 @@ function formatBullet(text: string): React.ReactNode {
       <a
         key={`link-${linkIdx}-${m.index}`}
         href={href}
-        className="text-sky-600 hover:underline break-all"
+        className="text-ink-900 underline underline-offset-2 hover:no-underline break-all"
         target="_blank"
         rel="noopener noreferrer"
       >
         {href}
-      </a>
+      </a>,
     );
     last = m.index + m[0].length;
   }
@@ -48,104 +62,176 @@ function formatBullet(text: string): React.ReactNode {
   return <>{nodes}</>;
 }
 
-export const Research: React.FC = () => {
+function ResearchProjectCard({ project }: { project: ResearchSubproject }) {
   return (
-    <Section id="research" title="Research Experience" subtitle="Deep dives into Healthcare AI and Material Science.">
-      
-      <div className="space-y-12">
-        {RESEARCH_EXPERIENCE.map((exp, index) => (
-          <div key={index} className="group relative bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-             {/* Timeline connector for larger screens */}
-             <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-sky-500 to-transparent -ml-8 rounded-full opacity-20"></div>
-            
-            <div className="flex flex-col md:flex-row gap-6 justify-between mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-800">{exp.role}</h3>
-                <p className="text-sky-700 font-medium text-lg">{exp.organization}</p>
-              </div>
-              <div className="text-slate-500 font-mono text-sm whitespace-nowrap bg-slate-50 px-3 py-1 rounded-full self-start md:self-center border border-slate-100">
-                {exp.period}
-              </div>
-            </div>
+    <section
+      id={project.id}
+      className="scroll-mt-28 rounded-sm border border-ink-200 bg-white p-5 md:p-7 shadow-sm"
+    >
+      <header className="mb-4 flex flex-col gap-1 border-b border-ink-100 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
+        <h4 className="font-serif text-xl font-semibold leading-snug text-ink-900">{project.name}</h4>
+        <span className="shrink-0 font-mono text-sm tabular-nums text-ink-600">{project.period}</span>
+      </header>
 
-            <ul className="space-y-3 mb-6">
-              {exp.description.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-slate-700">
-                  <span className="mt-2 w-1.5 h-1.5 bg-sky-500 rounded-full shrink-0"></span>
-                  <span className="leading-relaxed">{formatBullet(item)}</span>
-                </li>
-              ))}
-            </ul>
+      {project.context ? (
+        <p className="mb-4 text-sm font-medium text-ink-700">{project.context}</p>
+      ) : null}
 
-            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
-              {exp.technologies?.map(tech => (
-                <span key={tech} className="px-3 py-1 bg-sky-50 text-sky-700 text-xs font-semibold rounded-full uppercase tracking-wide">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+      <div className="mb-5 space-y-3 text-[15px] leading-relaxed text-ink-800">
+        {project.narrative.map((paragraph, i) => (
+          <p key={i}>{formatRichLine(paragraph)}</p>
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12 mt-16">
-        {/* Publications */}
+      <ContentImageGrid images={project.images ?? []} className="mb-5" />
+
+      {project.collaboratorsNote ? (
+        <p className="mb-5 text-sm italic leading-relaxed text-ink-600">{formatRichLine(project.collaboratorsNote)}</p>
+      ) : null}
+
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-700">Technical contributions</p>
+      <ul className="mb-5 space-y-2">
+        {project.technicalHighlights.map((item, idx) => (
+          <li key={idx} className="flex gap-3 text-[15px] leading-relaxed text-ink-800">
+            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-900" aria-hidden />
+            <span>{formatRichLine(item)}</span>
+          </li>
+        ))}
+      </ul>
+
+      {project.links && project.links.length > 0 ? (
+        <div className="mb-4 flex flex-wrap gap-x-4 gap-y-2">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+            >
+              {link.label}
+              <ArrowUpRight size={14} aria-hidden />
+            </a>
+          ))}
+        </div>
+      ) : null}
+
+      <div className="flex flex-wrap gap-1.5 border-t border-ink-100 pt-4">
+        {project.technologies.map((tech) => (
+          <span
+            key={tech}
+            className="rounded-sm border border-ink-200 bg-ink-50 px-2.5 py-0.5 text-xs font-medium text-ink-800"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export const Research: React.FC = () => {
+  return (
+    <Section
+      id="research"
+      title="Research"
+      subtitle="Each placement is broken into projects—motivation, contributions, and links—so details stay easy to scan."
+      className="bg-white"
+    >
+      <div className="space-y-14">
+        {RESEARCH_PLACEMENTS.map((placement, index) => (
+          <article key={index} className="relative">
+            <div className="mb-8 border-l-[3px] border-ink-900 pl-5">
+              <h3 className="font-serif text-2xl font-semibold text-ink-900">{placement.role}</h3>
+              <p className="mt-1 text-lg font-medium text-ink-800">{placement.organization}</p>
+              <p className="text-sm text-ink-600">{placement.location}</p>
+              {placement.overview ? (
+                <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-ink-700">{placement.overview}</p>
+              ) : null}
+              {placement.placementLinks && placement.placementLinks.length > 0 ? (
+                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                  {placement.placementLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                    >
+                      {link.label}
+                      <ArrowUpRight size={14} aria-hidden />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="space-y-8">
+              {placement.subprojects.map((sp) => (
+                <ResearchProjectCard key={sp.id} project={sp} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-16 grid gap-12 lg:grid-cols-2">
         <div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-            <FileText className="text-sky-600" /> Publications & Preprints
+          <h3 className="mb-5 flex items-center gap-2 font-serif text-lg font-semibold text-ink-900">
+            <FileText className="shrink-0 text-ink-700" size={20} aria-hidden />
+            Publications &amp; preprints
           </h3>
           <div className="space-y-4">
-            {PUBLICATIONS.map((pub, index) => (
-              <div key={index} className="flex flex-col gap-3 p-5 bg-slate-50 rounded-xl border border-slate-100 hover:border-sky-200 transition-colors">
+            {PUBLICATIONS.map((pub, idx) => (
+              <div key={idx} className="flex flex-col gap-2 rounded-sm border border-ink-200 bg-ink-50 p-5">
                 <div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-1 leading-snug">
-                    {pub.title}
-                  </h4>
-                  <p className="text-slate-600 text-sm mb-2 italic">{pub.authors}</p>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="font-semibold text-sky-800 bg-sky-50 px-2 py-0.5 rounded">{pub.venue}</span>
-                    <span className="text-slate-500 border-l pl-2 border-slate-300">{pub.year}</span>
+                  <h4 className="mb-1 text-[15px] font-semibold leading-snug text-ink-900">{pub.title}</h4>
+                  <p className="mb-2 text-sm italic text-ink-700">{pub.authors}</p>
+                  <div className="flex flex-wrap gap-2 text-xs text-ink-700">
+                    <span className="font-medium text-ink-900">{pub.venue}</span>
+                    <span className="text-ink-500">{pub.year}</span>
                   </div>
-                  {pub.status && (
-                     <div className="mt-2 inline-block text-xs font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">
-                       {pub.status}
-                     </div>
-                  )}
+                  {pub.status ? (
+                    <div className="mt-2 inline-block rounded-sm border border-ink-200 bg-white px-2 py-0.5 text-xs text-ink-800">
+                      {pub.status}
+                    </div>
+                  ) : null}
                 </div>
-                {pub.link && (
-                  <a 
-                    href={pub.link} 
-                    target="_blank" 
+                {pub.link ? (
+                  <a
+                    href={pub.link}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="self-start text-xs font-bold text-sky-600 hover:text-sky-800 flex items-center gap-1 uppercase tracking-wide"
+                    className="inline-flex items-center gap-1 self-start text-xs font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
                   >
-                    View Paper <ArrowUpRight size={12} />
+                    Link <ArrowUpRight size={12} aria-hidden />
                   </a>
-                )}
+                ) : null}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Presentations */}
         <div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-            <Mic2 className="text-sky-600" /> Research Presentations
+          <h3 className="mb-5 flex items-center gap-2 font-serif text-lg font-semibold text-ink-900">
+            <Mic2 className="shrink-0 text-ink-700" size={20} aria-hidden />
+            Presentations
           </h3>
-          <div className="space-y-4">
-            {PRESENTATIONS.map((pres, index) => (
-              <div key={index} className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
-                 <h4 className="text-base font-semibold text-slate-900">{pres.event}</h4>
-                 <div className="mt-2 flex justify-between items-center text-sm text-slate-600">
-                    <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded font-medium text-xs">{pres.type}</span>
-                    <span className="font-mono text-xs">{pres.date}</span>
-                 </div>
+          <div className="space-y-3">
+            {PRESENTATIONS.map((pres, idx) => (
+              <div key={idx} className="rounded-sm border border-ink-200 bg-white p-5">
+                <h4 className="text-[15px] font-semibold leading-snug text-ink-900">{pres.event}</h4>
+                <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm text-ink-700">
+                  <span className="rounded-sm border border-ink-100 bg-ink-50 px-2 py-0.5 text-xs font-medium text-ink-800">
+                    {pres.type}
+                  </span>
+                  <span className="text-xs tabular-nums text-ink-600">{pres.date}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
     </Section>
   );
 };

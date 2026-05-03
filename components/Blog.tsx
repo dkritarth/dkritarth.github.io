@@ -1,38 +1,45 @@
 import React from 'react';
 import { Section } from './Section';
 import { BLOG_POSTS } from '../constants';
-import { BookOpen } from 'lucide-react';
 
 export const Blog: React.FC = () => {
   return (
-    <Section id="insights" title="Insights & Reflections" subtitle="Narratives from my Statement of Purpose and research journey." className="bg-white">
-      <div className="grid md:grid-cols-3 gap-8">
+    <Section
+      id="notes"
+      title="Research notes"
+      subtitle="Short context on trajectory and projects—not a separate blog."
+      className="bg-ink-50"
+    >
+      <div className="grid md:grid-cols-3 gap-6">
         {BLOG_POSTS.map((post, index) => (
-          <div key={index} className="flex flex-col bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-shadow duration-300">
-            <div className="p-8 flex-1">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-xs font-bold tracking-widest text-sky-600 uppercase bg-sky-50 px-2 py-1 rounded">
-                  {post.tags[0]}
-                </span>
-                <span className="text-slate-400 text-xs font-mono">{post.date}</span>
+          <article
+            key={index}
+            className="flex flex-col bg-white rounded-sm border border-ink-200 overflow-hidden"
+          >
+            <div className="p-6 flex-1">
+              <div className="flex justify-between items-center gap-2 mb-3">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-ink-700">{post.tags[0]}</span>
+                <span className="text-ink-500 text-xs tabular-nums">{post.date}</span>
               </div>
-              
-              <h3 className="text-xl font-bold text-slate-900 mb-2 font-serif">{post.title}</h3>
-              <p className="text-sm font-medium text-slate-500 mb-6">{post.subtitle}</p>
-              
-              <div className="space-y-4 text-slate-600 leading-relaxed text-sm">
+
+              <h3 className="text-lg font-serif font-semibold text-ink-900 mb-1 leading-snug">{post.title}</h3>
+              <p className="text-sm text-ink-600 mb-4">{post.subtitle}</p>
+
+              <div className="space-y-3 text-ink-800 leading-relaxed text-sm">
                 {post.content.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
               </div>
             </div>
-            
-            <div className="px-8 py-4 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-2">
-               {post.tags.map(tag => (
-                 <span key={tag} className="text-[10px] text-slate-500 font-medium">#{tag}</span>
-               ))}
+
+            <div className="px-6 py-3 bg-ink-50 border-t border-ink-200 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span key={tag} className="text-[11px] text-ink-600">
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </Section>

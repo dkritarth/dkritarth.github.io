@@ -6,37 +6,37 @@ import { Mail, MapPin } from 'lucide-react';
 export const Footer: React.FC = () => {
   const site = getSiteUrls();
   return (
-    <footer className="bg-slate-900 text-slate-300 py-16">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-serif font-bold text-white mb-6">Ready to Collaborate?</h2>
-        <p className="max-w-2xl mx-auto mb-10 text-slate-400">
-          Incoming PhD student at Michigan State University (Fall 2026). Open to collaborations in AI, computer vision,
-          and computational science.
-        </p>
-        
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
-          <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-3 text-white hover:text-sky-400 transition-colors">
-            <div className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center">
-              <Mail size={18} />
+    <footer className="bg-ink-900 text-stone-300 py-14 border-t border-ink-800">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 text-left">
+          <div>
+            <p className="font-serif text-xl font-semibold text-white">{CONTACT_INFO.name}</p>
+            <p className="mt-1 text-stone-400 text-sm max-w-md">{CONTACT_INFO.title}</p>
+          </div>
+          <div className="space-y-3 text-sm">
+            <a
+              href={`mailto:${CONTACT_INFO.email}`}
+              className="flex items-center gap-2 text-stone-200 hover:text-white transition-colors"
+            >
+              <Mail size={16} className="shrink-0 opacity-80" aria-hidden />
+              {CONTACT_INFO.email}
+            </a>
+            <div className="flex items-center gap-2 text-stone-400">
+              <MapPin size={16} className="shrink-0 opacity-80" aria-hidden />
+              {CONTACT_INFO.location}
             </div>
-            <span className="text-lg font-medium">{CONTACT_INFO.email}</span>
-          </a>
-          <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center">
-              <MapPin size={18} />
-            </div>
-            <span className="text-lg font-medium">{CONTACT_INFO.location}</span>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} {CONTACT_INFO.name}. All rights reserved.</p>
-          <p className="mt-2">
-            <a href={site.hub} className="text-slate-400 hover:text-sky-400 transition-colors">
+        <div className="mt-12 pt-8 border-t border-stone-700/80 text-xs text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <p>
+            &copy; {new Date().getFullYear()} {CONTACT_INFO.name}
+          </p>
+          <p>
+            <a href={site.hub} className="text-stone-400 hover:text-stone-200 transition-colors">
               Hub
             </a>
           </p>
-          <p className="mt-2">Built with React & Tailwind CSS.</p>
         </div>
       </div>
     </footer>

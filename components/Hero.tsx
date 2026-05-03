@@ -1,73 +1,134 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
-import { CONTACT_INFO } from '../constants';
+import { Github, Linkedin, Mail, FileDown, ArrowRight, ExternalLink } from 'lucide-react';
+import { CONTACT_INFO, NAV_LINKS } from '../constants';
+
+const PORTRAIT = '/data/my-photo.jpg';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 sm:pt-32 overflow-hidden bg-gradient-to-b from-sky-50 to-white">
-      
-      {/* Abstract background elements */}
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-sky-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-100 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+    <section className="relative min-h-[calc(100vh-1px)] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden border-b border-ink-200/80 bg-ink-50">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(28,25,23,0.06),transparent)]" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* Text Content */}
+      <div className="max-w-6xl mx-auto px-6 md:px-10 w-full relative z-10 grid md:grid-cols-[1fr_minmax(260px,340px)] gap-12 lg:gap-16 items-center">
         <div className="space-y-8">
-          <div className="space-y-2">
-            <p className="text-sky-600 font-semibold tracking-widest uppercase text-sm">Portfolio &amp; research</p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 font-serif leading-tight">
+          <header className="space-y-3">
+            <p className="text-sm font-semibold tracking-wide text-ink-700 uppercase">
+              Computer Science · University at Buffalo
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-semibold text-ink-900 leading-[1.15] tracking-tight">
               {CONTACT_INFO.name}
             </h1>
-            <p className="text-2xl text-slate-600 font-light">
+            <p className="text-lg md:text-xl text-ink-700 font-sans font-normal max-w-xl">
               {CONTACT_INFO.title}
             </p>
-          </div>
+          </header>
 
-          <p className="text-lg text-slate-700 leading-relaxed max-w-xl">
-            {CONTACT_INFO.bio}
+          <p className="text-base md:text-[1.05rem] text-ink-800 leading-relaxed max-w-2xl border-l-[3px] border-ink-900 pl-5">
+            {CONTACT_INFO.landingLead}
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <a href="#research" className="px-6 py-3 bg-slate-900 text-white rounded-md font-medium hover:bg-slate-800 transition-all flex items-center gap-2 group shadow-lg">
-              View Research <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="px-6 py-3 bg-white border border-slate-200 text-slate-800 rounded-md font-medium hover:border-sky-500 hover:text-sky-600 transition-all shadow-sm">
-              Contact Me
+          <div className="max-w-2xl rounded-sm border border-ink-200 bg-white/80 px-4 py-3 text-[15px] leading-relaxed text-ink-800 shadow-sm">
+            <p className="font-semibold text-ink-900">Inference Foundry</p>
+            <p className="mt-1 text-ink-700">
+              {CONTACT_INFO.inferenceFoundry.startLabel}. {CONTACT_INFO.inferenceFoundry.description}
+            </p>
+            <a
+              href={CONTACT_INFO.inferenceFoundry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+            >
+              github.com/Inference-Foundry <ExternalLink size={14} className="opacity-70" aria-hidden />
             </a>
           </div>
 
-          <div className="flex items-center gap-6 pt-4 border-t border-slate-200">
-            <a href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 transition-colors">
-              <Github size={24} />
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="#/research"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-ink-900 text-white text-sm font-semibold tracking-wide hover:bg-ink-800 transition-colors"
+            >
+              Research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </a>
-            <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#0077b5] transition-colors">
-              <Linkedin size={24} />
+            <a
+              href="/data/CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-ink-300 text-ink-900 text-sm font-semibold hover:border-ink-900 hover:bg-white transition-colors"
+            >
+              <FileDown size={16} aria-hidden />
+              CV (PDF)
             </a>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="text-slate-500 hover:text-red-500 transition-colors">
-              <Mail size={24} />
+            <a
+              href={`mailto:${CONTACT_INFO.email}`}
+              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-ink-800 underline-offset-4 hover:underline"
+            >
+              Email
+            </a>
+          </div>
+
+          <nav aria-label="Site sections" className="pt-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-500 mb-2">More</p>
+            <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+              {NAV_LINKS.map((link, i) => (
+                <li key={link.href} className="inline-flex items-center">
+                  {i > 0 && <span className="text-ink-300 pr-2 select-none" aria-hidden>·</span>}
+                  <a
+                    href={link.href}
+                    className="text-ink-800 font-medium underline underline-offset-2 hover:text-ink-950 decoration-ink-300 hover:decoration-ink-900"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-5 pt-4 border-t border-ink-200">
+            <a
+              href={CONTACT_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={22} />
+            </a>
+            <a
+              href={`mailto:${CONTACT_INFO.email}`}
+              className="text-ink-600 hover:text-ink-900 transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={22} />
             </a>
           </div>
         </div>
 
-        {/* Visual/Image */}
-        <div className="relative hidden md:block h-[600px]">
-          <div className="absolute inset-0 bg-slate-200 rounded-2xl rotate-3 transform transition-transform hover:rotate-0 duration-500 overflow-hidden shadow-2xl">
-             {/* Placeholder for professional photo. Using a generic tech/code abstract since user didn't provide a photo URL */}
-             <img 
-              src="https://picsum.photos/800/1000?grayscale" 
-              alt="Abstract Technology" 
-              className="w-full h-full object-cover opacity-80"
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex flex-col justify-end p-8">
-                <div className="text-white">
-                  <p className="font-mono text-sm text-sky-300 mb-2">Current Focus</p>
-                  <p className="text-xl font-serif">Symmetry-Aware Graph Neural Networks & Healthcare AI</p>
-                </div>
-             </div>
+        <figure className="relative hidden md:block mx-auto w-full max-w-sm">
+          <div className="aspect-[4/5] relative border border-ink-200 bg-ink-100 shadow-[0_1px_0_rgba(28,25,23,0.06)] overflow-hidden">
+            <img
+              src={PORTRAIT}
+              alt={`${CONTACT_INFO.name}, portrait`}
+              className="w-full h-full object-cover grayscale-[15%]"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/90 via-ink-900/50 to-transparent px-5 pt-16 pb-5 text-left">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-white/80 mb-1">
+                Research areas
+              </p>
+              <p className="text-sm text-white leading-snug font-sans">
+                Computer vision · Deep learning · Healthcare AI · Graph neural networks (materials)
+              </p>
+            </figcaption>
           </div>
-        </div>
-
+        </figure>
       </div>
     </section>
   );

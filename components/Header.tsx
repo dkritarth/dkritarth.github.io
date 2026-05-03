@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, FileDown } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
+import { useHashRoute } from '../useHashRoute';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const page = useHashRoute();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,44 +16,45 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const linkClass = (active: boolean) =>
+    `px-2.5 py-1.5 text-sm font-medium rounded-sm transition-colors ${
+      active ? 'text-ink-900 bg-ink-200/80' : 'text-ink-700 hover:text-ink-900 hover:bg-ink-100/80'
+    }`;
+
+  const mobileLinkClass = (active: boolean) =>
+    `text-base font-medium py-3 px-2 rounded-sm border-b border-ink-100 last:border-0 ${
+      active ? 'text-ink-950 bg-ink-100' : 'text-ink-800 hover:bg-ink-100'
+    }`;
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-3'
-          : 'bg-white/70 backdrop-blur-sm border-b border-slate-200/60 py-4'
+          ? 'bg-ink-50/95 backdrop-blur-md border-b border-ink-200 py-2.5'
+          : 'bg-ink-50/80 backdrop-blur-sm border-b border-ink-200/70 py-3'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
-        <div className="flex flex-col gap-0.5 min-w-0">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-sky-700/90 hidden sm:block">
-            On this page
-          </span>
-          <a
-            href="#/"
-            className="flex items-center gap-3 text-2xl font-bold text-slate-800 font-serif tracking-tight shrink-0"
-          >
-            <img
-              src="/data/My%20Studio%20Photo.JPG"
-              alt=""
-              className="w-10 h-10 rounded-full object-cover border-2 border-sky-600 shadow-sm"
-            />
-            <span>
-              K<span className="text-sky-600">.</span> Dandapat
-            </span>
-          </a>
-        </div>
-
-        <nav
-          className="hidden md:flex items-center gap-5"
-          aria-label="Sections on this portfolio page"
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center gap-4">
+        <a
+          href="#/"
+          className={`flex items-center gap-3 min-w-0 transition-colors ${
+            page === 'home' ? 'text-ink-950' : 'text-ink-900 hover:text-ink-800'
+          }`}
         >
+          <img
+            src="/data/my-photo.jpg"
+            alt=""
+            aria-hidden
+            className="w-9 h-9 rounded-full object-cover border border-ink-300 shrink-0"
+          />
+          <span className="font-serif text-lg md:text-xl font-semibold tracking-tight truncate">
+            Kritarth Dandapat
+          </span>
+        </a>
+
+        <nav className="hidden lg:flex items-center gap-1 flex-wrap justify-end" aria-label="Site sections">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors uppercase tracking-wider"
-            >
+            <a key={link.label} href={link.href} className={linkClass(page === link.page)}>
               {link.label}
             </a>
           ))}
@@ -59,16 +62,16 @@ export const Header: React.FC = () => {
             href="/data/CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download
-            className="flex items-center gap-2 bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-700 transition-colors text-sm font-medium shadow-lg shadow-sky-600/20"
+            className="ml-1 inline-flex items-center gap-1.5 border border-ink-900 text-ink-900 px-3 py-1.5 text-sm font-semibold hover:bg-ink-900 hover:text-white transition-colors"
           >
-            <Download size={16} /> CV
+            <FileDown size={15} aria-hidden />
+            CV
           </a>
         </nav>
 
         <button
           type="button"
-          className="md:hidden text-slate-800 p-2 shrink-0"
+          className="lg:hidden text-ink-900 p-2 shrink-0"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -77,14 +80,14 @@ export const Header: React.FC = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white max-h-[80vh] overflow-y-auto">
-          <nav className="flex flex-col p-6 gap-1" aria-label="Portfolio sections">
+        <div className="lg:hidden border-t border-ink-200 bg-ink-50 max-h-[80vh] overflow-y-auto">
+          <nav className="flex flex-col p-4 gap-0.5" aria-label="Site sections">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-slate-700 hover:text-sky-600 py-2 border-b border-slate-100"
+                className={mobileLinkClass(page === link.page)}
               >
                 {link.label}
               </a>
@@ -93,11 +96,10 @@ export const Header: React.FC = () => {
               href="/data/CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              download
-              className="flex justify-center items-center gap-2 bg-sky-600 text-white px-4 py-3 rounded-md hover:bg-sky-700 transition-colors mt-4"
+              className="flex justify-center items-center gap-2 border border-ink-900 text-ink-900 px-4 py-3 font-semibold mt-3 hover:bg-ink-900 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              <Download size={18} /> Download CV
+              <FileDown size={18} /> CV (PDF)
             </a>
           </nav>
         </div>

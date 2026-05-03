@@ -1,25 +1,35 @@
 import React, { useEffect } from 'react';
 import { useHashRoute } from './useHashRoute';
 import { HomePage } from './pages/HomePage';
-import { PersonalStatementPage } from './pages/PersonalStatementPage';
-import { StatementOfPurposePage } from './pages/StatementOfPurposePage';
+import { AboutPage } from './pages/AboutPage';
+import { ResearchPage } from './pages/ResearchPage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { EducationPage } from './pages/EducationPage';
+import { NotesPage } from './pages/NotesPage';
 import { applyPageSeo } from './seoMeta';
 
 const App: React.FC = () => {
-  const { page } = useHashRoute();
+  const page = useHashRoute();
 
   useEffect(() => {
     applyPageSeo(page);
+    window.scrollTo(0, 0);
   }, [page]);
 
-  if (page === 'personal-statement') {
-    return <PersonalStatementPage />;
+  switch (page) {
+    case 'about':
+      return <AboutPage />;
+    case 'research':
+      return <ResearchPage />;
+    case 'projects':
+      return <ProjectsPage />;
+    case 'education':
+      return <EducationPage />;
+    case 'notes':
+      return <NotesPage />;
+    default:
+      return <HomePage />;
   }
-  if (page === 'statement-of-purpose') {
-    return <StatementOfPurposePage />;
-  }
-
-  return <HomePage />;
 };
 
 export default App;
