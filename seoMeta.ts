@@ -1,11 +1,11 @@
 /** Default and per-route copy for document title and meta description (SPA). */
 import type { SitePage } from './types';
 
-export const PORTFOLIO_ORIGIN = 'https://kritarth-dandapat.github.io';
+export const PORTFOLIO_ORIGIN = 'https://dkritarth.com';
 
-const HOME_TITLE = 'Kritarth Dandapat · Research Assistant · University at Buffalo';
+const HOME_TITLE = 'Kritarth Dandapat · AI Researcher · Incoming PhD Student';
 const HOME_DESC =
-  'Kritarth Dandapat — Research Assistant at the University at Buffalo; BS in Computer Science in progress. Incoming PhD in Computer Science at Michigan State University (Fall 2026). AI, computer vision, healthcare AI, and materials ML.';
+  'Kritarth Dandapat — AI researcher and incoming PhD student in Computer Science and Engineering at Michigan State University. Research in spatiotemporal ML, DLWF, AI robustness, computer vision, healthcare AI, and materials ML.';
 
 const SEO: Record<SitePage, { title: string; description: string }> = {
   home: {
@@ -15,7 +15,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   about: {
     title: `About · ${HOME_TITLE}`,
     description:
-      'Background, research interests, honors, certifications, and technical skills — Kritarth Dandapat, Research Assistant at UB; BS in progress; incoming PhD at MSU (Fall 2026).',
+      'Background, research interests, honors, certifications, and technical skills — Kritarth Dandapat, Research Assistant at UB and incoming MSU CSE PhD student in Dr. Pang-Ning Tan’s Data Mining Laboratory.',
   },
   research: {
     title: `Research · ${HOME_TITLE}`,
@@ -25,12 +25,12 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   projects: {
     title: `Projects · ${HOME_TITLE}`,
     description:
-      'Selected coursework and independent projects in computer vision and deep learning; competitions and challenges.',
+      'Selected AI projects including PaddockPsychRL, F1-informed multi-agent reinforcement learning, computer vision systems, deep learning, and competitions.',
   },
   education: {
     title: `Education & experience · ${HOME_TITLE}`,
     description:
-      'BS in Computer Science at UB (in progress); upcoming PhD at MSU; teaching assistantship, tutoring, and related roles.',
+      'BS in Computer Science at UB; incoming PhD in Computer Science and Engineering at Michigan State University; teaching assistantship, tutoring, and related roles.',
   },
   notes: {
     title: `Research notes · ${HOME_TITLE}`,

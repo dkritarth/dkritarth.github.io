@@ -27,6 +27,12 @@ export const About: React.FC = () => {
             labs, TAing computer architecture, and tutoring statistics. This schedule has reinforced endurance and focus
             for doctoral study.
           </p>
+          <p>
+            In Fall 2026, I will join Michigan State University as an incoming PhD student in the Department of Computer
+            Science and Engineering, working in the Data Mining Laboratory under Dr. Pang-Ning Tan. My planned research
+            focus includes spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI
+            adversarial robustness.
+          </p>
 
           <div className="rounded-sm border border-ink-200 bg-ink-50/80 p-5">
             <h3 className="text-base font-semibold text-ink-900 mb-2 font-sans">Inference Foundry</h3>
@@ -40,7 +46,7 @@ export const About: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
             >
-              GitHub organization <ExternalLink size={14} aria-hidden />
+              Inference Foundry site <ExternalLink size={14} aria-hidden />
             </a>
           </div>
 

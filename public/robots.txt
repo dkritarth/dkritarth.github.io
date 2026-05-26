@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kritarth-dandapat.github.io/sitemap.xml
+Sitemap: https://dkritarth.com/sitemap.xml

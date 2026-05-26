@@ -69,6 +69,7 @@ export interface Project {
   description: string[];
   technologies: string[];
   stats?: string; // e.g., "98.72% Accuracy"
+  links?: ResearchLink[];
   /** Folder key for images: `public/data/projects/{slug}/` — see README */
   slug?: string;
   images?: ContentImage[];

@@ -2,7 +2,7 @@ import React from 'react';
 import { Section } from './Section';
 import { PROJECTS, COMPETITIONS } from '../constants';
 import { ContentImageGrid } from './ContentImageGrid';
-import { FolderGit2, Medal } from 'lucide-react';
+import { ExternalLink, FolderGit2, Medal } from 'lucide-react';
 
 export const Projects: React.FC = () => {
   return (
@@ -41,6 +41,23 @@ export const Projects: React.FC = () => {
             </div>
 
             <ContentImageGrid images={project.images ?? []} className="mb-5" />
+
+            {project.links && (
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 border border-ink-300 bg-white px-3 py-1.5 text-xs font-semibold text-ink-900 hover:border-ink-900 transition-colors"
+                  >
+                    {link.label}
+                    <ExternalLink size={13} aria-hidden />
+                  </a>
+                ))}
+              </div>
+            )}
 
             <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-ink-200">
               {project.technologies.map((tech) => (

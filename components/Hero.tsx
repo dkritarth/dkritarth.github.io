@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, FileDown, ArrowRight, ExternalLink } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, FileDown, ArrowRight, ExternalLink, Twitter } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS } from '../constants';
 
 const PORTRAIT = '/data/my-photo.jpg';
@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
         <div className="space-y-8">
           <header className="space-y-3">
             <p className="text-sm font-semibold tracking-wide text-ink-700 uppercase">
-              Computer Science · University at Buffalo
+              Computer Science · University at Buffalo · MSU PhD Fall 2026
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-semibold text-ink-900 leading-[1.15] tracking-tight">
               {CONTACT_INFO.name}
@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
               rel="noopener noreferrer"
               className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
             >
-              github.com/Inference-Foundry <ExternalLink size={14} className="opacity-70" aria-hidden />
+              inference-foundry.rweb.site <ExternalLink size={14} className="opacity-70" aria-hidden />
             </a>
           </div>
 
@@ -101,6 +101,24 @@ export const Hero: React.FC = () => {
               aria-label="LinkedIn"
             >
               <Linkedin size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 transition-colors"
+              aria-label="X / Twitter"
+            >
+              <Twitter size={22} />
             </a>
             <a
               href={`mailto:${CONTACT_INFO.email}`}

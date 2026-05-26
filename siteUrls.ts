@@ -1,7 +1,7 @@
-/** Production URLs for the three-site setup (hub, portfolio, notebook). */
+/** Production URLs for the site family. */
 export const SITE_URLS = {
   hub: 'https://dkritarth.com',
-  portfolio: 'https://kritarth-dandapat.github.io',
+  portfolio: 'https://dkritarth.com',
   notebook: 'https://notebook.dkritarth.com',
 } as const;
 

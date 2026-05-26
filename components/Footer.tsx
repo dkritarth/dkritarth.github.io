@@ -1,10 +1,8 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
-import { getSiteUrls } from '../siteUrls';
 import { Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const site = getSiteUrls();
   return (
     <footer className="bg-ink-900 text-stone-300 py-14 border-t border-ink-800">
       <div className="max-w-6xl mx-auto px-6">
@@ -31,11 +29,6 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-8 border-t border-stone-700/80 text-xs text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p>
             &copy; {new Date().getFullYear()} {CONTACT_INFO.name}
-          </p>
-          <p>
-            <a href={site.hub} className="text-stone-400 hover:text-stone-200 transition-colors">
-              Hub
-            </a>
           </p>
         </div>
       </div>

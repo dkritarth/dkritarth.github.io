@@ -14,25 +14,27 @@ import type {
 
 export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
-  title: 'Research Assistant · University at Buffalo',
+  title: 'Research Assistant · Incoming PhD Student at Michigan State University',
   email: 'contact@dkritarth.com',
   phone: '+1 (716) 612-0016',
   location: 'Buffalo, NY',
   github: 'https://github.com/Kritarth-Dandapat',
   linkedin: 'https://www.linkedin.com/in/kritarth-dandapat/',
+  instagram: 'https://www.instagram.com/kritarth_dandapat/',
+  twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
-  bio: 'Research Assistant at the University at Buffalo (ESC and Peng labs), completing a BS in Computer Science. Starting a PhD in Computer Science at Michigan State University (Fall 2026), focusing on Artificial Intelligence. Work spans computer vision, healthcare AI (OralScan), and symmetry-aware GNNs for materials. Accelerated program with 3.8+ GPA; PEARL Award; Teaching Assistant for Computer Architecture.',
+  bio: 'Research Assistant at the University at Buffalo (ESC and Peng labs), completing a BS in Computer Science. Incoming PhD Student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr. Pang-Ning Tan. Research interests span spatiotemporal machine learning, deep learning-based weather forecasting, AI adversarial robustness, computer vision, healthcare AI, and materials ML.',
   /** Short intro for the home page only; full narrative lives on About. */
   landingLead:
-    "I'm 19, finishing my BS in Computer Science at the University at Buffalo while working as a research assistant in two labs. With Prof. Wenyao Xu at the Embedded Sensing and Computing (ESC) Group, I build mobile health tools—computer vision for OralScan and OrthoScan, and engineering for mRehab (telerehabilitation). With Prof. Jiayu Peng, I work on computational materials: symmetry-aware graph neural networks and machine learning interatomic potentials, including alchemical extensions tied to universal atom models (UMA). In Fall 2026 I join Michigan State University as a PhD student in Computer Science, advised by Dr. Pang-Ning Tan.",
+    "I'm 19, finishing my BS in Computer Science at the University at Buffalo while working as a research assistant in two labs. With Prof. Wenyao Xu at the Embedded Sensing and Computing (ESC) Group, I build mobile health tools—computer vision for OralScan and OrthoScan, and engineering for mRehab (telerehabilitation). With Prof. Jiayu Peng, I work on computational materials: symmetry-aware graph neural networks and machine learning interatomic potentials, including alchemical extensions tied to universal atom models (UMA). In Fall 2026 I join Michigan State University's Department of Computer Science and Engineering as a PhD student in Dr. Pang-Ning Tan's Data Mining Laboratory.",
   sopSnippet:
     'My academic journey has been driven by a fascination with the power of artificial intelligence (AI) to solve tangible, human-centric problems. I am driven to move beyond applying known techniques to creating original, high-impact research.',
-  /** Open GitHub org — surfaced on home & About */
+  /** Open research software initiative — surfaced on home & About */
   inferenceFoundry: {
-    url: 'https://github.com/Inference-Foundry',
+    url: 'https://inference-foundry.rweb.site/',
     startLabel: 'Starting May 2026',
     description:
-      'Open GitHub organization I founded for collaborative machine learning inference tooling, research software, and reproducible workflows—public repos and shared infrastructure for contributors.',
+      'Open research software initiative I founded for collaborative machine learning inference tooling, research software, and reproducible workflows—public repos and shared infrastructure for contributors.',
   },
 };
 
@@ -43,8 +45,9 @@ export const EDUCATION: Education[] = [
     location: 'East Lansing, MI',
     period: 'Starting Fall 2026',
     details: [
-      'Focus: Artificial Intelligence and Machine Learning',
-      'Advisor: Dr. Pang-Ning Tan',
+      'Incoming PhD Student in the Department of Computer Science and Engineering',
+      'Joining the Data Mining Laboratory under the advisorship of Dr. Pang-Ning Tan',
+      'Research focus: Spatiotemporal Machine Learning, Deep Learning-based Weather Forecasting (DLWF), and AI Adversarial Robustness',
     ],
   },
   {
@@ -265,6 +268,22 @@ export const PUBLICATIONS: Publication[] = [
 /** Technical projects section aligned with docs/CV.tex (OralScan omitted here; covered under research). */
 export const PROJECTS: Project[] = [
   {
+    slug: 'paddock-psych-rl',
+    title: 'PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning',
+    category: 'Reinforcement Learning & Multi-Agent Systems',
+    description: [
+      'Modeled Formula 1-inspired experience and psychological state variables inside PettingZoo cooperative environments.',
+      'Used FastF1 2025 lap-time consistency to build driver-specific agent profiles and action-noise scales.',
+      'Compared tabular Q-learning and MAPPO, with psych-aware runs improving Strategy Resilience Score in noisy coordination settings.',
+    ],
+    technologies: ['Python', 'FastF1', 'PettingZoo', 'Ray RLlib', 'MAPPO', 'Q-learning'],
+    stats: 'Psych SRS 0.63 vs 0.54',
+    links: [
+      { label: 'Project write-up', href: 'https://dkritarth.com/PaddockPsychRL/' },
+      { label: 'GitHub', href: 'https://github.com/Kritarth-Dandapat/PaddockPsychRL' },
+    ],
+  },
+  {
     slug: 'marine-guardian',
     title: 'Marine Guardian: Ship Detection in Satellite Imagery',
     category: 'Computer Vision & Deep Learning',
@@ -392,10 +411,12 @@ export const PRESENTATIONS = [
 
 export const RESEARCH_INTERESTS: string[] = [
   'Artificial Intelligence and Machine Learning',
+  'Spatiotemporal Machine Learning',
+  'Deep Learning-based Weather Forecasting (DLWF)',
+  'AI Adversarial Robustness',
   'Computer Vision and Deep Learning',
   'Healthcare Technology and Digital Health',
-  'Quantum Computing Applications',
-  'Energy Systems Optimization',
+  'Materials ML and Scientific Discovery',
   'Mobile and Web Development',
 ];
 
