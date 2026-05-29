@@ -9,7 +9,10 @@ export function parseHash(): SitePage {
   if (raw.startsWith('/')) {
     const path = raw.replace(/^\//, '').split('/')[0] ?? '';
     if (!path) return 'home';
-    const allowed: SitePage[] = ['about', 'research', 'projects', 'education', 'notes'];
+    if (path === 'notes') {
+      return 'news';
+    }
+    const allowed: SitePage[] = ['about', 'research', 'projects', 'education', 'news'];
     if (allowed.includes(path as SitePage)) {
       return path as SitePage;
     }

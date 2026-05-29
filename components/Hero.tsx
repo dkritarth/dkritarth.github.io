@@ -142,7 +142,7 @@ export const Hero: React.FC = () => {
                 Research areas
               </p>
               <p className="text-sm text-white leading-snug font-sans">
-                Computer vision · Deep learning · Healthcare AI · Graph neural networks (materials)
+                Spatiotemporal ML · DLWF · AI robustness · Computer vision · Materials ML
               </p>
             </figcaption>
           </div>

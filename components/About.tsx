@@ -15,24 +15,7 @@ export const About: React.FC = () => {
           <blockquote className="text-lg font-serif italic text-ink-700 border-l-[3px] border-ink-900 pl-5 py-1 bg-ink-100/50">
             {CONTACT_INFO.sopSnippet}
           </blockquote>
-          <p>
-            My undergraduate research at the University at Buffalo has built a strong foundation in AI, but I am driven
-            to move beyond applying known techniques to creating original, high-impact research. A doctoral program is
-            the next essential step to strengthen my technical expertise and develop the independent research skills
-            required to contribute meaningfully to the fields of AI and computational science.
-          </p>
-          <p>
-            I have managed an accelerated academic path, on track to graduate in three years while taking 21–22 credit
-            semesters. During this time, I have maintained academic excellence (3.8+ GPA) while working in two research
-            labs, TAing computer architecture, and tutoring statistics. This schedule has reinforced endurance and focus
-            for doctoral study.
-          </p>
-          <p>
-            In Fall 2026, I will join Michigan State University as an incoming PhD student in the Department of Computer
-            Science and Engineering, working in the Data Mining Laboratory under Dr. Pang-Ning Tan. My planned research
-            focus includes spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI
-            adversarial robustness.
-          </p>
+          <p>{CONTACT_INFO.professionalSummary}</p>
 
           <div className="rounded-sm border border-ink-200 bg-ink-50/80 p-5">
             <h3 className="text-base font-semibold text-ink-900 mb-2 font-sans">Inference Foundry</h3>

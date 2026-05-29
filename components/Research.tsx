@@ -13,10 +13,13 @@ const BOLD_TERMS = [
   'GNNs',
   'ALIGNN',
   'mRehab',
-  'wandb',
+  'Weights & Biases',
   'MACE',
   'UMA',
-  'ESC Lab',
+  'MLIPs',
+  'E(3)-equivariant',
+  'PerovskiteOrderingGCNNs',
+  'Inference Foundry',
 ];
 
 function formatBoldTerms(s: string): React.ReactNode[] {

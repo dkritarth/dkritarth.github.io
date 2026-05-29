@@ -1,11 +1,11 @@
 import React from 'react';
 import { PageLayout } from '../components/PageLayout';
-import { Blog } from '../components/Blog';
+import { News } from '../components/News';
 
-export const NotesPage: React.FC = () => {
+export const NewsPage: React.FC = () => {
   return (
     <PageLayout>
-      <Blog />
+      <News />
     </PageLayout>
   );
 };

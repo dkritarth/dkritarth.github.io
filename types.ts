@@ -1,5 +1,5 @@
 /** Hash-route targets for the SPA (`#/`, `#/about`, …). */
-export type SitePage = 'home' | 'about' | 'research' | 'projects' | 'education' | 'notes';
+export type SitePage = 'home' | 'about' | 'research' | 'projects' | 'education' | 'news';
 
 export interface Publication {
   title: string;
@@ -100,10 +100,10 @@ export interface SkillCategory {
   skills: string[];
 }
 
-export interface BlogPost {
-  title: string;
-  subtitle: string;
-  date: string;
-  content: string[];
-  tags: string[];
+/** Short milestone for the News page; sorted by year then month (desc). */
+export interface NewsItem {
+  year: number;
+  /** 1–12 for ordering; use 6 for “Spring” mid-year awards if month unknown */
+  month: number;
+  headline: string;
 }

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { BookMarked, Code, GraduationCap, Microscope, Users } from 'lucide-react';
+import { Code, GraduationCap, Microscope, Newspaper, Users } from 'lucide-react';
 import type {
-  BlogPost,
+  NewsItem,
   CompetitionEntry,
   Education,
   Experience,
@@ -14,7 +14,7 @@ import type {
 
 export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
-  title: 'Research Assistant · Incoming PhD Student at Michigan State University',
+  title: 'Incoming PhD Student, Michigan State University · Undergraduate Researcher, University at Buffalo',
   email: 'contact@dkritarth.com',
   phone: '+1 (716) 612-0016',
   location: 'Buffalo, NY',
@@ -23,10 +23,13 @@ export const CONTACT_INFO = {
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
-  bio: 'Research Assistant at the University at Buffalo (ESC and Peng labs), completing a BS in Computer Science. Incoming PhD Student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr. Pang-Ning Tan. Research interests span spatiotemporal machine learning, deep learning-based weather forecasting, AI adversarial robustness, computer vision, healthcare AI, and materials ML.',
-  /** Short intro for the home page only; full narrative lives on About. */
+  bio: 'Incoming PhD student (Fall 2026) at Michigan State University CSE and Data Mining Laboratory (Dr. Pang-Ning Tan). Undergraduate researcher at UB spanning mobile health AI, computer vision, and computational materials science (symmetry-aware GNNs, equivariant MLIPs).',
+  /** Mirrors cv.tex Professional Summary */
+  professionalSummary:
+    'Incoming PhD student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr. Pang-Ning Tan, with a planned focus on spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness. Completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo, SUNY, with a 3.8+ GPA and Dean\'s List recognition every semester. Uniquely combines production-grade full-stack engineering (React Native, YOLOv8 pipelines, CUDA-accelerated training) with advanced scientific ML (E(3)-equivariant MPNNs, symmetry-aware GNNs, ALIGNN) across mobile health AI and computational materials science. Co-author on manuscripts in digital health and materials discovery; recipient of the PEARL undergraduate research award ($2,500) and the UB Health Futures Challenge second-place prize ($1,000).',
+  /** Short intro for the home page */
   landingLead:
-    "I'm 19, finishing my BS in Computer Science at the University at Buffalo while working as a research assistant in two labs. With Prof. Wenyao Xu at the Embedded Sensing and Computing (ESC) Group, I build mobile health tools—computer vision for OralScan and OrthoScan, and engineering for mRehab (telerehabilitation). With Prof. Jiayu Peng, I work on computational materials: symmetry-aware graph neural networks and machine learning interatomic potentials, including alchemical extensions tied to universal atom models (UMA). In Fall 2026 I join Michigan State University's Department of Computer Science and Engineering as a PhD student in Dr. Pang-Ning Tan's Data Mining Laboratory.",
+    'Incoming PhD student (Fall 2026) in MSU CSE\'s Data Mining Laboratory (Dr. Pang-Ning Tan), with planned work in spatiotemporal ML, DLWF, and AI adversarial robustness. At UB I research mobile health AI with Prof. Wenyao Xu—OralScan, OrthoScan, and mRehab—and computational materials with Prof. Jiayu Peng: symmetry-aware GNNs, equivariant MLIPs, and UMA integration. I combine full-stack and CUDA-accelerated vision pipelines with scientific ML for healthcare and materials discovery.',
   sopSnippet:
     'My academic journey has been driven by a fascination with the power of artificial intelligence (AI) to solve tangible, human-centric problems. I am driven to move beyond applying known techniques to creating original, high-impact research.',
   /** Open research software initiative — surfaced on home & About */
@@ -34,7 +37,7 @@ export const CONTACT_INFO = {
     url: 'https://inference-foundry.rweb.site/',
     startLabel: 'Starting May 2026',
     description:
-      'Open research software initiative I founded for collaborative machine learning inference tooling, research software, and reproducible workflows—public repos and shared infrastructure for contributors.',
+      'Collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
   },
 };
 
@@ -45,9 +48,8 @@ export const EDUCATION: Education[] = [
     location: 'East Lansing, MI',
     period: 'Starting Fall 2026',
     details: [
-      'Incoming PhD Student in the Department of Computer Science and Engineering',
-      'Joining the Data Mining Laboratory under the advisorship of Dr. Pang-Ning Tan',
-      'Research focus: Spatiotemporal Machine Learning, Deep Learning-based Weather Forecasting (DLWF), and AI Adversarial Robustness',
+      'Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: Dr. Pang-Ning Tan)',
+      'Planned research focus: spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness',
     ],
   },
   {
@@ -56,12 +58,9 @@ export const EDUCATION: Education[] = [
     location: 'Buffalo, NY',
     period: 'August 2023 – June 2026',
     details: [
-      'Specialization in Artificial Intelligence',
-      'Relevant coursework: Reinforcement Learning, Computer Vision, Machine Learning, Quantum Computing, and Distributed Systems',
-      "GPA: 3.8+ (Dean's List: all semesters)",
-      'Presidential Scholarship: $15,000 per annum',
-      'PEARL Award: $2,500 research grant (ELN)',
-      'Accelerated 3-year program (21–22 credit semesters)',
+      'Specialization in artificial intelligence; coursework spanning reinforcement learning, computer vision, machine learning, quantum computing, and distributed systems',
+      "GPA 3.8+; Dean's List all semesters; accelerated three-year completion (21–22 credit semesters)",
+      'Presidential Scholarship: $15,000 per year; PEARL Award: $2,500 competitive undergraduate research grant (Experiential Learning Network)',
     ],
   },
 ];
@@ -71,8 +70,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     role: 'Research Assistant',
     organization: 'Embedded Sensing and Computing (ESC) Group, University at Buffalo',
     location: 'Buffalo, NY',
-    overview:
-      'Mobile sensing for healthcare and rehabilitation with Prof. Wenyao Xu: sequential work on geriatric oral screening (OralScan), orthodontic remote monitoring (OrthoScan), and telerehabilitation (mRehab).',
+    overview: 'Mobile sensing for healthcare and rehabilitation with Prof. Wenyao Xu.',
     subprojects: [
       {
         id: 'oralscan',
@@ -80,16 +78,13 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         period: 'June 2024 – February 2025',
         context: 'PI: Prof. Wenyao Xu',
         narrative: [
-          'By mid-century, older adults are projected to bear an unprecedented share of preventable oral disease—including gum disease, decay, and infections that are far easier to manage when caught early.',
-          'Cost, gaps in insurance for routine care, and transportation barriers keep many older adults from seeing a dentist regularly. At ESC Lab we focused on how lightweight, home-based tools could narrow that gap.',
-          'OralScan is an AI-assisted smartphone app for guided intraoral imaging and rapid feedback—designed to complement (not replace) in-office care by helping families notice when a visit is warranted. Community-facing work stressed accessibility, clarity, trust, and practical usefulness.',
-          'The project earned second place ($1,000) in UB’s Health Futures Challenge (Spring 2025), run through Entrepreneurship and Student Life.',
+          'OralScan is an AI-assisted mobile health platform for guided intraoral imaging and rapid feedback—designed to complement in-office geriatric oral care.',
         ],
         technicalHighlights: [
-          'Full-stack software (React Native and React web) for capture workflows and clinician-facing views.',
-          'YOLOv8-based vision pipelines for dental disease screening and tooth numbering on intraoral images.',
-          'Co-authored formative usability and acceptability study for OralScan, submitted to Smart Health (under review).',
-          'Second place ($1,000), Health Futures Challenge (Spring 2025), University at Buffalo Entrepreneurship / Student Life.',
+          'Architected a full-stack mobile health platform (React Native, React web) integrating end-to-end YOLOv8 vision pipelines for guided intraoral image acquisition, multi-class dental disease screening, and automated tooth numbering across temporal scan sessions.',
+          'Formulated a spatio-temporal scan-guidance system that aggregates sequential intraoral frames to produce consistent disease-detection signals robust to user-induced motion variability.',
+          'Co-authored formative usability and acceptability study submitted to Smart Health (under review); delivered oral presentations to clinical stakeholders at CTSI and SURC 2024.',
+          'Awarded second place ($1,000), University at Buffalo Health Futures Challenge (Spring 2026).',
         ],
         links: [
           { label: 'oralscan.health', href: 'https://oralscan.health/' },
@@ -110,14 +105,11 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         period: 'February 2025 – October 2025',
         context: 'PI: Prof. Wenyao Xu',
         narrative: [
-          'Orthodontic treatment often requires ten to twenty in-office checkups; many visits could be avoided with trustworthy at-home monitoring that preserves clinical-level consistency.',
-          'OrthoScan is a mobile system for tracking orthodontic progress from home: intelligent imaging and custom measurement algorithms translate subtle visual changes into millimeter-scale, actionable feedback.',
-          'The goal is to make monitoring accessible and patient-centered—reducing unnecessary trips while keeping attention on cases that truly need an in-person adjustment.',
+          'OrthoScan enables at-home orthodontic progress tracking with intelligent imaging and measurement algorithms that translate visual change into calibrated, actionable feedback.',
         ],
         technicalHighlights: [
-          'Backend services and mobile engineering for capture, sync, and measurement workflows.',
-          'YOLO-based detection for brackets and hardware; depth-assisted scoring where sensors are available.',
-          'Object-detection and geometry pipelines to turn images into quantitative progress signals.',
+          'Engineered mobile and backend systems for at-home orthodontic progress tracking, deploying YOLO-based hardware detection paired with depth-assisted spatial measurement pipelines to quantify structural change across longitudinal patient visits.',
+          'Translated sequential intraoral imagery into calibrated geometric progress signals, enabling quantitative remote monitoring between in-office appointments and reducing reliance on subjective clinician assessment.',
         ],
         collaboratorsNote:
           'Collaborators included Dr. Wei Bo, Prof. Wenyao Xu, Alexander Gherardi, and Puru Soni (see https://purusoni.com).',
@@ -129,11 +121,10 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         period: 'November 2025 – Present',
         context: 'ESC Lab · telerehabilitation',
         narrative: [
-          'mRehab supports remote rehabilitation through structured exercise programs, sensor-informed feedback, and therapist-facing analytics—bringing consistency to home-based therapy.',
+          'mRehab is a telerehabilitation platform supporting structured exercise programs, sensor-informed feedback, and therapist-facing analytics in live outpatient workflows.',
         ],
         technicalHighlights: [
-          'Engineering for session logging, sensor ingest, and signal analysis tied to exercise performance.',
-          'Algorithm design and refinement for exercise scoring and progression; backend architecture for reliable telemetry.',
+          'Contributed to a remote rehabilitation platform incorporating session logging, multi-modal sensor ingest pipelines, time-series signal analysis, and exercise scoring algorithms deployed in live outpatient therapy workflows.',
         ],
         links: [{ label: 'mrehab.agency', href: 'https://mrehab.agency/' }],
         technologies: ['Signal processing', 'Backend', 'Mobile', 'Algorithms'],
@@ -144,8 +135,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     role: 'Undergraduate Researcher',
     organization: 'Peng Research Lab, University at Buffalo',
     location: 'Buffalo, NY',
-    overview:
-      'With Prof. Jiayu Peng: symmetry-aware GNNs for crystal ordering (June–November 2025), then a focused stream on equivariant MLIPs—alchemical extensions in the spirit of published MACE formalism—and integrating those ideas with universal atom models (UMA), from December 2025 onward.',
+    overview: 'Computational materials science and clean-energy applications with Prof. Jiayu Peng.',
     placementLinks: [
       {
         label: 'UB ELN — AI design of disordered materials for clean energy (project profile)',
@@ -155,18 +145,16 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     subprojects: [
       {
         id: 'perovskite-gnn',
-        name: 'Perovskite ordering & symmetry-aware GNNs',
+        name: 'Perovskite ordering and symmetry-aware GNNs',
         period: 'June 2025 – November 2025',
         context: 'Prof. Jiayu Peng · repository open-sourced with ordering paper',
         narrative: [
-          'This line of work models compositional and occupational ordering in crystalline materials (including perovskites) using symmetry-aware graph neural networks, with reproducible training on atomistic datasets.',
-          'I contributed to benchmarking, experiment tracking, and model revisions alongside graduate students on high-throughput simulation and data pipelines.',
+          'Benchmarking symmetry-aware graph neural networks for ordering-dependent energetics in crystalline perovskites, with reproducible training on atomistic datasets.',
         ],
         technicalHighlights: [
-          'Contributions to https://github.com/jiayu-peng-lab/PerovskiteOrderingGCNNs and revisions around arXiv:2409.13851.',
-          'Migrated hyperparameter and experiment tracking from SigOpt to Weights & Biases for publication revisions.',
-          'Trained and compared architectures including ALIGNN for resubmission experiments.',
-          'Co-authored commentary on agentic AI for catalyst discovery (ChemRxiv: https://doi.org/10.26434/chemrxiv-2025-13n3f).',
+          'Benchmarked symmetry-aware GNN architectures (including ALIGNN) on ordering-dependent energetics in crystalline perovskites; contributed benchmarking results and revised analysis to arXiv:2409.13851 and the open-source PerovskiteOrderingGCNNs repository.',
+          'Migrated experiment tracking infrastructure from SigOpt to Weights & Biases; automated training loops, hyperparameter sweeps, and multi-architecture evaluation pipelines, reducing manual overhead and improving reproducibility.',
+          'Co-authored commentary on agentic AI for multimetallic catalyst discovery, published on ChemRxiv (2025).',
         ],
         links: [
           {
@@ -183,23 +171,42 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
       },
       {
         id: 'mlip-uma-alchemical',
-        name: 'Equivariant MLIPs, alchemical extensions & UMA',
+        name: 'Equivariant MLIPs, alchemical extensions, and universal atom models',
         period: 'December 2025 – Present',
         context: 'Prof. Jiayu Peng · E(3) message-passing potentials, MACE-style alchemical graphs, universal atom models',
         narrative: [
-          'Machine learning interatomic potentials (MLIPs) such as MACE treat atoms on graphs with continuous embeddings; differentiable alchemical weights let compositions interpolate smoothly and energies differentiate with respect to composition—supporting solid solutions, disorder, and alchemical free-energy analyses (Nam, Peng, Gómez-Bombarelli, arXiv:2404.10746). In parallel with that framework, I implement E(3)-equivariant message-passing potentials with alchemical graph augmentations for our simulations.',
-          'UMA (Universal Models for Atoms) is a family of large-scale universal MLIPs (Meta FAIR; arXiv:2506.23971). The combined thread is to carry alchemical treatment from equivariant foundations into UMA-style stacks—so universal models support compositional interpolation and derivatives aligned with our lab’s relaxation and disorder workflows.',
+          'Implementing E(3)-equivariant machine learning interatomic potentials with alchemical graph extensions and integrating them with universal atom model (UMA) stacks for materials discovery pipelines.',
         ],
         technicalHighlights: [
-          'Alchemical atom expansion, weighted message passing, and weighted readouts consistent with frozen pretrained MLIPs.',
-          'Validation on composition sweeps and relaxations for disordered and alloy-like structures.',
-          'Adapting graph construction and readouts so alchemical weights compose with UMA inference; tying outputs to existing pipelines and benchmarks.',
+          'Implement E(3)-equivariant message-passing machine learning interatomic potentials (MLIPs) augmented with alchemical graph extensions to enable efficient composition sweeps and energy prediction over disordered crystalline structures.',
+          'Integrate alchemical treatment with universal atom model (UMA) stacks (MACE) to accelerate structural relaxation and disorder characterization workflows in computational materials discovery pipelines.',
         ],
         links: [
           { label: 'arXiv:2404.10746 (MLIP alchemical framework)', href: 'https://arxiv.org/abs/2404.10746' },
           { label: 'arXiv:2506.23971 (UMA)', href: 'https://arxiv.org/abs/2506.23971' },
         ],
         technologies: ['MACE', 'UMA', 'E(3)-equivariant MLIPs', 'PyTorch', 'MLIPs', 'Materials simulation'],
+      },
+    ],
+  },
+  {
+    role: 'Founder, Inference Foundry',
+    organization: 'Open Research Software Initiative',
+    location: 'Remote',
+    overview: 'Collaborative open-source initiative for reproducible scientific ML tooling.',
+    subprojects: [
+      {
+        id: 'inference-foundry',
+        name: 'Inference Foundry',
+        period: 'Starting May 2026',
+        narrative: [
+          'Building shared infrastructure for reproducible ML inference, standardized research software scaffolding, and contributor-friendly open-source workflows.',
+        ],
+        technicalHighlights: [
+          'Launched a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
+        ],
+        links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
+        technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
       },
     ],
   },
@@ -212,29 +219,25 @@ export const PROFESSIONAL_EXPERIENCE: Experience[] = [
     location: 'Buffalo, NY',
     period: 'Jan 2026 – May 2026',
     description: [
-      'Conduct independent weekly recitation sessions and office hours for VHDL, course material, and projects.',
-      'Grade midterms, finals, quizzes, and assignments; assist in preparing assessments.',
-      'Support students via Piazza and collaborate with the teaching team in weekly meetings.',
+      'Delivered weekly VHDL recitations and office hours for 30+ students; graded exams and assignments; provided technical support to 100+ students on Piazza throughout the semester.',
     ],
   },
   {
-    role: 'Tutor & Peer-Assisted Leader',
+    role: 'Tutor and Peer-Assisted Leader',
     organization: 'Tutoring & Academic Support Services, University at Buffalo',
     location: 'Buffalo, NY',
     period: 'August 2024 – December 2025',
     description: [
-      'Two interactive 1-hour sessions per week; improved students’ understanding of Statistics by ~30% based on quiz performance and feedback.',
-      'In-depth explanations, PAL sessions, and reinforcement of statistical concepts.',
+      'Facilitated two interactive sessions per week in statistics and CS fundamentals; course feedback indicated approximately 30% improvement in quiz performance among attending students.',
     ],
   },
   {
-    role: 'Founder & Vice President (NSDC)',
+    role: 'Founder and Vice President',
     organization: 'UB National Student Data Corps',
     location: 'Buffalo, NY',
     period: 'October 2023 – May 2024',
     description: [
-      'Led development and launch of the NSDC website for events and communication.',
-      'Co-founded the UB chapter; ran workshops and networking for data science students.',
+      'Co-founded the UB chapter; launched the chapter website, organized data science workshops, and built networking programs connecting undergraduates to research and industry opportunities.',
     ],
   },
 ];
@@ -243,14 +246,14 @@ export const PUBLICATIONS: Publication[] = [
   {
     title:
       'OralScan, an AI-Powered Mobile Tool for Geriatric Oral Healthcare: A Formative Usability and Acceptability Study',
-    authors: 'Soni, P., Dandapat, K., Gherardi, A., Bo, W., Li, R., & Xu, W.',
+    authors: 'Soni, P., Dandapat, K., Gherardi, A., Bo, W., Li, R., and Xu, W.',
     venue: 'Submitted to Smart Health',
     year: '2025',
     status: 'Under review',
   },
   {
     title: 'Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI',
-    authors: 'Peng, J., Liu, C., Luo, Y., & Dandapat, K.',
+    authors: 'Peng, J., Liu, C., Luo, Y., and Dandapat, K.',
     venue: 'ChemRxiv, ver. 1. DOI: 10.26434/chemrxiv-2025-13n3f',
     year: '2025',
     link: 'https://doi.org/10.26434/chemrxiv-2025-13n3f',
@@ -261,23 +264,23 @@ export const PUBLICATIONS: Publication[] = [
     venue: 'arXiv Preprint, arXiv:2409.13851',
     year: '2024',
     link: 'https://arxiv.org/abs/2409.13851',
-    status: 'Contributed to revisions and benchmarking',
+    status: 'Contributed benchmarking and revisions',
   },
 ];
 
-/** Technical projects section aligned with docs/CV.tex (OralScan omitted here; covered under research). */
+/** Selected projects (OralScan and lab work live under Research). Aligned with cv.tex. */
 export const PROJECTS: Project[] = [
   {
     slug: 'paddock-psych-rl',
     title: 'PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning',
-    category: 'Reinforcement Learning & Multi-Agent Systems',
+    category: 'Spatiotemporal Modeling and Multi-Agent Systems',
     description: [
-      'Modeled Formula 1-inspired experience and psychological state variables inside PettingZoo cooperative environments.',
-      'Used FastF1 2025 lap-time consistency to build driver-specific agent profiles and action-noise scales.',
-      'Compared tabular Q-learning and MAPPO, with psych-aware runs improving Strategy Resilience Score in noisy coordination settings.',
+      'Formulated a multi-agent RL framework integrating Formula 1 temporal performance signals into agent psychology models within PettingZoo cooperative environments, mapping real-world behavioral dynamics to learned policy structure.',
+      'Constructed driver-specific agent profiles from FastF1 2025 lap-time consistency metrics, encoding temporal performance variability as per-agent action-noise scales to reflect authentic decision-making under pressure.',
+      'Benchmarked tabular Q-learning and MAPPO baselines against psych-conditioned policies; psych-aware agents improved Strategy Resilience Score from 0.54 to 0.63 (+16.7%) under noisy multi-agent coordination.',
     ],
     technologies: ['Python', 'FastF1', 'PettingZoo', 'Ray RLlib', 'MAPPO', 'Q-learning'],
-    stats: 'Psych SRS 0.63 vs 0.54',
+    stats: 'Strategy Resilience Score 0.63 vs 0.54 (+16.7%)',
     links: [
       { label: 'Project write-up', href: 'https://dkritarth.com/PaddockPsychRL/' },
       { label: 'GitHub', href: 'https://github.com/Kritarth-Dandapat/PaddockPsychRL' },
@@ -286,36 +289,37 @@ export const PROJECTS: Project[] = [
   {
     slug: 'marine-guardian',
     title: 'Marine Guardian: Ship Detection in Satellite Imagery',
-    category: 'Computer Vision & Deep Learning',
+    category: 'Geospatial Computer Vision and Deep Learning',
     description: [
-      'Computer vision system for ship detection using first principles of computer vision.',
-      'Roundness-based classification achieving 98.72% accuracy with MobileNetV2.',
-      'Fast detection using geometric properties for real-time maritime monitoring.',
-      'Transfer learning with EfficientNet encoder and custom decoder.',
+      'Designed a maritime monitoring pipeline grounded in geometric computer vision principles before applying deep models, achieving low-latency inference on high-resolution satellite imagery for spatial object detection.',
+      'Engineered a roundness-based geometric classifier paired with MobileNetV2, attaining 98.72% ship-vs-non-ship classification accuracy while eliminating heavy encoder overhead unsuitable for edge deployment.',
+      'Benchmarked EfficientNet transfer learning with a custom decoder against ResNet-50 feature extraction and K-means clustering, systematically validating architecture decisions across spatial generalization scenarios.',
     ],
-    technologies: ['Python', 'OpenCV', 'TensorFlow', 'EfficientNet', 'MobileNetV2', 'ResNet50', 'KMeans'],
+    technologies: ['Python', 'OpenCV', 'TensorFlow', 'EfficientNet', 'MobileNetV2', 'ResNet-50', 'K-means'],
     stats: '98.72% accuracy',
   },
   {
     slug: 'people-counting-csrnet',
-    title: 'People Counting using CSRNet',
-    category: 'Deep Learning & Computer Vision',
+    title: 'People Counting via CSRNet Density Estimation',
+    category: 'Deep Learning and Spatial Regression',
     description: [
-      'Deep learning system for people counting in dense crowds.',
-      'CSRNet for occlusions and robust detection.',
+      'Developed a density-estimation pipeline for crowd counting in highly occluded surveillance scenes where bounding-box detectors fail due to extreme pedestrian overlap, framing the task as spatial regression over density maps.',
+      'Trained CSRNet end-to-end in PyTorch to predict per-pixel crowd density fields, enabling robust aggregate counts from integrated spatial density rather than fragile per-instance localization.',
+      'Accelerated training and inference with CUDA; preprocessed surveillance-style frames with OpenCV for repeatable benchmarking across public crowd-counting datasets.',
     ],
-    technologies: ['PyTorch', 'CSRNet', 'Computer Vision', 'CUDA', 'OpenCV'],
+    technologies: ['PyTorch', 'CSRNet', 'CUDA', 'OpenCV'],
   },
   {
     slug: 'human-emotion-detection',
-    title: 'Human Emotion Detection',
-    category: 'Computer Vision & AI',
+    title: 'Human Emotion Detection: Multi-Architecture Benchmark',
+    category: 'Computer Vision and Model Robustness',
     description: [
-      'CNN, ResNet-34, and Vision Transformer (ViT) for emotion classification.',
-      '87.5% accuracy on image-based emotion recognition.',
+      'Constructed a controlled multi-architecture benchmark comparing shallow CNN, ResNet-34, and Vision Transformer (ViT) backbones on facial expression recognition under a unified preprocessing and evaluation protocol, isolating architectural contribution from data effects.',
+      'Optimized training schedules and augmentation strategies per architecture; ViT and ResNet-34 variants demonstrated superior generalization over the CNN baseline on held-out facial expression data.',
+      'Achieved 87.5% top-1 classification accuracy on the best-performing configuration after systematic cross-architecture ablation.',
     ],
     technologies: ['PyTorch', 'TensorFlow', 'CNN', 'ResNet-34', 'Vision Transformer', 'OpenCV'],
-    stats: '87.5% accuracy',
+    stats: '87.5% top-1 accuracy',
   },
 ];
 
@@ -325,44 +329,54 @@ export const SKILLS: SkillCategory[] = [
     skills: ['Python', 'JavaScript', 'Java', 'C++', 'Rust'],
   },
   {
-    category: 'AI/ML Frameworks',
-    skills: ['PyTorch', 'TensorFlow', 'Computer Vision', 'Deep Learning', 'CNN', 'ResNet', 'Vision Transformer'],
+    category: 'Machine learning and AI',
+    skills: [
+      'PyTorch',
+      'TensorFlow',
+      'Computer vision',
+      'Deep learning',
+      'Graph neural networks (GNNs)',
+      'YOLOv8',
+      'Vision Transformer (ViT)',
+      'Reinforcement learning (MAPPO, Q-learning)',
+      'Ray RLlib',
+    ],
   },
   {
-    category: 'Web Development',
-    skills: ['React', 'React Native', 'Node.js', 'Django', 'Express.js'],
+    category: 'Scientific ML and materials',
+    skills: [
+      'ALIGNN',
+      'Machine learning interatomic potentials (MLIPs)',
+      'MACE',
+      'E(3)-equivariant MPNNs',
+      'Weights and Biases',
+      'PyTorch Geometric',
+    ],
   },
   {
-    category: 'Databases',
-    skills: ['MongoDB', 'SQL', 'Firebase', 'SQLite'],
+    category: 'Software engineering',
+    skills: ['React', 'React Native', 'Node.js', 'Django', 'Git', 'CUDA', 'OpenCV', 'NumPy', 'Matplotlib'],
   },
   {
-    category: 'Tools & Libraries',
-    skills: ['Git', 'CUDA', 'OpenCV', 'NumPy', 'Matplotlib', 'Pygame'],
-  },
-  {
-    category: 'Cloud & Deployment',
-    skills: ['Firebase Hosting', 'Google Colab'],
+    category: 'Databases and cloud',
+    skills: ['MongoDB', 'SQL', 'Firebase', 'SQLite', 'Google Colab', 'Firebase Hosting'],
   },
 ];
 
 export const CERTIFICATIONS = [
-  'Machine Learning Specialization — Stanford University & DeepLearning.AI (Coursera)',
-  'Deep Learning Specialization — Stanford University & DeepLearning.AI (Coursera)',
+  'Machine Learning Specialization — Stanford University and DeepLearning.AI (Coursera)',
+  'Deep Learning Specialization — Stanford University and DeepLearning.AI (Coursera)',
   'PyTorch for Deep Learning — Udemy',
-  'Deep Learning Masterclass — TensorFlow 2, Neural.ai',
-  'Django Masterclass — Tim Buchalka (Udemy)',
-  'Node.js, Express, MongoDB — Jonas Schmedtmann (Udemy)',
-  'The Ultimate React Course 2023 — Jonas Schmedtmann (Udemy)',
-  'Python Programming Masterclass — Tim Buchalka (Udemy)',
+  'Additional professional coursework: deep learning (TensorFlow), Django, React, Node.js, Python (Udemy)',
 ];
 
 export const AWARDS = [
-  'PEARL Award: $2,500 grant from UB ELN for advanced undergraduate research (November 2025)',
-  'Cybersecurity Excellence: Top 100 worldwide, Northeastern C2C Finals; 10th in final (2025)',
-  'Collegiate Lockdown: Top two UB teams; 4th in finals (2025)',
-  "Dean's List: University at Buffalo (Fall 2023, Spring 2024, Fall 2024)",
-  'Presidential Scholarship: $15,000 per annum',
+  'PEARL Award — $2,500 competitive undergraduate research grant, University at Buffalo Experiential Learning Network (November 2025)',
+  'Health Futures Challenge — Second place ($1,000) for OralScan, University at Buffalo (Spring 2026)',
+  'Cybersecurity Excellence — Top 100 globally, Northeastern Cybersecurity C2C Finals; 10th in world finals (2025)',
+  'Collegiate Lockdown — Top two teams representing UB; 4th in finals (2025)',
+  "Dean's List — University at Buffalo (Fall 2023, Spring 2024, Fall 2024)",
+  'Presidential Scholarship — $15,000 per year',
 ];
 
 export const COMPETITIONS: CompetitionEntry[] = [
@@ -370,7 +384,7 @@ export const COMPETITIONS: CompetitionEntry[] = [
     name: 'IAA AppXcelerate Application',
     host: 'University at Buffalo',
     date: 'January–March 2025',
-    role: 'PI (Rounds 1 & 2), OralScan',
+    role: 'Team member, OralScan',
     team: 'Wei Bo, Alexander Gherardi, Kritarth Dandapat, Puru Soni, Rui Li, Wenyao Xu',
   },
   {
@@ -391,7 +405,7 @@ export const COMPETITIONS: CompetitionEntry[] = [
     name: 'Community Champions for Disability Health Challenge',
     host: 'University at Buffalo',
     date: 'October 2024',
-    role: 'PI, OralScan',
+    role: 'Principal Investigator, OralScan',
     team: 'Wei Bo, Alexander Gherardi, Kritarth Dandapat, Puru Soni, Rui Li, Wenyao Xu',
   },
 ];
@@ -399,7 +413,7 @@ export const COMPETITIONS: CompetitionEntry[] = [
 export const PRESENTATIONS = [
   {
     event: 'CTSI Research Group of Doctors, Nurses, and Medical Students',
-    type: 'Oral presentation and demo',
+    type: 'Oral presentation and live demo',
     date: 'April 2024',
   },
   {
@@ -410,48 +424,58 @@ export const PRESENTATIONS = [
 ];
 
 export const RESEARCH_INTERESTS: string[] = [
-  'Artificial Intelligence and Machine Learning',
-  'Spatiotemporal Machine Learning',
-  'Deep Learning-based Weather Forecasting (DLWF)',
-  'AI Adversarial Robustness',
-  'Computer Vision and Deep Learning',
-  'Healthcare Technology and Digital Health',
-  'Materials ML and Scientific Discovery',
-  'Mobile and Web Development',
+  'Spatiotemporal machine learning and deep learning-based weather forecasting (DLWF)',
+  'AI adversarial robustness and out-of-distribution generalization',
+  'Geometric and equivariant deep learning; graph neural networks for structured data',
+  'Computer vision and sequence modeling for healthcare and scientific applications',
+  'Machine learning for materials science and scientific discovery',
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    title: 'The accelerated path: credits, TAship, and two labs',
-    subtitle: 'Finishing a BS in three years while TAing and doing dual-lab research.',
-    date: '2025',
-    content: [
-      'I have taken 21–22 credits per semester on an honors track while keeping a 3.8+ GPA. That pace is not about rushing—it is about reaching research depth early.',
-      'Adding a teaching role (CSE 341) and research across ESC and Peng labs has reinforced time management and sustained effort—skills I am bringing to doctoral work at MSU.',
-    ],
-    tags: ['Academics', 'Teaching', 'Research'],
-  },
-  {
-    title: 'Bridging AI and healthcare: OralScan',
-    subtitle: 'YOLOv8, usability, and geriatric oral health.',
-    date: '2024–2025',
-    content: [
-      'At the ESC lab, OralScan brought together real-time vision models with product decisions shaped by clinicians and patients.',
-      'Formative usability work for Smart Health and the current orthodontics extension keep the focus on human-centered deployment—not only benchmark accuracy.',
-    ],
-    tags: ['Healthcare AI', 'Computer Vision', 'YOLOv8'],
-  },
-  {
-    title: 'Discovery with symmetry-aware GNNs',
-    subtitle: 'wandb, ALIGNN, and materials workflows.',
-    date: '2025',
-    content: [
-      'Migrating optimization to Weights & Biases and benchmarking ALIGNN taught me how tooling and reproducibility matter for publication-quality materials ML.',
-      'The ChemRxiv commentary on agentic AI for catalyst discovery highlighted how learning algorithms meet physical science questions.',
-    ],
-    tags: ['GNNs', 'Materials', 'MLOps'],
-  },
+const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const;
+
+export function formatNewsMonth(month: number): string {
+  return MONTH_LABELS[Math.max(1, Math.min(12, month)) - 1] ?? '—';
+}
+
+/** Milestones newest-first within each year (see News page grouping). */
+export const NEWS_ITEMS: NewsItem[] = [
+  { year: 2026, month: 8, headline: 'Incoming PhD student in MSU CSE, joining the Data Mining Laboratory (Dr. Pang-Ning Tan)' },
+  { year: 2026, month: 6, headline: 'Completing accelerated BS in Computer Science at University at Buffalo' },
+  { year: 2026, month: 5, headline: 'Launching Inference Foundry, an open research software initiative' },
+  { year: 2026, month: 1, headline: 'Started TA role for CSE 341: Computer Architecture at UB' },
+  { year: 2025, month: 12, headline: 'Began equivariant MLIPs and UMA integration work in Peng Research Lab' },
+  { year: 2025, month: 11, headline: 'Received PEARL undergraduate research award ($2,500) from UB ELN' },
+  { year: 2025, month: 11, headline: 'Joined mRehab telerehabilitation engineering at ESC Lab' },
+  { year: 2025, month: 6, headline: 'Joined Peng Research Lab as undergraduate researcher (symmetry-aware GNNs)' },
+  { year: 2026, month: 4, headline: 'Second place ($1,000) at UB Health Futures Challenge for OralScan' },
+  { year: 2025, month: 2, headline: 'Started OrthoScan orthodontic remote monitoring at ESC Lab' },
+  { year: 2025, month: 9, headline: 'Co-authored ChemRxiv paper on agentic AI for multimetallic catalyst discovery' },
+  { year: 2025, month: 7, headline: 'Placed 10th globally at Northeastern Cybersecurity C2C Finals' },
+  { year: 2024, month: 11, headline: 'Team member for OralScan at Agrusa CSE Innovation and Aging Innovations challenges' },
+  { year: 2024, month: 10, headline: 'Principal Investigator for OralScan at Community Champions for Disability Health Challenge' },
+  { year: 2024, month: 8, headline: 'Started tutor and peer-assisted leader role in statistics at UB' },
+  { year: 2024, month: 6, headline: 'Joined ESC Lab as research assistant; started OralScan mobile health AI' },
+  { year: 2024, month: 4, headline: 'Presented OralScan at CTSI clinical group and SUNY Undergraduate Research Conference' },
+  { year: 2024, month: 9, headline: 'Contributed benchmarking to arXiv paper on symmetry-aware GNNs for crystal ordering' },
+  { year: 2023, month: 10, headline: 'Co-founded and launched UB chapter of the National Student Data Corps' },
+  { year: 2023, month: 8, headline: 'Started BS in Computer Science (AI specialization) at University at Buffalo, SUNY' },
 ];
+
+/** News items grouped by year, descending; months descending within each year. */
+export function getNewsByYear(): { year: number; items: NewsItem[] }[] {
+  const byYear = new Map<number, NewsItem[]>();
+  for (const item of NEWS_ITEMS) {
+    const list = byYear.get(item.year) ?? [];
+    list.push(item);
+    byYear.set(item.year, list);
+  }
+  return [...byYear.entries()]
+    .sort(([a], [b]) => b - a)
+    .map(([year, items]) => ({
+      year,
+      items: items.sort((a, b) => b.month - a.month),
+    }));
+}
 
 export type NavLinkItem = {
   label: string;
@@ -465,5 +489,5 @@ export const NAV_LINKS: NavLinkItem[] = [
   { label: 'Research', href: '#/research', page: 'research', icon: <Microscope size={18} /> },
   { label: 'Projects', href: '#/projects', page: 'projects', icon: <Code size={18} /> },
   { label: 'Education', href: '#/education', page: 'education', icon: <GraduationCap size={18} /> },
-  { label: 'Notes', href: '#/notes', page: 'notes', icon: <BookMarked size={18} /> },
+  { label: 'News', href: '#/news', page: 'news', icon: <Newspaper size={18} /> },
 ];

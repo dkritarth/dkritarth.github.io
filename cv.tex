@@ -1,0 +1,339 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+\definecolor{dark}{RGB}{51, 51, 51}
+\definecolor{rulecolor}{RGB}{180, 180, 180}
+\definecolor{subbg}{RGB}{245, 245, 245}
+
+% ── Section headings ────────────────────────────────────────────────────────
+\titleformat{\section}
+    {\large\bfseries\color{dark}}
+    {}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{14pt}{7pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=dark,
+    urlcolor=dark,
+    pdfauthor={Kritarth Dandapat},
+    pdftitle={Kritarth Dandapat CV}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ── List style ──────────────────────────────────────────────────────────────
+\newlist{cvlist}{itemize}{2}
+\setlist[cvlist,1]{label=\textbullet, nosep, leftmargin=1.4em,
+    itemsep=3pt, topsep=3pt, parsep=0pt, partopsep=0pt}
+\setlist[cvlist,2]{label=\textbullet, nosep, leftmargin=1.4em,
+    itemsep=3pt, topsep=3pt, parsep=0pt, partopsep=0pt}
+
+% ── Thin divider between entries inside a section ───────────────────────────
+\newcommand{\entrydivider}{%
+  \vspace{4pt}%
+  {\color{rulecolor}\hrule height 0.3pt}%
+  \vspace{4pt}%
+}
+
+% ── Role / org header ───────────────────────────────────────────────────────
+\newcommand{\roleentry}[4]{%
+  \vspace{0.5em}%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} ll}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4} \\
+  \end{tabular*}%
+  \vspace{0.15em}%
+}
+
+% ── Subproject header (lightly shaded pill) ──────────────────────────────────
+\newcommand{\subrole}[2]{%
+  \vspace{0.45em}%
+  \noindent\colorbox{subbg}{%
+    \begin{minipage}{\dimexpr\textwidth-2\fboxsep}%
+      \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} ll}
+        \textbf{#1} & \textit{\small #2}%
+      \end{tabular*}%
+    \end{minipage}%
+  }%
+  \vspace{0.15em}%
+}
+
+% ── Project header ───────────────────────────────────────────────────────────
+\newcommand{\projectentry}[2]{%
+  \vspace{0.55em}%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} ll}
+    \textbf{#1} & \textit{#2} \\
+  \end{tabular*}%
+  \vspace{0.1em}%
+}
+
+% ── Scope sentence ───────────────────────────────────────────────────────────
+\newcommand{\scopesentence}[1]{%
+  \vspace{0.15em}%
+  {\itshape #1}\par
+  \vspace{0.1em}%
+}
+
+% ── Tech stack tag line ──────────────────────────────────────────────────────
+\newcommand{\techstack}[1]{%
+  \vspace{2pt}%
+  \noindent{\small\textcolor{dark!70}{\textbf{Stack:} #1}}\par
+}
+
+\begin{document}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  HEADER
+% ════════════════════════════════════════════════════════════════════════════
+\begin{center}
+  {\LARGE\bfseries\color{dark} Kritarth Dandapat}\\[0.3em]
+  {\small Incoming PhD Student, Michigan State University \textbar\
+         Undergraduate Researcher, University at Buffalo}\\[0.2em]
+  {\small \href{mailto:contact@dkritarth.com}{contact@dkritarth.com}
+   \textbar\ +1 (716) 612-0016
+   \textbar\ Buffalo, NY}\\[0.2em]
+  {\small
+   \href{https://dkritarth.com}{dkritarth.com} \textbar\
+   \href{https://github.com/Kritarth-Dandapat}{github.com/Kritarth-Dandapat} \textbar\
+   \href{https://www.linkedin.com/in/kritarth-dandapat}{linkedin.com/in/kritarth-dandapat}}
+\end{center}
+\vspace{0.3em}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  PROFESSIONAL SUMMARY
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Professional Summary}
+Incoming PhD student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr.\ Pang-Ning Tan, with a planned focus on \textbf{spatiotemporal machine learning}, \textbf{deep learning-based weather forecasting (DLWF)}, and \textbf{AI adversarial robustness}. Completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo, SUNY, with a 3.8+ GPA and Dean's List recognition every semester. Uniquely combines production-grade full-stack engineering (\textbf{React Native}, \textbf{YOLOv8} pipelines, \textbf{CUDA}-accelerated training) with advanced scientific ML (\textbf{E(3)-equivariant MPNNs}, symmetry-aware \textbf{GNNs}, \textbf{ALIGNN}) across mobile health AI and computational materials science. Co-author on manuscripts in digital health and materials discovery; recipient of the PEARL undergraduate research award (\$2,500) and the UB Health Futures Challenge second-place prize (\$1,000).
+
+% ════════════════════════════════════════════════════════════════════════════
+%  EDUCATION
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Education}
+
+\roleentry{PhD in Computer Science}{Starting Fall 2026}{Michigan State University}{East Lansing, MI}
+\begin{cvlist}
+  \item Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: Dr.\ Pang-Ning Tan)
+  \item Planned research focus: spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Bachelor of Science in Computer Science, Minor in Statistics}{August 2023 -- June 2026}{University at Buffalo, SUNY}{Buffalo, NY}
+\begin{cvlist}
+  \item Specialization in artificial intelligence; coursework spanning reinforcement learning, computer vision, machine learning, quantum computing, and distributed systems
+  \item GPA 3.8+; Dean's List all semesters; accelerated three-year completion (21--22 credit semesters)
+  \item Presidential Scholarship: \$15,000 per year; PEARL Award: \$2,500 competitive undergraduate research grant (Experiential Learning Network)
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  RESEARCH EXPERIENCE
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Research Experience}
+
+\roleentry{Research Assistant}{June 2024 -- Present}{Embedded Sensing and Computing (ESC) Group, University at Buffalo}{Buffalo, NY}
+\scopesentence{Mobile sensing for healthcare and rehabilitation with Prof.\ Wenyao Xu.}
+
+\subrole{OralScan: AI-Assisted Geriatric Oral Screening}{June 2024 -- February 2025}
+\begin{cvlist}
+  \item Architected a full-stack mobile health platform (React Native, React web) integrating end-to-end \textbf{YOLOv8} vision pipelines for guided intraoral image acquisition, multi-class dental disease screening, and automated tooth numbering across temporal scan sessions.
+  \item Formulated a spatio-temporal scan-guidance system that aggregates sequential intraoral frames to produce consistent disease-detection signals robust to user-induced motion variability.
+  \item Co-authored formative usability and acceptability study submitted to \textit{Smart Health} (under review); delivered oral presentations to clinical stakeholders at CTSI and SURC 2024.
+  \item Awarded second place (\$1,000), University at Buffalo Health Futures Challenge (Spring 2026).
+\end{cvlist}
+
+\subrole{OrthoScan: Orthodontic Remote Monitoring}{February 2025 -- October 2025}
+\begin{cvlist}
+  \item Engineered mobile and backend systems for at-home orthodontic progress tracking, deploying \textbf{YOLO}-based hardware detection paired with depth-assisted spatial measurement pipelines to quantify structural change across longitudinal patient visits.
+  \item Translated sequential intraoral imagery into calibrated geometric progress signals, enabling quantitative remote monitoring between in-office appointments and reducing reliance on subjective clinician assessment.
+\end{cvlist}
+
+\subrole{mRehab: Telerehabilitation Platform}{November 2025 -- Present}
+\begin{cvlist}
+  \item Contributed to a remote rehabilitation platform incorporating session logging, multi-modal sensor ingest pipelines, time-series signal analysis, and exercise scoring algorithms deployed in live outpatient therapy workflows.
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Undergraduate Researcher}{June 2025 -- Present}{Peng Research Lab, University at Buffalo}{Buffalo, NY}
+\scopesentence{Computational materials science and clean-energy applications with Prof.\ Jiayu Peng.}
+
+\subrole{Perovskite Ordering and Symmetry-Aware Graph Neural Networks}{June 2025 -- November 2025}
+\begin{cvlist}
+  \item Benchmarked symmetry-aware \textbf{GNN} architectures (including \textbf{ALIGNN}) on ordering-dependent energetics in crystalline perovskites; contributed benchmarking results and revised analysis to arXiv:2409.13851 and the open-source \texttt{PerovskiteOrderingGCNNs} repository.
+  \item Migrated experiment tracking infrastructure from SigOpt to \textbf{Weights \& Biases}; automated training loops, hyperparameter sweeps, and multi-architecture evaluation pipelines, reducing manual overhead and improving reproducibility.
+  \item Co-authored commentary on agentic AI for multimetallic catalyst discovery, published on \textit{ChemRxiv} (2025).
+\end{cvlist}
+
+\subrole{Equivariant MLIPs, Alchemical Extensions, and Universal Atom Models}{December 2025 -- Present}
+\begin{cvlist}
+  \item Implement \textbf{E(3)-equivariant} message-passing machine learning interatomic potentials (\textbf{MLIPs}) augmented with alchemical graph extensions to enable efficient composition sweeps and energy prediction over disordered crystalline structures.
+  \item Integrate alchemical treatment with universal atom model (UMA) stacks (\textbf{MACE}) to accelerate structural relaxation and disorder characterization workflows in computational materials discovery pipelines.
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Founder, Inference Foundry}{Starting May 2026}{Open Research Software Initiative}{Remote}
+\begin{cvlist}
+  \item Launched a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community (\href{https://inference-foundry.rweb.site}{inference-foundry.rweb.site}).
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  PUBLICATIONS AND PREPRINTS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Publications and Preprints}
+\begin{cvlist}
+  \item Soni, P., \textbf{Dandapat, K.}, Gherardi, A., Bo, W., Li, R., and Xu, W. (2025). OralScan, an AI-Powered Mobile Tool for Geriatric Oral Healthcare: A Formative Usability and Acceptability Study. Submitted to \textit{Smart Health} (under review).
+
+  \item Peng, J., Liu, C., Luo, Y., and \textbf{Dandapat, K.} (2025). Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI. \textit{ChemRxiv}, version 1. DOI: \href{https://doi.org/10.26434/chemrxiv-2025-13n3f}{10.26434/chemrxiv-2025-13n3f}.
+
+  \item Peng, J., et al.\ (2024). Learning Ordering in Crystalline Materials with Symmetry-Aware Graph Neural Networks. \textit{arXiv} preprint \href{https://arxiv.org/abs/2409.13851}{arXiv:2409.13851}. (Contributed benchmarking and revisions.)
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  RESEARCH PRESENTATIONS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Research Presentations}
+\begin{cvlist}
+  \item Oral presentation and live demo -- CTSI Research Group of Doctors, Nurses, and Medical Students (April 2024)
+  \item Oral presentation -- SUNY Undergraduate Research Conference (SURC) (April 2024)
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  SELECTED PROJECTS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Selected Projects}
+
+\projectentry{PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning}{Spatiotemporal Modeling \& Multi-Agent Systems}
+\begin{cvlist}
+  \item Formulated a multi-agent RL framework integrating Formula 1 temporal performance signals into agent psychology models within \textbf{PettingZoo} cooperative environments, mapping real-world behavioral dynamics to learned policy structure.
+  \item Constructed driver-specific agent profiles from \textbf{FastF1} 2025 lap-time consistency metrics, encoding temporal performance variability as per-agent action-noise scales to reflect authentic decision-making under pressure.
+  \item Benchmarked tabular Q-learning and \textbf{MAPPO} baselines against psych-conditioned policies; psych-aware agents improved Strategy Resilience Score from 0.54 to 0.63 (+16.7\%) under noisy multi-agent coordination.
+\end{cvlist}
+\techstack{Python, FastF1, PettingZoo, \textbf{Ray RLlib}, MAPPO, Q-learning}
+
+\entrydivider
+
+\projectentry{Marine Guardian: Ship Detection in Satellite Imagery}{Geospatial Computer Vision \& Deep Learning}
+\begin{cvlist}
+  \item Designed a maritime monitoring pipeline grounded in geometric computer vision principles before applying deep models, achieving low-latency inference on high-resolution satellite imagery for spatial object detection.
+  \item Engineered a roundness-based geometric classifier paired with \textbf{MobileNetV2}, attaining 98.72\% ship-vs.-non-ship classification accuracy while eliminating heavy encoder overhead unsuitable for edge deployment.
+  \item Benchmarked \textbf{EfficientNet} transfer learning with a custom decoder against ResNet-50 feature extraction and K-means clustering, systematically validating architecture decisions across spatial generalization scenarios.
+\end{cvlist}
+\techstack{Python, OpenCV, \textbf{TensorFlow}, EfficientNet, MobileNetV2, ResNet-50, K-means}
+
+\entrydivider
+
+\projectentry{People Counting via CSRNet Density Estimation}{Deep Learning \& Spatial Regression}
+\begin{cvlist}
+  \item Developed a density-estimation pipeline for crowd counting in highly occluded surveillance scenes where bounding-box detectors fail due to extreme pedestrian overlap, framing the task as spatial regression over density maps.
+  \item Trained \textbf{CSRNet} end-to-end in \textbf{PyTorch} to predict per-pixel crowd density fields, enabling robust aggregate counts from integrated spatial density rather than fragile per-instance localization.
+  \item Accelerated training and inference with \textbf{CUDA}; preprocessed surveillance-style frames with \textbf{OpenCV} for repeatable benchmarking across public crowd-counting datasets.
+\end{cvlist}
+\techstack{\textbf{PyTorch}, CSRNet, \textbf{CUDA}, OpenCV}
+
+\entrydivider
+
+\projectentry{Human Emotion Detection: Multi-Architecture Benchmark}{Computer Vision \& Model Robustness}
+\begin{cvlist}
+  \item Constructed a controlled multi-architecture benchmark comparing shallow CNN, \textbf{ResNet-34}, and \textbf{Vision Transformer (ViT)} backbones on facial expression recognition under a unified preprocessing and evaluation protocol, isolating architectural contribution from data effects.
+  \item Optimized training schedules and augmentation strategies per architecture; ViT and ResNet-34 variants demonstrated superior generalization over the CNN baseline on held-out facial expression data.
+  \item Achieved 87.5\% top-1 classification accuracy on the best-performing configuration after systematic cross-architecture ablation.
+\end{cvlist}
+\techstack{\textbf{PyTorch}, TensorFlow, CNN, ResNet-34, Vision Transformer, OpenCV}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  PROFESSIONAL EXPERIENCE
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Professional Experience}
+
+\roleentry{Teaching Assistant, CSE 341: Computer Architecture}{January 2026 -- May 2026}{Department of Computer Science and Engineering, University at Buffalo}{Buffalo, NY}
+\begin{cvlist}
+  \item Delivered weekly VHDL recitations and office hours for 30+ students; graded exams and assignments; provided technical support to 100+ students on Piazza throughout the semester.
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Tutor and Peer-Assisted Leader}{August 2024 -- December 2025}{Tutoring and Academic Support Services, University at Buffalo}{Buffalo, NY}
+\begin{cvlist}
+  \item Facilitated two interactive sessions per week in statistics and CS fundamentals; course feedback indicated approximately 30\% improvement in quiz performance among attending students.
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Founder and Vice President}{October 2023 -- May 2024}{UB National Student Data Corps (NSDC)}{Buffalo, NY}
+\begin{cvlist}
+  \item Co-founded the UB chapter; launched the chapter website, organized data science workshops, and built networking programs connecting undergraduates to research and industry opportunities.
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  HONORS AND AWARDS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Honors and Awards}
+\begin{cvlist}
+  \item \textbf{PEARL Award} -- \$2,500 competitive undergraduate research grant, University at Buffalo Experiential Learning Network (November 2025)
+  \item \textbf{Health Futures Challenge} -- Second place (\$1,000) for OralScan, University at Buffalo (Spring 2026)
+  \item \textbf{Cybersecurity Excellence} -- Top 100 globally, Northeastern Cybersecurity C2C Finals; 10th in world finals (2025)
+  \item \textbf{Collegiate Lockdown} -- Top two teams representing UB; 4th in finals (2025)
+  \item \textbf{Dean's List} -- University at Buffalo (Fall 2023, Spring 2024, Fall 2024)
+  \item \textbf{Presidential Scholarship} -- \$15,000 per year
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  COMPETITIONS AND CHALLENGES
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Competitions and Challenges}
+\begin{cvlist}
+  \item IAA AppXcelerate Application, University at Buffalo (January--March 2025) -- team member, OralScan
+  \item Russell L.\ Agrusa CSE Student Innovation Competition (November 2024) -- team member, OralScan
+  \item Aging Innovations Challenge (November 2024) -- team member, OralScan
+  \item Community Champions for Disability Health Challenge (October 2024) -- Principal Investigator, OralScan
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  TECHNICAL SKILLS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Technical Skills}
+\begin{cvlist}
+  \item \textbf{Languages:} Python, JavaScript, Java, C++, Rust
+  \item \textbf{Machine learning and AI:} \textbf{PyTorch}, TensorFlow, computer vision, deep learning, graph neural networks (\textbf{GNNs}), \textbf{YOLOv8}, Vision Transformer (ViT), reinforcement learning (\textbf{MAPPO}, Q-learning), \textbf{Ray RLlib}
+  \item \textbf{Scientific ML and materials:} \textbf{ALIGNN}, machine learning interatomic potentials (\textbf{MLIPs}), \textbf{MACE}, \textbf{E(3)-equivariant MPNNs}, \textbf{Weights \& Biases}, PyTorch Geometric
+  \item \textbf{Software engineering:} React, React Native, Node.js, Django, Git, \textbf{CUDA}, OpenCV, NumPy, Matplotlib
+  \item \textbf{Databases and cloud:} MongoDB, SQL, Firebase, SQLite, Google Colab, Firebase Hosting
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  RESEARCH INTERESTS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Research Interests}
+\begin{cvlist}
+  \item Spatiotemporal machine learning and deep learning-based weather forecasting (DLWF)
+  \item AI adversarial robustness and out-of-distribution generalization
+  \item Geometric and equivariant deep learning; graph neural networks for structured data
+  \item Computer vision and sequence modeling for healthcare and scientific applications
+  \item Machine learning for materials science and scientific discovery
+\end{cvlist}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  CERTIFICATIONS
+% ════════════════════════════════════════════════════════════════════════════
+\section*{Certifications}
+\begin{cvlist}
+  \item Machine Learning Specialization -- Stanford University and DeepLearning.AI (Coursera)
+  \item Deep Learning Specialization -- Stanford University and DeepLearning.AI (Coursera)
+  \item PyTorch for Deep Learning -- Udemy
+  \item Additional professional coursework: deep learning (TensorFlow), Django, React, Node.js, Python (Udemy)
+\end{cvlist}
+
+\end{document}

@@ -5,7 +5,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ResearchPage } from './pages/ResearchPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { EducationPage } from './pages/EducationPage';
-import { NotesPage } from './pages/NotesPage';
+import { NewsPage } from './pages/NewsPage';
 import { applyPageSeo } from './seoMeta';
 
 const App: React.FC = () => {
@@ -25,8 +25,8 @@ const App: React.FC = () => {
       return <ProjectsPage />;
     case 'education':
       return <EducationPage />;
-    case 'notes':
-      return <NotesPage />;
+    case 'news':
+      return <NewsPage />;
     default:
       return <HomePage />;
   }

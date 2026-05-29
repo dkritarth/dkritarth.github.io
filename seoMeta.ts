@@ -5,7 +5,7 @@ export const PORTFOLIO_ORIGIN = 'https://dkritarth.com';
 
 const HOME_TITLE = 'Kritarth Dandapat · AI Researcher · Incoming PhD Student';
 const HOME_DESC =
-  'Kritarth Dandapat — AI researcher and incoming PhD student in Computer Science and Engineering at Michigan State University. Research in spatiotemporal ML, DLWF, AI robustness, computer vision, healthcare AI, and materials ML.';
+  'Kritarth Dandapat — incoming PhD student (MSU CSE, Data Mining Laboratory) and undergraduate researcher at UB. Spatiotemporal ML, DLWF, AI adversarial robustness, mobile health AI, computer vision, and computational materials science.';
 
 const SEO: Record<SitePage, { title: string; description: string }> = {
   home: {
@@ -25,17 +25,17 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   projects: {
     title: `Projects · ${HOME_TITLE}`,
     description:
-      'Selected AI projects including PaddockPsychRL, F1-informed multi-agent reinforcement learning, computer vision systems, deep learning, and competitions.',
+      'Selected projects: PaddockPsychRL (multi-agent RL), Marine Guardian (satellite ship detection), CSRNet crowd counting, and multi-architecture emotion detection benchmarks.',
   },
   education: {
     title: `Education & experience · ${HOME_TITLE}`,
     description:
       'BS in Computer Science at UB; incoming PhD in Computer Science and Engineering at Michigan State University; teaching assistantship, tutoring, and related roles.',
   },
-  notes: {
-    title: `Research notes · ${HOME_TITLE}`,
+  news: {
+    title: `News · ${HOME_TITLE}`,
     description:
-      'Short notes on trajectory, OralScan, and materials ML workflows — Kritarth Dandapat.',
+      'Timeline of milestones: UB, research roles, TAship, awards, publications, and incoming MSU PhD — Kritarth Dandapat.',
   },
 };
 
