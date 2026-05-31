@@ -1,6 +1,7 @@
 import React from 'react';
-import { Github, Instagram, Linkedin, Mail, FileDown, ArrowRight, ExternalLink, Twitter } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, ArrowRight, ExternalLink, Twitter } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS } from '../constants';
+import { CvDownloadLink } from './CvDownloadLink';
 
 const PORTRAIT = '/data/my-photo.jpg';
 
@@ -44,20 +45,12 @@ export const Hero: React.FC = () => {
 
           <div className="flex flex-wrap gap-3">
             <a
-              href="#/research"
+              href="/research/"
               className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-ink-900 text-white text-sm font-semibold tracking-wide hover:bg-ink-800 transition-colors"
             >
               Research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </a>
-            <a
-              href="/data/CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-ink-300 text-ink-900 text-sm font-semibold hover:border-ink-900 hover:bg-white transition-colors"
-            >
-              <FileDown size={16} aria-hidden />
-              CV (PDF)
-            </a>
+            <CvDownloadLink variant="hero" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-ink-800 underline-offset-4 hover:underline"

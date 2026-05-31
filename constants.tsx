@@ -11,6 +11,14 @@ import type {
   SitePage,
   SkillCategory,
 } from './types';
+import { NEWS_ITEMS } from './newsItems';
+import { PENG_CREDLY_MLIP_UMA, PENG_CREDLY_PEROVSKITE_GNN } from './pengCredly';
+
+/** PDF downloads in public/data/. Resume is the one-page shortened version of the full CV. */
+export const DOCUMENT_URLS = {
+  cv: '/data/CV%20-%20Kritarth%20Dandapat.pdf',
+  resume: '/data/Resume%20-%20Kritarth%20Dandapat.pdf',
+} as const;
 
 export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
@@ -23,13 +31,17 @@ export const CONTACT_INFO = {
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
-  bio: 'Incoming PhD student (Fall 2026) at Michigan State University CSE and Data Mining Laboratory (Dr. Pang-Ning Tan). Undergraduate researcher at UB spanning mobile health AI, computer vision, and computational materials science (symmetry-aware GNNs, equivariant MLIPs).',
-  /** Mirrors cv.tex Professional Summary */
-  professionalSummary:
-    'Incoming PhD student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr. Pang-Ning Tan, with a planned focus on spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness. Completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo, SUNY, with a 3.8+ GPA and Dean\'s List recognition every semester. Uniquely combines production-grade full-stack engineering (React Native, YOLOv8 pipelines, CUDA-accelerated training) with advanced scientific ML (E(3)-equivariant MPNNs, symmetry-aware GNNs, ALIGNN) across mobile health AI and computational materials science. Co-author on manuscripts in digital health and materials discovery; recipient of the PEARL undergraduate research award ($2,500) and the UB Health Futures Challenge second-place prize ($1,000).',
+  bio: 'Computer science researcher at the intersection of research and engineering—mobile health AI, computer vision, and computational materials science. Incoming PhD (Fall 2026) at MSU CSE, Data Mining Laboratory (Dr. Pang-Ning Tan).',
+  /** Mirrors cv.tex Professional Summary (paragraphs) */
+  professionalSummary: [
+    'I am a computer science researcher who genuinely enjoys building things that matter—whether that is a mobile app that helps elderly patients get oral health screenings, a system that tracks orthodontic progress remotely, or models that help scientists discover new materials faster.',
+    'I am completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo with a 3.8+ GPA, and I am starting my PhD at Michigan State University in Fall 2026, joining the Data Mining Laboratory under Dr. Pang-Ning Tan. My doctoral research will focus on spatiotemporal machine learning, deep learning-based weather forecasting, and AI adversarial robustness.',
+    'What sets me apart is that I sit at the intersection of research and engineering. I have co-authored papers in digital health and computational materials science, while simultaneously shipping production mobile apps, deploying cloud infrastructure on AWS, and implementing advanced ML models like equivariant graph neural networks. I move quickly from idea to working system.',
+    'I have been recognized with the PEARL undergraduate research award ($2,500) and placed second at the UB Health Futures Challenge ($1,000).',
+  ],
   /** Short intro for the home page */
   landingLead:
-    'Incoming PhD student (Fall 2026) in MSU CSE\'s Data Mining Laboratory (Dr. Pang-Ning Tan), with planned work in spatiotemporal ML, DLWF, and AI adversarial robustness. At UB I research mobile health AI with Prof. Wenyao Xu—OralScan, OrthoScan, and mRehab—and computational materials with Prof. Jiayu Peng: symmetry-aware GNNs, equivariant MLIPs, and UMA integration. I combine full-stack and CUDA-accelerated vision pipelines with scientific ML for healthcare and materials discovery.',
+    'I build research systems that ship—geriatric oral screening, orthodontic remote monitoring, telerehabilitation on AWS, and symmetry-aware GNNs for materials discovery. Incoming PhD student (Fall 2026) in MSU CSE\'s Data Mining Laboratory (Dr. Pang-Ning Tan), with planned work in spatiotemporal ML, DLWF, and AI adversarial robustness.',
   sopSnippet:
     'My academic journey has been driven by a fascination with the power of artificial intelligence (AI) to solve tangible, human-centric problems. I am driven to move beyond applying known techniques to creating original, high-impact research.',
   /** Open research software initiative — surfaced on home & About */
@@ -74,7 +86,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     subprojects: [
       {
         id: 'oralscan',
-        name: 'OralScan',
+        name: 'OralScan: AI-Assisted Geriatric Oral Screening',
         period: 'June 2024 – February 2025',
         context: 'PI: Prof. Wenyao Xu',
         narrative: [
@@ -83,11 +95,11 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         technicalHighlights: [
           'Architected a full-stack mobile health platform (React Native, React web) integrating end-to-end YOLOv8 vision pipelines for guided intraoral image acquisition, multi-class dental disease screening, and automated tooth numbering across temporal scan sessions.',
           'Formulated a spatio-temporal scan-guidance system that aggregates sequential intraoral frames to produce consistent disease-detection signals robust to user-induced motion variability.',
-          'Co-authored formative usability and acceptability study submitted to Smart Health (under review); delivered oral presentations to clinical stakeholders at CTSI and SURC 2024.',
+          'Co-authored formative usability and acceptability study submitted to Smart Health (under review); delivered oral presentations to clinical stakeholders at CTSI and SURC (January 2025).',
           'Awarded second place ($1,000), University at Buffalo Health Futures Challenge (Spring 2026).',
         ],
         links: [
-          { label: 'oralscan.health', href: 'https://oralscan.health/' },
+          { label: 'OralScan website', href: 'https://esc-group-ub.github.io/OralScan-Website/' },
           {
             label: 'Health Futures — UB announcement',
             href: 'https://www.buffalo.edu/entrepreneurship/connect/news.host.html/content/shared/www/studentlife/gateway-wide-content/announcements/current/health-futures-25.detail.html',
@@ -109,11 +121,12 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         ],
         technicalHighlights: [
           'Engineered mobile and backend systems for at-home orthodontic progress tracking, deploying YOLO-based hardware detection paired with depth-assisted spatial measurement pipelines to quantify structural change across longitudinal patient visits.',
+          'Reconstructed and analyzed 3D dental structures from intraoral scans using pre-trained GNNs for 3D mesh processing; computed quantitative tooth position changes in both 2D image space and 3D world coordinates to track orthodontic progress with geometric precision.',
           'Translated sequential intraoral imagery into calibrated geometric progress signals, enabling quantitative remote monitoring between in-office appointments and reducing reliance on subjective clinician assessment.',
         ],
+        technologies: ['YOLO', 'GNNs', 'React Native', '3D mesh processing', 'Depth sensing', 'Computer vision'],
         collaboratorsNote:
           'Collaborators included Dr. Wei Bo, Prof. Wenyao Xu, Alexander Gherardi, and Puru Soni (see https://purusoni.com).',
-        technologies: ['YOLO', 'React Native', 'Depth sensing', 'Backend APIs', 'Computer vision'],
       },
       {
         id: 'mrehab',
@@ -124,10 +137,13 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
           'mRehab is a telerehabilitation platform supporting structured exercise programs, sensor-informed feedback, and therapist-facing analytics in live outpatient workflows.',
         ],
         technicalHighlights: [
-          'Contributed to a remote rehabilitation platform incorporating session logging, multi-modal sensor ingest pipelines, time-series signal analysis, and exercise scoring algorithms deployed in live outpatient therapy workflows.',
+          'Provisioned and configured AWS backend infrastructure to host testing and staging environments, enabling AI agent capabilities to operate within the live application stack.',
+          'Deployed a real-time live sensor logging site for continuous ingest and monitoring of wearable sensor streams during active therapy sessions.',
+          'Implemented Kalman filters for sensor fusion and activity detection, improving signal smoothness and robustness of exercise recognition under noisy real-world IMU conditions.',
+          'Contributed to session logging, multi-modal sensor ingest pipelines, and exercise scoring algorithms deployed in live outpatient therapy workflows.',
         ],
         links: [{ label: 'mrehab.agency', href: 'https://mrehab.agency/' }],
-        technologies: ['Signal processing', 'Backend', 'Mobile', 'Algorithms'],
+        technologies: ['AWS', 'Kalman filters', 'Signal processing', 'Backend', 'Mobile', 'Algorithms'],
       },
     ],
   },
@@ -162,11 +178,8 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
             href: 'https://github.com/jiayu-peng-lab/PerovskiteOrderingGCNNs',
           },
           { label: 'arXiv:2409.13851', href: 'https://arxiv.org/abs/2409.13851' },
-          {
-            label: 'Credly (lab micro-credential)',
-            href: 'https://www.credly.com/badges/5e583598-70ca-43f8-9f3f-ee642a96312f/linked_in_profile',
-          },
         ],
+        credlyBadge: PENG_CREDLY_PEROVSKITE_GNN,
         technologies: ['PyTorch', 'GNNs', 'ALIGNN', 'Weights & Biases', 'Materials ML'],
       },
       {
@@ -185,6 +198,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
           { label: 'arXiv:2404.10746 (MLIP alchemical framework)', href: 'https://arxiv.org/abs/2404.10746' },
           { label: 'arXiv:2506.23971 (UMA)', href: 'https://arxiv.org/abs/2506.23971' },
         ],
+        credlyBadge: PENG_CREDLY_MLIP_UMA,
         technologies: ['MACE', 'UMA', 'E(3)-equivariant MLIPs', 'PyTorch', 'MLIPs', 'Materials simulation'],
       },
     ],
@@ -214,21 +228,24 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
 
 export const PROFESSIONAL_EXPERIENCE: Experience[] = [
   {
-    role: 'Teaching Assistant (CSE 341: Computer Architecture)',
-    organization: 'Department of Computer Science & Engineering, University at Buffalo',
+    role: 'Teaching Assistant, CSE 341: Computer Architecture',
+    organization: 'Department of Computer Science and Engineering, University at Buffalo',
     location: 'Buffalo, NY',
-    period: 'Jan 2026 – May 2026',
+    period: 'January 2026 – May 2026',
     description: [
-      'Delivered weekly VHDL recitations and office hours for 30+ students; graded exams and assignments; provided technical support to 100+ students on Piazza throughout the semester.',
+      'Conducted weekly tutorial sessions on Assembly and VHDL for 30+ students, live-coding solutions to architecture problems including cache design, memory hierarchies, and instruction pipelining.',
+      'Led recitations walking through processor pipeline stages, hazard detection, and cache replacement policies; developed worked examples and problem sets to reinforce lecture material.',
+      'Held weekly office hours; graded exams and assignments; supported 100+ students asynchronously on Piazza throughout the semester.',
     ],
   },
   {
-    role: 'Tutor and Peer-Assisted Leader',
-    organization: 'Tutoring & Academic Support Services, University at Buffalo',
+    role: 'Tutor and Peer-Assisted Leader (PAL)',
+    organization: 'Tutoring and Academic Support Services (TASS), University at Buffalo',
     location: 'Buffalo, NY',
     period: 'August 2024 – December 2025',
     description: [
-      'Facilitated two interactive sessions per week in statistics and CS fundamentals; course feedback indicated approximately 30% improvement in quiz performance among attending students.',
+      'Served as PAL for STA 119 (Introduction to Statistics): designed weekly worksheets aligned to recent lectures, then led two 50-minute collaborative sessions per week; course feedback indicated approximately 30% improvement in quiz performance.',
+      'Provided one-to-one 1-hour tutoring appointments across seven courses: STA 119, CSE 115, CSE 116, CSE 220, MTH 141, MTH 142—covering introductory programming, data structures, and calculus.',
     ],
   },
   {
@@ -359,7 +376,7 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     category: 'Databases and cloud',
-    skills: ['MongoDB', 'SQL', 'Firebase', 'SQLite', 'Google Colab', 'Firebase Hosting'],
+    skills: ['MongoDB', 'SQL', 'Firebase', 'SQLite', 'AWS', 'Google Colab', 'Firebase Hosting'],
   },
 ];
 
@@ -384,29 +401,25 @@ export const COMPETITIONS: CompetitionEntry[] = [
     name: 'IAA AppXcelerate Application',
     host: 'University at Buffalo',
     date: 'January–March 2025',
-    role: 'Team member, OralScan',
-    team: 'Wei Bo, Alexander Gherardi, Kritarth Dandapat, Puru Soni, Rui Li, Wenyao Xu',
+    role: 'OralScan',
   },
   {
     name: 'Russell L. Agrusa CSE Student Innovation Competition',
     host: 'University at Buffalo',
     date: 'November 2024',
     role: 'Team member, OralScan',
-    team: 'Puru Soni, Kritarth Dandapat, Alexander Gherardi, Wei Bo, Rui Li, Wenyao Xu',
   },
   {
     name: 'Aging Innovations Challenge',
     host: 'University at Buffalo',
     date: 'November 2024',
     role: 'Team member, OralScan',
-    team: 'Puru Soni, Kritarth Dandapat, Alexander Gherardi, Wei Bo, Rui Li, Wenyao Xu',
   },
   {
     name: 'Community Champions for Disability Health Challenge',
     host: 'University at Buffalo',
     date: 'October 2024',
-    role: 'Principal Investigator, OralScan',
-    team: 'Wei Bo, Alexander Gherardi, Kritarth Dandapat, Puru Soni, Rui Li, Wenyao Xu',
+    role: 'OralScan',
   },
 ];
 
@@ -414,12 +427,12 @@ export const PRESENTATIONS = [
   {
     event: 'CTSI Research Group of Doctors, Nurses, and Medical Students',
     type: 'Oral presentation and live demo',
-    date: 'April 2024',
+    date: 'January 2025',
   },
   {
     event: 'SUNY Undergraduate Research Conference (SURC)',
     type: 'Oral presentation',
-    date: 'April 2024',
+    date: 'January 2025',
   },
 ];
 
@@ -437,30 +450,6 @@ export function formatNewsMonth(month: number): string {
   return MONTH_LABELS[Math.max(1, Math.min(12, month)) - 1] ?? '—';
 }
 
-/** Milestones newest-first within each year (see News page grouping). */
-export const NEWS_ITEMS: NewsItem[] = [
-  { year: 2026, month: 8, headline: 'Incoming PhD student in MSU CSE, joining the Data Mining Laboratory (Dr. Pang-Ning Tan)' },
-  { year: 2026, month: 6, headline: 'Completing accelerated BS in Computer Science at University at Buffalo' },
-  { year: 2026, month: 5, headline: 'Launching Inference Foundry, an open research software initiative' },
-  { year: 2026, month: 1, headline: 'Started TA role for CSE 341: Computer Architecture at UB' },
-  { year: 2025, month: 12, headline: 'Began equivariant MLIPs and UMA integration work in Peng Research Lab' },
-  { year: 2025, month: 11, headline: 'Received PEARL undergraduate research award ($2,500) from UB ELN' },
-  { year: 2025, month: 11, headline: 'Joined mRehab telerehabilitation engineering at ESC Lab' },
-  { year: 2025, month: 6, headline: 'Joined Peng Research Lab as undergraduate researcher (symmetry-aware GNNs)' },
-  { year: 2026, month: 4, headline: 'Second place ($1,000) at UB Health Futures Challenge for OralScan' },
-  { year: 2025, month: 2, headline: 'Started OrthoScan orthodontic remote monitoring at ESC Lab' },
-  { year: 2025, month: 9, headline: 'Co-authored ChemRxiv paper on agentic AI for multimetallic catalyst discovery' },
-  { year: 2025, month: 7, headline: 'Placed 10th globally at Northeastern Cybersecurity C2C Finals' },
-  { year: 2024, month: 11, headline: 'Team member for OralScan at Agrusa CSE Innovation and Aging Innovations challenges' },
-  { year: 2024, month: 10, headline: 'Principal Investigator for OralScan at Community Champions for Disability Health Challenge' },
-  { year: 2024, month: 8, headline: 'Started tutor and peer-assisted leader role in statistics at UB' },
-  { year: 2024, month: 6, headline: 'Joined ESC Lab as research assistant; started OralScan mobile health AI' },
-  { year: 2024, month: 4, headline: 'Presented OralScan at CTSI clinical group and SUNY Undergraduate Research Conference' },
-  { year: 2024, month: 9, headline: 'Contributed benchmarking to arXiv paper on symmetry-aware GNNs for crystal ordering' },
-  { year: 2023, month: 10, headline: 'Co-founded and launched UB chapter of the National Student Data Corps' },
-  { year: 2023, month: 8, headline: 'Started BS in Computer Science (AI specialization) at University at Buffalo, SUNY' },
-];
-
 /** News items grouped by year, descending; months descending within each year. */
 export function getNewsByYear(): { year: number; items: NewsItem[] }[] {
   const byYear = new Map<number, NewsItem[]>();
@@ -473,7 +462,7 @@ export function getNewsByYear(): { year: number; items: NewsItem[] }[] {
     .sort(([a], [b]) => b - a)
     .map(([year, items]) => ({
       year,
-      items: items.sort((a, b) => b.month - a.month),
+      items: items.sort((a, b) => b.month - a.month || a.id.localeCompare(b.id)),
     }));
 }
 
@@ -485,9 +474,9 @@ export type NavLinkItem = {
 };
 
 export const NAV_LINKS: NavLinkItem[] = [
-  { label: 'About', href: '#/about', page: 'about', icon: <Users size={18} /> },
-  { label: 'Research', href: '#/research', page: 'research', icon: <Microscope size={18} /> },
-  { label: 'Projects', href: '#/projects', page: 'projects', icon: <Code size={18} /> },
-  { label: 'Education', href: '#/education', page: 'education', icon: <GraduationCap size={18} /> },
-  { label: 'News', href: '#/news', page: 'news', icon: <Newspaper size={18} /> },
+  { label: 'About', href: '/about/', page: 'about', icon: <Users size={18} /> },
+  { label: 'Research', href: '/research/', page: 'research', icon: <Microscope size={18} /> },
+  { label: 'Projects', href: '/projects/', page: 'projects', icon: <Code size={18} /> },
+  { label: 'Education', href: '/education/', page: 'education', icon: <GraduationCap size={18} /> },
+  { label: 'News', href: '/news/', page: 'news', icon: <Newspaper size={18} /> },
 ];

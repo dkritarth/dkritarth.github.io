@@ -1,4 +1,4 @@
-/** Hash-route targets for the SPA (`#/`, `#/about`, …). */
+/** Path-route targets for the SPA (`/`, `/about/`, …). Legacy `#/about` redirects to `/about/`. */
 export type SitePage = 'home' | 'about' | 'research' | 'projects' | 'education' | 'news';
 
 export interface Publication {
@@ -24,6 +24,15 @@ export interface ResearchLink {
   href: string;
 }
 
+/** UB ELN / Credly “Mentored Research” micro-credential for a Peng lab subproject. */
+export interface CredlyBadge {
+  badgeId: string;
+  publicUrl: string;
+  issued?: string;
+  projectOutcomeUrl?: string;
+  projectOutcomeLabel?: string;
+}
+
 /**
  * Image shown on Research or Projects pages. Files live under `public/`; `src` is the URL path (e.g. `/data/research/oralscan/fig1.jpg`).
  * See `public/data/research/README.md`.
@@ -44,6 +53,8 @@ export interface ResearchSubproject {
   narrative: string[];
   technicalHighlights: string[];
   links?: ResearchLink[];
+  /** Credly embed + outcome links for UB ELN mentored research */
+  credlyBadge?: CredlyBadge;
   technologies: string[];
   /** Optional attribution line (e.g., named collaborators) */
   collaboratorsNote?: string;
@@ -83,8 +94,8 @@ export interface CompetitionEntry {
   date: string;
   /** Your role, team role, and product */
   role: string;
-  /** Comma-separated team roster in publication order */
-  team: string;
+  /** Optional comma-separated team roster */
+  team?: string;
 }
 
 export interface Education {
@@ -100,10 +111,32 @@ export interface SkillCategory {
   skills: string[];
 }
 
-/** Short milestone for the News page; sorted by year then month (desc). */
+/** How to label / iconize an outbound link on the News page. */
+export type NewsLinkKind = 'website' | 'linkedin' | 'article' | 'paper' | 'github' | 'video';
+
+/** External reference for a news milestone (LinkedIn post, article, project site, etc.). */
+export interface NewsLink {
+  label: string;
+  href: string;
+  kind?: NewsLinkKind;
+}
+
+/**
+ * Milestone for the News page. Optional `images` and `links` enrich the timeline.
+ * Photos live under `public/data/news/<id>/` — see `public/data/news/README.md`.
+ */
 export interface NewsItem {
+  /** Stable slug; matches folder name under `public/data/news/`. */
+  id: string;
   year: number;
   /** 1–12 for ordering; use 6 for “Spring” mid-year awards if month unknown */
   month: number;
   headline: string;
+  /** Optional extra sentence shown under the headline */
+  summary?: string;
+  /** Figures, screenshots, or photos (e.g. LinkedIn post captures) */
+  images?: ContentImage[];
+  links?: NewsLink[];
+  /** Credly embed for UB ELN Mentored Research milestones */
+  credlyBadge?: CredlyBadge;
 }

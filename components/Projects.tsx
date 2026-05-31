@@ -76,7 +76,7 @@ export const Projects: React.FC = () => {
           Competitions &amp; programs
         </h3>
         <p className="text-sm text-ink-600 mb-6 max-w-3xl">
-          Innovation competitions and accelerators with the OralScan team; roster order follows each program’s listing.
+          Innovation competitions and accelerators associated with OralScan (see full CV for team details).
         </p>
         <ul className="grid gap-4 md:grid-cols-2">
           {COMPETITIONS.map((comp, idx) => (
@@ -92,10 +92,12 @@ export const Projects: React.FC = () => {
                 </p>
               </div>
               <p className="text-ink-800 text-sm font-medium">{comp.role}</p>
-              <p className="text-ink-600 text-xs leading-relaxed">
-                <span className="font-medium text-ink-700">Team: </span>
-                {comp.team}
-              </p>
+              {comp.team ? (
+                <p className="text-ink-600 text-xs leading-relaxed">
+                  <span className="font-medium text-ink-700">Team: </span>
+                  {comp.team}
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>

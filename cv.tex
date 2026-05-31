@@ -22,10 +22,12 @@
     {}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{14pt}{7pt}
 
+\definecolor{linkblue}{RGB}{0, 80, 180}
+
 \hypersetup{
     colorlinks=true,
-    linkcolor=dark,
-    urlcolor=dark,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
     pdfauthor={Kritarth Dandapat},
     pdftitle={Kritarth Dandapat CV}
 }
@@ -115,7 +117,13 @@
 %  PROFESSIONAL SUMMARY
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Professional Summary}
-Incoming PhD student (Fall 2026) in the Department of Computer Science and Engineering at Michigan State University, joining the Data Mining Laboratory under Dr.\ Pang-Ning Tan, with a planned focus on \textbf{spatiotemporal machine learning}, \textbf{deep learning-based weather forecasting (DLWF)}, and \textbf{AI adversarial robustness}. Completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo, SUNY, with a 3.8+ GPA and Dean's List recognition every semester. Uniquely combines production-grade full-stack engineering (\textbf{React Native}, \textbf{YOLOv8} pipelines, \textbf{CUDA}-accelerated training) with advanced scientific ML (\textbf{E(3)-equivariant MPNNs}, symmetry-aware \textbf{GNNs}, \textbf{ALIGNN}) across mobile health AI and computational materials science. Co-author on manuscripts in digital health and materials discovery; recipient of the PEARL undergraduate research award (\$2,500) and the UB Health Futures Challenge second-place prize (\$1,000).
+I am a computer science researcher who genuinely enjoys building things that matter — whether that is a mobile app that helps elderly patients get oral health screenings, a system that tracks orthodontic progress remotely, or models that help scientists discover new materials faster.
+
+I am completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo with a 3.8+ GPA, and I am starting my PhD at Michigan State University in Fall 2026, joining the Data Mining Laboratory under \href{https://www.cse.msu.edu/~ptan/}{Dr.\ Pang-Ning Tan}. My doctoral research will focus on spatiotemporal machine learning, deep learning-based weather forecasting, and AI adversarial robustness.
+
+What sets me apart is that I sit at the intersection of research and engineering. I have co-authored papers in digital health and computational materials science, while simultaneously shipping production mobile apps, deploying cloud infrastructure on AWS, and implementing advanced ML models like equivariant graph neural networks. I move quickly from idea to working system.
+
+I have been recognized with the PEARL undergraduate research award (\$2,500) and placed second at the UB Health Futures Challenge (\$1,000).
 
 % ════════════════════════════════════════════════════════════════════════════
 %  EDUCATION
@@ -124,7 +132,7 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
 
 \roleentry{PhD in Computer Science}{Starting Fall 2026}{Michigan State University}{East Lansing, MI}
 \begin{cvlist}
-  \item Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: Dr.\ Pang-Ning Tan)
+  \item Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: \href{https://www.cse.msu.edu/~ptan/}{Dr.\ Pang-Ning Tan})
   \item Planned research focus: spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness
 \end{cvlist}
 
@@ -143,7 +151,7 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
 \section*{Research Experience}
 
 \roleentry{Research Assistant}{June 2024 -- Present}{Embedded Sensing and Computing (ESC) Group, University at Buffalo}{Buffalo, NY}
-\scopesentence{Mobile sensing for healthcare and rehabilitation with Prof.\ Wenyao Xu.}
+\scopesentence{Mobile sensing for healthcare and rehabilitation with \href{https://cse.buffalo.edu/~wenyaoxu/index.html}{Prof.\ Wenyao Xu}.}
 
 \subrole{OralScan: AI-Assisted Geriatric Oral Screening}{June 2024 -- February 2025}
 \begin{cvlist}
@@ -153,21 +161,26 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
   \item Awarded second place (\$1,000), University at Buffalo Health Futures Challenge (Spring 2026).
 \end{cvlist}
 
+\vspace{2cm}
 \subrole{OrthoScan: Orthodontic Remote Monitoring}{February 2025 -- October 2025}
 \begin{cvlist}
   \item Engineered mobile and backend systems for at-home orthodontic progress tracking, deploying \textbf{YOLO}-based hardware detection paired with depth-assisted spatial measurement pipelines to quantify structural change across longitudinal patient visits.
+  \item Reconstructed and analyzed \textbf{3D dental structures} from intraoral scans using pre-trained \textbf{GNNs} for 3D mesh processing; computed quantitative tooth position changes in both 2D image space and 3D world coordinates to track orthodontic progress with geometric precision.
   \item Translated sequential intraoral imagery into calibrated geometric progress signals, enabling quantitative remote monitoring between in-office appointments and reducing reliance on subjective clinician assessment.
 \end{cvlist}
 
-\subrole{mRehab: Telerehabilitation Platform}{November 2025 -- Present}
+\subrole{mRehab: Telerehabilitation Platform (\href{https://mrehab.agency/}{mrehab.agency})}{November 2025 -- Present}
 \begin{cvlist}
-  \item Contributed to a remote rehabilitation platform incorporating session logging, multi-modal sensor ingest pipelines, time-series signal analysis, and exercise scoring algorithms deployed in live outpatient therapy workflows.
+  \item Provisioned and configured \textbf{AWS} backend infrastructure to host testing and staging environments, enabling AI agent capabilities to operate within the live application stack.
+  \item Deployed a real-time \textbf{live sensor logging site} for continuous ingest and monitoring of wearable sensor streams during active therapy sessions.
+  \item Implemented \textbf{Kalman filters} for sensor fusion and activity detection, improving signal smoothness and robustness of exercise recognition under noisy real-world IMU conditions.
+  \item Contributed to session logging, multi-modal sensor ingest pipelines, and exercise scoring algorithms deployed in live outpatient therapy workflows.
 \end{cvlist}
 
 \entrydivider
 
 \roleentry{Undergraduate Researcher}{June 2025 -- Present}{Peng Research Lab, University at Buffalo}{Buffalo, NY}
-\scopesentence{Computational materials science and clean-energy applications with Prof.\ Jiayu Peng.}
+\scopesentence{Computational materials science and clean-energy applications with \href{https://ubwp.buffalo.edu/jiayu-peng-lab/}{Prof.\ Jiayu Peng}.}
 
 \subrole{Perovskite Ordering and Symmetry-Aware Graph Neural Networks}{June 2025 -- November 2025}
 \begin{cvlist}
@@ -215,7 +228,7 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Selected Projects}
 
-\projectentry{PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning}{Spatiotemporal Modeling \& Multi-Agent Systems}
+\projectentry{\href{https://dkritarth.com/PaddockPsychRL/}{PaddockPsychRL}: F1-Informed Multi-Agent Reinforcement Learning \textnormal{[\href{https://github.com/Kritarth-Dandapat/PaddockPsychRL}{GitHub}]}}{Spatiotemporal Modeling \& Multi-Agent Systems}
 \begin{cvlist}
   \item Formulated a multi-agent RL framework integrating Formula 1 temporal performance signals into agent psychology models within \textbf{PettingZoo} cooperative environments, mapping real-world behavioral dynamics to learned policy structure.
   \item Constructed driver-specific agent profiles from \textbf{FastF1} 2025 lap-time consistency metrics, encoding temporal performance variability as per-agent action-noise scales to reflect authentic decision-making under pressure.
@@ -260,14 +273,17 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
 
 \roleentry{Teaching Assistant, CSE 341: Computer Architecture}{January 2026 -- May 2026}{Department of Computer Science and Engineering, University at Buffalo}{Buffalo, NY}
 \begin{cvlist}
-  \item Delivered weekly VHDL recitations and office hours for 30+ students; graded exams and assignments; provided technical support to 100+ students on Piazza throughout the semester.
+  \item Conducted weekly tutorial sessions on \textbf{Assembly} and \textbf{VHDL} for 30+ students, live-coding solutions to architecture problems including cache design, memory hierarchies, and instruction pipelining.
+  \item Led recitations walking through processor pipeline stages, hazard detection, and cache replacement policies; developed worked examples and problem sets to reinforce lecture material.
+  \item Held weekly office hours; graded exams and assignments; supported 100+ students asynchronously on Piazza throughout the semester.
 \end{cvlist}
 
 \entrydivider
 
-\roleentry{Tutor and Peer-Assisted Leader}{August 2024 -- December 2025}{Tutoring and Academic Support Services, University at Buffalo}{Buffalo, NY}
+\roleentry{Tutor and Peer-Assisted Leader (PAL)}{August 2024 -- December 2025}{Tutoring and Academic Support Services (TASS), University at Buffalo}{Buffalo, NY}
 \begin{cvlist}
-  \item Facilitated two interactive sessions per week in statistics and CS fundamentals; course feedback indicated approximately 30\% improvement in quiz performance among attending students.
+  \item Served as \textbf{PAL for STA 119} (Introduction to Statistics): designed weekly worksheets aligned to recent lectures, then led two 50-minute collaborative sessions per week solving and explaining problems with students; course feedback indicated approximately 30\% improvement in quiz performance.
+  \item Provided one-to-one 1-hour tutoring appointments across seven courses: \textbf{STA 119}, \textbf{CSE 115}, \textbf{CSE 116}, \textbf{CSE 220}, \textbf{MTH 141}, \textbf{MTH 142}, covering introductory programming, data structures, and calculus.
 \end{cvlist}
 
 \entrydivider
@@ -295,10 +311,10 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Competitions and Challenges}
 \begin{cvlist}
-  \item IAA AppXcelerate Application, University at Buffalo (January--March 2025) -- team member, OralScan
+  \item IAA AppXcelerate Application, University at Buffalo (January--March 2025) --  OralScan
   \item Russell L.\ Agrusa CSE Student Innovation Competition (November 2024) -- team member, OralScan
   \item Aging Innovations Challenge (November 2024) -- team member, OralScan
-  \item Community Champions for Disability Health Challenge (October 2024) -- Principal Investigator, OralScan
+  \item Community Champions for Disability Health Challenge (October 2024) --  OralScan
 \end{cvlist}
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -310,7 +326,7 @@ Incoming PhD student (Fall 2026) in the Department of Computer Science and Engin
   \item \textbf{Machine learning and AI:} \textbf{PyTorch}, TensorFlow, computer vision, deep learning, graph neural networks (\textbf{GNNs}), \textbf{YOLOv8}, Vision Transformer (ViT), reinforcement learning (\textbf{MAPPO}, Q-learning), \textbf{Ray RLlib}
   \item \textbf{Scientific ML and materials:} \textbf{ALIGNN}, machine learning interatomic potentials (\textbf{MLIPs}), \textbf{MACE}, \textbf{E(3)-equivariant MPNNs}, \textbf{Weights \& Biases}, PyTorch Geometric
   \item \textbf{Software engineering:} React, React Native, Node.js, Django, Git, \textbf{CUDA}, OpenCV, NumPy, Matplotlib
-  \item \textbf{Databases and cloud:} MongoDB, SQL, Firebase, SQLite, Google Colab, Firebase Hosting
+  \item \textbf{Databases and cloud:} MongoDB, SQL, Firebase, SQLite, \textbf{AWS}, Google Colab, Firebase Hosting
 \end{cvlist}
 
 % ════════════════════════════════════════════════════════════════════════════

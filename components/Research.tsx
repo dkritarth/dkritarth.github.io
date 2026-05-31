@@ -3,6 +3,7 @@ import { Section } from './Section';
 import { RESEARCH_PLACEMENTS, PUBLICATIONS, PRESENTATIONS } from '../constants';
 import type { ResearchSubproject } from '../types';
 import { ContentImageGrid } from './ContentImageGrid';
+import { CredlyBadgeBlock } from './CredlyBadgeBlock';
 import { FileText, ArrowUpRight, Mic2 } from 'lucide-react';
 
 const BOLD_TERMS = [
@@ -13,6 +14,8 @@ const BOLD_TERMS = [
   'GNNs',
   'ALIGNN',
   'mRehab',
+  'AWS',
+  'Kalman',
   'Weights & Biases',
   'MACE',
   'UMA',
@@ -116,6 +119,12 @@ function ResearchProjectCard({ project }: { project: ResearchSubproject }) {
               <ArrowUpRight size={14} aria-hidden />
             </a>
           ))}
+        </div>
+      ) : null}
+
+      {project.credlyBadge ? (
+        <div className="mb-4">
+          <CredlyBadgeBlock badge={project.credlyBadge} />
         </div>
       ) : null}
 

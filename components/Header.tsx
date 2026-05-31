@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
-import { useHashRoute } from '../useHashRoute';
+import { useSiteRoute } from '../useSiteRoute';
+import { CvDownloadLink } from './CvDownloadLink';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const page = useHashRoute();
+  const page = useSiteRoute();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +37,7 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center gap-4">
         <a
-          href="#/"
+          href="/"
           className={`flex items-center gap-3 min-w-0 transition-colors ${
             page === 'home' ? 'text-ink-950' : 'text-ink-900 hover:text-ink-800'
           }`}
@@ -58,15 +59,7 @@ export const Header: React.FC = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="/data/CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-1 inline-flex items-center gap-1.5 border border-ink-900 text-ink-900 px-3 py-1.5 text-sm font-semibold hover:bg-ink-900 hover:text-white transition-colors"
-          >
-            <FileDown size={15} aria-hidden />
-            CV
-          </a>
+          <CvDownloadLink variant="header" />
         </nav>
 
         <button
@@ -92,15 +85,9 @@ export const Header: React.FC = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/data/CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex justify-center items-center gap-2 border border-ink-900 text-ink-900 px-4 py-3 font-semibold mt-3 hover:bg-ink-900 hover:text-white transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              <FileDown size={18} /> CV (PDF)
-            </a>
+            <div onClick={() => setIsOpen(false)} role="presentation">
+              <CvDownloadLink variant="headerMobile" />
+            </div>
           </nav>
         </div>
       )}

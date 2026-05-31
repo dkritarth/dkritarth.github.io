@@ -1,7 +1,21 @@
 import React from 'react';
 import { Section } from './Section';
-import { CONTACT_INFO, SKILLS, AWARDS, CERTIFICATIONS, RESEARCH_INTERESTS } from '../constants';
-import { Trophy, Award, ExternalLink } from 'lucide-react';
+import {
+  CONTACT_INFO,
+  DOCUMENT_URLS,
+  RESEARCH_PLACEMENTS,
+  SKILLS,
+  AWARDS,
+  CERTIFICATIONS,
+  RESEARCH_INTERESTS,
+} from '../constants';
+import { CredlyBadgeBlock } from './CredlyBadgeBlock';
+import { Trophy, Award, ExternalLink, BadgeCheck } from 'lucide-react';
+
+const PENG_CREDLY_SUBPROJECTS =
+  RESEARCH_PLACEMENTS.find((p) => p.organization.includes('Peng Research Lab'))?.subprojects.filter(
+    (s) => s.credlyBadge,
+  ) ?? [];
 
 export const About: React.FC = () => {
   return (
@@ -15,7 +29,20 @@ export const About: React.FC = () => {
           <blockquote className="text-lg font-serif italic text-ink-700 border-l-[3px] border-ink-900 pl-5 py-1 bg-ink-100/50">
             {CONTACT_INFO.sopSnippet}
           </blockquote>
-          <p>{CONTACT_INFO.professionalSummary}</p>
+          {CONTACT_INFO.professionalSummary.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+
+          <p className="text-xs text-ink-500">
+            <a
+              href={DOCUMENT_URLS.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 underline underline-offset-2 hover:text-ink-900"
+            >
+              Resume (PDF)
+            </a>
+          </p>
 
           <div className="rounded-sm border border-ink-200 bg-ink-50/80 p-5">
             <h3 className="text-base font-semibold text-ink-900 mb-2 font-sans">Inference Foundry</h3>
@@ -61,6 +88,33 @@ export const About: React.FC = () => {
               ))}
             </div>
           </div>
+
+          {PENG_CREDLY_SUBPROJECTS.length > 0 ? (
+            <div className="mt-8">
+              <h3 className="text-base font-semibold text-ink-900 mb-2 flex items-center gap-2 font-sans">
+                <BadgeCheck className="text-ink-700" size={18} aria-hidden />
+                Mentored Research credentials
+              </h3>
+              <p className="mb-4 text-sm text-ink-600 leading-relaxed">
+                Verified UB Experiential Learning Network badges with Prof. Jiayu Peng — one per Peng lab
+                project stream. Full write-ups on the{' '}
+                <a href="/research/" className="font-medium text-ink-900 underline underline-offset-2">
+                  Research
+                </a>{' '}
+                page.
+              </p>
+              <div className="grid gap-4">
+                {PENG_CREDLY_SUBPROJECTS.map((sp) => (
+                  <CredlyBadgeBlock
+                    key={sp.id}
+                    badge={sp.credlyBadge!}
+                    title={sp.name}
+                    compact
+                  />
+                ))}
+              </div>
+            </div>
+          ) : null}
 
           <div className="mt-8">
             <h3 className="text-base font-semibold text-ink-900 mb-4 flex items-center gap-2 font-sans">
