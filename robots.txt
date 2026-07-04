@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kritarth-dandapat.github.io/sitemap.xml
+# SPA routes: /about/, /research/, /projects/, /education/, /news/
+Sitemap: https://dkritarth.com/sitemap.xml
