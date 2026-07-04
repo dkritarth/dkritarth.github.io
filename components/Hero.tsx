@@ -1,13 +1,46 @@
 import React from 'react';
-import { Github, Instagram, Linkedin, Mail, ArrowRight, ExternalLink, Twitter } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, ArrowRight, ExternalLink, Twitter, Stethoscope, Atom, BarChart3 } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS } from '../constants';
 import { CvDownloadLink } from './CvDownloadLink';
 
 const PORTRAIT = '/data/my-photo.jpg';
 
+const RESEARCH_DOMAINS = [
+  {
+    icon: <Stethoscope size={18} aria-hidden />,
+    title: 'Healthcare AI',
+    description: 'Geriatric oral screening · stroke rehab · orthodontic remote monitoring',
+    detail: 'OralScan, OrthoScan, mRehab',
+  },
+  {
+    icon: <Atom size={18} aria-hidden />,
+    title: 'Materials ML',
+    description: 'Symmetry-aware GNNs · equivariant MLIPs · universal atom models',
+    detail: 'Peng Research Lab, UB',
+  },
+  {
+    icon: <BarChart3 size={18} aria-hidden />,
+    title: 'Spatiotemporal ML',
+    description: 'Deep learning-based weather forecasting · AI adversarial robustness',
+    detail: 'MSU Data Mining Laboratory (PhD)',
+  },
+];
+
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[calc(100vh-1px)] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden border-b border-ink-200/80 bg-ink-50">
+      {/* Banner blurred background texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/data/DK banner.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(12px)',
+          opacity: 0.07,
+          transform: 'scale(1.05)',
+        }}
+      />
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(28,25,23,0.06),transparent)]" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-10 w-full relative z-10 grid md:grid-cols-[1fr_minmax(260px,340px)] gap-12 lg:gap-16 items-center">
@@ -27,6 +60,24 @@ export const Hero: React.FC = () => {
           <p className="text-base md:text-[1.05rem] text-ink-800 leading-relaxed max-w-2xl border-l-[3px] border-ink-900 pl-5">
             {CONTACT_INFO.landingLead}
           </p>
+
+          {/* Research domain cards */}
+          <div className="grid sm:grid-cols-3 gap-3 max-w-2xl">
+            {RESEARCH_DOMAINS.map((domain) => (
+              <a
+                key={domain.title}
+                href="/research/"
+                className="group rounded-sm border border-ink-200 bg-white/80 px-3.5 py-3 text-left hover:border-ink-400 hover:shadow-sm transition-all"
+              >
+                <div className="flex items-center gap-2 mb-1.5 text-ink-700 group-hover:text-ink-900 transition-colors">
+                  {domain.icon}
+                  <span className="text-xs font-semibold uppercase tracking-wide">{domain.title}</span>
+                </div>
+                <p className="text-[12px] leading-snug text-ink-700 mb-1">{domain.description}</p>
+                <p className="text-[11px] text-ink-400 leading-snug">{domain.detail}</p>
+              </a>
+            ))}
+          </div>
 
           <div className="max-w-2xl rounded-sm border border-ink-200 bg-white/80 px-4 py-3 text-[15px] leading-relaxed text-ink-800 shadow-sm">
             <p className="font-semibold text-ink-900">Inference Foundry</p>

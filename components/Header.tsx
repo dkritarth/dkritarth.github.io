@@ -43,10 +43,10 @@ export const Header: React.FC = () => {
           }`}
         >
           <img
-            src="/data/my-photo.jpg"
+            src="/data/dkritarth_logo.png"
             alt=""
             aria-hidden
-            className="w-9 h-9 rounded-full object-cover border border-ink-300 shrink-0"
+            className="w-9 h-9 object-contain shrink-0"
           />
           <span className="font-serif text-lg md:text-xl font-semibold tracking-tight truncate">
             Kritarth Dandapat

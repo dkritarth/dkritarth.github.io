@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { SitePage } from './types';
 
-const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'projects', 'education', 'news'];
+const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'education', 'news'];
 
 /** Migrate legacy hash URLs (`#/about`) to path URLs (`/about`). */
 export function migrateHashRoute(): void {

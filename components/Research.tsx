@@ -1,10 +1,53 @@
 import React from 'react';
 import { Section } from './Section';
-import { RESEARCH_PLACEMENTS, PUBLICATIONS, PRESENTATIONS } from '../constants';
-import type { ResearchSubproject } from '../types';
+import { RESEARCH_PLACEMENTS, computeDuration } from '../constants';
+import type { ResearchPlacement } from '../types';
 import { ContentImageGrid } from './ContentImageGrid';
 import { CredlyBadgeBlock } from './CredlyBadgeBlock';
-import { FileText, ArrowUpRight, Mic2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+
+const MONTH_NAMES = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December',
+];
+
+function parseMonthYear(s: string): { year: number; month: number } | null {
+  if (s === 'Present') return { year: 2026, month: 7 };
+  const m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (!m) return null;
+  const month = MONTH_NAMES.indexOf(m[1]) + 1;
+  return month ? { year: parseInt(m[2], 10), month } : null;
+}
+
+/** Derives overall date range + duration across all subprojects in a placement. */
+function getPlacementRange(placement: ResearchPlacement): string | null {
+  let minStart: { year: number; month: number } | null = null;
+  let maxEnd: { year: number; month: number } | null = null;
+
+  for (const sp of placement.subprojects) {
+    const parts = sp.period.split('–').map((s) => s.trim());
+    if (parts.length !== 2) continue;
+    const start = parseMonthYear(parts[0]);
+    const end = parseMonthYear(parts[1]);
+    if (start && (!minStart || start.year * 12 + start.month < minStart.year * 12 + minStart.month)) minStart = start;
+    if (end && (!maxEnd || end.year * 12 + end.month > maxEnd.year * 12 + maxEnd.month)) maxEnd = end;
+  }
+
+  if (!minStart || !maxEnd) return null;
+
+  const startLabel = `${MONTH_NAMES[minStart.month - 1]} ${minStart.year}`;
+  const endLabel = MONTH_NAMES[maxEnd.month - 1] + ' ' + maxEnd.year;
+  const range = `${startLabel} – ${endLabel}`;
+
+  const totalMonths = (maxEnd.year - minStart.year) * 12 + (maxEnd.month - minStart.month);
+  if (totalMonths <= 0) return range;
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const segments: string[] = [];
+  if (years > 0) segments.push(`${years} year${years > 1 ? 's' : ''}`);
+  if (months > 0) segments.push(`${months} month${months > 1 ? 's' : ''}`);
+  return `${range} · ${segments.join(' ')}`;
+}
 
 const BOLD_TERMS = [
   'OralScan',
@@ -21,6 +64,8 @@ const BOLD_TERMS = [
   'UMA',
   'MLIPs',
   'E(3)-equivariant',
+  'eSEN',
+  'Mixture-of-Linear-Experts',
   'PerovskiteOrderingGCNNs',
   'Inference Foundry',
 ];
@@ -31,7 +76,7 @@ function formatBoldTerms(s: string): React.ReactNode[] {
   const re = new RegExp(`(${escaped})`, 'g');
   return s.split(re).map((part, i) =>
     BOLD_TERMS.includes(part) ? (
-      <strong key={i} className="text-ink-900 font-semibold">
+      <strong key={i} className="font-semibold text-ink-900">
         {part}
       </strong>
     ) : (
@@ -47,19 +92,17 @@ function formatRichLine(text: string): React.ReactNode {
   const re = /(https?:\/\/[^\s)]+)/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
-    const before = text.slice(last, m.index);
-    nodes.push(...formatBoldTerms(before));
-    const href = m[1];
+    nodes.push(...formatBoldTerms(text.slice(last, m.index)));
     linkIdx += 1;
     nodes.push(
       <a
-        key={`link-${linkIdx}-${m.index}`}
-        href={href}
+        key={`link-${linkIdx}`}
+        href={m[1]}
         className="text-ink-900 underline underline-offset-2 hover:no-underline break-all"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {href}
+        {m[1]}
       </a>,
     );
     last = m.index + m[0].length;
@@ -68,181 +111,148 @@ function formatRichLine(text: string): React.ReactNode {
   return <>{nodes}</>;
 }
 
-function ResearchProjectCard({ project }: { project: ResearchSubproject }) {
-  return (
-    <section
-      id={project.id}
-      className="scroll-mt-28 rounded-sm border border-ink-200 bg-white p-5 md:p-7 shadow-sm"
-    >
-      <header className="mb-4 flex flex-col gap-1 border-b border-ink-100 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
-        <h4 className="font-serif text-xl font-semibold leading-snug text-ink-900">{project.name}</h4>
-        <span className="shrink-0 font-mono text-sm tabular-nums text-ink-600">{project.period}</span>
-      </header>
-
-      {project.context ? (
-        <p className="mb-4 text-sm font-medium text-ink-700">{project.context}</p>
-      ) : null}
-
-      <div className="mb-5 space-y-3 text-[15px] leading-relaxed text-ink-800">
-        {project.narrative.map((paragraph, i) => (
-          <p key={i}>{formatRichLine(paragraph)}</p>
-        ))}
-      </div>
-
-      <ContentImageGrid images={project.images ?? []} className="mb-5" />
-
-      {project.collaboratorsNote ? (
-        <p className="mb-5 text-sm italic leading-relaxed text-ink-600">{formatRichLine(project.collaboratorsNote)}</p>
-      ) : null}
-
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-700">Technical contributions</p>
-      <ul className="mb-5 space-y-2">
-        {project.technicalHighlights.map((item, idx) => (
-          <li key={idx} className="flex gap-3 text-[15px] leading-relaxed text-ink-800">
-            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-900" aria-hidden />
-            <span>{formatRichLine(item)}</span>
-          </li>
-        ))}
-      </ul>
-
-      {project.links && project.links.length > 0 ? (
-        <div className="mb-4 flex flex-wrap gap-x-4 gap-y-2">
-          {project.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
-            >
-              {link.label}
-              <ArrowUpRight size={14} aria-hidden />
-            </a>
-          ))}
-        </div>
-      ) : null}
-
-      {project.credlyBadge ? (
-        <div className="mb-4">
-          <CredlyBadgeBlock badge={project.credlyBadge} />
-        </div>
-      ) : null}
-
-      <div className="flex flex-wrap gap-1.5 border-t border-ink-100 pt-4">
-        {project.technologies.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-sm border border-ink-200 bg-ink-50 px-2.5 py-0.5 text-xs font-medium text-ink-800"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export const Research: React.FC = () => {
   return (
     <Section
       id="research"
       title="Research"
-      subtitle="Each placement is broken into projects—motivation, contributions, and links—so details stay easy to scan."
+      subtitle="Lab placements and project streams."
       className="bg-white"
     >
-      <div className="space-y-14">
-        {RESEARCH_PLACEMENTS.map((placement, index) => (
-          <article key={index} className="relative">
-            <div className="mb-8 border-l-[3px] border-ink-900 pl-5">
-              <h3 className="font-serif text-2xl font-semibold text-ink-900">{placement.role}</h3>
-              <p className="mt-1 text-lg font-medium text-ink-800">{placement.organization}</p>
-              <p className="text-sm text-ink-600">{placement.location}</p>
-              {placement.overview ? (
-                <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-ink-700">{placement.overview}</p>
-              ) : null}
-              {placement.placementLinks && placement.placementLinks.length > 0 ? (
-                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-                  {placement.placementLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
-                    >
-                      {link.label}
-                      <ArrowUpRight size={14} aria-hidden />
-                    </a>
-                  ))}
-                </div>
-              ) : null}
-            </div>
+      <div className="relative border-l-2 border-ink-200 ml-2 pl-8 pb-2 space-y-12">
+        {RESEARCH_PLACEMENTS.map((placement, pi) => (
+          <div key={pi} className="relative">
+            {/* Placement dot */}
+            <span
+              className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-900"
+              aria-hidden
+            />
 
-            <div className="space-y-8">
-              {placement.subprojects.map((sp) => (
-                <ResearchProjectCard key={sp.id} project={sp} />
-              ))}
+            {/* Placement header */}
+            <h3 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h3>
+            <p className="text-ink-700 italic text-sm mb-0.5">{placement.organization}</p>
+            <p className="text-xs text-ink-500 mb-2">
+              {placement.location}
+              {(() => { const r = getPlacementRange(placement); return r ? <span className="ml-2 text-ink-400">· {r}</span> : null; })()}
+            </p>
+            {placement.overview && (
+              <p className="text-sm text-ink-700 mb-3 max-w-2xl leading-relaxed">{placement.overview}</p>
+            )}
+            {placement.placementLinks && placement.placementLinks.length > 0 && (
+              <div className="mb-4 flex flex-wrap gap-x-4 gap-y-1">
+                {placement.placementLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                  >
+                    {link.label} <ArrowUpRight size={12} aria-hidden />
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {/* Subprojects */}
+            <div className="space-y-6 mt-4">
+              {placement.subprojects.map((sp) => {
+                const dur = computeDuration(sp.period);
+                return (
+                  <div
+                    key={sp.id}
+                    id={sp.id}
+                    className="scroll-mt-28 border border-ink-100 bg-ink-50/60 rounded-sm p-4"
+                  >
+                    {/* Subproject header */}
+                    <h4 className="font-serif text-base font-semibold text-ink-900 mb-0.5">
+                      {sp.name}
+                    </h4>
+                    <p className="text-xs text-ink-500 mb-1 tabular-nums">
+                      {sp.period}
+                      {dur ? <span className="text-ink-400"> ({dur})</span> : null}
+                    </p>
+                    {sp.context && (
+                      <p className="text-xs font-medium text-ink-600 mb-2">{sp.context}</p>
+                    )}
+
+                    {/* Narrative */}
+                    <div className="space-y-1.5 text-sm leading-relaxed text-ink-700 mb-3">
+                      {sp.narrative.map((p, i) => (
+                        <p key={i}>{formatRichLine(p)}</p>
+                      ))}
+                    </div>
+
+                    <ContentImageGrid images={sp.images ?? []} className="mb-3" />
+
+                    {sp.collaboratorsNote && (
+                      <p className="text-xs italic text-ink-500 mb-3 leading-relaxed">
+                        {formatRichLine(sp.collaboratorsNote)}
+                      </p>
+                    )}
+
+                    {/* Technical highlights */}
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-ink-500 mb-1.5">
+                      Technical contributions
+                    </p>
+                    <ul className="list-disc list-outside ml-4 space-y-1.5 mb-3 marker:text-ink-400">
+                      {sp.technicalHighlights.map((item, i) => (
+                        <li key={i} className="text-sm leading-relaxed text-ink-700">
+                          {formatRichLine(item)}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Links */}
+                    {sp.links && sp.links.length > 0 && (
+                      <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1">
+                        {sp.links.map((link) => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                          >
+                            {link.label} <ArrowUpRight size={12} aria-hidden />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
+                    {sp.credlyBadge && (
+                      <div className="mb-3">
+                        <CredlyBadgeBlock badge={sp.credlyBadge} />
+                      </div>
+                    )}
+
+                    {/* Tech chips */}
+                    <div className="flex flex-wrap gap-1 pt-2 border-t border-ink-100">
+                      {sp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-sm border border-ink-200 bg-white px-2 py-0.5 text-[11px] font-medium text-ink-700"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          </article>
+          </div>
         ))}
       </div>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-2">
-        <div>
-          <h3 className="mb-5 flex items-center gap-2 font-serif text-lg font-semibold text-ink-900">
-            <FileText className="shrink-0 text-ink-700" size={20} aria-hidden />
-            Publications &amp; preprints
-          </h3>
-          <div className="space-y-4">
-            {PUBLICATIONS.map((pub, idx) => (
-              <div key={idx} className="flex flex-col gap-2 rounded-sm border border-ink-200 bg-ink-50 p-5">
-                <div>
-                  <h4 className="mb-1 text-[15px] font-semibold leading-snug text-ink-900">{pub.title}</h4>
-                  <p className="mb-2 text-sm italic text-ink-700">{pub.authors}</p>
-                  <div className="flex flex-wrap gap-2 text-xs text-ink-700">
-                    <span className="font-medium text-ink-900">{pub.venue}</span>
-                    <span className="text-ink-500">{pub.year}</span>
-                  </div>
-                  {pub.status ? (
-                    <div className="mt-2 inline-block rounded-sm border border-ink-200 bg-white px-2 py-0.5 text-xs text-ink-800">
-                      {pub.status}
-                    </div>
-                  ) : null}
-                </div>
-                {pub.link ? (
-                  <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 self-start text-xs font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
-                  >
-                    Link <ArrowUpRight size={12} aria-hidden />
-                  </a>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="mb-5 flex items-center gap-2 font-serif text-lg font-semibold text-ink-900">
-            <Mic2 className="shrink-0 text-ink-700" size={20} aria-hidden />
-            Presentations
-          </h3>
-          <div className="space-y-3">
-            {PRESENTATIONS.map((pres, idx) => (
-              <div key={idx} className="rounded-sm border border-ink-200 bg-white p-5">
-                <h4 className="text-[15px] font-semibold leading-snug text-ink-900">{pres.event}</h4>
-                <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm text-ink-700">
-                  <span className="rounded-sm border border-ink-100 bg-ink-50 px-2 py-0.5 text-xs font-medium text-ink-800">
-                    {pres.type}
-                  </span>
-                  <span className="text-xs tabular-nums text-ink-600">{pres.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="mt-10 rounded-sm border border-ink-200 bg-ink-50 px-5 py-4 text-sm text-ink-700">
+        Looking for papers and preprints?{' '}
+        <a
+          href="/publications/"
+          className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+        >
+          View Publications →
+        </a>
       </div>
     </Section>
   );

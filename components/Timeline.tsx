@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Section } from './Section';
-import { EDUCATION, PROFESSIONAL_EXPERIENCE } from '../constants';
-import { GraduationCap, Briefcase } from 'lucide-react';
+import { EDUCATION, PROFESSIONAL_EXPERIENCE, computeDuration } from '../constants';
+import { GraduationCap, Briefcase, Scroll } from 'lucide-react';
+import { DiplomaModal } from './DiplomaModal';
 
 export const Timeline: React.FC = () => {
+  const [diplomaOpen, setDiplomaOpen] = useState(false);
+
   return (
     <Section
       id="education"
@@ -18,23 +21,37 @@ export const Timeline: React.FC = () => {
             Education
           </h3>
           <div className="space-y-8 relative border-l-2 border-ink-200 ml-2 pl-8 pb-2">
-            {EDUCATION.map((edu, idx) => (
-              <div key={idx} className="relative">
-                <span className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-900" aria-hidden />
-                <h4 className="text-[17px] font-serif font-semibold text-ink-900">{edu.degree}</h4>
-                <p className="text-ink-700 italic text-sm mb-1">{edu.institution}</p>
-                <p className="text-sm text-ink-600 mb-3">
-                  {edu.period} · {edu.location}
-                </p>
-                <ul className="space-y-1.5">
-                  {edu.details.map((detail, i) => (
-                    <li key={i} className="text-sm text-ink-800 bg-white p-2.5 rounded-sm border border-ink-100">
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {EDUCATION.map((edu, idx) => {
+              const dur = computeDuration(edu.period);
+              const isUB = edu.institution.includes('University at Buffalo');
+              return (
+                <div key={idx} className="relative">
+                  <span className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-900" aria-hidden />
+                  <h4 className="text-[17px] font-serif font-semibold text-ink-900">{edu.degree}</h4>
+                  <p className="text-ink-700 italic text-sm mb-1">{edu.institution}</p>
+                  <p className="text-sm text-ink-600 mb-3">
+                    {edu.period}{dur ? <span className="text-ink-400"> ({dur})</span> : null} · {edu.location}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {edu.details.map((detail, i) => (
+                      <li key={i} className="text-sm text-ink-800 bg-white p-2.5 rounded-sm border border-ink-100">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  {isUB && (
+                    <button
+                      type="button"
+                      onClick={() => setDiplomaOpen(true)}
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                    >
+                      <Scroll size={14} aria-hidden />
+                      View Diploma
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -44,29 +61,34 @@ export const Timeline: React.FC = () => {
             Teaching &amp; other experience
           </h3>
           <div className="space-y-9 relative border-l-2 border-ink-200 ml-2 pl-8 pb-2">
-            {PROFESSIONAL_EXPERIENCE.map((job, idx) => (
-              <div key={idx} className="relative">
-                <span
-                  className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-500"
-                  aria-hidden
-                />
-                <h4 className="text-[17px] font-serif font-semibold text-ink-900">{job.role}</h4>
-                <p className="text-ink-800 font-medium text-sm mb-1">{job.organization}</p>
-                <p className="text-sm text-ink-600 mb-3">
-                  {job.period} · {job.location}
-                </p>
-                <ul className="list-disc list-outside ml-4 space-y-1.5 marker:text-ink-400">
-                  {job.description.map((desc, i) => (
-                    <li key={i} className="text-sm text-ink-800 leading-relaxed">
-                      {desc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {PROFESSIONAL_EXPERIENCE.map((job, idx) => {
+              const dur = computeDuration(job.period);
+              return (
+                <div key={idx} className="relative">
+                  <span
+                    className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-500"
+                    aria-hidden
+                  />
+                  <h4 className="text-[17px] font-serif font-semibold text-ink-900">{job.role}</h4>
+                  <p className="text-ink-800 font-medium text-sm mb-1">{job.organization}</p>
+                  <p className="text-sm text-ink-600 mb-3">
+                    {job.period}{dur ? <span className="text-ink-400"> ({dur})</span> : null} · {job.location}
+                  </p>
+                  <ul className="list-disc list-outside ml-4 space-y-1.5 marker:text-ink-400">
+                    {job.description.map((desc, i) => (
+                      <li key={i} className="text-sm text-ink-800 leading-relaxed">
+                        {desc}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
+
+      <DiplomaModal isOpen={diplomaOpen} onClose={() => setDiplomaOpen(false)} />
     </Section>
   );
 };

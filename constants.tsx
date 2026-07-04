@@ -1,5 +1,34 @@
 import type { ReactNode } from 'react';
-import { Code, GraduationCap, Microscope, Newspaper, Users } from 'lucide-react';
+import { BookOpen, Code, GraduationCap, Microscope, Newspaper, Users } from 'lucide-react';
+
+const MONTH_NAMES = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December',
+];
+
+export function computeDuration(period: string): string | null {
+  const parts = period.split('–').map((s) => s.trim());
+  if (parts.length !== 2) return null;
+  const parseMonthYear = (s: string): { year: number; month: number } | null => {
+    if (s === 'Present') return { year: 2026, month: 7 };
+    const m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+    if (!m) return null;
+    const month = MONTH_NAMES.indexOf(m[1]) + 1;
+    if (!month) return null;
+    return { year: parseInt(m[2], 10), month };
+  };
+  const start = parseMonthYear(parts[0]);
+  const end = parseMonthYear(parts[1]);
+  if (!start || !end) return null;
+  const totalMonths = (end.year - start.year) * 12 + (end.month - start.month);
+  if (totalMonths <= 0) return null;
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const segments: string[] = [];
+  if (years > 0) segments.push(`${years} year${years > 1 ? 's' : ''}`);
+  if (months > 0) segments.push(`${months} month${months > 1 ? 's' : ''}`);
+  return segments.join(' ') || null;
+}
 import type {
   NewsItem,
   CompetitionEntry,
@@ -99,7 +128,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
           'Awarded second place ($1,000), University at Buffalo Health Futures Challenge (Spring 2026).',
         ],
         links: [
-          { label: 'OralScan website', href: 'https://esc-group-ub.github.io/OralScan-Website/' },
+          { label: 'OralScan website', href: 'https://oralscan.auspexmedix.com/' },
           {
             label: 'Health Futures — UB announcement',
             href: 'https://www.buffalo.edu/entrepreneurship/connect/news.host.html/content/shared/www/studentlife/gateway-wide-content/announcements/current/health-futures-25.detail.html',
@@ -131,7 +160,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
       {
         id: 'mrehab',
         name: 'mRehab',
-        period: 'November 2025 – Present',
+        period: 'November 2025 – August 2026',
         context: 'ESC Lab · telerehabilitation',
         narrative: [
           'mRehab is a telerehabilitation platform supporting structured exercise programs, sensor-informed feedback, and therapist-facing analytics in live outpatient workflows.',
@@ -185,14 +214,16 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
       {
         id: 'mlip-uma-alchemical',
         name: 'Equivariant MLIPs, alchemical extensions, and universal atom models',
-        period: 'December 2025 – Present',
+        period: 'December 2025 – June 2026',
         context: 'Prof. Jiayu Peng · E(3) message-passing potentials, MACE-style alchemical graphs, universal atom models',
         narrative: [
           'Implementing E(3)-equivariant machine learning interatomic potentials with alchemical graph extensions and integrating them with universal atom model (UMA) stacks for materials discovery pipelines.',
         ],
         technicalHighlights: [
-          'Implement E(3)-equivariant message-passing machine learning interatomic potentials (MLIPs) augmented with alchemical graph extensions to enable efficient composition sweeps and energy prediction over disordered crystalline structures.',
-          'Integrate alchemical treatment with universal atom model (UMA) stacks (MACE) to accelerate structural relaxation and disorder characterization workflows in computational materials discovery pipelines.',
+          'Extended a dual-topology alchemical graph construction — originally built for MACE — to two additional equivariant MLIP architectures (fairchem eSEN, Meta UMA), enabling differentiable composition interpolation over disordered structures without retraining.',
+          'Designed a λ-weighted message-passing and expert-routing scheme for UMA\'s Mixture-of-Linear-Experts backbone, correcting double-counting in composition-dependent expert gating and adding an endpoint-collapse mechanism for exact pure-composition limits.',
+          'Discovered and fixed a reference-energy bug causing non-physical ~15 eV energy discontinuities near pure compositions — invisible to force-based relaxation but critical for free-energy calculations — and added regression tests to prevent recurrence.',
+          'Built a 12+ test automated verification suite (energy/force/stress/gradient agreement to ~10⁻⁷ eV) plus benchmark figures and formula-level documentation cross-validating MACE, eSEN, and UMA.',
         ],
         links: [
           { label: 'arXiv:2404.10746 (MLIP alchemical framework)', href: 'https://arxiv.org/abs/2404.10746' },
@@ -267,6 +298,39 @@ export const PUBLICATIONS: Publication[] = [
     venue: 'Submitted to Smart Health',
     year: '2025',
     status: 'Under review',
+  },
+  {
+    title:
+      'From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation',
+    authors: 'Dandapat, K., Emily [Surname], Master, T. A., Das, A., Bo, W., Cavuoto, L., and Xu, W.',
+    venue: 'HumanSys 2026',
+    year: '2026',
+    status: 'Preprint',
+  },
+  {
+    title:
+      'Separating Safety from Preference: A Role-Gated Evaluation Platform for Clinical Rehabilitation LLMs',
+    authors: 'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Cavuoto, L., Subryan, H., and Xu, W.',
+    venue: 'HumanSys 2026',
+    year: '2026',
+    status: 'Preprint',
+  },
+  {
+    title:
+      'Towards AI Agents for Intelligent Voice-Driven Interaction in a Home-Based Stroke Rehabilitation System',
+    authors:
+      'Lei, M., Das, A., Master, T. A., Dandapat, K., Reddipogu, P., Xian, J., Rowe, V., Craft, L., Tabb, K., Cavuoto, L., Bhattacharjya, S., Jo, H. J., Subryan, H., Bo, W., and Xu, W.',
+    venue: 'University at Buffalo and Georgia State University',
+    year: '2026',
+    status: 'Preprint',
+  },
+  {
+    title:
+      'Demo: mRehab – A Tangible, Offline-First Mobile Platform for Post-Stroke Upper-Limb Rehabilitation with an Edge-Cloud Voice',
+    authors: 'Dandapat, K., et al.',
+    venue: 'MobiComm 2026 (Demo Track)',
+    year: '2026',
+    status: 'Preprint',
   },
   {
     title: 'Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI',
@@ -476,6 +540,7 @@ export type NavLinkItem = {
 export const NAV_LINKS: NavLinkItem[] = [
   { label: 'About', href: '/about/', page: 'about', icon: <Users size={18} /> },
   { label: 'Research', href: '/research/', page: 'research', icon: <Microscope size={18} /> },
+  { label: 'Publications', href: '/publications/', page: 'publications', icon: <BookOpen size={18} /> },
   { label: 'Projects', href: '/projects/', page: 'projects', icon: <Code size={18} /> },
   { label: 'Education', href: '/education/', page: 'education', icon: <GraduationCap size={18} /> },
   { label: 'News', href: '/news/', page: 'news', icon: <Newspaper size={18} /> },

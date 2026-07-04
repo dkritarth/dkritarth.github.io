@@ -15,6 +15,7 @@ const ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/about/', priority: '0.9', changefreq: 'monthly' },
   { path: '/research/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/publications/', priority: '0.95', changefreq: 'weekly' },
   { path: '/projects/', priority: '0.85', changefreq: 'monthly' },
   { path: '/education/', priority: '0.8', changefreq: 'monthly' },
   { path: '/news/', priority: '0.8', changefreq: 'weekly' },

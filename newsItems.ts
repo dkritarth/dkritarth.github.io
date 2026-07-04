@@ -2,7 +2,7 @@ import type { NewsItem } from './types';
 import { PENG_CREDLY_MLIP_UMA, PENG_CREDLY_PEROVSKITE_GNN } from './pengCredly';
 
 /** Primary OralScan project site (ESC Group, UB). */
-export const ORALSCAN_WEBSITE = 'https://esc-group-ub.github.io/OralScan-Website/';
+export const ORALSCAN_WEBSITE = 'https://oralscan.auspexmedix.com/';
 
 /** Build a public URL for a news image under `public/data/news/<id>/`. */
 export function newsImagePath(id: string, file: string): string {

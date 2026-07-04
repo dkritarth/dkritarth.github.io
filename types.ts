@@ -1,5 +1,5 @@
 /** Path-route targets for the SPA (`/`, `/about/`, …). Legacy `#/about` redirects to `/about/`. */
-export type SitePage = 'home' | 'about' | 'research' | 'projects' | 'education' | 'news';
+export type SitePage = 'home' | 'about' | 'research' | 'publications' | 'projects' | 'education' | 'news';
 
 export interface Publication {
   title: string;

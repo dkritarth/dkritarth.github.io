@@ -4,6 +4,7 @@ import { PAGE_HEADINGS } from './seoMeta';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ResearchPage } from './pages/ResearchPage';
+import { PublicationsPage } from './pages/PublicationsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { EducationPage } from './pages/EducationPage';
 import { NewsPage } from './pages/NewsPage';
@@ -23,6 +24,8 @@ const App: React.FC = () => {
       return <AboutPage />;
     case 'research':
       return <ResearchPage />;
+    case 'publications':
+      return <PublicationsPage />;
     case 'projects':
       return <ProjectsPage />;
     case 'education':

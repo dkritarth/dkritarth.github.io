@@ -10,6 +10,7 @@ export const PAGE_PATHS: Record<SitePage, string> = {
   home: '/',
   about: '/about/',
   research: '/research/',
+  publications: '/publications/',
   projects: '/projects/',
   education: '/education/',
   news: '/news/',
@@ -20,6 +21,7 @@ export const PAGE_HEADINGS: Record<SitePage, string> = {
   home: `${CONTACT_INFO.name} — AI researcher and incoming PhD student`,
   about: 'About Kritarth Dandapat',
   research: 'Research',
+  publications: 'Publications',
   projects: 'Selected projects',
   education: 'Education and experience',
   news: 'News and milestones',
@@ -41,7 +43,12 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   research: {
     title: `Research · ${SITE_NAME}`,
     description:
-      'Healthcare AI (OralScan, OrthoScan, mRehab), computational materials science (symmetry-aware GNNs, equivariant MLIPs), publications, preprints, and presentations.',
+      'Healthcare AI (OralScan, OrthoScan, mRehab), computational materials science (symmetry-aware GNNs, equivariant MLIPs), and materials discovery pipelines.',
+  },
+  publications: {
+    title: `Publications · ${SITE_NAME}`,
+    description:
+      'Papers, preprints, and demo tracks across healthcare AI, computational materials science, and rehabilitation systems. Venues include Smart Health, HumanSys, MobiComm, ChemRxiv, and arXiv.',
   },
   projects: {
     title: `Projects · ${SITE_NAME}`,
@@ -170,7 +177,7 @@ function buildStructuredData(page: SitePage): object {
     buildProfilePageNode(page),
     buildBreadcrumbNode(page),
   ];
-  if (page === 'research') {
+  if (page === 'publications') {
     graph.push(...buildPublicationNodes());
   }
   return {
