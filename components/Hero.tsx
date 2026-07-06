@@ -67,28 +67,28 @@ export const Hero: React.FC = () => {
               <a
                 key={domain.title}
                 href="/research/"
-                className="group rounded-sm border border-ink-200 bg-white/80 px-3.5 py-3 text-left hover:border-ink-400 hover:shadow-sm transition-all"
+                className="group rounded-lg border border-ink-100 bg-white px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
               >
-                <div className="flex items-center gap-2 mb-1.5 text-ink-700 group-hover:text-ink-900 transition-colors">
+                <div className="flex items-center gap-2 mb-2 text-ink-700 group-hover:text-ink-900 transition-colors">
                   {domain.icon}
                   <span className="text-xs font-semibold uppercase tracking-wide">{domain.title}</span>
                 </div>
-                <p className="text-[12px] leading-snug text-ink-700 mb-1">{domain.description}</p>
-                <p className="text-[11px] text-ink-400 leading-snug">{domain.detail}</p>
+                <p className="text-[12px] leading-snug text-ink-700 mb-2">{domain.description}</p>
+                <p className="text-[11px] text-ink-500 leading-snug font-medium">{domain.detail}</p>
               </a>
             ))}
           </div>
 
-          <div className="max-w-2xl rounded-sm border border-ink-200 bg-white/80 px-4 py-3 text-[15px] leading-relaxed text-ink-800 shadow-sm">
+          <div className="max-w-2xl rounded-lg border border-ink-100 bg-white px-5 py-4 text-[15px] leading-relaxed text-ink-800 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200">
             <p className="font-semibold text-ink-900">Inference Foundry</p>
-            <p className="mt-1 text-ink-700">
+            <p className="mt-2 text-ink-700">
               {CONTACT_INFO.inferenceFoundry.startLabel}. {CONTACT_INFO.inferenceFoundry.description}
             </p>
             <a
               href={CONTACT_INFO.inferenceFoundry.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:text-ink-700 hover:no-underline focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded transition-all"
             >
               inference-foundry.rweb.site <ExternalLink size={14} className="opacity-70" aria-hidden />
             </a>
@@ -97,14 +97,14 @@ export const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-3">
             <a
               href="/research/"
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-ink-900 text-white text-sm font-semibold tracking-wide hover:bg-ink-800 transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </a>
             <CvDownloadLink variant="hero" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-ink-800 underline-offset-4 hover:underline"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-ink-900 border border-ink-200 rounded-lg hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Email
             </a>
@@ -118,7 +118,7 @@ export const Hero: React.FC = () => {
                   {i > 0 && <span className="text-ink-300 pr-2 select-none" aria-hidden>·</span>}
                   <a
                     href={link.href}
-                    className="text-ink-800 font-medium underline underline-offset-2 hover:text-ink-950 decoration-ink-300 hover:decoration-ink-900"
+                    className="text-ink-800 font-medium underline underline-offset-2 hover:text-ink-900 hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded transition-all"
                   >
                     {link.label}
                   </a>
@@ -127,12 +127,12 @@ export const Hero: React.FC = () => {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-5 pt-4 border-t border-ink-200">
+          <div className="flex items-center gap-4 pt-4 border-t border-ink-200">
             <a
               href={CONTACT_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-600 hover:text-ink-900 transition-colors"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
               aria-label="GitHub"
             >
               <Github size={22} />
@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
               href={CONTACT_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-600 hover:text-ink-900 transition-colors"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
               aria-label="LinkedIn"
             >
               <Linkedin size={22} />
@@ -150,7 +150,7 @@ export const Hero: React.FC = () => {
               href={CONTACT_INFO.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-600 hover:text-ink-900 transition-colors"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
               aria-label="Instagram"
             >
               <Instagram size={22} />
@@ -159,14 +159,14 @@ export const Hero: React.FC = () => {
               href={CONTACT_INFO.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-600 hover:text-ink-900 transition-colors"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
               aria-label="X / Twitter"
             >
               <Twitter size={22} />
             </a>
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="text-ink-600 hover:text-ink-900 transition-colors"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
               aria-label="Email"
             >
               <Mail size={22} />
@@ -175,7 +175,7 @@ export const Hero: React.FC = () => {
         </div>
 
         <figure className="relative hidden md:block mx-auto w-full max-w-sm">
-          <div className="aspect-[4/5] relative border border-ink-200 bg-ink-100 shadow-[0_1px_0_rgba(28,25,23,0.06)] overflow-hidden">
+          <div className="aspect-[4/5] relative border border-ink-200 bg-ink-100 shadow-md hover:shadow-lg rounded-lg overflow-hidden transition-shadow duration-200">
             <img
               src={PORTRAIT}
               alt={`${CONTACT_INFO.name}, portrait`}

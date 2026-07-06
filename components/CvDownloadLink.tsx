@@ -5,10 +5,10 @@ import { DOCUMENT_URLS } from '../constants';
 type Variant = 'hero' | 'header' | 'headerMobile';
 
 const base =
-  'inline-flex items-center gap-1.5 font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-900';
+  'inline-flex items-center gap-1.5 font-semibold rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2';
 
 const variants: Record<Variant, string> = {
-  hero: 'px-5 py-2.5 border border-ink-300 text-ink-900 text-sm hover:border-ink-900 hover:bg-white',
+  hero: 'px-6 py-3 border border-ink-200 text-ink-900 text-sm bg-white hover:bg-ink-50 hover:border-ink-300',
   header:
     'ml-1 border border-ink-900 text-ink-900 px-3 py-1.5 text-sm hover:bg-ink-900 hover:text-white',
   headerMobile:

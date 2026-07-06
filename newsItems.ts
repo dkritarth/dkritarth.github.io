@@ -72,7 +72,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     ],
     links: [
       { label: 'Inference Foundry', href: 'https://inference-foundry.rweb.site/', kind: 'website' },
-      { label: 'GitHub organization', href: 'https://github.com/Kritarth-Dandapat', kind: 'github' },
+      { label: 'GitHub organization', href: 'https://github.com/dkritarth', kind: 'github' },
     ],
   },
   {

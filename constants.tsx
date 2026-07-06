@@ -55,7 +55,7 @@ export const CONTACT_INFO = {
   email: 'contact@dkritarth.com',
   phone: '+1 (716) 612-0016',
   location: 'Buffalo, NY',
-  github: 'https://github.com/Kritarth-Dandapat',
+  github: 'https://github.com/dkritarth',
   linkedin: 'https://www.linkedin.com/in/kritarth-dandapat/',
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
@@ -364,7 +364,7 @@ export const PROJECTS: Project[] = [
     stats: 'Strategy Resilience Score 0.63 vs 0.54 (+16.7%)',
     links: [
       { label: 'Project write-up', href: 'https://dkritarth.com/PaddockPsychRL/' },
-      { label: 'GitHub', href: 'https://github.com/Kritarth-Dandapat/PaddockPsychRL' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/PaddockPsychRL' },
     ],
   },
   {

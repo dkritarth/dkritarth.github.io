@@ -16,23 +16,23 @@ export const Projects: React.FC = () => {
         {PROJECTS.map((project, index) => (
           <article
             key={index}
-            className="bg-ink-50/80 rounded-sm p-6 border border-ink-200 flex flex-col h-full"
+            className="bg-white rounded-lg p-6 border border-ink-100 flex flex-col h-full shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
           >
-            <div className="flex justify-between items-start mb-3">
-              <div className="p-2.5 bg-white border border-ink-200 text-ink-800 rounded-sm">
+            <div className="flex justify-between items-start mb-4">
+              <div className="p-2.5 bg-ink-50 border border-ink-200 text-ink-700 rounded-lg group-hover:bg-ink-100 transition-colors">
                 <FolderGit2 size={22} aria-hidden />
               </div>
               {project.stats && (
-                <div className="px-2.5 py-0.5 bg-white border border-ink-200 text-ink-800 text-xs font-semibold rounded-sm">
+                <div className="px-3 py-1 bg-ink-50 border border-ink-200 text-ink-700 text-xs font-semibold rounded-lg">
                   {project.stats}
                 </div>
               )}
             </div>
 
-            <h3 className="text-lg font-serif font-semibold text-ink-900 mb-1">{project.title}</h3>
-            <p className="text-xs font-semibold text-ink-600 uppercase tracking-wide mb-3">{project.category}</p>
+            <h3 className="text-lg font-serif font-semibold text-ink-900 mb-2 leading-snug">{project.title}</h3>
+            <p className="text-xs font-semibold text-ink-600 uppercase tracking-wide mb-4">{project.category}</p>
 
-            <div className="flex-1 space-y-2 mb-5">
+            <div className="flex-1 space-y-3 mb-5">
               {project.description.map((desc, i) => (
                 <p key={i} className="text-ink-800 text-sm leading-relaxed">
                   {desc}
@@ -50,7 +50,7 @@ export const Projects: React.FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-ink-300 bg-white px-3 py-1.5 text-xs font-semibold text-ink-900 hover:border-ink-900 transition-colors"
+                    className="inline-flex items-center gap-1.5 border border-ink-200 bg-white px-3 py-2 text-xs font-semibold text-ink-900 hover:bg-ink-50 hover:border-ink-300 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all"
                   >
                     {link.label}
                     <ExternalLink size={13} aria-hidden />
@@ -59,9 +59,9 @@ export const Projects: React.FC = () => {
               </div>
             )}
 
-            <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-ink-200">
+            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-ink-100">
               {project.technologies.map((tech) => (
-                <span key={tech} className="text-xs text-ink-700 bg-white px-2 py-0.5 border border-ink-100 rounded-sm">
+                <span key={tech} className="text-xs text-ink-700 bg-ink-50 px-2.5 py-1 border border-ink-150 rounded-lg">
                   {tech}
                 </span>
               ))}
@@ -82,13 +82,14 @@ export const Projects: React.FC = () => {
           {COMPETITIONS.map((comp, idx) => (
             <li
               key={`${comp.name}-${idx}`}
-              className="bg-ink-50 p-5 rounded-sm border border-ink-200 flex flex-col gap-3"
+              className="bg-white p-5 rounded-lg border border-ink-100 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
             >
               <div>
                 <h4 className="font-semibold text-ink-900 text-[15px] leading-snug">{comp.name}</h4>
-                <p className="text-xs text-ink-500 mt-1">
-                  {comp.host ? `${comp.host} · ` : ''}
-                  {comp.date}
+                <p className="text-xs text-ink-600 mt-2">
+                  {comp.host ? <span className="font-medium text-ink-700">{comp.host}</span> : null}
+                  {comp.host && ' · '}
+                  <span className="text-ink-500">{comp.date}</span>
                 </p>
               </div>
               <p className="text-ink-800 text-sm font-medium">{comp.role}</p>
