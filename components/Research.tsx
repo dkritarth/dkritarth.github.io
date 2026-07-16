@@ -4,6 +4,7 @@ import { RESEARCH_PLACEMENTS, computeDuration } from '../constants';
 import type { ResearchPlacement } from '../types';
 import { ContentImageGrid } from './ContentImageGrid';
 import { CredlyBadgeBlock } from './CredlyBadgeBlock';
+import { AppLink } from './AppLink';
 import { ArrowUpRight } from 'lucide-react';
 
 const MONTH_NAMES = [
@@ -247,12 +248,12 @@ export const Research: React.FC = () => {
 
       <div className="mt-10 rounded-sm border border-ink-200 bg-ink-50 px-5 py-4 text-sm text-ink-700">
         Looking for papers and preprints?{' '}
-        <a
+        <AppLink
           href="/publications/"
           className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
         >
           View Publications →
-        </a>
+        </AppLink>
       </div>
     </Section>
   );

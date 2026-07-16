@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { BookOpen, Code, GraduationCap, Microscope, Newspaper, Users } from 'lucide-react';
+import { BookOpen, Code, GraduationCap, Home, Microscope, Newspaper, Users } from 'lucide-react';
 
 const MONTH_NAMES = [
   'January','February','March','April','May','June',
@@ -32,6 +32,7 @@ export function computeDuration(period: string): string | null {
 import type {
   NewsItem,
   CompetitionEntry,
+  CurrentlyItem,
   Education,
   Experience,
   Project,
@@ -53,8 +54,9 @@ export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
   title: 'Incoming PhD Student, Michigan State University · Undergraduate Researcher, University at Buffalo',
   email: 'contact@dkritarth.com',
+  workEmails: ['kritarth@buffalo.edu', 'dandapat@msu.edu'],
   phone: '+1 (716) 612-0016',
-  location: 'Buffalo, NY',
+  location: 'East Lansing, MI',
   github: 'https://github.com/dkritarth',
   linkedin: 'https://www.linkedin.com/in/kritarth-dandapat/',
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
@@ -81,6 +83,27 @@ export const CONTACT_INFO = {
       'Collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
   },
 };
+
+/** "Currently" snapshot on the home page — short, live list of active work. */
+export const CURRENTLY: CurrentlyItem[] = [
+  {
+    title: 'Revising papers for resubmission',
+    description:
+      'Rewriting the OralScan community engagement study for JMIR and following up on the HumanSys 2026 submissions (Rater Bench and CTSI/mRehab).',
+    link: { label: 'Publications', href: '/publications/' },
+  },
+  {
+    title: 'Building agentic AI tooling',
+    description:
+      'Extending context-kernel and experimenting with agent/MCP automation workflows — remote context servers, tool orchestration, session tooling for Claude Code.',
+    link: { label: 'GitHub — context-kernel', href: 'https://github.com/dkritarth/context-kernel' },
+  },
+  {
+    title: 'Writing a personal context profile',
+    description:
+      'Authoring self-written "how I write" and "how AI should respond to me" reference docs — a personal style dictionary to plug into context-kernel as a new content section.',
+  },
+];
 
 export const EDUCATION: Education[] = [
   {
@@ -292,37 +315,55 @@ export const PROFESSIONAL_EXPERIENCE: Experience[] = [
 
 export const PUBLICATIONS: Publication[] = [
   {
-    title:
-      'OralScan, an AI-Powered Mobile Tool for Geriatric Oral Healthcare: A Formative Usability and Acceptability Study',
-    authors: 'Soni, P., Dandapat, K., Gherardi, A., Bo, W., Li, R., and Xu, W.',
-    venue: 'Submitted to Smart Health',
-    year: '2025',
-    status: 'Under review',
+    title: 'Separating Safety from Preference in Clinical LLM Evaluation',
+    authors:
+      'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., and Xu, W.',
+    venue: 'HumanSys 2026',
+    year: '2026',
+    status: 'Submitted',
+    abstract:
+      'Conversational AI increasingly answers patients’ rehabilitation questions, but a fluent, well-liked answer can still be clinically unsafe, and preference-only evaluation hides this by collapsing many judgments into one winner. We ran a human-centered evaluation of the mRehab Advisory Agent with two cohorts in distinct roles: six domain experts rate clinical safety and correctness, and three end users rate helpfulness, affect, and clarity, alongside blinded best-to-worst rankings exported as provenance-rich records. In a 200-question pilot (435 ranked triples), users ranked the agent first most often (53.3%; p < 0.001), yet it led on affect and clarity, not helpfulness, and drew the lowest expert safety rate (88.8% vs. 93.7% for two GPT-4.1 mini comparators). That gap traced to a single expert with near-zero agreement, so it points to rater calibration rather than an unsafe agent, and catching it depended on recording safety separately from preference.',
+    citation:
+      'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., & Xu, W. (2026). Separating safety from preference in clinical LLM evaluation. In Proceedings of HumanSys 2026.',
   },
   {
     title:
       'From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation',
-    authors: 'Dandapat, K., Emily [Surname], Master, T. A., Das, A., Bo, W., Cavuoto, L., and Xu, W.',
+    authors:
+      'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., and Xu, W.',
     venue: 'HumanSys 2026',
     year: '2026',
-    status: 'Preprint',
-  },
-  {
-    title:
-      'Separating Safety from Preference: A Role-Gated Evaluation Platform for Clinical Rehabilitation LLMs',
-    authors: 'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Cavuoto, L., Subryan, H., and Xu, W.',
-    venue: 'HumanSys 2026',
-    year: '2026',
-    status: 'Preprint',
+    status: 'Submitted',
+    equalContribution: ['Liu, E.', 'Dandapat, K.'],
+    abstract:
+      'Home-based stroke rehabilitation often suffers from low adherence due to usability barriers and a lack of engaging, trustworthy tools. mRehab addresses these challenges by pairing a smartphone application with 3D-printed functional objects, enabling post-stroke survivors to practice task-oriented, upper-limb activities in their daily environments. To ensure the system meets real-world needs, we conducted a Community Engagement Studio with 22 expert consultants, gathering critical feedback on system accessibility, stroke-specific interaction, clinical integration, and overall trust. These stakeholder insights drove a substantial redesign of mRehab’s interaction design and sensing pipeline: a transition from legacy fixed moving-average smoothing to a per-axis Kalman filtering approach with baseline-subtracted stillness detection, an RMS-jerk smoothness metric, and revised physical prop designs and audio instructions. Preliminary trace-level evaluations across four functional activities show the new Kalman pipeline effectively eliminates system lag (0 to 17 ms) compared to the previous 25-sample moving average (204 to 221 ms).',
+    citation:
+      'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., & Xu, W. (2026). From community feedback to measurement redesign: Iterating mRehab for accessible home-based stroke rehabilitation. In Proceedings of HumanSys 2026. (*Equal contribution)',
   },
   {
     title:
       'Towards AI Agents for Intelligent Voice-Driven Interaction in a Home-Based Stroke Rehabilitation System',
     authors:
       'Lei, M., Das, A., Master, T. A., Dandapat, K., Reddipogu, P., Xian, J., Rowe, V., Craft, L., Tabb, K., Cavuoto, L., Bhattacharjya, S., Jo, H. J., Subryan, H., Bo, W., and Xu, W.',
-    venue: 'University at Buffalo and Georgia State University',
+    venue: 'JMIR',
     year: '2026',
-    status: 'Preprint',
+    status: 'Submitted',
+    abstract:
+      'Physical rehabilitation programs increasingly rely on mobile applications, but users undergoing rehabilitation often face significant interaction barriers that reduce engagement and adherence. Intelligent AI agents offer a promising solution by enabling more natural and accessible interaction, and recent advances make this practical at two complementary levels: cloud-based large language models (LLMs) excel at complex reasoning and broad domain knowledge, while small language models (SLMs) can now run directly on-device, enabling low-latency, privacy-preserving, and fully offline interactions. We present a hybrid local-and-cloud agent architecture for mobile rehabilitation apps that pairs a Mobile Action Agent (an on-device SLM that interprets voice commands and executes app functions offline) with an Advisory Agent (a cloud-based question-answering agent augmented with data analysis and domain knowledge). Experiments and a human evaluation study with domain experts and end-users show the on-device Mobile Action Agent achieves high command-execution accuracy with lightweight backbones, while the cloud-based Advisory Agent is consistently preferred over baseline approaches across correctness, clarity, and helpfulness.',
+    citation:
+      'Lei, M., Das, A., Master, T. A., Dandapat, K., Reddipogu, P., Xian, J., Rowe, V., Craft, L., Tabb, K., Cavuoto, L., Bhattacharjya, S., Jo, H. J., Subryan, H., Bo, W., & Xu, W. (2026). Towards AI agents for intelligent voice-driven interaction in a home-based stroke rehabilitation system. Submitted to JMIR.',
+  },
+  {
+    title:
+      'AI-Powered Oral Health Screening for Older Adults: A Community Engagement Studio Study',
+    authors: 'Soni, P., Dandapat, K., Gherardi, A., Bo, W., Das, A., Li, R., and Xu, W.',
+    venue: 'JMIR (in preparation)',
+    year: '2026',
+    status: 'In revision',
+    abstract:
+      'Background: Among U.S. adults aged 65+, 79% own a smartphone, and the projected geriatric dental disease burden will nearly double by 2050. Mobile health (mHealth) tools for older adults are typically designed around the assumption that the patient is the operator. Whether that assumption fits the reality of the geriatric population is unsettled. Objective: To examine the patient-as-operator assumption through formative human-factors investigation of an AI-powered oral health screening application. Methods: A Community Engagement Studio (N=13, ages 60–76) evaluated OralScan, an AI-powered smartphone application for intraoral disease screening built with the University at Buffalo School of Dental Medicine. Results: Interest in the tool was unanimous (13/13, 100%); half the cohort found the tool easy to use and half did not. During attempted use, participants could not open their mouths wide enough for adequate intraoral exposure, and hand stability was insufficient for steady capture. The discussion converged on the caregiver as the primary operator rather than the patient. Conclusions: AI-powered geriatric health screening tools should be designed primarily as caregiver instruments, with the patient-facing pathway as residual for the subset of older adults who can execute the capture themselves and prefer to.',
+    citation:
+      'Soni, P., Dandapat, K., Gherardi, A., Bo, W., Das, A., Li, R., & Xu, W. (2026). AI-powered oral health screening for older adults: A community engagement studio study. Manuscript in preparation for submission to JMIR.',
   },
   {
     title:
@@ -330,7 +371,7 @@ export const PUBLICATIONS: Publication[] = [
     authors: 'Dandapat, K., et al.',
     venue: 'MobiComm 2026 (Demo Track)',
     year: '2026',
-    status: 'Preprint',
+    status: 'In progress',
   },
   {
     title: 'Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI',
@@ -351,6 +392,22 @@ export const PUBLICATIONS: Publication[] = [
 
 /** Selected projects (OralScan and lab work live under Research). Aligned with cv.tex. */
 export const PROJECTS: Project[] = [
+  {
+    slug: 'context-kernel',
+    title: 'context-kernel: Self-Hostable Context Memory for LLMs',
+    category: 'Developer Infrastructure and Remote MCP Servers',
+    description: [
+      'Built a self-hostable context-memory layer that serves hand-curated Markdown (profile, preferences, project status) to Claude Code, Desktop, and chat over a remote MCP connector, replacing repeated re-explanation of personal context at the start of every session.',
+      'Implemented a two-token security model on Cloudflare Workers and KV — a read token that serves curated context and a write token restricted to append-only journal entries — with constant-time token comparison and a manual human-review promotion gate so agents can never silently overwrite curated memory.',
+      'Shipped both Bearer-token (Claude Code CLI) and OAuth (claude.ai connector, Dynamic Client Registration/RFC 7591) auth flows end-to-end against a deployed Worker, with 100/100 tests passing.',
+    ],
+    technologies: ['Cloudflare Workers', 'Cloudflare KV', 'TypeScript', 'Model Context Protocol (MCP)', 'OAuth 2.0', 'Wrangler'],
+    stats: '100/100 tests passing · live Bearer + OAuth auth',
+    links: [
+      { label: 'Project site', href: 'https://dkritarth.github.io/context-kernel/' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/context-kernel' },
+    ],
+  },
   {
     slug: 'paddock-psych-rl',
     title: 'PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning',
@@ -533,11 +590,12 @@ export function getNewsByYear(): { year: number; items: NewsItem[] }[] {
 export type NavLinkItem = {
   label: string;
   href: string;
-  page: Exclude<SitePage, 'home'>;
+  page: SitePage;
   icon: ReactNode;
 };
 
 export const NAV_LINKS: NavLinkItem[] = [
+  { label: 'Home', href: '/', page: 'home', icon: <Home size={18} /> },
   { label: 'About', href: '/about/', page: 'about', icon: <Users size={18} /> },
   { label: 'Research', href: '/research/', page: 'research', icon: <Microscope size={18} /> },
   { label: 'Publications', href: '/publications/', page: 'publications', icon: <BookOpen size={18} /> },

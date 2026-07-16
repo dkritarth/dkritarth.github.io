@@ -10,6 +10,7 @@ import {
   RESEARCH_INTERESTS,
 } from '../constants';
 import { CredlyBadgeBlock } from './CredlyBadgeBlock';
+import { AppLink } from './AppLink';
 import { Trophy, Award, ExternalLink, BadgeCheck } from 'lucide-react';
 
 const PENG_CREDLY_SUBPROJECTS =
@@ -98,9 +99,9 @@ export const About: React.FC = () => {
               <p className="mb-4 text-sm text-ink-600 leading-relaxed">
                 Verified UB Experiential Learning Network badges with Prof. Jiayu Peng — one per Peng lab
                 project stream. Full write-ups on the{' '}
-                <a href="/research/" className="font-medium text-ink-900 underline underline-offset-2">
+                <AppLink href="/research/" className="font-medium text-ink-900 underline underline-offset-2">
                   Research
-                </a>{' '}
+                </AppLink>{' '}
                 page.
               </p>
               <div className="grid gap-4">

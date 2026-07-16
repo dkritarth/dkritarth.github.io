@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev        # dev server at http://localhost:3000
 npm run build      # vite build + postbuild SEO script (sitemap, 404.html)
+npm run preview    # serve the built dist/ locally
 npm run deploy     # build then push dist/ to GitHub Pages via gh-pages
 ```
 

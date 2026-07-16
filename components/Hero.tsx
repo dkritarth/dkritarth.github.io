@@ -2,6 +2,7 @@ import React from 'react';
 import { Github, Instagram, Linkedin, Mail, ArrowRight, ExternalLink, Twitter, Stethoscope, Atom, BarChart3 } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS } from '../constants';
 import { CvDownloadLink } from './CvDownloadLink';
+import { AppLink } from './AppLink';
 
 const PORTRAIT = '/data/my-photo.jpg';
 
@@ -64,7 +65,7 @@ export const Hero: React.FC = () => {
           {/* Research domain cards */}
           <div className="grid sm:grid-cols-3 gap-3 max-w-2xl">
             {RESEARCH_DOMAINS.map((domain) => (
-              <a
+              <AppLink
                 key={domain.title}
                 href="/research/"
                 className="group rounded-lg border border-ink-100 bg-white px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
@@ -75,7 +76,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <p className="text-[12px] leading-snug text-ink-700 mb-2">{domain.description}</p>
                 <p className="text-[11px] text-ink-500 leading-snug font-medium">{domain.detail}</p>
-              </a>
+              </AppLink>
             ))}
           </div>
 
@@ -95,12 +96,12 @@ export const Hero: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a
+            <AppLink
               href="/research/"
               className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Research <ArrowRight size={16} className="opacity-90" aria-hidden />
-            </a>
+            </AppLink>
             <CvDownloadLink variant="hero" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
@@ -116,12 +117,12 @@ export const Hero: React.FC = () => {
               {NAV_LINKS.map((link, i) => (
                 <li key={link.href} className="inline-flex items-center">
                   {i > 0 && <span className="text-ink-300 pr-2 select-none" aria-hidden>·</span>}
-                  <a
+                  <AppLink
                     href={link.href}
                     className="text-ink-800 font-medium underline underline-offset-2 hover:text-ink-900 hover:underline-offset-4 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded transition-all"
                   >
                     {link.label}
-                  </a>
+                  </AppLink>
                 </li>
               ))}
             </ul>

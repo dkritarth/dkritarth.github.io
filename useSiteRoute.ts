@@ -28,6 +28,13 @@ export function parseSiteRoute(): SitePage {
   return parsePathname(window.location.pathname);
 }
 
+/** Client-side navigation: push the URL and notify listeners without a full page reload. */
+export function navigate(href: string): void {
+  if (typeof window === 'undefined') return;
+  window.history.pushState(null, '', href);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+}
+
 export function useSiteRoute(): SitePage {
   const [page, setPage] = useState<SitePage>(() => {
     if (typeof window === 'undefined') return 'home';

@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import { useSiteRoute } from '../useSiteRoute';
 import { CvDownloadLink } from './CvDownloadLink';
+import { AppLink } from './AppLink';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center gap-4">
-        <a
+        <AppLink
           href="/"
           className={`flex items-center gap-3 min-w-0 transition-colors ${
             page === 'home' ? 'text-ink-950' : 'text-ink-900 hover:text-ink-800'
@@ -51,13 +52,13 @@ export const Header: React.FC = () => {
           <span className="font-serif text-lg md:text-xl font-semibold tracking-tight truncate">
             Kritarth Dandapat
           </span>
-        </a>
+        </AppLink>
 
         <nav className="hidden lg:flex items-center gap-1 flex-wrap justify-end" aria-label="Site sections">
           {NAV_LINKS.map((link) => (
-            <a key={link.label} href={link.href} className={linkClass(page === link.page)}>
+            <AppLink key={link.label} href={link.href} className={linkClass(page === link.page)}>
               {link.label}
-            </a>
+            </AppLink>
           ))}
           <CvDownloadLink variant="header" />
         </nav>
@@ -76,14 +77,14 @@ export const Header: React.FC = () => {
         <div className="lg:hidden border-t border-ink-200 bg-ink-50 max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col p-4 gap-0.5" aria-label="Site sections">
             {NAV_LINKS.map((link) => (
-              <a
+              <AppLink
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={mobileLinkClass(page === link.page)}
               >
                 {link.label}
-              </a>
+              </AppLink>
             ))}
             <div onClick={() => setIsOpen(false)} role="presentation">
               <CvDownloadLink variant="headerMobile" />

@@ -20,10 +20,73 @@ export function newsMedia(file: string): string {
  */
 export const NEWS_ITEMS: NewsItem[] = [
   {
-    id: 'msu-phd-2026',
+    id: 'context-kernel-2026',
     year: 2026,
-    month: 8,
-    headline: 'Incoming PhD student in MSU CSE, joining the Data Mining Laboratory (Dr. Pang-Ning Tan)',
+    month: 7,
+    headline: 'Built and deployed context-kernel, a self-hostable context-memory server for LLMs',
+    summary:
+      'Remote MCP server on Cloudflare Workers and KV serving hand-curated context to Claude Code, Desktop, and chat, with a two-token security model and manual promotion gate. Live with Bearer and OAuth auth verified end-to-end.',
+    links: [
+      { label: 'Project site', href: 'https://dkritarth.github.io/context-kernel/', kind: 'website' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/context-kernel', kind: 'github' },
+    ],
+  },
+  {
+    id: 'humansys-2026-submissions',
+    year: 2026,
+    month: 7,
+    headline: 'Submitted two papers to HumanSys 2026',
+    summary:
+      '"Separating Safety from Preference in Clinical LLM Evaluation" and "From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation" (co-first author with Emily Liu).',
+    links: [{ label: 'Publications', href: '/publications/', kind: 'website' }],
+  },
+  {
+    id: 'mrehab-ai-jmir-2026',
+    year: 2026,
+    month: 7,
+    headline: 'Submitted mRehab voice-agent paper to JMIR',
+    summary:
+      '"Towards AI Agents for Intelligent Voice-Driven Interaction in a Home-Based Stroke Rehabilitation System" — hybrid on-device/cloud agent architecture for mobile rehabilitation apps.',
+    links: [{ label: 'Publications', href: '/publications/', kind: 'website' }],
+  },
+  {
+    id: 'oralscan-jmir-revision-2026',
+    year: 2026,
+    month: 7,
+    headline: 'Rewriting OralScan community engagement study for resubmission to JMIR',
+    links: [
+      { label: 'OralScan website', href: ORALSCAN_WEBSITE, kind: 'website' },
+      { label: 'Publications', href: '/publications/', kind: 'website' },
+    ],
+  },
+  {
+    id: 'peng-lab-finished-2026',
+    year: 2026,
+    month: 6,
+    headline: 'Finished undergraduate research work in the Peng Research Lab (Prof. Jiayu Peng)',
+    summary: 'Wrapped up symmetry-aware GNN and equivariant MLIP/UMA project streams ahead of the PhD transition.',
+    links: [
+      { label: 'Peng Research Lab', href: 'https://ubwp.buffalo.edu/jiayu-peng-lab/', kind: 'website' },
+      { label: 'Research — Peng Lab projects', href: '/research/', kind: 'website' },
+    ],
+  },
+  {
+    id: 'paddockpsychrl-2026',
+    year: 2026,
+    month: 5,
+    headline: 'Built PaddockPsychRL, a Formula 1-informed multi-agent reinforcement learning framework',
+    summary:
+      'Psych-conditioned MAPPO policies improved Strategy Resilience Score from 0.54 to 0.63 (+16.7%) under noisy multi-agent coordination.',
+    links: [
+      { label: 'Project write-up', href: 'https://dkritarth.com/PaddockPsychRL/', kind: 'website' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/PaddockPsychRL', kind: 'github' },
+    ],
+  },
+  {
+    id: 'msu-phd-offer-2026',
+    year: 2026,
+    month: 3,
+    headline: 'Accepted into the MSU CSE PhD program, joining the Data Mining Laboratory (Dr. Pang-Ning Tan)',
     summary: 'Starting Fall 2026 — spatiotemporal ML, DLWF, and AI adversarial robustness.',
     images: [
       {
@@ -32,6 +95,16 @@ export const NEWS_ITEMS: NewsItem[] = [
         caption: 'PhD admission — MSU Department of Computer Science and Engineering',
       },
     ],
+    links: [
+      { label: 'MSU CSE', href: 'https://www.cse.msu.edu/', kind: 'website' },
+      { label: 'Data Mining Lab (Dr. Tan)', href: 'https://www.cse.msu.edu/~ptan/', kind: 'website' },
+    ],
+  },
+  {
+    id: 'msu-phd-joining-2026',
+    year: 2026,
+    month: 8,
+    headline: 'Joining MSU CSE as a PhD student in the Data Mining Laboratory (Dr. Pang-Ning Tan)',
     links: [
       { label: 'MSU CSE', href: 'https://www.cse.msu.edu/', kind: 'website' },
       { label: 'Data Mining Lab (Dr. Tan)', href: 'https://www.cse.msu.edu/~ptan/', kind: 'website' },

@@ -19,6 +19,15 @@ export const Footer: React.FC = () => {
               <Mail size={16} className="shrink-0 opacity-80" aria-hidden />
               {CONTACT_INFO.email}
             </a>
+            {CONTACT_INFO.workEmails.map((workEmail) => (
+              <a
+                key={workEmail}
+                href={`mailto:${workEmail}`}
+                className="flex items-center gap-2 pl-6 text-stone-400 hover:text-white transition-colors"
+              >
+                {workEmail}
+              </a>
+            ))}
             <div className="flex items-center gap-2 text-stone-400">
               <MapPin size={16} className="shrink-0 opacity-80" aria-hidden />
               {CONTACT_INFO.location}
@@ -29,6 +38,14 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-8 border-t border-stone-700/80 text-xs text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p>
             &copy; {new Date().getFullYear()} {CONTACT_INFO.name}
+          </p>
+          <p>
+            Last updated{' '}
+            {new Date(__LAST_UPDATED__).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
           </p>
         </div>
       </div>

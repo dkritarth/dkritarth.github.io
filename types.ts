@@ -8,6 +8,17 @@ export interface Publication {
   year: string;
   link?: string;
   status?: string;
+  abstract?: string;
+  citation?: string;
+  /** Names (as they appear in `authors`) that share first authorship, e.g. ['Liu, E.', 'Dandapat, K.'] */
+  equalContribution?: string[];
+}
+
+/** One line item in the home page "Currently" section. */
+export interface CurrentlyItem {
+  title: string;
+  description: string;
+  link?: ResearchLink;
 }
 
 export interface Experience {
