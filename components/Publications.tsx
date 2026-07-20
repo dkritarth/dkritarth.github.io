@@ -77,7 +77,7 @@ function CopyCitation({ citation }: { citation: string }) {
   );
 }
 
-function PubCard({ pub }: { pub: Publication }) {
+const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
   const [expanded, setExpanded] = useState(false);
   const hasDetail = Boolean(pub.abstract || pub.citation);
 
@@ -148,7 +148,7 @@ function PubCard({ pub }: { pub: Publication }) {
       </div>
     </div>
   );
-}
+};
 
 export const Publications: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterKey>('all');

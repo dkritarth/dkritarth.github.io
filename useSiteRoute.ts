@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { SitePage } from './types';
 
-const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'education', 'news'];
+const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'education', 'news', 'blog'];
 
 /** Migrate legacy hash URLs (`#/about`) to path URLs (`/about`). */
 export function migrateHashRoute(): void {
@@ -26,6 +26,32 @@ export function parsePathname(pathname: string): SitePage {
 export function parseSiteRoute(): SitePage {
   if (typeof window === 'undefined') return 'home';
   return parsePathname(window.location.pathname);
+}
+
+/** Second path segment for blog detail routes (`/blog/foo/` → `foo`; `/blog/` or non-blog → null). */
+export function parseBlogSlug(pathname: string): string | null {
+  const segments = pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+  if (segments[0] !== 'blog') return null;
+  return segments[1] ? decodeURIComponent(segments[1]) : null;
+}
+
+export function parseSiteBlogSlug(): string | null {
+  if (typeof window === 'undefined') return null;
+  return parseBlogSlug(window.location.pathname);
+}
+
+/** Current blog slug, kept in sync with client-side navigation (`popstate`). */
+export function useBlogSlug(): string | null {
+  const [slug, setSlug] = useState<string | null>(() => parseSiteBlogSlug());
+
+  useEffect(() => {
+    setSlug(parseSiteBlogSlug());
+    const onNavigate = () => setSlug(parseSiteBlogSlug());
+    window.addEventListener('popstate', onNavigate);
+    return () => window.removeEventListener('popstate', onNavigate);
+  }, []);
+
+  return slug;
 }
 
 /** Client-side navigation: push the URL and notify listeners without a full page reload. */

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { BookOpen, Code, GraduationCap, Home, Microscope, Newspaper, Users } from 'lucide-react';
+import { BookOpen, Code, GraduationCap, Home, Microscope, Newspaper, PenLine, Users } from 'lucide-react';
 
 const MONTH_NAMES = [
   'January','February','March','April','May','June',
@@ -602,4 +602,5 @@ export const NAV_LINKS: NavLinkItem[] = [
   { label: 'Projects', href: '/projects/', page: 'projects', icon: <Code size={18} /> },
   { label: 'Education', href: '/education/', page: 'education', icon: <GraduationCap size={18} /> },
   { label: 'News', href: '/news/', page: 'news', icon: <Newspaper size={18} /> },
+  { label: 'Blog', href: '/blog/', page: 'blog', icon: <PenLine size={18} /> },
 ];

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSiteRoute } from './useSiteRoute';
+import { useSiteRoute, useBlogSlug } from './useSiteRoute';
 import { PAGE_HEADINGS } from './seoMeta';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -8,15 +8,18 @@ import { PublicationsPage } from './pages/PublicationsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { EducationPage } from './pages/EducationPage';
 import { NewsPage } from './pages/NewsPage';
+import { BlogPage } from './pages/BlogPage';
+import { BlogPostPage } from './pages/BlogPostPage';
 import { applyPageSeo } from './seoMeta';
 
 const App: React.FC = () => {
   const page = useSiteRoute();
+  const blogSlug = useBlogSlug();
 
   useEffect(() => {
-    applyPageSeo(page);
+    applyPageSeo(page, page === 'blog' ? blogSlug : null);
     window.scrollTo(0, 0);
-  }, [page]);
+  }, [page, blogSlug]);
 
   const content = (() => {
     switch (page) {
@@ -32,6 +35,8 @@ const App: React.FC = () => {
       return <EducationPage />;
     case 'news':
       return <NewsPage />;
+    case 'blog':
+      return blogSlug ? <BlogPostPage slug={blogSlug} /> : <BlogPage />;
     default:
       return <HomePage />;
     }

@@ -108,7 +108,7 @@
    \textbar\ Buffalo, NY}\\[0.2em]
   {\small
    \href{https://dkritarth.com}{dkritarth.com} \textbar\
-   \href{https://github.com/Kritarth-Dandapat}{github.com/Kritarth-Dandapat} \textbar\
+   \href{https://github.com/dkritarth}{github.com/dkritarth} \textbar\
    \href{https://www.linkedin.com/in/kritarth-dandapat}{linkedin.com/in/kritarth-dandapat}}
 \end{center}
 \vspace{0.3em}
@@ -117,13 +117,9 @@
 %  PROFESSIONAL SUMMARY
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Professional Summary}
-I am a computer science researcher who genuinely enjoys building things that matter — whether that is a mobile app that helps elderly patients get oral health screenings, a system that tracks orthodontic progress remotely, or models that help scientists discover new materials faster.
+Incoming PhD student in Computer Science at Michigan State University (Fall 2026), joining the Data Mining Laboratory under Dr.\ Pang-Ning Tan to work on spatiotemporal machine learning, deep learning-based weather forecasting, and AI adversarial robustness. Currently completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo, 3.8+ GPA.
 
-I am completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo with a 3.8+ GPA, and I am starting my PhD at Michigan State University in Fall 2026, joining the Data Mining Laboratory under \href{https://www.cse.msu.edu/~ptan/}{Dr.\ Pang-Ning Tan}. My doctoral research will focus on spatiotemporal machine learning, deep learning-based weather forecasting, and AI adversarial robustness.
-
-What sets me apart is that I sit at the intersection of research and engineering. I have co-authored papers in digital health and computational materials science, while simultaneously shipping production mobile apps, deploying cloud infrastructure on AWS, and implementing advanced ML models like equivariant graph neural networks. I move quickly from idea to working system.
-
-I have been recognized with the PEARL undergraduate research award (\$2,500) and placed second at the UB Health Futures Challenge (\$1,000).
+Combines research and engineering: co-authored work in digital health and computational materials science, and has independently built and deployed production ML systems spanning mobile health, orthodontic monitoring, and telerehabilitation. Recognized with the PEARL undergraduate research award (\$2,500) and second place at the UB Health Futures Challenge (\$1,000).
 
 % ════════════════════════════════════════════════════════════════════════════
 %  EDUCATION
@@ -161,7 +157,6 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
   \item Awarded second place (\$1,000), University at Buffalo Health Futures Challenge (Spring 2026).
 \end{cvlist}
 
-\vspace{2cm}
 \subrole{OrthoScan: Orthodontic Remote Monitoring}{February 2025 -- October 2025}
 \begin{cvlist}
   \item Engineered mobile and backend systems for at-home orthodontic progress tracking, deploying \textbf{YOLO}-based hardware detection paired with depth-assisted spatial measurement pipelines to quantify structural change across longitudinal patient visits.
@@ -172,7 +167,7 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 \subrole{mRehab: Telerehabilitation Platform (\href{https://mrehab.agency/}{mrehab.agency})}{November 2025 -- Present}
 \begin{cvlist}
   \item Provisioned and configured \textbf{AWS} backend infrastructure to host testing and staging environments, enabling AI agent capabilities to operate within the live application stack.
-  \item Deployed a real-time \textbf{live sensor logging site} for continuous ingest and monitoring of wearable sensor streams during active therapy sessions.
+  \item Deployed a real-time live sensor logging site for continuous ingest and monitoring of wearable sensor streams during active therapy sessions.
   \item Implemented \textbf{Kalman filters} for sensor fusion and activity detection, improving signal smoothness and robustness of exercise recognition under noisy real-world IMU conditions.
   \item Contributed to session logging, multi-modal sensor ingest pipelines, and exercise scoring algorithms deployed in live outpatient therapy workflows.
 \end{cvlist}
@@ -184,29 +179,33 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 
 \subrole{Perovskite Ordering and Symmetry-Aware Graph Neural Networks}{June 2025 -- November 2025}
 \begin{cvlist}
-  \item Benchmarked symmetry-aware \textbf{GNN} architectures (including \textbf{ALIGNN}) on ordering-dependent energetics in crystalline perovskites; contributed benchmarking results and revised analysis to arXiv:2409.13851 and the open-source \texttt{PerovskiteOrderingGCNNs} repository.
+  \item Benchmarked symmetry-aware GNN architectures (including \textbf{ALIGNN}) on ordering-dependent energetics in crystalline perovskites; contributed benchmarking results and revised analysis to arXiv:2409.13851 and the open-source \texttt{PerovskiteOrderingGCNNs} repository.
   \item Migrated experiment tracking infrastructure from SigOpt to \textbf{Weights \& Biases}; automated training loops, hyperparameter sweeps, and multi-architecture evaluation pipelines, reducing manual overhead and improving reproducibility.
   \item Co-authored commentary on agentic AI for multimetallic catalyst discovery, published on \textit{ChemRxiv} (2025).
 \end{cvlist}
 
-\subrole{Equivariant MLIPs, Alchemical Extensions, and Universal Atom Models}{December 2025 -- Present}
+\subrole{Equivariant MLIPs and Alchemical Extensions}{December 2025 -- Present}
 \begin{cvlist}
-  \item Implement \textbf{E(3)-equivariant} message-passing machine learning interatomic potentials (\textbf{MLIPs}) augmented with alchemical graph extensions to enable efficient composition sweeps and energy prediction over disordered crystalline structures.
-  \item Integrate alchemical treatment with universal atom model (UMA) stacks (\textbf{MACE}) to accelerate structural relaxation and disorder characterization workflows in computational materials discovery pipelines.
+  \item Extended a dual-topology alchemical graph construction -- originally built for \textbf{MACE} -- to two additional equivariant MLIP architectures (fairchem \textbf{eSEN}, Meta \textbf{UMA}), enabling differentiable composition interpolation over disordered structures without retraining.
+  \item Designed a $\lambda$-weighted message-passing and expert-routing scheme for UMA's \textbf{Mixture-of-Linear-Experts} backbone, correcting double-counting in composition-dependent expert gating and adding an endpoint-collapse mechanism for exact pure-composition limits.
+  \item Discovered and fixed a reference-energy bug causing non-physical $\sim$15\,eV energy discontinuities near pure compositions -- invisible to force-based relaxation but critical for free-energy calculations -- and added regression tests to prevent recurrence.
+  \item Built a 12+ test automated verification suite (energy/force/stress/gradient agreement to $\sim 10^{-7}$\,eV) plus benchmark figures and formula-level documentation cross-validating \textbf{MACE}, \textbf{eSEN}, and \textbf{UMA}.
 \end{cvlist}
 
-\entrydivider
-
-\roleentry{Founder, Inference Foundry}{Starting May 2026}{Open Research Software Initiative}{Remote}
-\begin{cvlist}
-  \item Launched a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community (\href{https://inference-foundry.rweb.site}{inference-foundry.rweb.site}).
-\end{cvlist}
 
 % ════════════════════════════════════════════════════════════════════════════
 %  PUBLICATIONS AND PREPRINTS
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Publications and Preprints}
 \begin{cvlist}
+  \item \textbf{Dandapat, K.}, Emily [Surname], Master, T. A., Das, A., Bo, W., Cavuoto, L., and Xu, W. (2026). From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation. \textit{HumanSys 2026}. Preprint.
+
+  \item \textbf{Dandapat, K.}, Master, T. A., Das, A., Bo, W., Lei, M., Cavuoto, L., Subryan, H., and Xu, W. (2026). Separating Safety from Preference: A Role-Gated Evaluation Platform for Clinical Rehabilitation LLMs. \textit{HumanSys 2026}. Preprint.
+
+  \item Lei, M., Das, A., Master, T. A., \textbf{Dandapat, K.}, Reddipogu, P., Xian, J., Rowe, V., Craft, L., Tabb, K., Cavuoto, L., Bhattacharjya, S., Jo, H. J., Subryan, H., Bo, W., and Xu, W. (2026). Towards AI Agents for Intelligent Voice-Driven Interaction in a Home-Based Stroke Rehabilitation System. University at Buffalo and Georgia State University. Preprint.
+
+  \item \textbf{Dandapat, K.}, et al. (2026). Demo: mRehab -- A Tangible, Offline-First Mobile Platform for Post-Stroke Upper-Limb Rehabilitation with an Edge-Cloud Voice [Assistant]. \textit{MobiComm 2026} (Demo Track). Preprint.
+
   \item Soni, P., \textbf{Dandapat, K.}, Gherardi, A., Bo, W., Li, R., and Xu, W. (2025). OralScan, an AI-Powered Mobile Tool for Geriatric Oral Healthcare: A Formative Usability and Acceptability Study. Submitted to \textit{Smart Health} (under review).
 
   \item Peng, J., Liu, C., Luo, Y., and \textbf{Dandapat, K.} (2025). Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI. \textit{ChemRxiv}, version 1. DOI: \href{https://doi.org/10.26434/chemrxiv-2025-13n3f}{10.26434/chemrxiv-2025-13n3f}.
@@ -228,7 +227,7 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 % ════════════════════════════════════════════════════════════════════════════
 \section*{Selected Projects}
 
-\projectentry{\href{https://dkritarth.com/PaddockPsychRL/}{PaddockPsychRL}: F1-Informed Multi-Agent Reinforcement Learning \textnormal{[\href{https://github.com/Kritarth-Dandapat/PaddockPsychRL}{GitHub}]}}{Spatiotemporal Modeling \& Multi-Agent Systems}
+\projectentry{\href{https://dkritarth.com/PaddockPsychRL/}{PaddockPsychRL} \textnormal{[\href{https://github.com/Kritarth-Dandapat/PaddockPsychRL}{GitHub}]}}{Multi-Agent RL}
 \begin{cvlist}
   \item Formulated a multi-agent RL framework integrating Formula 1 temporal performance signals into agent psychology models within \textbf{PettingZoo} cooperative environments, mapping real-world behavioral dynamics to learned policy structure.
   \item Constructed driver-specific agent profiles from \textbf{FastF1} 2025 lap-time consistency metrics, encoding temporal performance variability as per-agent action-noise scales to reflect authentic decision-making under pressure.
@@ -238,33 +237,12 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 
 \entrydivider
 
-\projectentry{Marine Guardian: Ship Detection in Satellite Imagery}{Geospatial Computer Vision \& Deep Learning}
+\projectentry{Other Projects}{Computer Vision}
 \begin{cvlist}
-  \item Designed a maritime monitoring pipeline grounded in geometric computer vision principles before applying deep models, achieving low-latency inference on high-resolution satellite imagery for spatial object detection.
-  \item Engineered a roundness-based geometric classifier paired with \textbf{MobileNetV2}, attaining 98.72\% ship-vs.-non-ship classification accuracy while eliminating heavy encoder overhead unsuitable for edge deployment.
-  \item Benchmarked \textbf{EfficientNet} transfer learning with a custom decoder against ResNet-50 feature extraction and K-means clustering, systematically validating architecture decisions across spatial generalization scenarios.
+  \item \textbf{Marine Guardian} -- Geometric classifier + MobileNetV2 pipeline for ship detection in satellite imagery; 98.72\% classification accuracy, benchmarked against EfficientNet and ResNet-50 baselines.
+  \item \textbf{Density-Based Crowd Counting} -- CSRNet trained in PyTorch for per-pixel density estimation in highly occluded surveillance scenes, avoiding failure modes of bounding-box detectors.
+  \item \textbf{Facial Expression Benchmark} -- Controlled comparison of CNN, ResNet-34, and ViT backbones for emotion recognition; 87.5\% top-1 accuracy on the best configuration.
 \end{cvlist}
-\techstack{Python, OpenCV, \textbf{TensorFlow}, EfficientNet, MobileNetV2, ResNet-50, K-means}
-
-\entrydivider
-
-\projectentry{People Counting via CSRNet Density Estimation}{Deep Learning \& Spatial Regression}
-\begin{cvlist}
-  \item Developed a density-estimation pipeline for crowd counting in highly occluded surveillance scenes where bounding-box detectors fail due to extreme pedestrian overlap, framing the task as spatial regression over density maps.
-  \item Trained \textbf{CSRNet} end-to-end in \textbf{PyTorch} to predict per-pixel crowd density fields, enabling robust aggregate counts from integrated spatial density rather than fragile per-instance localization.
-  \item Accelerated training and inference with \textbf{CUDA}; preprocessed surveillance-style frames with \textbf{OpenCV} for repeatable benchmarking across public crowd-counting datasets.
-\end{cvlist}
-\techstack{\textbf{PyTorch}, CSRNet, \textbf{CUDA}, OpenCV}
-
-\entrydivider
-
-\projectentry{Human Emotion Detection: Multi-Architecture Benchmark}{Computer Vision \& Model Robustness}
-\begin{cvlist}
-  \item Constructed a controlled multi-architecture benchmark comparing shallow CNN, \textbf{ResNet-34}, and \textbf{Vision Transformer (ViT)} backbones on facial expression recognition under a unified preprocessing and evaluation protocol, isolating architectural contribution from data effects.
-  \item Optimized training schedules and augmentation strategies per architecture; ViT and ResNet-34 variants demonstrated superior generalization over the CNN baseline on held-out facial expression data.
-  \item Achieved 87.5\% top-1 classification accuracy on the best-performing configuration after systematic cross-architecture ablation.
-\end{cvlist}
-\techstack{\textbf{PyTorch}, TensorFlow, CNN, ResNet-34, Vision Transformer, OpenCV}
 
 % ════════════════════════════════════════════════════════════════════════════
 %  PROFESSIONAL EXPERIENCE
@@ -284,6 +262,13 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 \begin{cvlist}
   \item Served as \textbf{PAL for STA 119} (Introduction to Statistics): designed weekly worksheets aligned to recent lectures, then led two 50-minute collaborative sessions per week solving and explaining problems with students; course feedback indicated approximately 30\% improvement in quiz performance.
   \item Provided one-to-one 1-hour tutoring appointments across seven courses: \textbf{STA 119}, \textbf{CSE 115}, \textbf{CSE 116}, \textbf{CSE 220}, \textbf{MTH 141}, \textbf{MTH 142}, covering introductory programming, data structures, and calculus.
+\end{cvlist}
+
+\entrydivider
+
+\roleentry{Founder, Inference Foundry}{May 2026 -- Present}{Open Research Software Initiative}{Remote}
+\begin{cvlist}
+  \item Launched an open-source initiative building reproducible ML inference tooling and shared contributor infrastructure for the scientific ML community (\href{https://inference-foundry.rweb.site}{inference-foundry.rweb.site}).
 \end{cvlist}
 
 \entrydivider
@@ -323,10 +308,10 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
 \section*{Technical Skills}
 \begin{cvlist}
   \item \textbf{Languages:} Python, JavaScript, Java, C++, Rust
-  \item \textbf{Machine learning and AI:} \textbf{PyTorch}, TensorFlow, computer vision, deep learning, graph neural networks (\textbf{GNNs}), \textbf{YOLOv8}, Vision Transformer (ViT), reinforcement learning (\textbf{MAPPO}, Q-learning), \textbf{Ray RLlib}
-  \item \textbf{Scientific ML and materials:} \textbf{ALIGNN}, machine learning interatomic potentials (\textbf{MLIPs}), \textbf{MACE}, \textbf{E(3)-equivariant MPNNs}, \textbf{Weights \& Biases}, PyTorch Geometric
-  \item \textbf{Software engineering:} React, React Native, Node.js, Django, Git, \textbf{CUDA}, OpenCV, NumPy, Matplotlib
-  \item \textbf{Databases and cloud:} MongoDB, SQL, Firebase, SQLite, \textbf{AWS}, Google Colab, Firebase Hosting
+  \item \textbf{Machine learning and AI:} PyTorch, TensorFlow, computer vision, deep learning, graph neural networks (GNNs), YOLOv8, Vision Transformer (ViT), reinforcement learning (MAPPO, Q-learning), Ray RLlib
+  \item \textbf{Scientific ML and materials:} ALIGNN, machine learning interatomic potentials (MLIPs), MACE, E(3)-equivariant MPNNs, Weights \& Biases, PyTorch Geometric
+  \item \textbf{Software engineering:} React, React Native, Node.js, Django, Git, CUDA, OpenCV, NumPy, Matplotlib
+  \item \textbf{Databases and cloud:} MongoDB, SQL, Firebase, SQLite, AWS, Google Colab, Firebase Hosting
 \end{cvlist}
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -339,17 +324,6 @@ I have been recognized with the PEARL undergraduate research award (\$2,500) and
   \item Geometric and equivariant deep learning; graph neural networks for structured data
   \item Computer vision and sequence modeling for healthcare and scientific applications
   \item Machine learning for materials science and scientific discovery
-\end{cvlist}
-
-% ════════════════════════════════════════════════════════════════════════════
-%  CERTIFICATIONS
-% ════════════════════════════════════════════════════════════════════════════
-\section*{Certifications}
-\begin{cvlist}
-  \item Machine Learning Specialization -- Stanford University and DeepLearning.AI (Coursera)
-  \item Deep Learning Specialization -- Stanford University and DeepLearning.AI (Coursera)
-  \item PyTorch for Deep Learning -- Udemy
-  \item Additional professional coursework: deep learning (TensorFlow), Django, React, Node.js, Python (Udemy)
 \end{cvlist}
 
 \end{document}

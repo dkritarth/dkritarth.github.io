@@ -1,5 +1,5 @@
 /** Path-route targets for the SPA (`/`, `/about/`, …). Legacy `#/about` redirects to `/about/`. */
-export type SitePage = 'home' | 'about' | 'research' | 'publications' | 'projects' | 'education' | 'news';
+export type SitePage = 'home' | 'about' | 'research' | 'publications' | 'projects' | 'education' | 'news' | 'blog';
 
 export interface Publication {
   title: string;
@@ -150,4 +150,29 @@ export interface NewsItem {
   links?: NewsLink[];
   /** Credly embed for UB ELN Mentored Research milestones */
   credlyBadge?: CredlyBadge;
+}
+
+/**
+ * A blog post. Content is a semantic HTML string (produced by the `blog-write` skill) rendered by
+ * the `BlogProse` component. Optional `hero` and per-slug assets live under `public/data/blog/<slug>/`.
+ */
+export interface BlogPost {
+  /** URL segment + stable id; matches folder under `public/data/blog/<slug>/`. */
+  slug: string;
+  title: string;
+  /** ISO publish date, `YYYY-MM-DD`. */
+  date: string;
+  /** ISO last-updated date, `YYYY-MM-DD`. */
+  updated?: string;
+  tags: string[];
+  /** 1–2 sentence summary; used on cards and as the meta description. */
+  excerpt: string;
+  /** Estimated reading time in minutes (~200 wpm). */
+  readingMinutes?: number;
+  /** Optional lead image shown above the body. */
+  hero?: ContentImage;
+  /** Semantic HTML body — only the tag set styled by `BlogProse`. No inline styles, no `h1`. */
+  content: string;
+  /** When true, hidden from the blog list and sitemap. */
+  draft?: boolean;
 }
