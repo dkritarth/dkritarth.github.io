@@ -98,6 +98,75 @@ export const BLOG_POSTS: BlogPost[] = [
       </p>
     `,
   },
+  {
+    slug: 'claude-vs-gpt-debugging-a-flutter-wearable-crash',
+    title: 'What a Flutter crash taught me about Claude vs. GPT on a language they barely know',
+    date: '2026-07-21',
+    tags: ['llm-comparison', 'debugging', 'flutter', 'claude'],
+    excerpt:
+      'A Play Store rejection led me to run the same debugging prompt through GPT-5.6 Luna and Claude Sonnet 5 on a Flutter/Kotlin codebase. Only one of them found the real bug.',
+    readingMinutes: 3,
+    hero: {
+      src: blogImagePath(
+        'claude-vs-gpt-debugging-a-flutter-wearable-crash',
+        'claude-response.png',
+      ),
+      alt: "Claude Sonnet 5's first-shot diagnosis of the Wearable API crash, naming the exact root cause and the fix.",
+    },
+    content: `
+      <p>
+        I'm writing this because of something I found out while debugging someone else's code.
+        I was given a repository for a Flutter application, and it had bugs that got it rejected
+        from the Google Play Store because the app was crashing on launch. I installed it on my
+        phone and it crashed there too, but on the developer's S21, the same build worked
+        perfectly fine.
+      </p>
+      <p>
+        The app is supposed to pair with a Watch and pull sensor data from it, so at first we
+        didn't think much of it. When I got access to the repo, I just gave Claude a simple
+        prompt to debug and find the issue. I thought this might take some time, because the
+        last time I did a lot of mobile development, about a year to a year and a half ago, I
+        was pretty good at it, and back then stuff like this took a while.
+      </p>
+      <p>
+        I put the same prompt into GPT, GPT-5.6 Luna, and Claude Sonnet 5, basically the
+        lower-tier models, to save on token pricing and not burn through my usage on either
+        subscription. GPT, for some reason, did not understand the prompt I gave it and answered
+        in a pretty weird way. It didn't quite grasp what I was trying to say. Claude, on the
+        first shot, gave me a logical reason for why the issue might be happening, then guided
+        me through actually debugging the app that was crashing on my phone.
+      </p>
+      <img src="${blogImagePath('claude-vs-gpt-debugging-a-flutter-wearable-crash', 'gpt-response.png')}" alt="GPT-5.6 Luna's response, describing a startup race around Amplify.configure() that has nothing to do with this codebase." />
+      <p>
+        Through ADB I pulled the logs, checked them against the code, and confirmed this was
+        indeed the issue: a legacy <code>GoogleApiClient</code> hooked up to
+        <code>Wearable.API</code> was getting initialized unconditionally in
+        <code>MainActivity.onCreate()</code>, with no try/catch around it. On devices where the
+        Wearable module itself isn't available, not just "no watch paired," that call throws and
+        nothing catches it, so the process dies. The Play Store's test devices don't have a Wear
+        OS watch paired, so it hit this every time. The developer's S21 happened to already have
+        Wearable and Play Services state that tolerated the call, just luck of that one device's
+        setup.
+      </p>
+      <img src="${blogImagePath('claude-vs-gpt-debugging-a-flutter-wearable-crash', 'verify-bugs.png')}" alt="Verifying the crash on-device over ADB. The pulled stack trace matches Claude's diagnosis exactly." />
+      <p>
+        I understand why Claude's pricing is so high, but looking at this example, it kind of
+        justifies why they're charging so much, at least to some extent. My guess is OpenAI has
+        trained its models heavily on JavaScript and other popular languages, while Dart and
+        Flutter still aren't that big, so the data it has to draw on there is probably a lot
+        thinner. Getting such different responses in the very first step, from two models that
+        are both supposed to be frontier-ish, was pretty surprising.
+      </p>
+      <p>
+        I want to thank Theo for building <a href="https://t3.chat/" target="_blank" rel="noopener">T3 Chat</a>,
+        the open-source UI/UX that layers over these different harnesses. Using it has let me
+        actually see the differences between models more clearly and adjust how I prompt each
+        one. GPT, I've noticed, tends to be a better writer than Claude, but Claude will sit with
+        a problem longer and actually land on the right answer faster, at least for how I work
+        right now.
+      </p>
+    `,
+  },
 ];
 
 /** Posts with `draft` falsy, sorted by `date` descending (newest first), tie-broken by slug. */
