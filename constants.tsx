@@ -52,7 +52,7 @@ export const DOCUMENT_URLS = {
 
 export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
-  title: 'Incoming PhD Student, Michigan State University · Undergraduate Researcher, University at Buffalo',
+  title: 'Incoming PhD Student, Michigan State University',
   email: 'contact@dkritarth.com',
   workEmails: ['kritarth@buffalo.edu', 'dandapat@msu.edu'],
   phone: '+1 (716) 612-0016',
@@ -130,6 +130,27 @@ export const EDUCATION: Education[] = [
 ];
 
 export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
+  {
+    role: 'Graduate Research Assistant',
+    organization: 'Data Mining Laboratory, Michigan State University',
+    location: 'East Lansing, MI',
+    overview: 'Adversarial robustness of geospatio-temporal deep learning models with Dr. Pang-Ning Tan.',
+    subprojects: [
+      {
+        id: 'gst-adversarial-robustness',
+        name: 'Adversarial robustness of geospatio-temporal models',
+        period: 'Starting August 2026',
+        context: 'NSF-funded research · Advisor: Dr. Pang-Ning Tan',
+        narrative: [
+          'Joining an NSF-funded research group studying adversarial vulnerabilities in deep learning-based weather forecasting and defense methods for geospatio-temporal systems.',
+        ],
+        technicalHighlights: [
+          'Planned work builds on wavelet-decomposition-based localized targeted attacks and downstream trajectory manipulation attacks, extending toward detection and defense frameworks for geospatio-temporal forecasting models.',
+        ],
+        technologies: ['Spatiotemporal ML', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal models'],
+      },
+    ],
+  },
   {
     role: 'Research Assistant',
     organization: 'Embedded Sensing and Computing (ESC) Group, University at Buffalo',
@@ -237,7 +258,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
       {
         id: 'mlip-uma-alchemical',
         name: 'Equivariant MLIPs, alchemical extensions, and universal atom models',
-        period: 'December 2025 – June 2026',
+        period: 'December 2025 – July 2026',
         context: 'Prof. Jiayu Peng · E(3) message-passing potentials, MACE-style alchemical graphs, universal atom models',
         narrative: [
           'Implementing E(3)-equivariant machine learning interatomic potentials with alchemical graph extensions and integrating them with universal atom model (UMA) stacks for materials discovery pipelines.',

@@ -68,13 +68,15 @@ export const Header: React.FC = () => {
           className="lg:hidden text-ink-900 p-2 shrink-0"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {isOpen && (
-        <div className="lg:hidden border-t border-ink-200 bg-ink-50 max-h-[80vh] overflow-y-auto">
+        <div id="mobile-navigation" className="lg:hidden border-t border-ink-200 bg-ink-50/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-lg">
           <nav className="flex flex-col p-4 gap-0.5" aria-label="Site sections">
             {NAV_LINKS.map((link) => (
               <AppLink

@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
         <div className="space-y-8">
           <header className="space-y-3">
             <p className="text-sm font-semibold tracking-wide text-ink-700 uppercase">
-              Computer Science · University at Buffalo · MSU PhD Fall 2026
+              AI research · Michigan State University
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-semibold text-ink-900 leading-[1.15] tracking-tight">
               {CONTACT_INFO.name}
@@ -100,14 +100,14 @@ export const Hero: React.FC = () => {
               href="/research/"
               className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
-              Research <ArrowRight size={16} className="opacity-90" aria-hidden />
+              Explore research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </AppLink>
             <CvDownloadLink variant="hero" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-ink-900 border border-ink-200 rounded-lg hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
-              Email
+              Get in touch
             </a>
           </div>
 

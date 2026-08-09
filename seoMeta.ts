@@ -31,7 +31,8 @@ export const PAGE_HEADINGS: Record<SitePage, string> = {
 };
 
 const HOME_TITLE = `${CONTACT_INFO.name} · AI Researcher · Incoming PhD Student`;
-const HOME_DESC = CONTACT_INFO.bio;
+const HOME_DESC =
+  'Kritarth Dandapat is an incoming Michigan State University PhD student and University at Buffalo researcher working on spatiotemporal machine learning, healthcare AI, computer vision, and materials machine learning.';
 
 const SEO: Record<SitePage, { title: string; description: string }> = {
   home: {
@@ -41,12 +42,12 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   about: {
     title: `About · ${SITE_NAME}`,
     description:
-      'Background, research interests, honors, certifications, and technical skills. Incoming MSU CSE PhD student (Data Mining Laboratory, Dr. Pang-Ning Tan); undergraduate researcher at University at Buffalo.',
+      'Background, research interests, honors, certifications, and technical skills. Incoming MSU CSE PhD student in the Data Mining Laboratory under Dr. Pang-Ning Tan.',
   },
   research: {
     title: `Research · ${SITE_NAME}`,
     description:
-      'Healthcare AI (OralScan, OrthoScan, mRehab), computational materials science (symmetry-aware GNNs, equivariant MLIPs), and materials discovery pipelines.',
+      'Research by Kritarth Dandapat: healthcare AI, mobile sensing, computational materials science, symmetry-aware GNNs, equivariant MLIPs, and planned work in robust spatiotemporal machine learning.',
   },
   publications: {
     title: `Publications · ${SITE_NAME}`,
@@ -56,7 +57,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   projects: {
     title: `Projects · ${SITE_NAME}`,
     description:
-      'PaddockPsychRL (F1-informed multi-agent RL), Marine Guardian satellite ship detection, CSRNet crowd counting, and multi-architecture emotion detection benchmarks.',
+      'Selected machine learning and research software projects by Kritarth Dandapat, including multi-agent reinforcement learning, satellite ship detection, crowd counting, emotion recognition, and context tooling.',
   },
   education: {
     title: `Education & Experience · ${SITE_NAME}`,
@@ -104,7 +105,7 @@ function buildPersonNode() {
     url: `${PORTFOLIO_ORIGIN}/`,
     image: DEFAULT_OG_IMAGE,
     email: `mailto:${CONTACT_INFO.email}`,
-    jobTitle: 'Incoming PhD Student; Undergraduate Researcher',
+    jobTitle: 'Incoming PhD Student and AI Researcher',
     description: HOME_DESC,
     sameAs: [
       CONTACT_INFO.github,
