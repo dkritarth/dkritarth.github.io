@@ -20,7 +20,7 @@ export const PAGE_PATHS: Record<SitePage, string> = {
 
 /** Visible page title for screen-reader / document outline (one h1 per view). */
 export const PAGE_HEADINGS: Record<SitePage, string> = {
-  home: `${CONTACT_INFO.name} — AI researcher and incoming PhD student`,
+  home: `${CONTACT_INFO.name} — PhD student and AI researcher`,
   about: 'About Kritarth Dandapat',
   research: 'Research',
   publications: 'Publications',
@@ -30,9 +30,9 @@ export const PAGE_HEADINGS: Record<SitePage, string> = {
   blog: 'Blog',
 };
 
-const HOME_TITLE = `${CONTACT_INFO.name} · AI Researcher · Incoming PhD Student`;
+const HOME_TITLE = `${CONTACT_INFO.name} · PhD Student · Adversarial ML and Weather Forecasting`;
 const HOME_DESC =
-  'Kritarth Dandapat is an incoming Michigan State University PhD student and University at Buffalo researcher working on spatiotemporal machine learning, healthcare AI, computer vision, and materials machine learning.';
+  'Kritarth Dandapat is a Michigan State University Computer Science PhD student studying adversarial attacks and robustness in ensemble deep learning weather-forecasting models.';
 
 const SEO: Record<SitePage, { title: string; description: string }> = {
   home: {
@@ -42,7 +42,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   about: {
     title: `About · ${SITE_NAME}`,
     description:
-      'Background, research interests, honors, certifications, and technical skills. Incoming MSU CSE PhD student in the Data Mining Laboratory under Dr. Pang-Ning Tan.',
+      'Background, research interests, honors, certifications, and technical skills. MSU CSE PhD student in the Data Mining Laboratory under Dr. Pang-Ning Tan.',
   },
   research: {
     title: `Research · ${SITE_NAME}`,
@@ -62,7 +62,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   education: {
     title: `Education & Experience · ${SITE_NAME}`,
     description:
-      'Accelerated BS in Computer Science at UB; incoming PhD at Michigan State University; CSE 341 teaching assistant, tutoring, and student leadership.',
+      'Accelerated BS in Computer Science at UB; PhD student at Michigan State University; CSE 341 teaching assistant, tutoring, and student leadership.',
   },
   news: {
     title: `News · ${SITE_NAME}`,
@@ -105,7 +105,7 @@ function buildPersonNode() {
     url: `${PORTFOLIO_ORIGIN}/`,
     image: DEFAULT_OG_IMAGE,
     email: `mailto:${CONTACT_INFO.email}`,
-    jobTitle: 'Incoming PhD Student and AI Researcher',
+    jobTitle: 'Computer Science PhD Student and AI Researcher',
     description: HOME_DESC,
     sameAs: [
       CONTACT_INFO.github,

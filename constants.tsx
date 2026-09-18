@@ -52,7 +52,7 @@ export const DOCUMENT_URLS = {
 
 export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
-  title: 'Incoming PhD Student, Michigan State University',
+  title: 'PhD Student, Michigan State University',
   email: 'contact@dkritarth.com',
   workEmails: ['kritarth@buffalo.edu', 'dandapat@msu.edu'],
   phone: '+1 (716) 612-0016',
@@ -62,17 +62,17 @@ export const CONTACT_INFO = {
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
-  bio: 'Computer science researcher at the intersection of research and engineering—mobile health AI, computer vision, and computational materials science. Incoming PhD (Fall 2026) at MSU CSE, Data Mining Laboratory (Dr. Pang-Ning Tan).',
+  bio: 'Computer science researcher studying adversarial attacks on ensemble deep learning weather-forecasting models in the MSU CSE Data Mining Laboratory under Dr. Pang-Ning Tan.',
   /** Mirrors cv.tex Professional Summary (paragraphs) */
   professionalSummary: [
-    'I am a computer science researcher who genuinely enjoys building things that matter—whether that is a mobile app that helps elderly patients get oral health screenings, a system that tracks orthodontic progress remotely, or models that help scientists discover new materials faster.',
-    'I am completing an accelerated three-year BS in Computer Science (Minor: Statistics) at the University at Buffalo with a 3.8+ GPA, and I am starting my PhD at Michigan State University in Fall 2026, joining the Data Mining Laboratory under Dr. Pang-Ning Tan. My doctoral research will focus on spatiotemporal machine learning, deep learning-based weather forecasting, and AI adversarial robustness.',
-    'What sets me apart is that I sit at the intersection of research and engineering. I have co-authored papers in digital health and computational materials science, while simultaneously shipping production mobile apps, deploying cloud infrastructure on AWS, and implementing advanced ML models like equivariant graph neural networks. I move quickly from idea to working system.',
+    'I am a computer science researcher studying reliable machine learning for structured, real-world data. My current work focuses on adversarial attacks against ensemble models, with an emphasis on deep learning-based weather forecasting.',
+    'I am a Computer Science PhD student and Graduate Research Assistant at Michigan State University in the Data Mining Laboratory under Dr. Pang-Ning Tan. I previously researched digital health and computational materials science at the University at Buffalo.',
+    'My work connects adversarial robustness, uncertainty-aware prediction, spatiotemporal machine learning, and practical ML systems. I care about evaluation that exposes failures hidden by aggregate metrics and about tools that make research reproducible.',
     'I have been recognized with the PEARL undergraduate research award ($2,500) and placed second at the UB Health Futures Challenge ($1,000).',
   ],
   /** Short intro for the home page */
   landingLead:
-    'I build research systems that ship—geriatric oral screening, orthodontic remote monitoring, telerehabilitation on AWS, and symmetry-aware GNNs for materials discovery. Incoming PhD student (Fall 2026) in MSU CSE\'s Data Mining Laboratory (Dr. Pang-Ning Tan), with planned work in spatiotemporal ML, DLWF, and AI adversarial robustness.',
+    'Computer Science PhD student and Graduate Research Assistant at Michigan State University. I study adversarial attacks and robustness in ensemble models, focusing on deep learning-based weather forecasting and spatiotemporal machine learning.',
   sopSnippet:
     'My academic journey has been driven by a fascination with the power of artificial intelligence (AI) to solve tangible, human-centric problems. I am driven to move beyond applying known techniques to creating original, high-impact research.',
   /** Open research software initiative — surfaced on home & About */
@@ -87,21 +87,22 @@ export const CONTACT_INFO = {
 /** "Currently" snapshot on the home page — short, live list of active work. */
 export const CURRENTLY: CurrentlyItem[] = [
   {
-    title: 'Revising papers for resubmission',
+    title: 'Adversarial attacks on ensemble forecasts',
     description:
-      'Rewriting the OralScan community engagement study for JMIR and following up on the HumanSys 2026 submissions (Rater Bench and CTSI/mRehab).',
+      'Studying how constrained input perturbations can change uncertainty, event probabilities, and decision-relevant statistics while leaving ensemble means nearly unchanged.',
+    link: { label: 'Research direction', href: '/research/' },
+  },
+  {
+    title: 'Deep learning weather forecasting',
+    description:
+      'Building toward evaluation across deterministic and probabilistic systems, including learned weather ensembles and geospatiotemporal models.',
+    link: { label: 'GeoArmor project', href: 'https://www.cse.msu.edu/~ptan/project/geoarmor/' },
+  },
+  {
+    title: 'Research and engineering',
+    description:
+      'Prior work spans mobile health, computer vision, and computational materials science. Selected publications and projects remain available for context.',
     link: { label: 'Publications', href: '/publications/' },
-  },
-  {
-    title: 'Building agentic AI tooling',
-    description:
-      'Extending context-kernel and experimenting with agent/MCP automation workflows — remote context servers, tool orchestration, session tooling for Claude Code.',
-    link: { label: 'GitHub — context-kernel', href: 'https://github.com/dkritarth/context-kernel' },
-  },
-  {
-    title: 'Writing a personal context profile',
-    description:
-      'Authoring self-written "how I write" and "how AI should respond to me" reference docs — a personal style dictionary to plug into context-kernel as a new content section.',
   },
 ];
 
@@ -110,7 +111,7 @@ export const EDUCATION: Education[] = [
     degree: 'PhD in Computer Science',
     institution: 'Michigan State University',
     location: 'East Lansing, MI',
-    period: 'Starting Fall 2026',
+    period: 'August 2026 – May 2030 (expected)',
     details: [
       'Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: Dr. Pang-Ning Tan)',
       'Planned research focus: spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness',
@@ -134,20 +135,24 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     role: 'Graduate Research Assistant',
     organization: 'Data Mining Laboratory, Michigan State University',
     location: 'East Lansing, MI',
-    overview: 'Adversarial robustness of geospatio-temporal deep learning models with Dr. Pang-Ning Tan.',
+    overview: 'Adversarial attacks and robustness in ensemble deep learning weather-forecasting models with Dr. Pang-Ning Tan.',
     subprojects: [
       {
         id: 'gst-adversarial-robustness',
         name: 'Adversarial robustness of geospatio-temporal models',
-        period: 'Starting August 2026',
+        period: 'August 2026 – Present',
         context: 'NSF-funded research · Advisor: Dr. Pang-Ning Tan',
         narrative: [
-          'Joining an NSF-funded research group studying adversarial vulnerabilities in deep learning-based weather forecasting and defense methods for geospatio-temporal systems.',
+          'NSF-funded research on adversarial vulnerabilities in deep learning-based weather forecasting, with emphasis on ensemble predictions, uncertainty, and geospatio-temporal structure.',
         ],
         technicalHighlights: [
-          'Planned work builds on wavelet-decomposition-based localized targeted attacks and downstream trajectory manipulation attacks, extending toward detection and defense frameworks for geospatio-temporal forecasting models.',
+          'Planned work studies constrained input perturbations, attack transfer across ensemble members and models, and defenses that preserve calibration and event-probability reliability.',
         ],
-        technologies: ['Spatiotemporal ML', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal models'],
+        technologies: ['Ensemble models', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal ML'],
+        links: [
+          { label: 'GeoArmor NSF project', href: 'https://www.cse.msu.edu/~ptan/project/geoarmor/' },
+          { label: 'Data Mining Laboratory', href: 'https://www.cse.msu.edu/~ptan/' },
+        ],
       },
     ],
   },
@@ -339,27 +344,29 @@ export const PUBLICATIONS: Publication[] = [
     title: 'Separating Safety from Preference in Clinical LLM Evaluation',
     authors:
       'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., and Xu, W.',
-    venue: 'HumanSys 2026',
+    venue: 'MobiCom 2026',
     year: '2026',
-    status: 'Submitted',
+    status: 'Published',
     abstract:
       'Conversational AI increasingly answers patients’ rehabilitation questions, but a fluent, well-liked answer can still be clinically unsafe, and preference-only evaluation hides this by collapsing many judgments into one winner. We ran a human-centered evaluation of the mRehab Advisory Agent with two cohorts in distinct roles: six domain experts rate clinical safety and correctness, and three end users rate helpfulness, affect, and clarity, alongside blinded best-to-worst rankings exported as provenance-rich records. In a 200-question pilot (435 ranked triples), users ranked the agent first most often (53.3%; p < 0.001), yet it led on affect and clarity, not helpfulness, and drew the lowest expert safety rate (88.8% vs. 93.7% for two GPT-4.1 mini comparators). That gap traced to a single expert with near-zero agreement, so it points to rater calibration rather than an unsafe agent, and catching it depended on recording safety separately from preference.',
     citation:
-      'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., & Xu, W. (2026). Separating safety from preference in clinical LLM evaluation. In Proceedings of HumanSys 2026.',
+      'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., & Xu, W. (2026). Separating safety from preference in clinical LLM evaluation. In Proceedings of MobiCom 2026.',
+    link: 'https://doi.org/10.1145/3842436.3843811',
   },
   {
     title:
       'From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation',
     authors:
       'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., and Xu, W.',
-    venue: 'HumanSys 2026',
+    venue: 'MobiCom 2026',
     year: '2026',
-    status: 'Submitted',
+    status: 'Published',
     equalContribution: ['Liu, E.', 'Dandapat, K.'],
     abstract:
       'Home-based stroke rehabilitation often suffers from low adherence due to usability barriers and a lack of engaging, trustworthy tools. mRehab addresses these challenges by pairing a smartphone application with 3D-printed functional objects, enabling post-stroke survivors to practice task-oriented, upper-limb activities in their daily environments. To ensure the system meets real-world needs, we conducted a Community Engagement Studio with 22 expert consultants, gathering critical feedback on system accessibility, stroke-specific interaction, clinical integration, and overall trust. These stakeholder insights drove a substantial redesign of mRehab’s interaction design and sensing pipeline: a transition from legacy fixed moving-average smoothing to a per-axis Kalman filtering approach with baseline-subtracted stillness detection, an RMS-jerk smoothness metric, and revised physical prop designs and audio instructions. Preliminary trace-level evaluations across four functional activities show the new Kalman pipeline effectively eliminates system lag (0 to 17 ms) compared to the previous 25-sample moving average (204 to 221 ms).',
     citation:
-      'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., & Xu, W. (2026). From community feedback to measurement redesign: Iterating mRehab for accessible home-based stroke rehabilitation. In Proceedings of HumanSys 2026. (*Equal contribution)',
+      'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., & Xu, W. (2026). From community feedback to measurement redesign: Iterating mRehab for accessible home-based stroke rehabilitation. In Proceedings of MobiCom 2026. (*Co-first authors)',
+    link: 'https://doi.org/10.1145/3842436.3843796',
   },
   {
     title:
@@ -368,7 +375,7 @@ export const PUBLICATIONS: Publication[] = [
       'Lei, M., Das, A., Master, T. A., Dandapat, K., Reddipogu, P., Xian, J., Rowe, V., Craft, L., Tabb, K., Cavuoto, L., Bhattacharjya, S., Jo, H. J., Subryan, H., Bo, W., and Xu, W.',
     venue: 'JMIR',
     year: '2026',
-    status: 'Submitted',
+    status: 'Submitted to JMIR',
     abstract:
       'Physical rehabilitation programs increasingly rely on mobile applications, but users undergoing rehabilitation often face significant interaction barriers that reduce engagement and adherence. Intelligent AI agents offer a promising solution by enabling more natural and accessible interaction, and recent advances make this practical at two complementary levels: cloud-based large language models (LLMs) excel at complex reasoning and broad domain knowledge, while small language models (SLMs) can now run directly on-device, enabling low-latency, privacy-preserving, and fully offline interactions. We present a hybrid local-and-cloud agent architecture for mobile rehabilitation apps that pairs a Mobile Action Agent (an on-device SLM that interprets voice commands and executes app functions offline) with an Advisory Agent (a cloud-based question-answering agent augmented with data analysis and domain knowledge). Experiments and a human evaluation study with domain experts and end-users show the on-device Mobile Action Agent achieves high command-execution accuracy with lightweight backbones, while the cloud-based Advisory Agent is consistently preferred over baseline approaches across correctness, clarity, and helpfulness.',
     citation:
@@ -388,11 +395,12 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     title:
-      'Demo: mRehab – A Tangible, Offline-First Mobile Platform for Post-Stroke Upper-Limb Rehabilitation with an Edge-Cloud Voice',
-    authors: 'Dandapat, K., et al.',
-    venue: 'MobiComm 2026 (Demo Track)',
+      'Demo: mRehab: A Clinically Grounded Smartphone System for Home Rehabilitation',
+    authors: 'Dandapat, K., Das, A., Master, T. A., Patel, H., Gherardi, A., Szigeti, M., Reddipogu, P., Bo, W., Lei, M., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., and Xu, W.',
+    venue: 'MobiCom 2026 (Demo Track)',
     year: '2026',
-    status: 'In progress',
+    status: 'Published',
+    link: 'https://doi.org/10.1145/3795866.3848473',
   },
   {
     title: 'Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI',

@@ -35,7 +35,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     id: 'humansys-2026-submissions',
     year: 2026,
     month: 7,
-    headline: 'Submitted two papers to HumanSys 2026',
+    headline: 'Submitted two papers to MobiCom 2026',
     summary:
       '"Separating Safety from Preference in Clinical LLM Evaluation" and "From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation" (co-first author with Emily Liu).',
     links: [{ label: 'Publications', href: '/publications/', kind: 'website' }],
@@ -87,7 +87,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     year: 2026,
     month: 3,
     headline: 'Accepted into the MSU CSE PhD program, joining the Data Mining Laboratory (Dr. Pang-Ning Tan)',
-    summary: 'Starting Fall 2026 — spatiotemporal ML, DLWF, and AI adversarial robustness.',
+    summary: 'Joined MSU in August 2026 to study spatiotemporal ML, deep learning weather forecasting, and AI adversarial robustness.',
     images: [
       {
         src: newsMedia('MSU-offer-letter-screenshot.png'),

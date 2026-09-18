@@ -29,10 +29,10 @@ const RESEARCH_DOMAINS = [
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[calc(100vh-1px)] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden border-b border-ink-200/80 bg-ink-50">
+    <section className="relative flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden border-b border-ink-200/80 bg-ink-50">
       {/* Banner blurred background texture */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hidden"
         style={{
           backgroundImage: "url('/data/DK banner.png')",
           backgroundSize: 'cover',
@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
           transform: 'scale(1.05)',
         }}
       />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(28,25,23,0.06),transparent)]" />
+      <div className="hidden" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-10 w-full relative z-10 grid md:grid-cols-[1fr_minmax(260px,340px)] gap-12 lg:gap-16 items-center">
         <div className="space-y-8">
