@@ -143,13 +143,12 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         period: 'August 2026 – Present',
         context: 'NSF-funded research · Advisor: Dr. Pang-Ning Tan',
         narrative: [
-          'Conducting research in spatiotemporal machine learning, deep learning-based forecasting, and AI robustness, with applications to complex environmental and scientific systems.',
-          'Investigating modern data-driven forecasting approaches, including graph-based and generative models for high-dimensional spatiotemporal data.',
-          'Exploring robustness, generalization, and reliable evaluation of machine learning models under distribution shifts and changing environmental conditions.',
-          'Working with large-scale scientific datasets and developing reproducible pipelines for model training, experimentation, and evaluation.',
+          'Currently working on spatiotemporal machine learning and deep learning-based weather forecasting for complex environmental systems.',
+          'Building reproducible pipelines for scientific datasets, model training, experimentation, and evaluation.',
+          'Going forward, I will study adversarial robustness and generalization in ensemble forecasting models under changing environmental conditions.',
         ],
         technicalHighlights: [
-          'Current research interests: Spatiotemporal Machine Learning · Deep Learning · Time-Series Forecasting · Graph Neural Networks · Generative Models · AI Robustness · Scientific Machine Learning',
+          'Research interests: Spatiotemporal Machine Learning · Deep Learning · Time-Series Forecasting · Graph Neural Networks · Generative Models · AI Robustness · Scientific Machine Learning',
         ],
         technologies: ['Ensemble models', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal ML'],
         links: [
