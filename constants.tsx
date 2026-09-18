@@ -54,7 +54,7 @@ export const CONTACT_INFO = {
   name: 'Kritarth Dandapat',
   title: 'PhD Student, Michigan State University',
   email: 'contact@dkritarth.com',
-  workEmails: ['kritarth@buffalo.edu', 'dandapat@msu.edu'],
+  workEmails: ['dandapat@msu.edu'],
   phone: '+1 (716) 612-0016',
   location: 'East Lansing, MI',
   github: 'https://github.com/dkritarth',
@@ -144,9 +144,15 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         context: 'NSF-funded research · Advisor: Dr. Pang-Ning Tan',
         narrative: [
           'NSF-funded research on adversarial vulnerabilities in deep learning-based weather forecasting, with emphasis on ensemble predictions, uncertainty, and geospatio-temporal structure.',
+          'The project asks whether an attack can leave average forecast error nearly unchanged while corrupting spread, tail-event probabilities, or a downstream decision based on the predictive distribution.',
+          'My current focus is to connect adversarial robustness with the practical reliability questions that arise when weather models produce many plausible futures rather than one point forecast.',
         ],
         technicalHighlights: [
           'Planned work studies constrained input perturbations, attack transfer across ensemble members and models, and defenses that preserve calibration and event-probability reliability.',
+          'Robustness is evaluated at multiple levels: individual members, ensemble statistics, the full predictive distribution, threshold events, and downstream decisions.',
+          'The threat model compares white-box, transfer, and query-based attacks while constraining perturbations by observation error, spatial and temporal localization, and meteorological plausibility.',
+          'The benchmark will stage from compact stochastic forecasting models to learned weather ensembles, including GenCast, stochastic NeuralGCM, AIFS ENS, and WeatherNext 3, using WeatherBench 2 data and metrics where applicable.',
+          'Candidate defenses include ensemble-aware adversarial training, randomized smoothing, inconsistency detectors, and structurally diverse members. Defenses must retain calibrated uncertainty under adaptive attacks, not only recover pointwise accuracy.',
         ],
         technologies: ['Ensemble models', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal ML'],
         links: [
