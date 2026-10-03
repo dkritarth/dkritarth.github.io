@@ -433,6 +433,7 @@ export const PROJECTS: Project[] = [
       'Focused on shared infrastructure and contributor-friendly workflows so that scientific ML results can be rerun and extended by other people.',
     ],
     technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
+    stats: 'Since ~May 2026',
     links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
   },
   {
