@@ -15,18 +15,18 @@ const variants: Record<Variant, string> = {
     'justify-center border border-ink-900 text-ink-900 px-4 py-3 mt-3 hover:bg-ink-900 hover:text-white w-full',
 };
 
-export const CvDownloadLink: React.FC<{ variant: Variant }> = ({ variant }) => {
+export const CvDownloadLink: React.FC<{ variant: Variant; doc?: 'cv' | 'resume' }> = ({ variant, doc = 'cv' }) => {
   const isMobile = variant === 'headerMobile';
   return (
     <a
-      href={DOCUMENT_URLS.cv}
+      href={DOCUMENT_URLS[doc]}
       target="_blank"
       rel="noopener noreferrer"
       className={`${base} ${variants[variant]} ${isMobile ? 'flex' : ''}`}
-      title="Full academic CV (PDF)"
+      title={doc === 'cv' ? 'Full academic CV (PDF)' : 'One-page resume (PDF)'}
     >
       <FileDown size={isMobile ? 18 : 15} aria-hidden />
-      {variant === 'hero' ? 'CV (PDF)' : 'CV'}
+      {doc === 'resume' ? 'Resume (PDF)' : variant === 'hero' ? 'CV (PDF)' : 'CV'}
     </a>
   );
 };

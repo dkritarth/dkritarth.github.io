@@ -32,7 +32,7 @@ export const PAGE_HEADINGS: Record<SitePage, string> = {
 
 const HOME_TITLE = `${CONTACT_INFO.name} · PhD Student · Adversarial ML and Weather Forecasting`;
 const HOME_DESC =
-  'Kritarth Dandapat is a Michigan State University Computer Science PhD student studying adversarial attacks and robustness in ensemble deep learning weather-forecasting models.';
+  'Kritarth Dandapat is a Michigan State University Computer Science PhD student studying the adversarial robustness of deep learning weather-forecasting models, including ensemble systems such as ECMWF’s AIFS.';
 
 const SEO: Record<SitePage, { title: string; description: string }> = {
   home: {
@@ -42,12 +42,12 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   about: {
     title: `About · ${SITE_NAME}`,
     description:
-      'Background, research interests, honors, certifications, and technical skills. MSU CSE PhD student in the Data Mining Laboratory under Dr. Pang-Ning Tan.',
+      'Background, research interests, education and experience, honors, and technical skills. MSU CSE PhD student in the Data Mining Laboratory under Dr. Pang-Ning Tan.',
   },
   research: {
     title: `Research · ${SITE_NAME}`,
     description:
-      'Research by Kritarth Dandapat: healthcare AI, mobile sensing, computational materials science, symmetry-aware GNNs, equivariant MLIPs, and planned work in robust spatiotemporal machine learning.',
+      'Research by Kritarth Dandapat: adversarial robustness of ensemble weather-forecasting models at Michigan State University, plus previous work in digital health sensing and computational materials science at the University at Buffalo.',
   },
   publications: {
     title: `Publications · ${SITE_NAME}`,
@@ -57,7 +57,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   projects: {
     title: `Projects · ${SITE_NAME}`,
     description:
-      'Selected machine learning and research software projects by Kritarth Dandapat, including multi-agent reinforcement learning, satellite ship detection, crowd counting, emotion recognition, and context tooling.',
+      'Selected research software and machine learning projects by Kritarth Dandapat, including Inference Foundry, multi-agent reinforcement learning, satellite ship detection, crowd counting, and context tooling.',
   },
   education: {
     title: `Education & Experience · ${SITE_NAME}`,
@@ -72,7 +72,7 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
   blog: {
     title: `Blog · ${SITE_NAME}`,
     description:
-      'Notes on healthcare AI, computational materials science, machine learning research, and the things Kritarth Dandapat is building.',
+      'Notes on machine learning research, adversarial robustness, and the things Kritarth Dandapat is building.',
   },
 };
 
@@ -117,7 +117,7 @@ function buildPersonNode() {
     ],
     worksFor: {
       '@type': 'CollegeOrUniversity',
-      name: 'University at Buffalo, SUNY',
+      name: 'Michigan State University',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
@@ -128,13 +128,14 @@ function buildPersonNode() {
       name: 'Michigan State University',
     },
     knowsAbout: [
-      'Spatiotemporal machine learning',
-      'Deep learning-based weather forecasting',
       'AI adversarial robustness',
-      'Computer vision',
-      'Healthcare AI',
-      'Materials machine learning',
+      'Ensemble weather forecasting',
+      'Deep learning-based weather forecasting',
+      'Spatiotemporal machine learning',
+      'Uncertainty-aware prediction',
       'Graph neural networks',
+      'Computer vision',
+      'Materials machine learning',
     ],
   };
 }

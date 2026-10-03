@@ -1,31 +1,10 @@
 import React from 'react';
-import { Github, Instagram, Linkedin, Mail, ArrowRight, ExternalLink, Twitter, Stethoscope, Atom, BarChart3 } from 'lucide-react';
-import { CONTACT_INFO, NAV_LINKS } from '../constants';
+import { Github, Instagram, Linkedin, Mail, ArrowRight, ArrowUpRight, Twitter } from 'lucide-react';
+import { CONTACT_INFO, NAV_LINKS, RESEARCH_THREADS } from '../constants';
 import { CvDownloadLink } from './CvDownloadLink';
 import { AppLink } from './AppLink';
 
 const PORTRAIT = '/data/my-photo.jpg';
-
-const RESEARCH_DOMAINS = [
-  {
-    icon: <Stethoscope size={18} aria-hidden />,
-    title: 'Healthcare AI',
-    description: 'Geriatric oral screening · stroke rehab · orthodontic remote monitoring',
-    detail: 'OralScan, OrthoScan, mRehab',
-  },
-  {
-    icon: <Atom size={18} aria-hidden />,
-    title: 'Materials ML',
-    description: 'Symmetry-aware GNNs · equivariant MLIPs · universal atom models',
-    detail: 'Peng Research Lab, UB',
-  },
-  {
-    icon: <BarChart3 size={18} aria-hidden />,
-    title: 'Spatiotemporal ML',
-    description: 'Deep learning-based weather forecasting · AI adversarial robustness',
-    detail: 'MSU Data Mining Laboratory (PhD)',
-  },
-];
 
 export const Hero: React.FC = () => {
   return (
@@ -48,7 +27,7 @@ export const Hero: React.FC = () => {
         <div className="space-y-8">
           <header className="space-y-3">
             <p className="text-sm font-semibold tracking-wide text-ink-700 uppercase">
-              AI research · Michigan State University
+              PhD research · Michigan State University
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-semibold text-ink-900 leading-[1.15] tracking-tight">
               {CONTACT_INFO.name}
@@ -62,37 +41,36 @@ export const Hero: React.FC = () => {
             {CONTACT_INFO.landingLead}
           </p>
 
-          {/* Research domain cards */}
-          <div className="grid sm:grid-cols-3 gap-3 max-w-2xl">
-            {RESEARCH_DOMAINS.map((domain) => (
-              <AppLink
-                key={domain.title}
-                href="/research/"
-                className="group rounded-lg border border-ink-100 bg-white px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+          {/* Current PhD threads: titles and status only */}
+          <div className="max-w-2xl space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-500">Current research</p>
+            <ul className="grid sm:grid-cols-3 gap-3">
+              {RESEARCH_THREADS.map((thread) => (
+                <li key={thread.title}>
+                  <AppLink
+                    href="/research/"
+                    className="group block h-full rounded-lg border border-ink-100 bg-white px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+                  >
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-500 mb-1.5">
+                      {thread.status}
+                    </p>
+                    <p className="text-sm font-medium leading-snug text-ink-900">{thread.title}</p>
+                  </AppLink>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-ink-700">
+              Supported by the{' '}
+              <a
+                href={CONTACT_INFO.geoarmor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-semibold text-ink-900 underline underline-offset-2 hover:no-underline focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded"
               >
-                <div className="flex items-center gap-2 mb-2 text-ink-700 group-hover:text-ink-900 transition-colors">
-                  {domain.icon}
-                  <span className="text-xs font-semibold uppercase tracking-wide">{domain.title}</span>
-                </div>
-                <p className="text-[12px] leading-snug text-ink-700 mb-2">{domain.description}</p>
-                <p className="text-[11px] text-ink-500 leading-snug font-medium">{domain.detail}</p>
-              </AppLink>
-            ))}
-          </div>
-
-          <div className="max-w-2xl rounded-lg border border-ink-100 bg-white px-5 py-4 text-[15px] leading-relaxed text-ink-800 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200">
-            <p className="font-semibold text-ink-900">Inference Foundry</p>
-            <p className="mt-2 text-ink-700">
-              {CONTACT_INFO.inferenceFoundry.startLabel}. {CONTACT_INFO.inferenceFoundry.description}
+                {CONTACT_INFO.geoarmor.label} <ArrowUpRight size={14} className="opacity-70" aria-hidden />
+              </a>
+              .
             </p>
-            <a
-              href={CONTACT_INFO.inferenceFoundry.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:text-ink-700 hover:no-underline focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded transition-all"
-            >
-              inference-foundry.rweb.site <ExternalLink size={14} className="opacity-70" aria-hidden />
-            </a>
           </div>
 
           <div className="flex flex-wrap gap-3">
@@ -103,6 +81,7 @@ export const Hero: React.FC = () => {
               Explore research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </AppLink>
             <CvDownloadLink variant="hero" />
+            <CvDownloadLink variant="hero" doc="resume" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-ink-900 border border-ink-200 rounded-lg hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
@@ -110,6 +89,16 @@ export const Hero: React.FC = () => {
               Get in touch
             </a>
           </div>
+
+          <p className="max-w-2xl text-sm text-ink-700">
+            Previously: digital health and computational materials at the University at Buffalo.{' '}
+            <AppLink
+              href="/research/#previous-research"
+              className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded"
+            >
+              See previous research →
+            </AppLink>
+          </p>
 
           <nav aria-label="Site sections" className="pt-2">
             <p className="text-xs font-semibold uppercase tracking-wide text-ink-500 mb-2">More</p>
@@ -187,7 +176,7 @@ export const Hero: React.FC = () => {
                 Research areas
               </p>
               <p className="text-sm text-white leading-snug font-sans">
-                Spatiotemporal ML · DLWF · AI robustness · Computer vision · Materials ML
+                Ensemble forecasting · Adversarial robustness · Spatiotemporal ML
               </p>
             </figcaption>
           </div>
