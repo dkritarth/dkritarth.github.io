@@ -9,9 +9,9 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 text-left">
           <div>
             <p className="font-serif text-xl font-semibold text-white">{CONTACT_INFO.name}</p>
-            <p className="mt-1 text-stone-400 text-sm max-w-md">{CONTACT_INFO.title}</p>
+            <p className="mt-1 text-stone-400 text-[15px] max-w-md">{CONTACT_INFO.title}</p>
           </div>
-          <div className="space-y-3 text-sm">
+          <div className="space-y-3 text-[15px]">
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               className="flex items-center gap-2 text-stone-200 hover:text-white transition-colors"
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-stone-700/80 text-xs text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div className="mt-12 pt-8 border-t border-stone-700/80 text-[13px] text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p>
             &copy; {new Date().getFullYear()} {CONTACT_INFO.name}
           </p>

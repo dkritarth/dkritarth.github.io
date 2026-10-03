@@ -18,18 +18,18 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <h3 className="text-[15px] font-serif font-semibold leading-snug text-ink-900 min-w-0 flex-1 hover:underline">
             {post.title}
           </h3>
-          <time dateTime={post.date} className="shrink-0 text-xs tabular-nums text-ink-700">
+          <time dateTime={post.date} className="shrink-0 text-[13px] tabular-nums text-ink-700">
             {formatBlogDate(post.date)}
             {post.readingMinutes ? ` · ${post.readingMinutes} min read` : ''}
           </time>
         </header>
 
-        <p className="mt-2 text-sm leading-relaxed text-ink-700">{post.excerpt}</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{post.excerpt}</p>
 
         {post.tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {post.tags.map((tag) => (
-              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-xs text-ink-700">
+              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-[13px] text-ink-700">
                 {tag}
               </span>
             ))}
