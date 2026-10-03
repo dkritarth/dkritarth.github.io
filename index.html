@@ -11,7 +11,8 @@
     <meta name="author" content="Kritarth Dandapat" />
     <meta name="keywords" content="Kritarth Dandapat, adversarial machine learning, ensemble weather forecasting, deep learning weather forecasting, spatiotemporal ML, Michigan State University" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#1c1917" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#181715" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://dkritarth.com/" />
     <link rel="icon" href="/data/dkritarth_logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="/data/dkritarth_logo.png" />
@@ -76,8 +77,59 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Palette as RGB triplets so Tailwind opacity modifiers keep working. Dark values: warm charcoal, off-white text. */
+      :root {
+        color-scheme: light;
+        --ink-50: 250 250 249;
+        --ink-100: 245 245 244;
+        --ink-150: 238 236 233;
+        --ink-200: 231 229 228;
+        --ink-300: 214 211 209;
+        --ink-400: 168 162 158;
+        --ink-500: 120 113 108;
+        --ink-600: 87 83 78;
+        --ink-700: 68 64 60;
+        --ink-800: 41 37 36;
+        --ink-900: 28 25 23;
+        --ink-950: 12 10 9;
+        --surface: 255 255 255;
+        --deep: 28 25 23;
+      }
+      :root.dark {
+        color-scheme: dark;
+        --ink-50: 24 23 21;
+        --ink-100: 32 30 28;
+        --ink-150: 41 38 35;
+        --ink-200: 52 49 46;
+        --ink-300: 74 70 66;
+        --ink-400: 110 104 98;
+        --ink-500: 150 143 135;
+        --ink-600: 176 170 162;
+        --ink-700: 201 196 188;
+        --ink-800: 221 217 210;
+        --ink-900: 239 236 230;
+        --ink-950: 247 245 240;
+        --surface: 34 32 30;
+        --deep: 16 15 14;
+      }
+      /* Slightly dim photos in dark mode so they do not glare against the charcoal background. */
+      :root.dark img { filter: brightness(0.88); }
+    </style>
+    <script>
+      (function () {
+        var theme = 'system';
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch (e) {}
+        var dark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      })();
+    </script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -85,14 +137,14 @@
               serif: ['Newsreader', 'Georgia', 'serif'],
             },
             colors: {
-              ink: {
-                50: '#fafaf9',
-                100: '#f5f5f4',
-                200: '#e7e5e4',
-                700: '#44403c',
-                800: '#292524',
-                900: '#1c1917',
-              },
+              ink: Object.fromEntries(
+                [50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((n) => [
+                  n,
+                  'rgb(var(--ink-' + n + ') / <alpha-value>)',
+                ]),
+              ),
+              surface: 'rgb(var(--surface) / <alpha-value>)',
+              deep: 'rgb(var(--deep) / <alpha-value>)',
             },
           },
         },

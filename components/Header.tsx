@@ -4,6 +4,7 @@ import { NAV_LINKS } from '../constants';
 import { useSiteRoute } from '../useSiteRoute';
 import { CvDownloadLink } from './CvDownloadLink';
 import { AppLink } from './AppLink';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,18 +62,22 @@ export const Header: React.FC = () => {
             </AppLink>
           ))}
           <CvDownloadLink variant="header" />
+          <ThemeToggle className="ml-1" />
         </nav>
 
-        <button
-          type="button"
-          className="lg:hidden text-ink-900 p-2 shrink-0"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-1 shrink-0">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="text-ink-900 p-2 shrink-0"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {isOpen && (

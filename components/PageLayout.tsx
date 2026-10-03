@@ -13,7 +13,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, variant = 'doc
     <div className="min-h-screen bg-ink-50 font-sans text-ink-900 selection:bg-stone-300/40 selection:text-ink-900 flex flex-col">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink-900 focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink-900 focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-ink-50"
       >
         Skip to main content
       </a>

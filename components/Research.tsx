@@ -87,7 +87,7 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
         <div className="relative">
           {/* Placement dot */}
           <span
-            className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-900"
+            className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-surface border-2 border-ink-900"
             aria-hidden
           />
 
@@ -194,7 +194,7 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                     {sp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-sm border border-ink-200 bg-white px-2 py-0.5 text-[11px] font-medium text-ink-700"
+                        className="rounded-sm border border-ink-200 bg-surface px-2 py-0.5 text-[11px] font-medium text-ink-700"
                       >
                         {tech}
                       </span>
@@ -238,7 +238,7 @@ export const Research: React.FC = () => {
       id="research"
       title="Research"
       subtitle="Current PhD research at Michigan State University, followed by earlier work at the University at Buffalo."
-      className="bg-white"
+      className="bg-surface"
     >
       <PlacementTimeline placements={currentPlacements} />
 

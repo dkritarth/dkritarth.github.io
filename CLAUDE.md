@@ -19,7 +19,7 @@ There are no tests and no linter config in this repo.
 
 ### Routing
 
-There is no React Router. `useSiteRoute.ts` implements a custom SPA router using `window.location.pathname` and the browser `popstate` event. Navigation is done with `history.pushState` (not `<Link>` or `<Navigate>`). `parsePathname` maps `/notes` → `news` page (legacy alias) and migrates legacy hash URLs (`#/about`) to path URLs on first load.
+There is no React Router. `useSiteRoute.ts` implements a custom SPA router using `window.location.pathname` and the browser `popstate` event. Navigation is done with `history.pushState` (not `<Link>` or `<Navigate>`). `parsePathname` maps `/notes` → `news` and `/education` → `about` (legacy aliases; `/education/` is rewritten to `/about/#education`), and migrates legacy hash URLs (`#/about`) to path URLs on first load. `App.tsx` scrolls to the `#hash` target after navigation; Research's collapsed "Previous research" section opens itself when the hash points inside it.
 
 ### Content data flow
 
@@ -43,6 +43,10 @@ When adding or updating content (new publication, news item, project, etc.), edi
 - Writes `dist/404.html` — a GitHub Pages SPA fallback that stores `location.href` in `sessionStorage` and redirects to `/`, where the React router re-parses the path
 
 If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo.mjs`, `PAGE_PATHS` and `SEO` in `seoMeta.ts`, the switch in `App.tsx`, and `ALLOWED_PAGES` in `useSiteRoute.ts`.
+
+### Theming
+
+Light/dark mode is class-based (`html.dark`). The `ink-*`, `surface` and `deep` colors in the Tailwind config (`index.html`) are CSS variables, so existing `text-ink-*` / `bg-ink-*` classes flip automatically; use `bg-surface` instead of `bg-white`, and `text-ink-50` (not `text-white`) on `bg-ink-900` buttons. Always-dark elements (footer, image overlays, code blocks) use `bg-deep` or `bg-black/*`. `theme.ts` holds the system/light/dark preference (saved in `localStorage` under `theme`); an inline script in `index.html` applies it before first paint.
 
 ### Static assets
 

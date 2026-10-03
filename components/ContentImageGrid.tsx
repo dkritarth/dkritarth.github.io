@@ -45,7 +45,7 @@ export const ContentImageGrid: React.FC<ContentImageGridProps> = ({ images, clas
                 decoding="async"
               />
               <span
-                className="absolute bottom-2 right-2 flex items-center gap-1 rounded-sm bg-ink-900/75 px-2 py-1 text-[11px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:opacity-90"
+                className="absolute bottom-2 right-2 flex items-center gap-1 rounded-sm bg-black/70 px-2 py-1 text-[11px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:opacity-90"
                 aria-hidden
               >
                 <ZoomIn size={12} />

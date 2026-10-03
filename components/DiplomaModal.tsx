@@ -7,11 +7,11 @@ export const DiplomaModal: React.FC<DiplomaModalProps> = ({ isOpen, onClose }) =
   if (!isOpen) return null;
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl bg-white rounded-sm shadow-xl flex flex-col"
+        className="relative w-full max-w-3xl bg-surface rounded-sm shadow-xl flex flex-col"
         style={{ height: '80vh' }}
         onClick={(e) => e.stopPropagation()}
       >

@@ -28,7 +28,7 @@ export const NewsItemCard: React.FC<NewsItemCardProps> = ({ item }) => {
         className="absolute left-0 top-[1.15rem] -translate-x-[calc(50%+1px)] w-2.5 h-2.5 rounded-full bg-ink-900 ring-2 ring-ink-50"
         aria-hidden
       />
-      <article className={rich ? 'rounded-sm border border-ink-200 bg-white p-4 shadow-sm' : undefined}>
+      <article className={rich ? 'rounded-sm border border-ink-200 bg-surface p-4 shadow-sm' : undefined}>
         <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <h4 className="text-[15px] font-semibold leading-snug text-ink-900 min-w-0 flex-1">
             {item.headline}

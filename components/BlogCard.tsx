@@ -11,7 +11,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
     <AppLink
       href={`/blog/${post.slug}/`}
-      className="block rounded-sm border border-ink-200 bg-white p-4 shadow-sm transition hover:shadow hover:border-ink-700"
+      className="block rounded-sm border border-ink-200 bg-surface p-4 shadow-sm transition hover:shadow hover:border-ink-700"
     >
       <article>
         <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">

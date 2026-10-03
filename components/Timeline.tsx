@@ -27,7 +27,7 @@ export const Timeline: React.FC = () => {
               const isUB = edu.institution.includes('University at Buffalo');
               return (
                 <div key={idx} className="relative">
-                  <span className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-900" aria-hidden />
+                  <span className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-surface border-2 border-ink-900" aria-hidden />
                   <h4 className="text-[17px] font-serif font-semibold text-ink-900">{edu.degree}</h4>
                   <p className="text-ink-700 italic text-sm mb-1">{edu.institution}</p>
                   <p className="text-sm text-ink-600 mb-3">
@@ -35,7 +35,7 @@ export const Timeline: React.FC = () => {
                   </p>
                   <ul className="space-y-1.5">
                     {edu.details.map((detail, i) => (
-                      <li key={i} className="text-sm text-ink-800 bg-white p-2.5 rounded-sm border border-ink-100">
+                      <li key={i} className="text-sm text-ink-800 bg-surface p-2.5 rounded-sm border border-ink-100">
                         {detail}
                       </li>
                     ))}
@@ -67,7 +67,7 @@ export const Timeline: React.FC = () => {
               return (
                 <div key={idx} className="relative">
                   <span
-                    className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-ink-500"
+                    className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-surface border-2 border-ink-500"
                     aria-hidden
                   />
                   <h4 className="text-[17px] font-serif font-semibold text-ink-900">{job.role}</h4>
@@ -100,7 +100,7 @@ export const Timeline: React.FC = () => {
             return (
               <li
                 key={`${placement.role}-${placement.organization}`}
-                className="bg-white p-5 rounded-sm border border-ink-100 flex flex-col gap-1.5"
+                className="bg-surface p-5 rounded-sm border border-ink-100 flex flex-col gap-1.5"
               >
                 <h4 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h4>
                 <p className="text-sm italic text-ink-700">{placement.organization}</p>
