@@ -34,11 +34,15 @@ export const NEWS_ITEMS: NewsItem[] = [
   {
     id: 'humansys-2026-submissions',
     year: 2026,
-    month: 7,
-    headline: 'Submitted two papers to MobiCom 2026',
+    month: 10,
+    headline: 'Two papers and a demo accepted at MobiCom 2026 (HumanSys)',
     summary:
-      '"Separating Safety from Preference in Clinical LLM Evaluation" and "From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation" (co-first author with Emily Liu).',
-    links: [{ label: 'Publications', href: '/publications/', kind: 'website' }],
+      '"Separating Safety from Preference in Clinical LLM Evaluation" and "From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation" (co-first author with Emily Liu) are now published, with DOIs. The mRehab demo was also accepted to the MobiCom 2026 demo track; its DOI is not active yet.',
+    links: [
+      { label: 'Separating Safety from Preference (DOI)', href: 'https://doi.org/10.1145/3842436.3843811', kind: 'paper' },
+      { label: 'From Community Feedback to Measurement Redesign (DOI)', href: 'https://doi.org/10.1145/3842436.3843796', kind: 'paper' },
+      { label: 'Publications', href: '/publications/', kind: 'website' },
+    ],
   },
   {
     id: 'mrehab-ai-jmir-2026',

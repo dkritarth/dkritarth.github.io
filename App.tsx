@@ -6,7 +6,6 @@ import { AboutPage } from './pages/AboutPage';
 import { ResearchPage } from './pages/ResearchPage';
 import { PublicationsPage } from './pages/PublicationsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { EducationPage } from './pages/EducationPage';
 import { NewsPage } from './pages/NewsPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogPostPage } from './pages/BlogPostPage';
@@ -18,7 +17,16 @@ const App: React.FC = () => {
 
   useEffect(() => {
     applyPageSeo(page, page === 'blog' ? blogSlug : null);
-    window.scrollTo(0, 0);
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    if (!targetId) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Wait for the new page (and any collapsed section it opens for this hash) to render.
+    const frame = requestAnimationFrame(() =>
+      requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView()),
+    );
+    return () => cancelAnimationFrame(frame);
   }, [page, blogSlug]);
 
   const content = (() => {
@@ -31,8 +39,6 @@ const App: React.FC = () => {
       return <PublicationsPage />;
     case 'projects':
       return <ProjectsPage />;
-    case 'education':
-      return <EducationPage />;
     case 'news':
       return <NewsPage />;
     case 'blog':

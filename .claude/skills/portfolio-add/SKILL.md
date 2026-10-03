@@ -1,6 +1,6 @@
 ---
 name: portfolio-add
-description: Add or update content on the Kritarth Dandapat portfolio site (news, publications, projects, research, currently, education) by editing the correct typed source-of-truth file. Use when adding a new publication, news milestone, project, research subproject, or updating bio/education content.
+description: Add or update content on the Kritarth Dandapat portfolio site (news, publications, projects, research, home-page research threads, education) by editing the correct typed source-of-truth file. Use when adding a new publication, news milestone, project, research subproject, or updating bio/education content.
 ---
 
 # Portfolio Add
@@ -16,7 +16,7 @@ All site content lives in a small set of typed source-of-truth files. **Edit tho
 | Project | `constants.tsx` (line ~394) | `PROJECTS: Project[]` | `Project` | `public/data/projects/<slug>/` |
 | Research placement (lab) | `constants.tsx` (line ~132) | `RESEARCH_PLACEMENTS: ResearchPlacement[]` | `ResearchPlacement` (contains `subprojects: ResearchSubproject[]`) | n/a at placement level |
 | Research subproject | nested inside a `RESEARCH_PLACEMENTS[i].subprojects` | — | `ResearchSubproject` | `public/data/research/<id>/` |
-| Currently (home page) | `constants.tsx` (line ~88) | `CURRENTLY: CurrentlyItem[]` | `CurrentlyItem` | none |
+| Research threads (home page) | `constants.tsx` | `RESEARCH_THREADS: ResearchThread[]` | `ResearchThread` | none |
 | Education | `constants.tsx` (line ~108) | `EDUCATION: Education[]` | `Education` | none |
 
 Line numbers are approximate as of last edit — search for `export const <NAME>` to find the current location; do not hardcode positions when editing.
@@ -37,15 +37,14 @@ Line numbers are approximate as of last edit — search for `export const <NAME>
 
 **`ResearchPlacement`** (`constants.tsx` → `RESEARCH_PLACEMENTS`)
 - Required: `role`, `organization`, `location`, `subprojects: ResearchSubproject[]`
-- Optional: `overview`, `placementLinks: ResearchLink[]` (lab-wide links shown under the placement header)
+- Optional: `overview`, `previous: true` (earlier work; shown under the collapsed "Previous research" section on the Research page), `placementLinks: ResearchLink[]` (lab-wide links shown under the placement header)
 
 **`ResearchSubproject`** (nested in a placement's `subprojects[]`)
 - Required: `id` (must match `public/data/research/<id>/` if you add images), `name`, `period`, `narrative: string[]`, `technicalHighlights: string[]`, `technologies: string[]`
 - Optional: `context`, `links: ResearchLink[]`, `credlyBadge: CredlyBadge`, `collaboratorsNote`, `images: ContentImage[]`
 
-**`CurrentlyItem`** (`constants.tsx` → `CURRENTLY`)
-- Required: `title`, `description`
-- Optional: `link: ResearchLink` (`{ label, href }`)
+**`ResearchThread`** (`constants.tsx` → `RESEARCH_THREADS`)
+- Required: `title`, `status` (e.g. `'In progress'`, `'Planned'`). Titles and status only; no results or method details on the home page.
 
 **`Education`** (`constants.tsx` → `EDUCATION`)
 - Required: `degree`, `institution`, `location`, `period`, `details: string[]`
@@ -58,7 +57,7 @@ Line numbers are approximate as of last edit — search for `export const <NAME>
 - Required: `label`, `href`
 - Optional: `kind: NewsLinkKind` — one of `'website' | 'linkedin' | 'article' | 'paper' | 'github' | 'video'` (controls the pill icon; defaults to `website`-like styling if omitted)
 
-**`ResearchLink`** (Research/Projects/Currently) — just `{ label, href }`, no `kind`.
+**`ResearchLink`** (Research/Projects) — just `{ label, href }`, no `kind`.
 
 **`CredlyBadge`** — `{ badgeId, publicUrl, issued?, projectOutcomeUrl?, projectOutcomeLabel? }`, used for UB ELN "Mentored Research" micro-credentials on News items or Research subprojects.
 
@@ -84,6 +83,6 @@ Line numbers are approximate as of last edit — search for `export const <NAME>
 
 ## Verify
 
-- `npm run dev` — start the dev server at `http://localhost:3000` and eyeball the relevant page (News, Publications, Projects, Research, or Home for Currently/Education).
+- `npm run dev` — start the dev server at `http://localhost:3000` and eyeball the relevant page (News, Publications, Projects, Research, About for education/experience, or Home for research threads).
 - `npm run build` — runs `vite build` + the postbuild SEO script; confirms there are no TypeScript errors (missing required fields, wrong types) and no broken build. This repo has no test suite and no linter configured, so `npm run build` is the primary correctness gate.
 - If you added a new `SitePage` route (not covered by this skill's content types), also update `ROUTES` in `scripts/postbuild-seo.mjs`, `PAGE_PATHS`/`SEO` in `seoMeta.ts`, the switch in `App.tsx`, and `ALLOWED_PAGES` in `useSiteRoute.ts` — see the project `CLAUDE.md` for details.

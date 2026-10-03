@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react';
 import type { SitePage } from './types';
 
-const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'education', 'news', 'blog'];
+const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'news', 'blog'];
 
-/** Migrate legacy hash URLs (`#/about`) to path URLs (`/about`). */
+/** Migrate legacy hash URLs (`#/about`) and the retired `/education/` page to current path URLs. */
 export function migrateHashRoute(): void {
   if (typeof window === 'undefined') return;
   const hash = window.location.hash;
-  if (!hash.startsWith('#/')) return;
-  const path = hash.slice(1);
-  window.history.replaceState(null, '', path || '/');
+  if (hash.startsWith('#/')) {
+    const path = hash.slice(1);
+    window.history.replaceState(null, '', path || '/');
+  }
+  if (parsePathSegment(window.location.pathname) === 'education') {
+    window.history.replaceState(null, '', '/about/#education');
+  }
+}
+
+function parsePathSegment(pathname: string): string {
+  return pathname.replace(/\/+$/, '').split('/').filter(Boolean)[0] ?? '';
 }
 
 export function parsePathname(pathname: string): SitePage {
-  const normalized = pathname.replace(/\/+$/, '') || '/';
-  if (normalized === '/') return 'home';
-  const segment = normalized.split('/').filter(Boolean)[0] ?? '';
+  const segment = parsePathSegment(pathname);
+  if (!segment) return 'home';
   if (segment === 'notes') return 'news';
+  if (segment === 'education') return 'about';
   if (ALLOWED_PAGES.includes(segment as SitePage)) {
     return segment as SitePage;
   }

@@ -13,7 +13,6 @@ export const PAGE_PATHS: Record<SitePage, string> = {
   research: '/research/',
   publications: '/publications/',
   projects: '/projects/',
-  education: '/education/',
   news: '/news/',
   blog: '/blog/',
 };
@@ -25,7 +24,6 @@ export const PAGE_HEADINGS: Record<SitePage, string> = {
   research: 'Research',
   publications: 'Publications',
   projects: 'Selected projects',
-  education: 'Education and experience',
   news: 'News and milestones',
   blog: 'Blog',
 };
@@ -58,11 +56,6 @@ const SEO: Record<SitePage, { title: string; description: string }> = {
     title: `Projects · ${SITE_NAME}`,
     description:
       'Selected research software and machine learning projects by Kritarth Dandapat, including Inference Foundry, multi-agent reinforcement learning, satellite ship detection, crowd counting, and context tooling.',
-  },
-  education: {
-    title: `Education & Experience · ${SITE_NAME}`,
-    description:
-      'Accelerated BS in Computer Science at UB; PhD student at Michigan State University; CSE 341 teaching assistant, tutoring, and student leadership.',
   },
   news: {
     title: `News · ${SITE_NAME}`,
