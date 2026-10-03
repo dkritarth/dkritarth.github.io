@@ -23,7 +23,7 @@ export const About: React.FC = () => {
     <Section
       id="about"
       title="About"
-      subtitle="Background, research interests, honors, and technical background."
+      subtitle="Background, research interests, education and experience, honors, and technical skills."
     >
       <div className="grid md:grid-cols-3 gap-12">
         <div className="md:col-span-2 space-y-6 text-ink-800 leading-relaxed">

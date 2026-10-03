@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Section } from './Section';
-import { EDUCATION, PROFESSIONAL_EXPERIENCE, computeDuration } from '../constants';
-import { GraduationCap, Briefcase, Scroll } from 'lucide-react';
+import { EDUCATION, PROFESSIONAL_EXPERIENCE, RESEARCH_PLACEMENTS, computeDuration, getPlacementRange } from '../constants';
+import { GraduationCap, Briefcase, Microscope, Scroll } from 'lucide-react';
+import { AppLink } from './AppLink';
 import { DiplomaModal } from './DiplomaModal';
 
 export const Timeline: React.FC = () => {
@@ -11,7 +12,7 @@ export const Timeline: React.FC = () => {
     <Section
       id="education"
       title="Education & experience"
-      subtitle="Degrees, teaching and tutoring, and related roles."
+      subtitle="Degrees, research positions, teaching and tutoring, and related roles."
       className="bg-ink-50"
     >
       <div className="grid lg:grid-cols-2 gap-14">
@@ -86,6 +87,37 @@ export const Timeline: React.FC = () => {
             })}
           </div>
         </div>
+      </div>
+
+      <div className="mt-14">
+        <h3 className="text-base font-semibold text-ink-900 mb-6 flex items-center gap-2 border-b border-ink-200 pb-3 font-sans">
+          <Microscope className="text-ink-700 shrink-0" size={20} aria-hidden />
+          Research positions
+        </h3>
+        <ul className="grid gap-4 md:grid-cols-3">
+          {RESEARCH_PLACEMENTS.map((placement) => {
+            const range = getPlacementRange(placement);
+            return (
+              <li
+                key={`${placement.role}-${placement.organization}`}
+                className="bg-white p-5 rounded-sm border border-ink-100 flex flex-col gap-1.5"
+              >
+                <h4 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h4>
+                <p className="text-sm italic text-ink-700">{placement.organization}</p>
+                {range ? <p className="text-xs text-ink-500">{range}</p> : null}
+                {placement.overview ? (
+                  <p className="text-sm text-ink-800 leading-relaxed">{placement.overview}</p>
+                ) : null}
+                <AppLink
+                  href={placement.previous ? '/research/#previous-research' : '/research/'}
+                  className="mt-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline self-start"
+                >
+                  {placement.previous ? 'See previous research →' : 'See current research →'}
+                </AppLink>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
       <DiplomaModal isOpen={diplomaOpen} onClose={() => setDiplomaOpen(false)} />

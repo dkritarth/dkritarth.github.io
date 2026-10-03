@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { BookOpen, Code, GraduationCap, Home, Microscope, Newspaper, PenLine, Users } from 'lucide-react';
+import { BookOpen, Code, Home, Microscope, Newspaper, PenLine, Users } from 'lucide-react';
 
 export const MONTH_NAMES = [
   'January','February','March','April','May','June',
@@ -37,6 +37,27 @@ export function computeDuration(period: string): string | null {
   const end = parseMonthYear(parts[1]);
   if (!start || !end) return null;
   return formatMonthSpan((end.year - start.year) * 12 + (end.month - start.month));
+}
+
+/** Overall date range plus duration across all subprojects in a placement. */
+export function getPlacementRange(placement: ResearchPlacement): string | null {
+  let minStart: MonthYear | null = null;
+  let maxEnd: MonthYear | null = null;
+  const index = (d: MonthYear) => d.year * 12 + d.month;
+
+  for (const sp of placement.subprojects) {
+    const parts = sp.period.split('–').map((x) => x.trim());
+    if (parts.length !== 2) continue;
+    const start = parseMonthYear(parts[0]);
+    const end = parseMonthYear(parts[1]);
+    if (start && (!minStart || index(start) < index(minStart))) minStart = start;
+    if (end && (!maxEnd || index(end) > index(maxEnd))) maxEnd = end;
+  }
+  if (!minStart || !maxEnd) return null;
+
+  const label = (d: MonthYear) => `${MONTH_NAMES[d.month - 1]} ${d.year}`;
+  const span = formatMonthSpan(index(maxEnd) - index(minStart));
+  return span ? `${label(minStart)} – ${label(maxEnd)} · ${span}` : `${label(minStart)} – ${label(maxEnd)}`;
 }
 
 import type {
@@ -622,7 +643,6 @@ export const NAV_LINKS: NavLinkItem[] = [
   { label: 'Research', href: '/research/', page: 'research', icon: <Microscope size={18} /> },
   { label: 'Publications', href: '/publications/', page: 'publications', icon: <BookOpen size={18} /> },
   { label: 'Projects', href: '/projects/', page: 'projects', icon: <Code size={18} /> },
-  { label: 'Education', href: '/education/', page: 'education', icon: <GraduationCap size={18} /> },
   { label: 'News', href: '/news/', page: 'news', icon: <Newspaper size={18} /> },
   { label: 'Blog', href: '/blog/', page: 'blog', icon: <PenLine size={18} /> },
 ];
