@@ -18,7 +18,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
         <p className="text-ink-700">
           We couldn't find that post. It may have been moved or unpublished.
         </p>
-        <AppLink href="/blog/" className="mt-4 inline-block text-sm text-ink-700 hover:text-ink-900">
+        <AppLink href="/blog/" className="mt-4 inline-block text-[15px] text-ink-700 hover:text-ink-900">
           ← Blog
         </AppLink>
       </Section>
@@ -27,7 +27,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
 
   return (
     <article className="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
-      <AppLink href="/blog/" className="text-sm text-ink-700 hover:text-ink-900">
+      <AppLink href="/blog/" className="text-[15px] text-ink-700 hover:text-ink-900">
         ← Blog
       </AppLink>
 
@@ -35,7 +35,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
         <h1 className="font-serif text-3xl md:text-4xl font-semibold text-ink-900 tracking-tight">
           {post.title}
         </h1>
-        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-700">
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px] text-ink-700">
           <time dateTime={post.date} className="tabular-nums">
             {formatBlogDate(post.date)}
           </time>
@@ -44,7 +44,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
         {post.tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {post.tags.map((tag) => (
-              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-xs text-ink-700">
+              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-[13px] text-ink-700">
                 {tag}
               </span>
             ))}
@@ -57,7 +57,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
       <BlogProse html={post.content} />
 
       <hr className="border-ink-200 my-10" />
-      <AppLink href="/blog/" className="text-sm text-ink-700 hover:text-ink-900">
+      <AppLink href="/blog/" className="text-[15px] text-ink-700 hover:text-ink-900">
         ← Blog
       </AppLink>
     </article>

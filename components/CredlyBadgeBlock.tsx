@@ -29,11 +29,11 @@ export const CredlyBadgeBlock: React.FC<CredlyBadgeBlockProps> = ({ badge, title
     <div
       className={`rounded-sm border border-ink-200 bg-ink-50/80 ${compact ? 'p-3' : 'p-4 md:p-5'}`}
     >
-      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-700">
+      <p className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-ink-700">
         {title ?? 'UB ELN · Mentored Research (Credly)'}
       </p>
       {badge.issued ? (
-        <p className="mb-3 text-sm text-ink-600">Issued {badge.issued}</p>
+        <p className="mb-3 text-[15px] text-ink-600">Issued {badge.issued}</p>
       ) : null}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div
@@ -43,7 +43,7 @@ export const CredlyBadgeBlock: React.FC<CredlyBadgeBlockProps> = ({ badge, title
           data-share-badge-id={badge.badgeId}
           data-share-badge-host="https://www.credly.com"
         />
-        <ul className="flex flex-col gap-2 text-sm">
+        <ul className="flex flex-col gap-2 text-[15px]">
           <li>
             <a
               href={badge.publicUrl}

@@ -112,6 +112,9 @@ export const CONTACT_INFO = {
     description:
       'Collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
   },
+  /** Shown on About */
+  collaboration:
+    'I am interested in collaborating on online hackathons around relevant ML and AI topics, including agentic systems. If you are putting a team together, get in touch.',
   /** NSF project funding the MSU work */
   geoarmor: {
     label: 'NSF GeoArmor project',
@@ -435,6 +438,31 @@ export const PROJECTS: Project[] = [
     technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
     stats: 'Since ~May 2026',
     links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
+  },
+  {
+    slug: 'scopewatch',
+    title: 'Scopewatch: Pre-Execution Security Gateway for AI Agents',
+    category: 'AI Agent Security and Evaluation',
+    description: [
+      'Built a pre-execution security gateway and reviewer interface that audits and mediates autonomous AI agent actions against declared task scopes before anything runs.',
+      'Deterministic policy comes first: path, tool, and operation allowlists are evaluated before any model call, and DENY decisions are final. An independent reasoning auditor checks the agent’s trace for scope drift, prompt injection, and policy evasion, and can only escalate an ALLOW to a HOLD, never grant access.',
+      'Approved actions execute only inside a bounded workspace sandbox. Reviewers inspect full audit trails with grounded trace excerpts and single-use approval controls. Includes a held-out evaluation harness for the reasoning auditor, run on synthetic fixtures only.',
+    ],
+    technologies: ['Python', 'FastAPI', 'Docker', 'Playwright', 'Agent security'],
+    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/scopewatch' }],
+  },
+  {
+    slug: 'vellum',
+    title: 'Vellum: Local-First AI Paper Workspace',
+    category: 'Research Tools and Agent Integration',
+    description: [
+      'Building a local-first workspace for reading, annotating, and analyzing research papers: ingest a paper from an arXiv ID, DOI, PDF URL, or local file, select a difficult passage, and continue with paper-grounded analysis in chat.',
+      'Runs on your own Claude or Codex plan through the Agent Client Protocol (ACP), so it needs no extra subscription or raw API key, and the AI backend can be swapped at runtime.',
+      'Early-stage and in active development: Claude ACP has live smoke evidence; Codex ACP is not yet verified.',
+    ],
+    technologies: ['Electron', 'React', 'TypeScript', 'Agent Client Protocol (ACP)', 'SQLite', 'PDF.js'],
+    stats: 'Early-stage',
+    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/Vellum' }],
   },
   {
     slug: 'context-kernel',

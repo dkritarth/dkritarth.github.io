@@ -35,14 +35,14 @@ export const NewsItemCard: React.FC<NewsItemCardProps> = ({ item }) => {
           </h4>
           <time
             dateTime={`${item.year}-${String(item.month).padStart(2, '0')}`}
-            className="shrink-0 text-xs font-medium tabular-nums text-ink-500"
+            className="shrink-0 text-[13px] font-medium tabular-nums text-ink-500"
           >
             {formatNewsMonth(item.month)} {item.year}
           </time>
         </header>
 
         {item.summary ? (
-          <p className="mt-2 text-sm leading-relaxed text-ink-700">{item.summary}</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{item.summary}</p>
         ) : null}
 
         <ContentImageGrid images={item.images ?? []} className="mt-4" />

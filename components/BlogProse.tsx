@@ -14,7 +14,7 @@ const PROSE_CLASSNAME = [
   '[&_li]:text-ink-800',
   '[&_a]:underline [&_a]:text-ink-900 [&_a]:hover:text-ink-700',
   '[&_blockquote]:border-l-2 [&_blockquote]:border-ink-200 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-ink-700 [&_blockquote]:my-6',
-  '[&_code]:font-mono [&_code]:text-sm [&_code]:bg-ink-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded-sm',
+  '[&_code]:font-mono [&_code]:text-[15px] [&_code]:bg-ink-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded-sm',
   '[&_pre]:bg-deep [&_pre]:text-stone-100 [&_pre]:p-4 [&_pre]:rounded-sm [&_pre]:overflow-x-auto [&_pre]:my-6',
   '[&_pre_code]:bg-transparent [&_pre_code]:text-stone-100 [&_pre_code]:p-0',
   '[&_img]:rounded-sm [&_img]:my-6',

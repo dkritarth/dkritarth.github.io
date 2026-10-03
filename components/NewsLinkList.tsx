@@ -33,7 +33,7 @@ export const NewsLinkList: React.FC<NewsLinkListProps> = ({ links, className = '
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-sm border border-ink-200 bg-surface px-2.5 py-1 text-xs font-semibold text-ink-900 hover:border-ink-900 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-sm border border-ink-200 bg-surface px-2.5 py-1 text-[13px] font-semibold text-ink-900 hover:border-ink-900 transition-colors"
             >
               {meta.icon}
               <span>{link.label || meta.defaultLabel}</span>
