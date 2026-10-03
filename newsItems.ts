@@ -122,6 +122,15 @@ export const NEWS_ITEMS: NewsItem[] = [
     year: 2026,
     month: 8,
     headline: 'Joining MSU CSE as a PhD student in the Data Mining Laboratory (Dr. Pang-Ning Tan)',
+    images: [
+      {
+        // Remote for now: the build environment cannot download this host. Swap for a file under
+        // public/data/news/ (via newsMedia) to avoid depending on the third-party CDN.
+        src: 'https://snworksceo.imgix.net/tsn/dfba2eff-d5ff-4b13-a315-dbdefd4651f3.sized-1000x1000.jpeg?w=800&dpr=2&ar=16%3A9&fit=crop&crop=faces',
+        alt: 'Entrance to the Michigan State University College of Engineering: red brick wall with the building name in metal letters, glass doors, and concrete steps',
+        caption: 'Michigan State University College of Engineering',
+      },
+    ],
     links: [
       { label: 'MSU CSE', href: 'https://www.cse.msu.edu/', kind: 'website' },
       { label: 'Data Mining Lab (Dr. Tan)', href: 'https://www.cse.msu.edu/~ptan/', kind: 'website' },
