@@ -26,10 +26,10 @@ export const Hero: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 md:px-10 w-full relative z-10 grid md:grid-cols-[1fr_minmax(260px,340px)] gap-12 lg:gap-16 items-center">
         <div className="space-y-8">
           <header className="space-y-3">
-            <p className="text-[15px] font-semibold tracking-wide text-ink-700 uppercase">
+            <p className="text-[16px] font-medium tracking-wider text-ink-700 uppercase font-mono">
               PhD research · Michigan State University
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-semibold text-ink-900 leading-[1.15] tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] font-serif font-semibold text-ink-900 leading-[1.08] tracking-tight">
               {CONTACT_INFO.name}
             </h1>
             <p className="text-lg md:text-xl text-ink-700 font-sans font-normal max-w-xl">
@@ -37,13 +37,13 @@ export const Hero: React.FC = () => {
             </p>
           </header>
 
-          <p className="text-base md:text-[1.05rem] text-ink-800 leading-relaxed max-w-2xl border-l-[3px] border-ink-900 pl-5">
+          <p className="text-lg md:text-xl text-ink-800 leading-relaxed max-w-2xl border-l-[3px] border-ink-900 pl-5">
             {CONTACT_INFO.landingLead}
           </p>
 
           {/* Current PhD threads: titles and status only */}
           <div className="max-w-2xl space-y-3">
-            <p className="text-[13px] font-semibold uppercase tracking-wide text-ink-500">Current research</p>
+            <p className="text-[14px] font-medium uppercase font-mono tracking-wider text-ink-500">Current research</p>
             <ul className="grid sm:grid-cols-3 gap-3">
               {RESEARCH_THREADS.map((thread) => (
                 <li key={thread.title}>
@@ -51,15 +51,15 @@ export const Hero: React.FC = () => {
                     href="/research/"
                     className="group block h-full rounded-lg border border-ink-100 bg-surface px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
                   >
-                    <p className="text-[12px] font-semibold uppercase tracking-wide text-ink-500 mb-1.5">
+                    <p className="text-[13px] font-medium uppercase font-mono tracking-wider text-ink-500 mb-1.5">
                       {thread.status}
                     </p>
-                    <p className="text-[15px] font-medium leading-snug text-ink-900">{thread.title}</p>
+                    <p className="text-[16px] font-medium leading-snug text-ink-900">{thread.title}</p>
                   </AppLink>
                 </li>
               ))}
             </ul>
-            <p className="text-[15px] text-ink-700">
+            <p className="text-[16px] text-ink-700">
               Supported by the{' '}
               <a
                 href={CONTACT_INFO.geoarmor.url}
@@ -76,7 +76,7 @@ export const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-3">
             <AppLink
               href="/research/"
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-ink-50 text-[15px] font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-3 bg-ink-900 text-ink-50 text-[15px] font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Explore research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </AppLink>
@@ -84,13 +84,13 @@ export const Hero: React.FC = () => {
             <CvDownloadLink variant="hero" doc="resume" />
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="inline-flex items-center justify-center px-6 py-3 text-[15px] font-semibold text-ink-900 border border-ink-200 rounded-lg hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+              className="inline-flex items-center justify-center px-5 py-3 text-[15px] font-semibold text-ink-900 border border-ink-200 rounded-lg hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Get in touch
             </a>
           </div>
 
-          <p className="max-w-2xl text-[15px] text-ink-700">
+          <p className="max-w-2xl text-[16px] text-ink-700">
             Previously (undergraduate): digital health and computational materials at the University at Buffalo.{' '}
             <AppLink
               href="/research/#previous-research"
@@ -101,8 +101,8 @@ export const Hero: React.FC = () => {
           </p>
 
           <nav aria-label="Site sections" className="pt-2">
-            <p className="text-[13px] font-semibold uppercase tracking-wide text-ink-500 mb-2">More</p>
-            <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[15px]">
+            <p className="text-[14px] font-medium uppercase font-mono tracking-wider text-ink-500 mb-2">More</p>
+            <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[16px]">
               {NAV_LINKS.map((link, i) => (
                 <li key={link.href} className="inline-flex items-center">
                   {i > 0 && <span className="text-ink-300 pr-2 select-none" aria-hidden>·</span>}
@@ -172,10 +172,10 @@ export const Hero: React.FC = () => {
               className="w-full h-full object-cover grayscale-[15%]"
             />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-5 pt-16 pb-5 text-left">
-              <p className="text-[12px] font-semibold uppercase tracking-widest text-white/80 mb-1">
+              <p className="text-[13px] font-medium uppercase font-mono tracking-widest text-white/80 mb-1">
                 Research areas
               </p>
-              <p className="text-[15px] text-white leading-snug font-sans">
+              <p className="text-[16px] text-white leading-snug font-sans">
                 Ensemble forecasting · Adversarial robustness · Spatiotemporal ML
               </p>
             </figcaption>

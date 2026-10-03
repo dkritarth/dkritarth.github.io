@@ -84,7 +84,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               className="max-h-[min(85vh,900px)] w-auto max-w-full object-contain rounded-sm shadow-2xl"
             />
             {current.caption ? (
-              <figcaption className="mt-3 max-w-2xl text-center text-[15px] text-stone-200 leading-relaxed px-2">
+              <figcaption className="mt-3 max-w-2xl text-center text-[16px] text-stone-200 leading-relaxed px-2">
                 {current.caption}
               </figcaption>
             ) : (
@@ -107,7 +107,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
         </div>
 
         {hasMultiple ? (
-          <p className="pointer-events-auto text-[13px] text-stone-300 tabular-nums">
+          <p className="pointer-events-auto text-[14px] text-stone-300 tabular-nums">
             {openIndex + 1} / {images.length}
           </p>
         ) : null}

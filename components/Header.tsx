@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
   }, []);
 
   const linkClass = (active: boolean) =>
-    `px-2.5 py-1.5 text-[15px] font-medium rounded-sm transition-colors ${
+    `px-2.5 py-1.5 text-[16px] font-medium rounded-sm transition-colors ${
       active ? 'text-ink-900 bg-ink-200/80' : 'text-ink-700 hover:text-ink-900 hover:bg-ink-100/80'
     }`;
 

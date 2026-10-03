@@ -16,14 +16,14 @@ export const DiplomaModal: React.FC<DiplomaModalProps> = ({ isOpen, onClose }) =
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-3 border-b border-ink-200 shrink-0">
-          <p className="font-semibold text-ink-900 text-[15px]">
+          <p className="font-semibold text-ink-900 text-[16px]">
             BS Diploma — University at Buffalo, June 2026
           </p>
           <div className="flex items-center gap-4">
             <a
               href="/Diploma.pdf"
               download
-              className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
             >
               <Download size={15} aria-hidden />
               Download PDF

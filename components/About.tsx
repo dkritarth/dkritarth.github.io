@@ -34,7 +34,7 @@ export const About: React.FC = () => {
             <p key={i}>{paragraph}</p>
           ))}
 
-          <p className="text-[13px] text-ink-500">
+          <p className="text-[14px] text-ink-500">
             <a
               href={DOCUMENT_URLS.resume}
               target="_blank"
@@ -62,7 +62,7 @@ export const About: React.FC = () => {
             ).
           </p>
 
-          <p className="rounded-sm border border-ink-200 bg-ink-100/50 px-4 py-3 text-[15px] text-ink-800">
+          <p className="rounded-sm border border-ink-200 bg-ink-100/50 px-4 py-3 text-[16px] text-ink-800">
             <span className="font-semibold text-ink-900">Open to collaboration. </span>
             {CONTACT_INFO.collaboration}{' '}
             <a
@@ -79,7 +79,7 @@ export const About: React.FC = () => {
               {RESEARCH_INTERESTS.map((interest) => (
                 <li
                   key={interest}
-                  className="px-3 py-1.5 bg-surface border border-ink-200 text-[15px] text-ink-800 rounded-sm"
+                  className="px-3 py-1.5 bg-surface border border-ink-200 text-[16px] text-ink-800 rounded-sm"
                 >
                   {interest}
                 </li>
@@ -96,7 +96,7 @@ export const About: React.FC = () => {
               {AWARDS.map((award, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 bg-surface border border-ink-100 rounded-sm">
                   <span className="w-1.5 h-1.5 bg-ink-800 rounded-full shrink-0 mt-2" aria-hidden />
-                  <span className="text-[15px] text-ink-800">{award}</span>
+                  <span className="text-[16px] text-ink-800">{award}</span>
                 </div>
               ))}
             </div>
@@ -108,7 +108,7 @@ export const About: React.FC = () => {
                 <BadgeCheck className="text-ink-700" size={18} aria-hidden />
                 Mentored Research credentials
               </h3>
-              <p className="mb-4 text-[15px] text-ink-600 leading-relaxed">
+              <p className="mb-4 text-[16px] text-ink-600 leading-relaxed">
                 Verified UB Experiential Learning Network badges with Prof. Jiayu Peng — one per Peng lab
                 project stream. Full write-ups on the{' '}
                 <AppLink href="/research/" className="font-medium text-ink-900 underline underline-offset-2">
@@ -138,7 +138,7 @@ export const About: React.FC = () => {
               {CERTIFICATIONS.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-ink-50 border border-ink-100 rounded-sm text-[13px] text-ink-800 leading-snug"
+                  className="p-3 bg-ink-50 border border-ink-100 rounded-sm text-[14px] text-ink-800 leading-snug"
                 >
                   {cert}
                 </div>
@@ -155,12 +155,12 @@ export const About: React.FC = () => {
             <div className="space-y-5">
               {SKILLS.map((cat) => (
                 <div key={cat.category}>
-                  <h4 className="text-[12px] font-semibold text-ink-500 uppercase tracking-wide mb-2">{cat.category}</h4>
+                  <h4 className="text-[13px] font-medium text-ink-500 uppercase font-mono tracking-wider mb-2">{cat.category}</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {cat.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-2 py-0.5 bg-ink-50 text-ink-800 text-[13px] rounded-sm border border-ink-100"
+                        className="px-2 py-0.5 bg-ink-50 text-ink-800 text-[13px] font-mono rounded-sm border border-ink-100"
                       >
                         {skill}
                       </span>

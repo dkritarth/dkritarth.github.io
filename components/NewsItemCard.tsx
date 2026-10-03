@@ -30,19 +30,19 @@ export const NewsItemCard: React.FC<NewsItemCardProps> = ({ item }) => {
       />
       <article className={rich ? 'rounded-sm border border-ink-200 bg-surface p-4 shadow-sm' : undefined}>
         <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <h4 className="text-[15px] font-semibold leading-snug text-ink-900 min-w-0 flex-1">
+          <h4 className="text-[16px] font-semibold leading-snug text-ink-900 min-w-0 flex-1">
             {item.headline}
           </h4>
           <time
             dateTime={`${item.year}-${String(item.month).padStart(2, '0')}`}
-            className="shrink-0 text-[13px] font-medium tabular-nums text-ink-500"
+            className="shrink-0 text-[14px] font-mono font-medium tabular-nums text-ink-500"
           >
             {formatNewsMonth(item.month)} {item.year}
           </time>
         </header>
 
         {item.summary ? (
-          <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{item.summary}</p>
+          <p className="mt-2 text-[16px] leading-relaxed text-ink-700">{item.summary}</p>
         ) : null}
 
         <ContentImageGrid images={item.images ?? []} className="mt-4" />
