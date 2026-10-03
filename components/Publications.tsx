@@ -69,7 +69,7 @@ function CopyCitation({ citation }: { citation: string }) {
           // clipboard unavailable — no-op
         }
       }}
-      className="inline-flex items-center gap-1.5 self-start rounded-sm border border-ink-200 px-2.5 py-1 text-[14px] font-medium text-ink-700 transition-colors hover:border-ink-400 hover:text-ink-900"
+      className="inline-flex items-center gap-1.5 self-start rounded-md border border-ink-200 px-2.5 py-1 text-[14px] font-medium text-ink-700 transition-colors hover:border-ink-400 hover:text-ink-900"
     >
       {copied ? <Check size={13} aria-hidden /> : <Copy size={13} aria-hidden />}
       {copied ? 'Copied' : 'Copy citation'}
@@ -82,7 +82,7 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
   const hasDetail = Boolean(pub.abstract || pub.citation);
 
   return (
-    <div className="group rounded-sm border border-ink-200 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md">
+    <div className="group rounded-md border border-ink-200 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex flex-col gap-3">
         <div>
           <h3 className="text-[16px] font-semibold leading-snug text-ink-900 mb-2">{pub.title}</h3>
@@ -98,7 +98,7 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
             <span className="font-medium text-ink-800">{pub.venue}</span>
             <span className="text-ink-500">{pub.year}</span>
             {pub.status && (
-              <span className={`inline-flex items-center rounded-sm border px-2 py-0.5 text-[14px] ${statusStyle(pub.status)}`}>
+              <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[14px] ${statusStyle(pub.status)}`}>
                 {pub.status}
               </span>
             )}
@@ -111,7 +111,7 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
               href={pub.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[16px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="inline-flex items-center gap-1 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
             >
               View paper <ArrowUpRight size={14} aria-hidden />
             </a>
@@ -133,13 +133,13 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
         </div>
 
         {expanded && hasDetail && (
-          <div className="mt-1 space-y-3 border-t border-ink-100 pt-3">
+          <div className="mt-1 space-y-3 border-t border-ink-200 pt-3">
             {pub.abstract && (
               <p className="text-[16px] leading-relaxed text-ink-700">{pub.abstract}</p>
             )}
             {pub.citation && (
               <div className="space-y-1.5">
-                <p className="rounded-sm bg-ink-50 p-3 text-[14px] leading-relaxed text-ink-700">{pub.citation}</p>
+                <p className="rounded-md bg-ink-50 p-3 text-[14px] leading-relaxed text-ink-700">{pub.citation}</p>
                 <CopyCitation citation={pub.citation} />
               </div>
             )}
@@ -185,7 +185,7 @@ export const Publications: React.FC = () => {
               key={f.key}
               type="button"
               onClick={() => setActiveFilter(f.key)}
-              className={`inline-flex items-center gap-1.5 rounded-sm border px-3.5 py-1.5 text-[16px] font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5 rounded-md border px-3.5 py-1.5 text-[16px] font-medium transition-colors ${
                 activeFilter === f.key
                   ? 'border-ink-900 bg-ink-900 text-ink-50'
                   : 'border-ink-200 bg-surface text-ink-700 hover:border-ink-400'
@@ -232,10 +232,10 @@ export const Publications: React.FC = () => {
         </h2>
         <div className="space-y-3">
           {PRESENTATIONS.map((pres, idx) => (
-            <div key={idx} className="rounded-sm border border-ink-200 bg-surface p-5 shadow-sm">
+            <div key={idx} className="rounded-md border border-ink-200 bg-surface p-5 shadow-sm">
               <h3 className="text-[16px] font-semibold leading-snug text-ink-900">{pres.event}</h3>
               <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-                <span className="rounded-sm border border-ink-100 bg-ink-50 px-2 py-0.5 text-[14px] font-medium text-ink-800">
+                <span className="rounded-md border border-ink-200 bg-ink-50 px-2 py-0.5 text-[14px] font-medium text-ink-800">
                   {pres.type}
                 </span>
                 <span className="text-[14px] tabular-nums text-ink-500">{pres.date}</span>

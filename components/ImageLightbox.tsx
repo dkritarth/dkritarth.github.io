@@ -67,7 +67,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={goPrev}
-              className="shrink-0 rounded-sm border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
+              className="shrink-0 rounded-md border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
               aria-label="Previous image"
             >
               <ChevronLeft size={22} aria-hidden />
@@ -81,7 +81,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               src={current.src}
               referrerPolicy="no-referrer"
               alt={current.alt}
-              className="max-h-[min(85vh,900px)] w-auto max-w-full object-contain rounded-sm shadow-2xl"
+              className="max-h-[min(85vh,900px)] w-auto max-w-full object-contain rounded-md shadow-2xl"
             />
             {current.caption ? (
               <figcaption className="mt-3 max-w-2xl text-center text-[16px] text-stone-200 leading-relaxed px-2">
@@ -96,7 +96,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={goNext}
-              className="shrink-0 rounded-sm border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
+              className="shrink-0 rounded-md border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
               aria-label="Next image"
             >
               <ChevronRight size={22} aria-hidden />
@@ -116,7 +116,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 rounded-sm border border-white/30 bg-black/70 p-2 text-white hover:bg-black transition-colors pointer-events-auto"
+        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 rounded-md border border-white/30 bg-black/70 p-2 text-white hover:bg-black transition-colors pointer-events-auto"
         aria-label="Close"
       >
         <X size={22} aria-hidden />

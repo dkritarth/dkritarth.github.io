@@ -16,21 +16,21 @@ export const Projects: React.FC = () => {
         {PROJECTS.map((project, index) => (
           <article
             key={index}
-            className="bg-surface rounded-lg p-6 border border-ink-100 flex flex-col h-full shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
+            className="bg-surface rounded-lg p-6 border border-ink-200 flex flex-col h-full shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
           >
             <div className="flex justify-between items-start mb-4">
               <div className="p-2.5 bg-ink-50 border border-ink-200 text-ink-700 rounded-lg group-hover:bg-ink-100 transition-colors">
                 <FolderGit2 size={22} aria-hidden />
               </div>
               {project.stats && (
-                <div className="px-3 py-1 bg-ink-50 border border-ink-200 text-ink-700 text-[13px] font-mono font-medium rounded-lg">
+                <div className="px-3 py-1 bg-ink-50 border border-ink-200 text-ink-700 text-[13px] font-medium rounded-lg">
                   {project.stats}
                 </div>
               )}
             </div>
 
             <h3 className="text-lg font-serif font-semibold text-ink-900 mb-2 leading-snug">{project.title}</h3>
-            <p className="text-[14px] font-medium text-ink-600 uppercase font-mono tracking-wider mb-4">{project.category}</p>
+            <p className="text-[14px] font-medium text-ink-600 uppercase tracking-wider mb-4">{project.category}</p>
 
             <div className="flex-1 space-y-3 mb-5">
               {project.description.map((desc, i) => (
@@ -59,9 +59,9 @@ export const Projects: React.FC = () => {
               </div>
             )}
 
-            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-ink-100">
+            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-ink-200">
               {project.technologies.map((tech) => (
-                <span key={tech} className="text-[13px] font-mono text-ink-700 bg-ink-50 px-2.5 py-1 border border-ink-150 rounded-lg">
+                <span key={tech} className="text-[13px] text-ink-700 bg-ink-50 px-2.5 py-1 border border-ink-150 rounded-lg">
                   {tech}
                 </span>
               ))}
@@ -82,7 +82,7 @@ export const Projects: React.FC = () => {
           {COMPETITIONS.map((comp, idx) => (
             <li
               key={`${comp.name}-${idx}`}
-              className="bg-surface p-5 rounded-lg border border-ink-100 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
+              className="bg-surface p-5 rounded-lg border border-ink-200 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
             >
               <div>
                 <h4 className="font-semibold text-ink-900 text-[16px] leading-snug">{comp.name}</h4>

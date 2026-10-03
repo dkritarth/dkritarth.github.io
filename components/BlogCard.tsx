@@ -11,7 +11,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
     <AppLink
       href={`/blog/${post.slug}/`}
-      className="block rounded-sm border border-ink-200 bg-surface p-4 shadow-sm transition hover:shadow hover:border-ink-700"
+      className="block rounded-md border border-ink-200 bg-surface p-4 shadow-sm transition hover:shadow hover:border-ink-700"
     >
       <article>
         <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -29,7 +29,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         {post.tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {post.tags.map((tag) => (
-              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-[14px] text-ink-700">
+              <span key={tag} className="rounded-md bg-ink-100 px-2 py-0.5 text-[14px] text-ink-700">
                 {tag}
               </span>
             ))}

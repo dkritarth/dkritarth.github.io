@@ -11,7 +11,7 @@ export const DiplomaModal: React.FC<DiplomaModalProps> = ({ isOpen, onClose }) =
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl bg-surface rounded-sm shadow-xl flex flex-col"
+        className="relative w-full max-w-3xl bg-surface rounded-md shadow-xl flex flex-col"
         style={{ height: '80vh' }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -23,7 +23,7 @@ export const DiplomaModal: React.FC<DiplomaModalProps> = ({ isOpen, onClose }) =
             <a
               href="/Diploma.pdf"
               download
-              className="inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="inline-flex items-center gap-1.5 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
             >
               <Download size={15} aria-hidden />
               Download PDF

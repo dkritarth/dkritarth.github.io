@@ -50,7 +50,7 @@ Light/dark mode is class-based (`html.dark`). The `ink-*`, `surface` and `deep` 
 
 ### Typography
 
-Fonts are set by CSS variables in `index.html` (`--font-display` Fraunces for headings via `font-serif`, `--font-body` Inter via `font-sans`, `--font-mono` JetBrains Mono via `font-mono` for labels, dates, chips and status tags). Swap a pairing by changing the variables and the Google Fonts `<link>` together.
+One family, Space Grotesk, is used for headings (`font-serif` class, kept for historical reasons) and body (`font-sans`). Both come from CSS variables in `index.html` (`--font-display`, `--font-body`); swap a pairing by changing them and the Google Fonts `<link>` together. Inline links use the amber `text-accent` color (variable `--accent`, darker in light mode for contrast); cards are thin-bordered `rounded-lg`/`rounded-xl` boxes.
 
 ### Static assets
 

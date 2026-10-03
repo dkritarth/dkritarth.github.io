@@ -44,7 +44,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
         {post.tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {post.tags.map((tag) => (
-              <span key={tag} className="rounded-sm bg-ink-100 px-2 py-0.5 text-[14px] text-ink-700">
+              <span key={tag} className="rounded-md bg-ink-100 px-2 py-0.5 text-[14px] text-ink-700">
                 {tag}
               </span>
             ))}

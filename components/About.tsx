@@ -39,7 +39,7 @@ export const About: React.FC = () => {
               href={DOCUMENT_URLS.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-600 underline underline-offset-2 hover:text-ink-900"
+              className="text-ink-600 underline underline-offset-4 decoration-accent/60 hover:text-accent"
             >
               Resume (PDF)
             </a>
@@ -51,23 +51,23 @@ export const About: React.FC = () => {
               href={CONTACT_INFO.inferenceFoundry.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="inline-flex items-center gap-1 font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
             >
               Inference Foundry <ExternalLink size={14} aria-hidden />
             </a>
             , an open-source initiative for reproducible scientific ML tooling (see{' '}
-            <AppLink href="/projects/" className="font-medium text-ink-900 underline underline-offset-2">
+            <AppLink href="/projects/" className="font-medium text-accent underline underline-offset-4 decoration-accent/60">
               Projects
             </AppLink>
             ).
           </p>
 
-          <p className="rounded-sm border border-ink-200 bg-ink-100/50 px-4 py-3 text-[16px] text-ink-800">
+          <p className="rounded-md border border-ink-200 bg-ink-100/50 px-4 py-3 text-[16px] text-ink-800">
             <span className="font-semibold text-ink-900">Open to collaboration. </span>
             {CONTACT_INFO.collaboration}{' '}
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
             >
               {CONTACT_INFO.email}
             </a>
@@ -79,7 +79,7 @@ export const About: React.FC = () => {
               {RESEARCH_INTERESTS.map((interest) => (
                 <li
                   key={interest}
-                  className="px-3 py-1.5 bg-surface border border-ink-200 text-[16px] text-ink-800 rounded-sm"
+                  className="px-3 py-1.5 bg-surface border border-ink-200 text-[16px] text-ink-800 rounded-md"
                 >
                   {interest}
                 </li>
@@ -94,7 +94,7 @@ export const About: React.FC = () => {
             </h3>
             <div className="grid gap-2">
               {AWARDS.map((award, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-surface border border-ink-100 rounded-sm">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface border border-ink-200 rounded-md">
                   <span className="w-1.5 h-1.5 bg-ink-800 rounded-full shrink-0 mt-2" aria-hidden />
                   <span className="text-[16px] text-ink-800">{award}</span>
                 </div>
@@ -111,7 +111,7 @@ export const About: React.FC = () => {
               <p className="mb-4 text-[16px] text-ink-600 leading-relaxed">
                 Verified UB Experiential Learning Network badges with Prof. Jiayu Peng — one per Peng lab
                 project stream. Full write-ups on the{' '}
-                <AppLink href="/research/" className="font-medium text-ink-900 underline underline-offset-2">
+                <AppLink href="/research/" className="font-medium text-accent underline underline-offset-4 decoration-accent/60">
                   Research
                 </AppLink>{' '}
                 page.
@@ -138,7 +138,7 @@ export const About: React.FC = () => {
               {CERTIFICATIONS.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-ink-50 border border-ink-100 rounded-sm text-[14px] text-ink-800 leading-snug"
+                  className="p-3 bg-ink-50 border border-ink-200 rounded-md text-[14px] text-ink-800 leading-snug"
                 >
                   {cert}
                 </div>
@@ -148,19 +148,19 @@ export const About: React.FC = () => {
         </div>
 
         <div className="space-y-8">
-          <div className="bg-surface p-6 rounded-sm border border-ink-200 sticky top-24 shadow-sm">
-            <h3 className="text-base font-semibold text-ink-900 mb-5 font-sans border-b border-ink-100 pb-3">
+          <div className="bg-surface p-6 rounded-md border border-ink-200 sticky top-24 shadow-sm">
+            <h3 className="text-base font-semibold text-ink-900 mb-5 font-sans border-b border-ink-200 pb-3">
               Skills &amp; tools
             </h3>
             <div className="space-y-5">
               {SKILLS.map((cat) => (
                 <div key={cat.category}>
-                  <h4 className="text-[13px] font-medium text-ink-500 uppercase font-mono tracking-wider mb-2">{cat.category}</h4>
+                  <h4 className="text-[13px] font-medium text-ink-500 uppercase tracking-wider mb-2">{cat.category}</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {cat.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-2 py-0.5 bg-ink-50 text-ink-800 text-[13px] font-mono rounded-sm border border-ink-100"
+                        className="px-2 py-0.5 bg-ink-50 text-ink-800 text-[13px] rounded-md border border-ink-200"
                       >
                         {skill}
                       </span>

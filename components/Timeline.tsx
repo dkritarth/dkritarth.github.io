@@ -35,7 +35,7 @@ export const Timeline: React.FC = () => {
                   </p>
                   <ul className="space-y-1.5">
                     {edu.details.map((detail, i) => (
-                      <li key={i} className="text-[16px] text-ink-800 bg-surface p-2.5 rounded-sm border border-ink-100">
+                      <li key={i} className="text-[16px] text-ink-800 bg-surface p-2.5 rounded-md border border-ink-200">
                         {detail}
                       </li>
                     ))}
@@ -44,7 +44,7 @@ export const Timeline: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setDiplomaOpen(true)}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
                     >
                       <Scroll size={14} aria-hidden />
                       View Diploma
@@ -100,7 +100,7 @@ export const Timeline: React.FC = () => {
             return (
               <li
                 key={`${placement.role}-${placement.organization}`}
-                className="bg-surface p-5 rounded-sm border border-ink-100 flex flex-col gap-1.5"
+                className="bg-surface p-5 rounded-md border border-ink-200 flex flex-col gap-1.5"
               >
                 <h4 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h4>
                 <p className="text-[16px] italic text-ink-700">{placement.organization}</p>
@@ -110,7 +110,7 @@ export const Timeline: React.FC = () => {
                 ) : null}
                 <AppLink
                   href={placement.previous ? '/research/#previous-research' : '/research/'}
-                  className="mt-1 text-[16px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline self-start"
+                  className="mt-1 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline self-start"
                 >
                   {placement.previous ? 'See previous research (undergraduate) →' : 'See current research →'}
                 </AppLink>

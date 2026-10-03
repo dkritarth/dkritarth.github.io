@@ -20,7 +20,7 @@ export const NewsItemCard: React.FC<NewsItemCardProps> = ({ item }) => {
 
   return (
     <li
-      className={`relative pl-6 py-4 border-b border-ink-100 last:border-b-0 ${
+      className={`relative pl-6 py-4 border-b border-ink-200 last:border-b-0 ${
         rich ? 'pb-5' : 'py-3'
       }`}
     >
@@ -28,14 +28,14 @@ export const NewsItemCard: React.FC<NewsItemCardProps> = ({ item }) => {
         className="absolute left-0 top-[1.15rem] -translate-x-[calc(50%+1px)] w-2.5 h-2.5 rounded-full bg-ink-900 ring-2 ring-ink-50"
         aria-hidden
       />
-      <article className={rich ? 'rounded-sm border border-ink-200 bg-surface p-4 shadow-sm' : undefined}>
+      <article className={rich ? 'rounded-md border border-ink-200 bg-surface p-4 shadow-sm' : undefined}>
         <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <h4 className="text-[16px] font-semibold leading-snug text-ink-900 min-w-0 flex-1">
             {item.headline}
           </h4>
           <time
             dateTime={`${item.year}-${String(item.month).padStart(2, '0')}`}
-            className="shrink-0 text-[14px] font-mono font-medium tabular-nums text-ink-500"
+            className="shrink-0 text-[14px] font-medium tabular-nums text-ink-500"
           >
             {formatNewsMonth(item.month)} {item.year}
           </time>

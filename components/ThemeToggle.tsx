@@ -23,7 +23,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
       onClick={cycle}
       title={`${LABELS[preference]} (click to change)`}
       aria-label={`${LABELS[preference]}. Activate to change.`}
-      className={`inline-flex items-center justify-center rounded-sm p-2 text-ink-700 hover:bg-ink-100 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 transition-colors ${className}`}
+      className={`inline-flex items-center justify-center rounded-md p-2 text-ink-700 hover:bg-ink-100 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 transition-colors ${className}`}
     >
       {ICONS[preference]}
     </button>
