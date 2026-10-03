@@ -38,7 +38,20 @@ export const NEWS_ITEMS: NewsItem[] = [
     headline: 'Two papers and a demo accepted at MobiCom 2026 (HumanSys)',
     summary:
       '"Separating Safety from Preference in Clinical LLM Evaluation" and "From Community Feedback to Measurement Redesign: Iterating mRehab for Accessible Home-Based Stroke Rehabilitation" (co-first author with Emily Liu) are now published, with DOIs. The mRehab demo was also accepted to the MobiCom 2026 demo track; its DOI is not active yet.',
+    images: [
+      {
+        src: newsImagePath('humansys-2026-submissions', 'mrehab-kit.webp'),
+        alt: 'The mRehab kit on a table: a box with the mRehab logo, a copper-colored 3D-printed cup with a smartphone showing the app, and a bowl on a mat',
+        caption: 'mRehab: a smartphone app paired with 3D-printed functional objects for home-based stroke rehabilitation',
+      },
+      {
+        src: newsImagePath('humansys-2026-submissions', 'separating-safety-figure-table.png'),
+        alt: 'Flow diagram of the blinded collection workflow next to a table of cohort-specific rating rubrics',
+        caption: 'Figure 2 and Table 1 from "Separating Safety from Preference in Clinical LLM Evaluation"',
+      },
+    ],
     links: [
+      { label: 'HumanSys workshop', href: 'https://humansys-workshop.github.io/', kind: 'website' },
       { label: 'Separating Safety from Preference (DOI)', href: 'https://doi.org/10.1145/3842436.3843811', kind: 'paper' },
       { label: 'From Community Feedback to Measurement Redesign (DOI)', href: 'https://doi.org/10.1145/3842436.3843796', kind: 'paper' },
       { label: 'Publications', href: '/publications/', kind: 'website' },
