@@ -125,7 +125,7 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                 <div
                   key={sp.id}
                   id={sp.id}
-                  className="scroll-mt-28 border border-ink-100 bg-ink-50/60 rounded-sm p-4"
+                  className="scroll-mt-28 border border-ink-200 bg-surface rounded-sm p-4"
                 >
                   {/* Subproject header */}
                   <h4 className="font-serif text-base font-semibold text-ink-900 mb-0.5">
@@ -238,7 +238,7 @@ export const Research: React.FC = () => {
       id="research"
       title="Research"
       subtitle="Current PhD research at Michigan State University, followed by earlier work at the University at Buffalo."
-      className="bg-surface"
+      className="bg-ink-50"
     >
       <PlacementTimeline placements={currentPlacements} />
 
@@ -246,13 +246,13 @@ export const Research: React.FC = () => {
         id={PREVIOUS_ANCHOR}
         open={previousOpen}
         onToggle={(e) => setPreviousOpen((e.currentTarget as HTMLDetailsElement).open)}
-        className="group mt-14 scroll-mt-28 rounded-sm border border-ink-200 bg-ink-50/60"
+        className="group mt-14 scroll-mt-28 rounded-sm border border-ink-200 bg-surface"
       >
         <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-400">
           <div>
-            <h3 className="text-lg font-serif font-semibold text-ink-900">Previous research</h3>
+            <h3 className="text-lg font-serif font-semibold text-ink-900">Previous research (undergraduate)</h3>
             <p className="mt-1 text-[15px] text-ink-700">
-              University at Buffalo · digital health (OralScan, OrthoScan, mRehab) · computational materials
+              University at Buffalo undergraduate work · digital health (OralScan, OrthoScan, mRehab) · computational materials
               (symmetry-aware GNNs, equivariant interatomic potentials)
             </p>
           </div>

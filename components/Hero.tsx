@@ -91,7 +91,7 @@ export const Hero: React.FC = () => {
           </div>
 
           <p className="max-w-2xl text-[15px] text-ink-700">
-            Previously: digital health and computational materials at the University at Buffalo.{' '}
+            Previously (undergraduate): digital health and computational materials at the University at Buffalo.{' '}
             <AppLink
               href="/research/#previous-research"
               className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded"

@@ -171,7 +171,7 @@ export const Publications: React.FC = () => {
       id="publications"
       title="Publications"
       subtitle="Papers, preprints, and demo tracks. My name is highlighted in each author list."
-      className="bg-surface"
+      className="bg-ink-50"
     >
       {/* Filter chips */}
       <div className="flex flex-wrap gap-2 mb-10">
