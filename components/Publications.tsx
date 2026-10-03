@@ -41,10 +41,10 @@ function AuthorList({ authors, equalContribution }: { authors: string; equalCont
 }
 
 const STATUS_STYLES: Record<string, string> = {
-  submitted: 'border-amber-300 bg-amber-50 text-amber-800',
-  revision: 'border-amber-300 bg-amber-50 text-amber-800',
-  review: 'border-amber-300 bg-amber-50 text-amber-800',
-  preprint: 'border-sky-300 bg-sky-50 text-sky-800',
+  submitted: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-500/40 dark:bg-amber-400/10 dark:text-amber-300',
+  revision: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-500/40 dark:bg-amber-400/10 dark:text-amber-300',
+  review: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-500/40 dark:bg-amber-400/10 dark:text-amber-300',
+  preprint: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-500/40 dark:bg-sky-400/10 dark:text-sky-300',
 };
 
 function statusStyle(status?: string): string {
@@ -82,7 +82,7 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
   const hasDetail = Boolean(pub.abstract || pub.citation);
 
   return (
-    <div className="group rounded-sm border border-ink-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+    <div className="group rounded-sm border border-ink-200 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex flex-col gap-3">
         <div>
           <h3 className="text-[15px] font-semibold leading-snug text-ink-900 mb-2">{pub.title}</h3>
@@ -171,7 +171,7 @@ export const Publications: React.FC = () => {
       id="publications"
       title="Publications"
       subtitle="Papers, preprints, and demo tracks. My name is highlighted in each author list."
-      className="bg-white"
+      className="bg-surface"
     >
       {/* Filter chips */}
       <div className="flex flex-wrap gap-2 mb-10">
@@ -187,14 +187,14 @@ export const Publications: React.FC = () => {
               onClick={() => setActiveFilter(f.key)}
               className={`inline-flex items-center gap-1.5 rounded-sm border px-3.5 py-1.5 text-sm font-medium transition-colors ${
                 activeFilter === f.key
-                  ? 'border-ink-900 bg-ink-900 text-white'
-                  : 'border-ink-200 bg-white text-ink-700 hover:border-ink-400'
+                  ? 'border-ink-900 bg-ink-900 text-ink-50'
+                  : 'border-ink-200 bg-surface text-ink-700 hover:border-ink-400'
               }`}
             >
               {f.label}
               <span
                 className={`text-xs tabular-nums ${
-                  activeFilter === f.key ? 'text-white/70' : 'text-ink-400'
+                  activeFilter === f.key ? 'text-ink-50/70' : 'text-ink-400'
                 }`}
               >
                 {count}
@@ -232,7 +232,7 @@ export const Publications: React.FC = () => {
         </h2>
         <div className="space-y-3">
           {PRESENTATIONS.map((pres, idx) => (
-            <div key={idx} className="rounded-sm border border-ink-200 bg-white p-5 shadow-sm">
+            <div key={idx} className="rounded-sm border border-ink-200 bg-surface p-5 shadow-sm">
               <h3 className="text-[15px] font-semibold leading-snug text-ink-900">{pres.event}</h3>
               <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
                 <span className="rounded-sm border border-ink-100 bg-ink-50 px-2 py-0.5 text-xs font-medium text-ink-800">

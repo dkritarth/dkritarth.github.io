@@ -56,7 +56,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
     >
       <button
         type="button"
-        className="absolute inset-0 bg-ink-900/90 backdrop-blur-sm cursor-zoom-out"
+        className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-zoom-out"
         onClick={onClose}
         aria-label="Close image viewer"
       />
@@ -67,7 +67,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={goPrev}
-              className="shrink-0 rounded-sm border border-white/30 bg-ink-900/60 p-2 text-white hover:bg-ink-900/80 transition-colors"
+              className="shrink-0 rounded-sm border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
               aria-label="Previous image"
             >
               <ChevronLeft size={22} aria-hidden />
@@ -95,7 +95,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={goNext}
-              className="shrink-0 rounded-sm border border-white/30 bg-ink-900/60 p-2 text-white hover:bg-ink-900/80 transition-colors"
+              className="shrink-0 rounded-sm border border-white/30 bg-black/60 p-2 text-white hover:bg-black/80 transition-colors"
               aria-label="Next image"
             >
               <ChevronRight size={22} aria-hidden />
@@ -115,7 +115,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 rounded-sm border border-white/30 bg-ink-900/70 p-2 text-white hover:bg-ink-900 transition-colors pointer-events-auto"
+        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 rounded-sm border border-white/30 bg-black/70 p-2 text-white hover:bg-black transition-colors pointer-events-auto"
         aria-label="Close"
       >
         <X size={22} aria-hidden />

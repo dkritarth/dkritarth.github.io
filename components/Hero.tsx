@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
                 <li key={thread.title}>
                   <AppLink
                     href="/research/"
-                    className="group block h-full rounded-lg border border-ink-100 bg-white px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+                    className="group block h-full rounded-lg border border-ink-100 bg-surface px-4 py-3.5 text-left shadow-sm hover:shadow-md hover:border-ink-200 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
                   >
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-500 mb-1.5">
                       {thread.status}
@@ -76,7 +76,7 @@ export const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-3">
             <AppLink
               href="/research/"
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-white text-sm font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 bg-ink-900 text-ink-50 text-sm font-semibold tracking-wide rounded-lg hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all duration-200"
             >
               Explore research <ArrowRight size={16} className="opacity-90" aria-hidden />
             </AppLink>
@@ -171,7 +171,7 @@ export const Hero: React.FC = () => {
               alt={`${CONTACT_INFO.name}, portrait`}
               className="w-full h-full object-cover grayscale-[15%]"
             />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/90 via-ink-900/50 to-transparent px-5 pt-16 pb-5 text-left">
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-5 pt-16 pb-5 text-left">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-white/80 mb-1">
                 Research areas
               </p>

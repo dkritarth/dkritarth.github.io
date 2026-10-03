@@ -68,7 +68,7 @@ export const About: React.FC = () => {
               {RESEARCH_INTERESTS.map((interest) => (
                 <li
                   key={interest}
-                  className="px-3 py-1.5 bg-white border border-ink-200 text-sm text-ink-800 rounded-sm"
+                  className="px-3 py-1.5 bg-surface border border-ink-200 text-sm text-ink-800 rounded-sm"
                 >
                   {interest}
                 </li>
@@ -78,12 +78,12 @@ export const About: React.FC = () => {
 
           <div className="mt-8">
             <h3 className="text-base font-semibold text-ink-900 mb-4 flex items-center gap-2 font-sans">
-              <Trophy className="text-amber-800" size={18} aria-hidden />
+              <Trophy className="text-amber-800 dark:text-amber-400" size={18} aria-hidden />
               Honors &amp; awards
             </h3>
             <div className="grid gap-2">
               {AWARDS.map((award, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-white border border-ink-100 rounded-sm">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface border border-ink-100 rounded-sm">
                   <span className="w-1.5 h-1.5 bg-ink-800 rounded-full shrink-0 mt-2" aria-hidden />
                   <span className="text-sm text-ink-800">{award}</span>
                 </div>
@@ -137,7 +137,7 @@ export const About: React.FC = () => {
         </div>
 
         <div className="space-y-8">
-          <div className="bg-white p-6 rounded-sm border border-ink-200 sticky top-24 shadow-sm">
+          <div className="bg-surface p-6 rounded-sm border border-ink-200 sticky top-24 shadow-sm">
             <h3 className="text-base font-semibold text-ink-900 mb-5 font-sans border-b border-ink-100 pb-3">
               Skills &amp; tools
             </h3>

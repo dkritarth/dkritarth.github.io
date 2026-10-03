@@ -10,13 +10,13 @@ export const Projects: React.FC = () => {
       id="projects"
       title="Selected projects"
       subtitle="Open-source and independent work, plus coursework in computer vision and deep learning (distinct from primary lab research)."
-      className="bg-white"
+      className="bg-surface"
     >
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
         {PROJECTS.map((project, index) => (
           <article
             key={index}
-            className="bg-white rounded-lg p-6 border border-ink-100 flex flex-col h-full shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
+            className="bg-surface rounded-lg p-6 border border-ink-100 flex flex-col h-full shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
           >
             <div className="flex justify-between items-start mb-4">
               <div className="p-2.5 bg-ink-50 border border-ink-200 text-ink-700 rounded-lg group-hover:bg-ink-100 transition-colors">
@@ -50,7 +50,7 @@ export const Projects: React.FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-ink-200 bg-white px-3 py-2 text-xs font-semibold text-ink-900 hover:bg-ink-50 hover:border-ink-300 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all"
+                    className="inline-flex items-center gap-1.5 border border-ink-200 bg-surface px-3 py-2 text-xs font-semibold text-ink-900 hover:bg-ink-50 hover:border-ink-300 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 transition-all"
                   >
                     {link.label}
                     <ExternalLink size={13} aria-hidden />
@@ -82,7 +82,7 @@ export const Projects: React.FC = () => {
           {COMPETITIONS.map((comp, idx) => (
             <li
               key={`${comp.name}-${idx}`}
-              className="bg-white p-5 rounded-lg border border-ink-100 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
+              className="bg-surface p-5 rounded-lg border border-ink-100 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-ink-200 transition-all duration-200"
             >
               <div>
                 <h4 className="font-semibold text-ink-900 text-[15px] leading-snug">{comp.name}</h4>
