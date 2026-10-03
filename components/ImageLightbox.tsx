@@ -79,6 +79,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           <figure className="min-w-0 flex-1 flex flex-col items-center">
             <img
               src={current.src}
+              referrerPolicy="no-referrer"
               alt={current.alt}
               className="max-h-[min(85vh,900px)] w-auto max-w-full object-contain rounded-sm shadow-2xl"
             />

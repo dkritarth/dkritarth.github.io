@@ -39,6 +39,7 @@ export const ContentImageGrid: React.FC<ContentImageGridProps> = ({ images, clas
             >
               <img
                 src={img.src}
+                referrerPolicy="no-referrer"
                 alt={img.alt}
                 className="w-full h-auto max-h-56 sm:max-h-64 md:max-h-72 object-cover object-center transition duration-200 group-hover:brightness-[0.97]"
                 loading="lazy"
