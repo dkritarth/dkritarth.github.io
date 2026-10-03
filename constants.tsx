@@ -1,26 +1,26 @@
 import type { ReactNode } from 'react';
 import { BookOpen, Code, GraduationCap, Home, Microscope, Newspaper, PenLine, Users } from 'lucide-react';
 
-const MONTH_NAMES = [
+export const MONTH_NAMES = [
   'January','February','March','April','May','June',
   'July','August','September','October','November','December',
 ];
 
-export function computeDuration(period: string): string | null {
-  const parts = period.split('–').map((s) => s.trim());
-  if (parts.length !== 2) return null;
-  const parseMonthYear = (s: string): { year: number; month: number } | null => {
-    if (s === 'Present') return { year: 2026, month: 7 };
-    const m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
-    if (!m) return null;
-    const month = MONTH_NAMES.indexOf(m[1]) + 1;
-    if (!month) return null;
-    return { year: parseInt(m[2], 10), month };
-  };
-  const start = parseMonthYear(parts[0]);
-  const end = parseMonthYear(parts[1]);
-  if (!start || !end) return null;
-  const totalMonths = (end.year - start.year) * 12 + (end.month - start.month);
+type MonthYear = { year: number; month: number };
+
+/** Parses "Month YYYY"; "Present" resolves to the current month. */
+export function parseMonthYear(s: string): MonthYear | null {
+  if (s === 'Present') {
+    const now = new Date();
+    return { year: now.getFullYear(), month: now.getMonth() + 1 };
+  }
+  const m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (!m) return null;
+  const month = MONTH_NAMES.indexOf(m[1]) + 1;
+  return month ? { year: parseInt(m[2], 10), month } : null;
+}
+
+function formatMonthSpan(totalMonths: number): string | null {
   if (totalMonths <= 0) return null;
   const years = Math.floor(totalMonths / 12);
   const months = totalMonths % 12;
@@ -29,15 +29,25 @@ export function computeDuration(period: string): string | null {
   if (months > 0) segments.push(`${months} month${months > 1 ? 's' : ''}`);
   return segments.join(' ') || null;
 }
+
+export function computeDuration(period: string): string | null {
+  const parts = period.split('–').map((s) => s.trim());
+  if (parts.length !== 2) return null;
+  const start = parseMonthYear(parts[0]);
+  const end = parseMonthYear(parts[1]);
+  if (!start || !end) return null;
+  return formatMonthSpan((end.year - start.year) * 12 + (end.month - start.month));
+}
+
 import type {
   NewsItem,
   CompetitionEntry,
-  CurrentlyItem,
   Education,
   Experience,
   Project,
   Publication,
   ResearchPlacement,
+  ResearchThread,
   SitePage,
   SkillCategory,
 } from './types';
@@ -62,48 +72,37 @@ export const CONTACT_INFO = {
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
-  bio: 'Computer science researcher studying adversarial attacks on ensemble deep learning weather-forecasting models in the MSU CSE Data Mining Laboratory under Dr. Pang-Ning Tan.',
+  bio: 'Computer science PhD student studying the adversarial robustness of deep learning weather-forecasting ensembles in the MSU CSE Data Mining Laboratory under Dr. Pang-Ning Tan.',
   /** Mirrors cv.tex Professional Summary (paragraphs) */
   professionalSummary: [
-    'I am a computer science researcher studying reliable machine learning for structured, real-world data. My current work focuses on adversarial attacks against ensemble models, with an emphasis on deep learning-based weather forecasting.',
-    'I am a Computer Science PhD student and Graduate Research Assistant at Michigan State University in the Data Mining Laboratory under Dr. Pang-Ning Tan. I previously researched digital health and computational materials science at the University at Buffalo.',
-    'My work connects adversarial robustness, uncertainty-aware prediction, spatiotemporal machine learning, and practical ML systems. I care about evaluation that exposes failures hidden by aggregate metrics and about tools that make research reproducible.',
-    'I have been recognized with the PEARL undergraduate research award ($2,500) and placed second at the UB Health Futures Challenge ($1,000).',
+    'I am a Computer Science PhD student and Graduate Research Assistant at Michigan State University in the Data Mining Laboratory, advised by Dr. Pang-Ning Tan. My research is on the adversarial robustness of deep learning weather-forecasting models, in particular ensemble systems: how their members are generated from structured noise, and how sensitive operational models such as ECMWF’s AIFS are to adversarial perturbations.',
+    'I am early in the PhD. Right now I am studying how ensemble forecasts inject and shape noise, and running projected gradient descent (PGD) attacks against AIFS. The longer-term goal is to develop attack methods of my own, grounded in how these models respond to their inputs and parameters.',
+    'More broadly, I care about reliable machine learning for structured, real-world data: evaluation that exposes failures hidden by aggregate metrics, and research tools that other people can reproduce.',
+    'Before MSU, I completed a B.S. in Computer Science (minor in Statistics) at the University at Buffalo. There I worked on digital health with the Embedded Sensing and Computing Group (OralScan, OrthoScan, mRehab) and on computational materials science in the Peng Research Lab (symmetry-aware GNNs, equivariant interatomic potentials). That work is documented under Previous research. It earned a PEARL undergraduate research award ($2,500) and second place at the UB Health Futures Challenge ($1,000).',
   ],
   /** Short intro for the home page */
   landingLead:
-    'Computer Science PhD student and Graduate Research Assistant at Michigan State University. I study adversarial attacks and robustness in ensemble models, focusing on deep learning-based weather forecasting and spatiotemporal machine learning.',
+    'Computer Science PhD student and Graduate Research Assistant at Michigan State University. I study the adversarial robustness of deep learning weather-forecasting models: how ensemble forecasts are built from structured noise, and how sensitive models like ECMWF’s AIFS are to adversarial attacks. Before MSU, I worked on mobile health and computational materials at the University at Buffalo.',
   sopSnippet:
     'My academic journey has been driven by a fascination with the power of artificial intelligence (AI) to solve tangible, human-centric problems. I am driven to move beyond applying known techniques to creating original, high-impact research.',
-  /** Open research software initiative — surfaced on home & About */
+  /** Open research software initiative — featured on Projects, mentioned on About */
   inferenceFoundry: {
     url: 'https://inference-foundry.rweb.site/',
-    startLabel: 'Starting May 2026',
     description:
       'Collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
   },
+  /** NSF project funding the MSU work */
+  geoarmor: {
+    label: 'NSF GeoArmor project',
+    url: 'https://www.cse.msu.edu/~ptan/project/geoarmor/',
+  },
 };
 
-/** "Currently" snapshot on the home page — short, live list of active work. */
-export const CURRENTLY: CurrentlyItem[] = [
-  {
-    title: 'Adversarial attacks on ensemble forecasts',
-    description:
-      'Studying how constrained input perturbations can change uncertainty, event probabilities, and decision-relevant statistics while leaving ensemble means nearly unchanged.',
-    link: { label: 'Research direction', href: '/research/' },
-  },
-  {
-    title: 'Deep learning weather forecasting',
-    description:
-      'Building toward evaluation across deterministic and probabilistic systems, including learned weather ensembles and geospatiotemporal models.',
-    link: { label: 'GeoArmor project', href: 'https://www.cse.msu.edu/~ptan/project/geoarmor/' },
-  },
-  {
-    title: 'Research and engineering',
-    description:
-      'Prior work spans mobile health, computer vision, and computational materials science. Selected publications and projects remain available for context.',
-    link: { label: 'Publications', href: '/publications/' },
-  },
+/** Current PhD threads on the home page: titles and status only, no results or method details. */
+export const RESEARCH_THREADS: ResearchThread[] = [
+  { title: 'Noise and perturbation structure in ensemble weather forecasts', status: 'Ongoing' },
+  { title: 'Adversarial attacks on AIFS', status: 'In progress' },
+  { title: 'Sensitivity-driven attack methodology', status: 'Planned' },
 ];
 
 export const EDUCATION: Education[] = [
@@ -114,7 +113,7 @@ export const EDUCATION: Education[] = [
     period: 'August 2026 – May 2030 (expected)',
     details: [
       'Department of Computer Science and Engineering; Data Mining Laboratory (Advisor: Dr. Pang-Ning Tan)',
-      'Planned research focus: spatiotemporal machine learning, deep learning-based weather forecasting (DLWF), and AI adversarial robustness',
+      'Research focus: adversarial robustness of deep learning weather-forecasting and ensemble models; spatiotemporal machine learning',
     ],
   },
   {
@@ -139,18 +138,18 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
     subprojects: [
       {
         id: 'gst-adversarial-robustness',
-        name: 'Adversarial robustness of geospatio-temporal models',
+        name: 'Adversarial robustness of ensemble weather-forecasting models',
         period: 'August 2026 – Present',
         context: 'NSF-funded research · Advisor: Dr. Pang-Ning Tan',
         narrative: [
-          'Currently working on spatiotemporal machine learning and deep learning-based weather forecasting for complex environmental systems.',
-          'Building reproducible pipelines for scientific datasets, model training, experimentation, and evaluation.',
-          'Going forward, I will study adversarial robustness and generalization in ensemble forecasting models under changing environmental conditions.',
+          'Studying how ensemble weather-forecasting systems generate their members, including the noise and perturbation patterns that produce ensemble spread.',
+          'Running projected gradient descent (PGD) attacks against ECMWF’s AIFS to probe how sensitive an operational deep learning forecast model is to its inputs and parameters.',
+          'Longer term, developing adversarial attack methodology informed by that sensitivity.',
         ],
         technicalHighlights: [
-          'Research interests: Spatiotemporal Machine Learning · Deep Learning · Time-Series Forecasting · Graph Neural Networks · Generative Models · AI Robustness · Scientific Machine Learning',
+          'Research interests: Spatiotemporal Machine Learning · Deep Learning Weather Forecasting · Ensemble Forecasting · AI Robustness · Uncertainty-Aware Prediction · Scientific Machine Learning',
         ],
-        technologies: ['Ensemble models', 'Deep learning weather forecasting', 'Adversarial robustness', 'Geospatio-temporal ML'],
+        technologies: ['AIFS (ECMWF)', 'PGD attacks', 'Ensemble forecasting', 'Adversarial robustness', 'Spatiotemporal ML'],
         links: [
           { label: 'GeoArmor NSF project', href: 'https://www.cse.msu.edu/~ptan/project/geoarmor/' },
           { label: 'Data Mining Laboratory', href: 'https://www.cse.msu.edu/~ptan/' },
@@ -160,6 +159,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
   },
   {
     role: 'Research Assistant',
+    previous: true,
     organization: 'Embedded Sensing and Computing (ESC) Group, University at Buffalo',
     location: 'Buffalo, NY',
     overview: 'Mobile sensing for healthcare and rehabilitation with Prof. Wenyao Xu.',
@@ -229,6 +229,7 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
   },
   {
     role: 'Undergraduate Researcher',
+    previous: true,
     organization: 'Peng Research Lab, University at Buffalo',
     location: 'Buffalo, NY',
     overview: 'Computational materials science and clean-energy applications with Prof. Jiayu Peng.',
@@ -282,27 +283,6 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         ],
         credlyBadge: PENG_CREDLY_MLIP_UMA,
         technologies: ['MACE', 'UMA', 'E(3)-equivariant MLIPs', 'PyTorch', 'MLIPs', 'Materials simulation'],
-      },
-    ],
-  },
-  {
-    role: 'Founder, Inference Foundry',
-    organization: 'Open Research Software Initiative',
-    location: 'Remote',
-    overview: 'Collaborative open-source initiative for reproducible scientific ML tooling.',
-    subprojects: [
-      {
-        id: 'inference-foundry',
-        name: 'Inference Foundry',
-        period: 'Starting May 2026',
-        narrative: [
-          'Building shared infrastructure for reproducible ML inference, standardized research software scaffolding, and contributor-friendly open-source workflows.',
-        ],
-        technicalHighlights: [
-          'Launched a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
-        ],
-        links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
-        technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
       },
     ],
   },
@@ -421,8 +401,19 @@ export const PUBLICATIONS: Publication[] = [
   },
 ];
 
-/** Selected projects (OralScan and lab work live under Research). Aligned with cv.tex. */
+/** Selected projects (lab work lives under Research). Aligned with cv.tex. */
 export const PROJECTS: Project[] = [
+  {
+    slug: 'inference-foundry',
+    title: 'Inference Foundry',
+    category: 'Open-Source Research Software',
+    description: [
+      'Founded a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
+      'Focused on shared infrastructure and contributor-friendly workflows so that scientific ML results can be rerun and extended by other people.',
+    ],
+    technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
+    links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
+  },
   {
     slug: 'context-kernel',
     title: 'context-kernel: Self-Hostable Context Memory for LLMs',
@@ -589,11 +580,11 @@ export const PRESENTATIONS = [
 ];
 
 export const RESEARCH_INTERESTS: string[] = [
-  'Spatiotemporal machine learning and deep learning-based weather forecasting (DLWF)',
-  'AI adversarial robustness and out-of-distribution generalization',
+  'Adversarial robustness of deep learning weather-forecasting and ensemble models',
+  'Spatiotemporal machine learning and probabilistic forecasting',
+  'Uncertainty-aware prediction and evaluation beyond aggregate metrics',
   'Geometric and equivariant deep learning; graph neural networks for structured data',
-  'Computer vision and sequence modeling for healthcare and scientific applications',
-  'Machine learning for materials science and scientific discovery',
+  'Earlier work: computer vision and sensing for digital health; machine learning for materials science',
 ];
 
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const;

@@ -14,11 +14,10 @@ export interface Publication {
   equalContribution?: string[];
 }
 
-/** One line item in the home page "Currently" section. */
-export interface CurrentlyItem {
+/** One current PhD research thread shown on the home page: title and status only, no results. */
+export interface ResearchThread {
   title: string;
-  description: string;
-  link?: ResearchLink;
+  status: string;
 }
 
 export interface Experience {
@@ -80,6 +79,8 @@ export interface ResearchPlacement {
   location: string;
   /** One-sentence scope across subprojects */
   overview?: string;
+  /** Earlier work: shown under "Previous research" on the Research page instead of the main timeline */
+  previous?: boolean;
   /** Lab-wide links (e.g. ELN project profile) shown under the placement header */
   placementLinks?: ResearchLink[];
   subprojects: ResearchSubproject[];

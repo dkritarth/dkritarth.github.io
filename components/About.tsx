@@ -45,21 +45,22 @@ export const About: React.FC = () => {
             </a>
           </p>
 
-          <div className="rounded-sm border border-ink-200 bg-ink-50/80 p-5">
-            <h3 className="text-base font-semibold text-ink-900 mb-2 font-sans">Inference Foundry</h3>
-            <p className="text-sm text-ink-700 mb-2">
-              <span className="font-medium text-ink-900">{CONTACT_INFO.inferenceFoundry.startLabel}.</span>{' '}
-              {CONTACT_INFO.inferenceFoundry.description}
-            </p>
+          <p>
+            I also founded{' '}
             <a
               href={CONTACT_INFO.inferenceFoundry.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+              className="inline-flex items-center gap-1 font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
             >
-              Inference Foundry site <ExternalLink size={14} aria-hidden />
+              Inference Foundry <ExternalLink size={14} aria-hidden />
             </a>
-          </div>
+            , an open-source initiative for reproducible scientific ML tooling (see{' '}
+            <AppLink href="/projects/" className="font-medium text-ink-900 underline underline-offset-2">
+              Projects
+            </AppLink>
+            ).
+          </p>
 
           <div className="mt-8">
             <h3 className="text-base font-semibold text-ink-900 mb-3 font-sans">Research interests</h3>
