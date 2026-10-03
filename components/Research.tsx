@@ -56,7 +56,7 @@ function formatRichLine(text: string): React.ReactNode {
       <a
         key={`link-${linkIdx}`}
         href={m[1]}
-        className="text-ink-900 underline underline-offset-2 hover:no-underline break-all"
+        className="text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline break-all"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -93,13 +93,13 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
 
           {/* Placement header */}
           <h3 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h3>
-          <p className="text-ink-700 italic text-[15px] mb-0.5">{placement.organization}</p>
-          <p className="text-[13px] text-ink-500 mb-2">
+          <p className="text-ink-700 italic text-[16px] mb-0.5">{placement.organization}</p>
+          <p className="text-[14px] text-ink-500 mb-2">
             {placement.location}
             {range ? <span className="ml-2 text-ink-500">· {range}</span> : null}
           </p>
           {placement.overview && (
-            <p className="text-[15px] text-ink-700 mb-3 max-w-2xl leading-relaxed">{placement.overview}</p>
+            <p className="text-[16px] text-ink-700 mb-3 max-w-2xl leading-relaxed">{placement.overview}</p>
           )}
           {placement.placementLinks && placement.placementLinks.length > 0 && (
             <div className="mb-4 flex flex-wrap gap-x-4 gap-y-1">
@@ -109,7 +109,7 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[13px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                  className="inline-flex items-center gap-1 text-[14px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
                 >
                   {link.label} <ArrowUpRight size={12} aria-hidden />
                 </a>
@@ -125,22 +125,22 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                 <div
                   key={sp.id}
                   id={sp.id}
-                  className="scroll-mt-28 border border-ink-200 bg-surface rounded-sm p-4"
+                  className="scroll-mt-28 border border-ink-200 bg-surface rounded-md p-4"
                 >
                   {/* Subproject header */}
                   <h4 className="font-serif text-base font-semibold text-ink-900 mb-0.5">
                     {sp.name}
                   </h4>
-                  <p className="text-[13px] text-ink-500 mb-1 tabular-nums">
+                  <p className="text-[14px] text-ink-500 mb-1 tabular-nums">
                     {sp.period}
                     {dur ? <span className="text-ink-500"> ({dur})</span> : null}
                   </p>
                   {sp.context && (
-                    <p className="text-[13px] font-medium text-ink-600 mb-2">{sp.context}</p>
+                    <p className="text-[14px] font-medium text-ink-600 mb-2">{sp.context}</p>
                   )}
 
                   {/* Narrative */}
-                  <div className="space-y-1.5 text-[15px] leading-relaxed text-ink-700 mb-3">
+                  <div className="space-y-1.5 text-[16px] leading-relaxed text-ink-700 mb-3">
                     {sp.narrative.map((p, i) => (
                       <p key={i}>{formatRichLine(p)}</p>
                     ))}
@@ -149,18 +149,18 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                   <ContentImageGrid images={sp.images ?? []} className="mb-3" />
 
                   {sp.collaboratorsNote && (
-                    <p className="text-[13px] italic text-ink-500 mb-3 leading-relaxed">
+                    <p className="text-[14px] italic text-ink-500 mb-3 leading-relaxed">
                       {formatRichLine(sp.collaboratorsNote)}
                     </p>
                   )}
 
                   {/* Technical highlights */}
-                  <p className="text-[12px] font-semibold uppercase tracking-wide text-ink-500 mb-1.5">
+                  <p className="text-[13px] font-medium uppercase tracking-wider text-ink-500 mb-1.5">
                     Technical contributions
                   </p>
                   <ul className="list-disc list-outside ml-4 space-y-1.5 mb-3 marker:text-ink-500">
                     {sp.technicalHighlights.map((item, i) => (
-                      <li key={i} className="text-[15px] leading-relaxed text-ink-700">
+                      <li key={i} className="text-[16px] leading-relaxed text-ink-700">
                         {formatRichLine(item)}
                       </li>
                     ))}
@@ -175,7 +175,7 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[13px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                          className="inline-flex items-center gap-1 text-[14px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
                         >
                           {link.label} <ArrowUpRight size={12} aria-hidden />
                         </a>
@@ -190,11 +190,11 @@ const PlacementBlock: React.FC<{ placement: ResearchPlacement }> = ({ placement 
                   )}
 
                   {/* Tech chips */}
-                  <div className="flex flex-wrap gap-1 pt-2 border-t border-ink-100">
+                  <div className="flex flex-wrap gap-1 pt-2 border-t border-ink-200">
                     {sp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-sm border border-ink-200 bg-surface px-2 py-0.5 text-[12px] font-medium text-ink-700"
+                        className="rounded-md border border-ink-200 bg-surface px-2 py-0.5 text-[13px] text-ink-700"
                       >
                         {tech}
                       </span>
@@ -246,12 +246,12 @@ export const Research: React.FC = () => {
         id={PREVIOUS_ANCHOR}
         open={previousOpen}
         onToggle={(e) => setPreviousOpen((e.currentTarget as HTMLDetailsElement).open)}
-        className="group mt-14 scroll-mt-28 rounded-sm border border-ink-200 bg-surface"
+        className="group mt-14 scroll-mt-28 rounded-md border border-ink-200 bg-surface"
       >
         <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-400">
           <div>
             <h3 className="text-lg font-serif font-semibold text-ink-900">Previous research (undergraduate)</h3>
-            <p className="mt-1 text-[15px] text-ink-700">
+            <p className="mt-1 text-[16px] text-ink-700">
               University at Buffalo undergraduate work · digital health (OralScan, OrthoScan, mRehab) · computational materials
               (symmetry-aware GNNs, equivariant interatomic potentials)
             </p>
@@ -267,11 +267,11 @@ export const Research: React.FC = () => {
         </div>
       </details>
 
-      <div className="mt-10 rounded-sm border border-ink-200 bg-ink-50 px-5 py-4 text-[15px] text-ink-700">
+      <div className="mt-10 rounded-md border border-ink-200 bg-ink-50 px-5 py-4 text-[16px] text-ink-700">
         Looking for papers and preprints?{' '}
         <AppLink
           href="/publications/"
-          className="font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+          className="font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
         >
           View Publications →
         </AppLink>

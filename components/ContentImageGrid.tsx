@@ -29,7 +29,7 @@ export const ContentImageGrid: React.FC<ContentImageGridProps> = ({ images, clas
         {images.map((img, i) => (
           <figure
             key={`${img.src}-${i}`}
-            className="overflow-hidden rounded-sm border border-ink-200 bg-ink-50 shadow-sm"
+            className="overflow-hidden rounded-md border border-ink-200 bg-ink-50 shadow-sm"
           >
             <button
               type="button"
@@ -46,7 +46,7 @@ export const ContentImageGrid: React.FC<ContentImageGridProps> = ({ images, clas
                 decoding="async"
               />
               <span
-                className="absolute bottom-2 right-2 flex items-center gap-1 rounded-sm bg-black/70 px-2 py-1 text-[12px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:opacity-90"
+                className="absolute bottom-2 right-2 flex items-center gap-1 rounded-md bg-black/70 px-2 py-1 text-[13px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:opacity-90"
                 aria-hidden
               >
                 <ZoomIn size={12} />
@@ -54,7 +54,7 @@ export const ContentImageGrid: React.FC<ContentImageGridProps> = ({ images, clas
               </span>
             </button>
             {img.caption ? (
-              <figcaption className="border-t border-ink-100 px-3 py-2 text-[13px] leading-snug text-ink-600">
+              <figcaption className="border-t border-ink-200 px-3 py-2 text-[14px] leading-snug text-ink-600">
                 {img.caption}
               </figcaption>
             ) : null}

@@ -8,9 +8,9 @@ const base =
   'inline-flex items-center gap-1.5 font-semibold rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2';
 
 const variants: Record<Variant, string> = {
-  hero: 'px-6 py-3 border border-ink-200 text-ink-900 text-[15px] bg-surface hover:bg-ink-50 hover:border-ink-300',
+  hero: 'px-5 py-3 border border-ink-200 text-ink-900 text-[15px] bg-surface hover:bg-ink-50 hover:border-ink-300',
   header:
-    'ml-1 border border-ink-900 text-ink-900 px-3 py-1.5 text-[15px] hover:bg-ink-900 hover:text-ink-50',
+    'ml-1 border border-ink-900 text-ink-900 px-3 py-1.5 text-[16px] hover:bg-ink-900 hover:text-ink-50',
   headerMobile:
     'justify-center border border-ink-900 text-ink-900 px-4 py-3 mt-3 hover:bg-ink-900 hover:text-ink-50 w-full',
 };

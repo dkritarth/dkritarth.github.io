@@ -29,13 +29,13 @@ export const Timeline: React.FC = () => {
                 <div key={idx} className="relative">
                   <span className="absolute -left-[39px] top-1.5 w-3 h-3 rounded-full bg-surface border-2 border-ink-900" aria-hidden />
                   <h4 className="text-[17px] font-serif font-semibold text-ink-900">{edu.degree}</h4>
-                  <p className="text-ink-700 italic text-[15px] mb-1">{edu.institution}</p>
-                  <p className="text-[15px] text-ink-600 mb-3">
+                  <p className="text-ink-700 italic text-[16px] mb-1">{edu.institution}</p>
+                  <p className="text-[16px] text-ink-600 mb-3">
                     {edu.period}{dur ? <span className="text-ink-500"> ({dur})</span> : null} · {edu.location}
                   </p>
                   <ul className="space-y-1.5">
                     {edu.details.map((detail, i) => (
-                      <li key={i} className="text-[15px] text-ink-800 bg-surface p-2.5 rounded-sm border border-ink-100">
+                      <li key={i} className="text-[16px] text-ink-800 bg-surface p-2.5 rounded-md border border-ink-200">
                         {detail}
                       </li>
                     ))}
@@ -44,7 +44,7 @@ export const Timeline: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setDiplomaOpen(true)}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[15px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
                     >
                       <Scroll size={14} aria-hidden />
                       View Diploma
@@ -71,13 +71,13 @@ export const Timeline: React.FC = () => {
                     aria-hidden
                   />
                   <h4 className="text-[17px] font-serif font-semibold text-ink-900">{job.role}</h4>
-                  <p className="text-ink-800 font-medium text-[15px] mb-1">{job.organization}</p>
-                  <p className="text-[15px] text-ink-600 mb-3">
+                  <p className="text-ink-800 font-medium text-[16px] mb-1">{job.organization}</p>
+                  <p className="text-[16px] text-ink-600 mb-3">
                     {job.period}{dur ? <span className="text-ink-500"> ({dur})</span> : null} · {job.location}
                   </p>
                   <ul className="list-disc list-outside ml-4 space-y-1.5 marker:text-ink-500">
                     {job.description.map((desc, i) => (
-                      <li key={i} className="text-[15px] text-ink-800 leading-relaxed">
+                      <li key={i} className="text-[16px] text-ink-800 leading-relaxed">
                         {desc}
                       </li>
                     ))}
@@ -100,17 +100,17 @@ export const Timeline: React.FC = () => {
             return (
               <li
                 key={`${placement.role}-${placement.organization}`}
-                className="bg-surface p-5 rounded-sm border border-ink-100 flex flex-col gap-1.5"
+                className="bg-surface p-5 rounded-md border border-ink-200 flex flex-col gap-1.5"
               >
                 <h4 className="text-[17px] font-serif font-semibold text-ink-900">{placement.role}</h4>
-                <p className="text-[15px] italic text-ink-700">{placement.organization}</p>
-                {range ? <p className="text-[13px] text-ink-500">{range}</p> : null}
+                <p className="text-[16px] italic text-ink-700">{placement.organization}</p>
+                {range ? <p className="text-[14px] text-ink-500">{range}</p> : null}
                 {placement.overview ? (
-                  <p className="text-[15px] text-ink-800 leading-relaxed">{placement.overview}</p>
+                  <p className="text-[16px] text-ink-800 leading-relaxed">{placement.overview}</p>
                 ) : null}
                 <AppLink
                   href={placement.previous ? '/research/#previous-research' : '/research/'}
-                  className="mt-1 text-[15px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline self-start"
+                  className="mt-1 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline self-start"
                 >
                   {placement.previous ? 'See previous research (undergraduate) →' : 'See current research →'}
                 </AppLink>

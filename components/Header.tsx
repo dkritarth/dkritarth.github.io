@@ -20,12 +20,12 @@ export const Header: React.FC = () => {
   }, []);
 
   const linkClass = (active: boolean) =>
-    `px-2.5 py-1.5 text-[15px] font-medium rounded-sm transition-colors ${
+    `px-2.5 py-1.5 text-[16px] font-medium rounded-md transition-colors ${
       active ? 'text-ink-900 bg-ink-200/80' : 'text-ink-700 hover:text-ink-900 hover:bg-ink-100/80'
     }`;
 
   const mobileLinkClass = (active: boolean) =>
-    `text-base font-medium py-3 px-2 rounded-sm border-b border-ink-100 last:border-0 ${
+    `text-base font-medium py-3 px-2 rounded-md border-b border-ink-200 last:border-0 ${
       active ? 'text-ink-950 bg-ink-100' : 'text-ink-800 hover:bg-ink-100'
     }`;
 

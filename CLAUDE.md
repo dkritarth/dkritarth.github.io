@@ -48,6 +48,10 @@ If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo
 
 Light/dark mode is class-based (`html.dark`). The `ink-*`, `surface` and `deep` colors in the Tailwind config (`index.html`) are CSS variables, so existing `text-ink-*` / `bg-ink-*` classes flip automatically; use `bg-surface` instead of `bg-white`, and `text-ink-50` (not `text-white`) on `bg-ink-900` buttons. Always-dark elements (footer, image overlays, code blocks) use `bg-deep` or `bg-black/*`. `theme.ts` holds the system/light/dark preference (saved in `localStorage` under `theme`); an inline script in `index.html` applies it before first paint.
 
+### Typography
+
+One family, Space Grotesk, is used for headings (`font-serif` class, kept for historical reasons) and body (`font-sans`). Both come from CSS variables in `index.html` (`--font-display`, `--font-body`); swap a pairing by changing them and the Google Fonts `<link>` together. Inline links use the amber `text-accent` color (variable `--accent`, darker in light mode for contrast); cards are thin-bordered `rounded-lg`/`rounded-xl` boxes.
+
 ### Static assets
 
 Images and PDFs live under `public/data/`:
