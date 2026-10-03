@@ -112,7 +112,7 @@ export const Timeline: React.FC = () => {
                   href={placement.previous ? '/research/#previous-research' : '/research/'}
                   className="mt-1 text-[15px] font-semibold text-ink-900 underline underline-offset-2 hover:no-underline self-start"
                 >
-                  {placement.previous ? 'See previous research →' : 'See current research →'}
+                  {placement.previous ? 'See previous research (undergraduate) →' : 'See current research →'}
                 </AppLink>
               </li>
             );

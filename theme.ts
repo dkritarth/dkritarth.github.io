@@ -23,7 +23,7 @@ function applyPreference(preference: ThemePreference): void {
   document.documentElement.classList.toggle('dark', dark);
   document
     .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
-    .forEach((meta) => meta.setAttribute('content', dark ? '#181715' : '#fafaf9'));
+    .forEach((meta) => meta.setAttribute('content', dark ? '#26282c' : '#eeeeeb'));
 }
 
 // Module-level store so every toggle instance (desktop and mobile header) shows the same state.

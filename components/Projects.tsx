@@ -10,7 +10,7 @@ export const Projects: React.FC = () => {
       id="projects"
       title="Selected projects"
       subtitle="Open-source and independent work, plus coursework in computer vision and deep learning (distinct from primary lab research)."
-      className="bg-surface"
+      className="bg-ink-50"
     >
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
         {PROJECTS.map((project, index) => (
