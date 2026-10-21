@@ -1,6 +1,7 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
 import { Mail, MapPin } from 'lucide-react';
+import { GoogleScholarIcon, OrcidIcon } from './BrandIcons';
 
 export const Footer: React.FC = () => {
   return (
@@ -28,6 +29,25 @@ export const Footer: React.FC = () => {
                 {workEmail}
               </a>
             ))}
+            <a
+              id="cy-effective-orcid-url"
+              href={CONTACT_INFO.orcid}
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="flex items-center gap-2 text-stone-200 hover:text-white underline underline-offset-4 decoration-stone-500 transition-colors"
+            >
+              <OrcidIcon size={16} className="shrink-0 opacity-80" />
+              {CONTACT_INFO.orcid}
+            </a>
+            <a
+              href={CONTACT_INFO.googleScholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-stone-200 hover:text-white transition-colors"
+            >
+              <GoogleScholarIcon size={16} className="shrink-0 opacity-80" />
+              Google Scholar
+            </a>
             <div className="flex items-center gap-2 text-stone-400">
               <MapPin size={16} className="shrink-0 opacity-80" aria-hidden />
               {CONTACT_INFO.location}

@@ -103,6 +103,8 @@ function buildPersonNode() {
     sameAs: [
       CONTACT_INFO.github,
       CONTACT_INFO.linkedin,
+      CONTACT_INFO.orcid,
+      CONTACT_INFO.googleScholar,
       CONTACT_INFO.website,
       CONTACT_INFO.inferenceFoundry.url,
       'https://www.instagram.com/kritarth_dandapat/',

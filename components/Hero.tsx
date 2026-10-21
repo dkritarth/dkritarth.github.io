@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Instagram, Linkedin, Mail, ArrowRight, ArrowUpRight, Twitter } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS, RESEARCH_THREADS } from '../constants';
+import { GoogleScholarIcon, OrcidIcon } from './BrandIcons';
 import { CvDownloadLink } from './CvDownloadLink';
 import { AppLink } from './AppLink';
 
@@ -127,6 +128,24 @@ export const Hero: React.FC = () => {
               aria-label="LinkedIn"
             >
               <Linkedin size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.googleScholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
+              aria-label="Google Scholar"
+            >
+              <GoogleScholarIcon size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.orcid}
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
+              aria-label="ORCID iD"
+            >
+              <OrcidIcon size={22} />
             </a>
             <a
               href={CONTACT_INFO.instagram}
