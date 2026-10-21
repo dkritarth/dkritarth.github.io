@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Instagram, Linkedin, Mail, ArrowRight, ArrowUpRight, Twitter } from 'lucide-react';
+import { Github, GraduationCap, Instagram, Linkedin, Mail, ArrowRight, ArrowUpRight, Twitter } from 'lucide-react';
 import { CONTACT_INFO, NAV_LINKS, RESEARCH_THREADS } from '../constants';
 import { CvDownloadLink } from './CvDownloadLink';
 import { AppLink } from './AppLink';
@@ -127,6 +127,30 @@ export const Hero: React.FC = () => {
               aria-label="LinkedIn"
             >
               <Linkedin size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.googleScholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-ink-900 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
+              aria-label="Google Scholar"
+            >
+              <GraduationCap size={22} />
+            </a>
+            <a
+              href={CONTACT_INFO.orcid}
+              target="orcid.widget"
+              rel="me noopener noreferrer"
+              className="opacity-80 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 rounded-lg p-1 transition-all"
+              aria-label="ORCID iD"
+            >
+              <img
+                src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+                alt=""
+                width={22}
+                height={22}
+                className="w-[22px] h-[22px]"
+              />
             </a>
             <a
               href={CONTACT_INFO.instagram}

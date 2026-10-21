@@ -90,6 +90,8 @@ export const CONTACT_INFO = {
   location: 'East Lansing, MI',
   github: 'https://github.com/dkritarth',
   linkedin: 'https://www.linkedin.com/in/kritarth-dandapat/',
+  orcid: 'https://orcid.org/0009-0008-3992-6333',
+  googleScholar: 'https://scholar.google.com/citations?user=OVk4eGgAAAAJ&hl=en',
   instagram: 'https://www.instagram.com/kritarth_dandapat/',
   twitter: 'https://x.com/Kritarth25',
   website: 'https://dkritarth.com',
