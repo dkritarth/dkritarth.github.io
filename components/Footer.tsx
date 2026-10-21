@@ -1,6 +1,7 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
-import { GraduationCap, Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
+import { GoogleScholarIcon, OrcidIcon } from './BrandIcons';
 
 export const Footer: React.FC = () => {
   return (
@@ -31,17 +32,11 @@ export const Footer: React.FC = () => {
             <a
               id="cy-effective-orcid-url"
               href={CONTACT_INFO.orcid}
-              target="orcid.widget"
+              target="_blank"
               rel="me noopener noreferrer"
               className="flex items-center gap-2 text-stone-200 hover:text-white underline underline-offset-4 decoration-stone-500 transition-colors"
             >
-              <img
-                src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-                alt="ORCID iD icon"
-                width={16}
-                height={16}
-                className="shrink-0"
-              />
+              <OrcidIcon size={16} className="shrink-0 opacity-80" />
               {CONTACT_INFO.orcid}
             </a>
             <a
@@ -50,7 +45,7 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-stone-200 hover:text-white transition-colors"
             >
-              <GraduationCap size={16} className="shrink-0 opacity-80" aria-hidden />
+              <GoogleScholarIcon size={16} className="shrink-0 opacity-80" />
               Google Scholar
             </a>
             <div className="flex items-center gap-2 text-stone-400">
