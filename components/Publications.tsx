@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Section } from './Section';
 import { PUBLICATIONS, PRESENTATIONS } from '../constants';
 import type { Publication } from '../types';
-import { ArrowUpRight, Check, ChevronDown, Copy, Mic2 } from 'lucide-react';
+import { ArrowUpRight, Check, ChevronDown, Copy, FileText, Mic2 } from 'lucide-react';
 
 type FilterKey = 'all' | 'published' | 'preprint' | 'submitted';
 
@@ -83,69 +83,106 @@ const PubCard: React.FC<{ pub: Publication }> = ({ pub }) => {
 
   return (
     <div className="group rounded-md border border-ink-200 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md">
-      <div className="flex flex-col gap-3">
-        <div>
-          <h3 className="text-[16px] font-semibold leading-snug text-ink-900 mb-2">{pub.title}</h3>
-          <p className="text-[16px] italic text-ink-600 mb-2 leading-relaxed">
-            <AuthorList authors={pub.authors} equalContribution={pub.equalContribution} />
-          </p>
-          {pub.equalContribution && (
-            <p className="mb-2 text-[14px] text-ink-500">
-              * {pub.equalContribution.join(' and ')} contributed equally to this work.
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div className="flex min-w-0 flex-1 flex-col gap-3">
+          <div>
+            <h3 className="text-[16px] font-semibold leading-snug text-ink-900 mb-2">{pub.title}</h3>
+            <p className="text-[16px] italic text-ink-600 mb-2 leading-relaxed">
+              <AuthorList authors={pub.authors} equalContribution={pub.equalContribution} />
             </p>
-          )}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
-            <span className="font-medium text-ink-800">{pub.venue}</span>
-            <span className="text-ink-500">{pub.year}</span>
-            {pub.status && (
-              <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[14px] ${statusStyle(pub.status)}`}>
-                {pub.status}
-              </span>
+            {pub.equalContribution && (
+              <p className="mb-2 text-[14px] text-ink-500">
+                * {pub.equalContribution.join(' and ')} contributed equally to this work.
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
+              <span className="font-medium text-ink-800">{pub.venue}</span>
+              <span className="text-ink-500">{pub.year}</span>
+              {pub.status && (
+                <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[14px] ${statusStyle(pub.status)}`}>
+                  {pub.status}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            {pub.link && (
+              <a
+                href={pub.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
+              >
+                View paper <ArrowUpRight size={14} aria-hidden />
+              </a>
+            )}
+            {hasDetail && (
+              <button
+                type="button"
+                onClick={() => setExpanded((e) => !e)}
+                className="inline-flex items-center gap-1 text-[16px] font-medium text-ink-600 hover:text-ink-900"
+              >
+                {expanded ? 'Hide' : 'Abstract & citation'}
+                <ChevronDown
+                  size={14}
+                  aria-hidden
+                  className={`transition-transform ${expanded ? 'rotate-180' : ''}`}
+                />
+              </button>
             )}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          {pub.link && (
+        {pub.poster && (
+          <div className="flex shrink-0 flex-row items-start gap-3 sm:flex-col sm:items-center sm:gap-2">
             <a
-              href={pub.link}
+              href={pub.poster.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[16px] font-semibold text-accent underline underline-offset-4 decoration-accent/60 hover:no-underline"
+              aria-label={`Open poster PDF for ${pub.title} (new tab)`}
+              className="block w-28 overflow-hidden rounded-md border border-ink-200 bg-ink-50 shadow-sm transition-shadow hover:shadow-md sm:w-32"
             >
-              View paper <ArrowUpRight size={14} aria-hidden />
+              {pub.poster.preview ? (
+                <img
+                  src={pub.poster.preview}
+                  alt={`Poster for ${pub.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full"
+                />
+              ) : (
+                <span className="flex aspect-[3/4] items-center justify-center text-ink-500">
+                  <FileText size={28} aria-hidden />
+                </span>
+              )}
             </a>
-          )}
-          {hasDetail && (
-            <button
-              type="button"
-              onClick={() => setExpanded((e) => !e)}
-              className="inline-flex items-center gap-1 text-[16px] font-medium text-ink-600 hover:text-ink-900"
+            <a
+              href={pub.poster.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 self-start rounded-md border border-ink-200 px-2.5 py-1 text-[14px] font-medium text-ink-700 transition-colors hover:border-ink-400 hover:text-ink-900 sm:self-center"
             >
-              {expanded ? 'Hide' : 'Abstract & citation'}
-              <ChevronDown
-                size={14}
-                aria-hidden
-                className={`transition-transform ${expanded ? 'rotate-180' : ''}`}
-              />
-            </button>
-          )}
-        </div>
-
-        {expanded && hasDetail && (
-          <div className="mt-1 space-y-3 border-t border-ink-200 pt-3">
-            {pub.abstract && (
-              <p className="text-[16px] leading-relaxed text-ink-700">{pub.abstract}</p>
-            )}
-            {pub.citation && (
-              <div className="space-y-1.5">
-                <p className="rounded-md bg-ink-50 p-3 text-[14px] leading-relaxed text-ink-700">{pub.citation}</p>
-                <CopyCitation citation={pub.citation} />
-              </div>
-            )}
+              <FileText size={13} aria-hidden />
+              View poster (PDF)
+            </a>
           </div>
         )}
       </div>
+
+      {expanded && hasDetail && (
+        <div className="mt-3 space-y-3 border-t border-ink-200 pt-3">
+          {pub.abstract && (
+            <p className="text-[16px] leading-relaxed text-ink-700">{pub.abstract}</p>
+          )}
+          {pub.citation && (
+            <div className="space-y-1.5">
+              <p className="rounded-md bg-ink-50 p-3 text-[14px] leading-relaxed text-ink-700">{pub.citation}</p>
+              <CopyCitation citation={pub.citation} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -174,11 +174,13 @@ export const RESEARCH_PLACEMENTS: ResearchPlacement[] = [
         ],
         technicalHighlights: [
           'Research interests: Spatiotemporal Machine Learning · Deep Learning Weather Forecasting · Ensemble Forecasting · AI Robustness · Uncertainty-Aware Prediction · Scientific Machine Learning',
+          'PI on NSF ACCESS allocation CIS262206 (2026), "Investigating Adversarial Vulnerabilities in AI-Based Ensemble Weather Forecasting Models": compute on NCSA Delta for adversarial experiments on AIFS and GenCast.',
         ],
         technologies: ['AIFS (ECMWF)', 'PGD attacks', 'Ensemble forecasting', 'Adversarial robustness', 'Spatiotemporal ML'],
         links: [
           { label: 'GeoArmor NSF project', href: 'https://www.cse.msu.edu/~ptan/project/geoarmor/' },
           { label: 'Data Mining Laboratory', href: 'https://www.cse.msu.edu/~ptan/' },
+          { label: 'NSF ACCESS allocation (CIS262206)', href: 'https://www.xras.org/public/requests/278524-ACCESS-CIS262206' },
         ],
       },
     ],
@@ -360,6 +362,10 @@ export const PUBLICATIONS: Publication[] = [
     citation:
       'Dandapat, K., Master, T. A., Das, A., Bo, W., Lei, M., Liu, E., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., & Xu, W. (2026). Separating safety from preference in clinical LLM evaluation. In Proceedings of MobiCom 2026.',
     link: 'https://doi.org/10.1145/3842436.3843811',
+    poster: {
+      pdf: '/data/publications/posters/safety-preference-clinical-llm-poster.pdf',
+      preview: '/data/publications/posters/safety-preference-clinical-llm-poster.webp',
+    },
   },
   {
     title:
@@ -375,6 +381,10 @@ export const PUBLICATIONS: Publication[] = [
     citation:
       'Liu, E.*, Dandapat, K.*, Master, T. A., Das, A., Gherardi, A., Bo, W., Cavuoto, L. A., Bhattacharjya, S., Subryan, H., Ji, W., & Xu, W. (2026). From community feedback to measurement redesign: Iterating mRehab for accessible home-based stroke rehabilitation. In Proceedings of MobiCom 2026. (*Co-first authors)',
     link: 'https://doi.org/10.1145/3842436.3843796',
+    poster: {
+      pdf: '/data/publications/posters/mrehab-community-feedback-poster.pdf',
+      preview: '/data/publications/posters/mrehab-community-feedback-poster.webp',
+    },
   },
   {
     title:
@@ -409,6 +419,10 @@ export const PUBLICATIONS: Publication[] = [
     year: '2026',
     status: 'Published',
     link: 'https://doi.org/10.1145/3795866.3848473',
+    poster: {
+      pdf: '/data/publications/posters/mrehab-demo-poster.pdf',
+      preview: '/data/publications/posters/mrehab-demo-poster.webp',
+    },
   },
   {
     title: 'Accelerating Multimetallic Catalyst Discovery with Robotics and Agentic AI',
@@ -431,19 +445,36 @@ export const PUBLICATIONS: Publication[] = [
 export const PROJECTS: Project[] = [
   {
     slug: 'inference-foundry',
+    images: [
+      {
+        src: '/data/projects/inference-foundry/inference-foundry-site.webp',
+        alt: 'Inference Foundry project site homepage',
+        caption: 'Project site: research-grade tooling for local inference',
+      },
+    ],
     title: 'Inference Foundry',
+    period: 'May 2026 – Present',
+    startDate: '2026-05',
     category: 'Open-Source Research Software',
     description: [
       'Founded a collaborative open-source initiative building reproducible ML inference tooling, standardized research software scaffolding, and shared contributor infrastructure for the scientific ML community.',
       'Focused on shared infrastructure and contributor-friendly workflows so that scientific ML results can be rerun and extended by other people.',
     ],
     technologies: ['Open source', 'ML inference', 'Research software', 'Reproducible workflows'],
-    stats: 'Since ~May 2026',
     links: [{ label: 'inference-foundry.rweb.site', href: 'https://inference-foundry.rweb.site/' }],
   },
   {
     slug: 'scopewatch',
+    images: [
+      {
+        src: '/data/projects/scopewatch/scopewatch-site-hero.webp',
+        alt: 'Scopewatch project site: a tool call passes deterministic policy, the reasoning auditor flags prompt injection, and the gateway holds it before execution',
+        caption: 'Project site: an injected write is held before it runs',
+      },
+    ],
     title: 'Scopewatch: Pre-Execution Security Gateway for AI Agents',
+    period: 'Sep – Oct 2026',
+    startDate: '2026-09',
     category: 'AI Agent Security and Evaluation',
     description: [
       'Built a pre-execution security gateway and reviewer interface that audits and mediates autonomous AI agent actions against declared task scopes before anything runs.',
@@ -451,11 +482,23 @@ export const PROJECTS: Project[] = [
       'Approved actions execute only inside a bounded workspace sandbox. Reviewers inspect full audit trails with grounded trace excerpts and single-use approval controls. Includes a held-out evaluation harness for the reasoning auditor, run on synthetic fixtures only.',
     ],
     technologies: ['Python', 'FastAPI', 'Docker', 'Playwright', 'Agent security'],
-    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/scopewatch' }],
+    links: [
+      { label: 'Project site', href: 'https://dkritarth.com/scopewatch/' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/scopewatch' },
+    ],
   },
   {
     slug: 'vellum',
+    images: [
+      {
+        src: '/data/projects/vellum/vellum-site.webp',
+        alt: 'Vellum project site homepage',
+        caption: 'Project site: read papers and chat with them on your own plan',
+      },
+    ],
     title: 'Vellum: Local-First AI Paper Workspace',
+    period: 'Jul 2026 – Present',
+    startDate: '2026-07',
     category: 'Research Tools and Agent Integration',
     description: [
       'Building a local-first workspace for reading, annotating, and analyzing research papers: ingest a paper from an arXiv ID, DOI, PDF URL, or local file, select a difficult passage, and continue with paper-grounded analysis in chat.',
@@ -464,11 +507,23 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['Electron', 'React', 'TypeScript', 'Agent Client Protocol (ACP)', 'SQLite', 'PDF.js'],
     stats: 'Early-stage',
-    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/Vellum' }],
+    links: [
+      { label: 'Project site', href: 'https://dkritarth.com/Vellum/' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/Vellum' },
+    ],
   },
   {
     slug: 'context-kernel',
+    images: [
+      {
+        src: '/data/projects/context-kernel/context-kernel-cloudflare-dashboard.webp',
+        alt: 'Cloudflare Workers dashboard for the deployed context-kernel worker with two KV bindings',
+        caption: 'Deployed Worker with CONTEXT_KV and OAUTH_KV bindings',
+      },
+    ],
     title: 'context-kernel: Self-Hostable Context Memory for LLMs',
+    period: 'Jul 2026',
+    startDate: '2026-07',
     category: 'Developer Infrastructure and Remote MCP Servers',
     description: [
       'Built a self-hostable context-memory layer that serves hand-curated Markdown (profile, preferences, project status) to Claude Code, Desktop, and chat over a remote MCP connector, replacing repeated re-explanation of personal context at the start of every session.',
@@ -484,7 +539,16 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'paddock-psych-rl',
+    images: [
+      {
+        src: '/data/projects/paddock-psych-rl/paddock-psych-rl-learning-curves.webp',
+        alt: 'MAPPO learning curves for psych-conditioned and baseline agents',
+        caption: 'MAPPO learning curves from the project write-up',
+      },
+    ],
     title: 'PaddockPsychRL: F1-Informed Multi-Agent Reinforcement Learning',
+    period: 'Apr – May 2026',
+    startDate: '2026-04',
     category: 'Spatiotemporal Modeling and Multi-Agent Systems',
     description: [
       'Formulated a multi-agent RL framework integrating Formula 1 temporal performance signals into agent psychology models within PettingZoo cooperative environments, mapping real-world behavioral dynamics to learned policy structure.',
@@ -500,7 +564,16 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'marine-guardian',
+    images: [
+      {
+        src: '/data/projects/marine-guardian/marine-guardian-ship-samples.webp',
+        alt: 'Satellite image chips labeled ship (S) and non-ship (NS)',
+        caption: 'Ship (S) vs non-ship (NS) satellite image samples',
+      },
+    ],
     title: 'Marine Guardian: Ship Detection in Satellite Imagery',
+    period: 'Mar – May 2025',
+    startDate: '2025-03',
     category: 'Geospatial Computer Vision and Deep Learning',
     description: [
       'Designed a maritime monitoring pipeline grounded in geometric computer vision principles before applying deep models, achieving low-latency inference on high-resolution satellite imagery for spatial object detection.',
@@ -509,10 +582,20 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['Python', 'OpenCV', 'TensorFlow', 'EfficientNet', 'MobileNetV2', 'ResNet-50', 'K-means'],
     stats: '98.72% accuracy',
+    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/CSE-473-Marine-Guardian' }],
   },
   {
     slug: 'people-counting-csrnet',
+    images: [
+      {
+        src: '/data/projects/people-counting-csrnet/csrnet-crowd-frame.webp',
+        alt: 'Preprocessed dense crowd scene used for CSRNet density estimation',
+        caption: 'Preprocessed congested-scene input frame',
+      },
+    ],
     title: 'People Counting via CSRNet Density Estimation',
+    period: 'Aug 2024',
+    startDate: '2024-08',
     category: 'Deep Learning and Spatial Regression',
     description: [
       'Developed a density-estimation pipeline for crowd counting in highly occluded surveillance scenes where bounding-box detectors fail due to extreme pedestrian overlap, framing the task as spatial regression over density maps.',
@@ -520,10 +603,20 @@ export const PROJECTS: Project[] = [
       'Accelerated training and inference with CUDA; preprocessed surveillance-style frames with OpenCV for repeatable benchmarking across public crowd-counting datasets.',
     ],
     technologies: ['PyTorch', 'CSRNet', 'CUDA', 'OpenCV'],
+    links: [{ label: 'GitHub', href: 'https://github.com/dkritarth/People-Counting-using-CSRNet' }],
   },
   {
     slug: 'human-emotion-detection',
+    images: [
+      {
+        src: '/data/projects/human-emotion-detection/emotion-dataset-samples.webp',
+        alt: 'Grid of grayscale face crops labeled happy, sad, and angry',
+        caption: 'Augmented training samples (happy / sad / angry)',
+      },
+    ],
     title: 'Human Emotion Detection: Multi-Architecture Benchmark',
+    period: 'Jul 2024',
+    startDate: '2024-07',
     category: 'Computer Vision and Model Robustness',
     description: [
       'Constructed a controlled multi-architecture benchmark comparing shallow CNN, ResNet-34, and Vision Transformer (ViT) backbones on facial expression recognition under a unified preprocessing and evaluation protocol, isolating architectural contribution from data effects.',
@@ -532,6 +625,35 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['PyTorch', 'TensorFlow', 'CNN', 'ResNet-34', 'Vision Transformer', 'OpenCV'],
     stats: '87.5% top-1 accuracy',
+    links: [
+      {
+        label: 'GitHub (notebook)',
+        href: 'https://github.com/dkritarth/AI-Projects/blob/main/Human_emotions_Detection.ipynb',
+      },
+    ],
+  },
+  {
+    slug: 'skills-personal',
+    images: [
+      {
+        src: '/data/projects/skills-personal/skills-personal-site.webp',
+        alt: 'skills-personal documentation site',
+        caption: 'Project documentation site',
+      },
+    ],
+    title: 'skills-personal: Personal Agent Skills Library',
+    period: 'Jul 2026 – Present',
+    startDate: '2026-07',
+    category: 'Developer Tooling and Agent Skills',
+    description: [
+      'A personal library of Claude Code agent skills, configured as a plugin marketplace and spanning writing cleanup, manuscript drafting, LaTeX and proof checking, PR preparation, and repository documentation.',
+      'Also bundles agent-infrastructure skills for research compute access, self-hosted HTML publishing, T3 Code routing, versioned repo wikis, and LLM benchmark harnesses.',
+    ],
+    technologies: ['Claude Code', 'Agent skills', 'Plugin marketplace', 'LaTeX', 'SymPy', 'Cloudflare Workers'],
+    links: [
+      { label: 'Project site', href: 'https://dkritarth.com/skills-personal/' },
+      { label: 'GitHub', href: 'https://github.com/dkritarth/skills-personal' },
+    ],
   },
 ];
 

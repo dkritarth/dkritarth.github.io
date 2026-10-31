@@ -12,6 +12,13 @@ export interface Publication {
   citation?: string;
   /** Names (as they appear in `authors`) that share first authorship, e.g. ['Liu, E.', 'Dandapat, K.'] */
   equalContribution?: string[];
+  /** Conference poster; files live under `public/data/publications/posters/` */
+  poster?: {
+    /** URL path to the PDF, e.g. `/data/publications/posters/<slug>-poster.pdf` */
+    pdf: string;
+    /** URL path to a preview image (webp), e.g. `/data/publications/posters/<slug>-poster.webp` */
+    preview?: string;
+  };
 }
 
 /** One current PhD research thread shown on the home page: title and status only, no results. */
@@ -88,6 +95,10 @@ export interface ResearchPlacement {
 
 export interface Project {
   title: string;
+  /** Display period, e.g. 'Jul 2026 – Present' */
+  period: string;
+  /** Machine-sortable start month, 'YYYY-MM' */
+  startDate: string;
   category: string;
   description: string[];
   technologies: string[];

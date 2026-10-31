@@ -20,6 +20,35 @@ export function newsMedia(file: string): string {
  */
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    id: 'scopewatch-xerj-corpus-hub-2026',
+    year: 2026,
+    month: 10,
+    headline: 'Finished Scopewatch, a one-month hackathon build; its agent-deadline fix was selected for the XERJ Corpus Hub',
+    summary:
+      'Scopewatch is a pre-execution security gateway that checks AI-agent actions against their declared task scope before anything runs. XERJ, an open-source search engine for coding agents, picked the commit "fix(agent): reconcile review timeout and completion deadlines" (6 files, about 600 lines of Python with tests) for its public Corpus Hub, where coding agents look up working implementations with attribution.',
+    images: [
+      {
+        src: newsImagePath('scopewatch-xerj-corpus-hub-2026', 'xerj-selection-email.webp'),
+        alt: 'Email from the founder of XERJ saying the Scopewatch commit was reviewed and selected for the Corpus Hub, under the MIT licence with attribution',
+        caption: 'XERJ selection email for the Scopewatch commit',
+      },
+      {
+        src: newsImagePath('scopewatch-xerj-corpus-hub-2026', 'xerj-contributor-page-email.webp'),
+        alt: 'Follow-up email announcing that the XERJ Corpus Hub contributor page for dkritarth is live',
+        caption: 'Contributor page confirmation',
+      },
+    ],
+    links: [
+      { label: 'XERJ contributor page', href: 'https://hub.xerj.org/contributors/dkritarth', kind: 'website' },
+      {
+        label: 'Selected commit',
+        href: 'https://github.com/dkritarth/scopewatch/commit/64176813f3847766bd2be167e5893ce3cf2c7f98',
+        kind: 'github',
+      },
+      { label: 'Scopewatch project site', href: 'https://dkritarth.com/scopewatch/', kind: 'website' },
+    ],
+  },
+  {
     id: 'context-kernel-2026',
     year: 2026,
     month: 7,
