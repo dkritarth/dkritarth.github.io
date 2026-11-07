@@ -3,7 +3,12 @@ import type { SitePage } from './types';
 
 const ALLOWED_PAGES: SitePage[] = ['about', 'research', 'publications', 'projects', 'news', 'blog'];
 
-/** Migrate legacy hash URLs (`#/about`) and the retired `/education/` page to current path URLs. */
+/** Retired blog slugs mapped to where their content lives now. */
+const BLOG_ALIASES: Record<string, string> = {
+  'muse-and-t3code-broke-me': '/blog/ai-has-changed-me/#muse',
+};
+
+/** Migrate legacy hash URLs (`#/about`), the retired `/education/` page and retired blog slugs to current URLs. */
 export function migrateHashRoute(): void {
   if (typeof window === 'undefined') return;
   const hash = window.location.hash;
@@ -13,6 +18,10 @@ export function migrateHashRoute(): void {
   }
   if (parsePathSegment(window.location.pathname) === 'education') {
     window.history.replaceState(null, '', '/about/#education');
+  }
+  const blogAlias = BLOG_ALIASES[parseBlogSlug(window.location.pathname) ?? ''];
+  if (blogAlias) {
+    window.history.replaceState(null, '', blogAlias);
   }
 }
 
