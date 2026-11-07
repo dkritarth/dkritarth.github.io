@@ -8,7 +8,7 @@ type BlogPostPageProps = {
 
 export const BlogPostPage: React.FC<BlogPostPageProps> = ({ slug }) => {
   return (
-    <PageLayout>
+    <PageLayout variant="article">
       <BlogPostView slug={slug} />
     </PageLayout>
   );

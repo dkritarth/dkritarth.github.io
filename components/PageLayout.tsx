@@ -4,8 +4,8 @@ import { Footer } from './Footer';
 
 type PageLayoutProps = {
   children: React.ReactNode;
-  /** Landing uses full-viewport hero padding; inner pages add top offset for the fixed header. */
-  variant?: 'landing' | 'document';
+  /** Inner pages use a compact top offset below the fixed header. */
+  variant?: 'landing' | 'document' | 'article';
 };
 
 export const PageLayout: React.FC<PageLayoutProps> = ({ children, variant = 'document' }) => {
@@ -18,7 +18,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, variant = 'doc
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className={variant === 'landing' ? 'flex-1' : 'flex-1 pt-24 md:pt-28 pb-16'}>{children}</main>
+      <main id="main-content" className={variant === 'landing' ? 'flex-1' : 'flex-1 pt-[104px] pb-16 [&>section:first-child]:pt-0'}>{children}</main>
       <Footer />
     </div>
   );

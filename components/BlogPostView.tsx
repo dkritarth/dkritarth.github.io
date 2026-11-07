@@ -26,7 +26,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
   }
 
   return (
-    <article className="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
+    <article className="max-w-3xl mx-auto px-6 md:px-10 pb-16 md:pb-24">
       <AppLink href="/blog/" className="text-[16px] text-ink-700 hover:text-ink-900">
         ← Blog
       </AppLink>

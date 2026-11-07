@@ -10,7 +10,7 @@ export const BlogList: React.FC = () => {
     <Section
       id="blog"
       title="Blog"
-      subtitle="Notes on research, engineering, and things I'm building—newest first."
+      subtitle="Personal reflections on the ideas, experiences, and recent events that have changed how I think."
     >
       {posts.length ? (
         <div className="max-w-4xl space-y-6">

@@ -9,7 +9,7 @@ const PORTRAIT = '/data/my-photo.jpg';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-28 sm:pt-32 pb-16 border-b border-ink-200/80 bg-ink-50">
+    <section className="relative pt-[104px] pb-16 border-b border-ink-200/80 bg-ink-50">
       <div className="max-w-6xl mx-auto px-6 md:px-10 w-full space-y-10">
         {/* Intro card: name, lead and portrait */}
         <div className="grid md:grid-cols-[1fr_minmax(220px,300px)] gap-8 md:gap-12 items-center rounded-xl border border-ink-200 p-6 md:p-10">
