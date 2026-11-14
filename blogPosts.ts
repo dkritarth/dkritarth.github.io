@@ -521,6 +521,394 @@ export const BLOG_POSTS: BlogPost[] = [
       </p>
     `,
   },
+  {
+    slug: 'tokenomics-and-data',
+    title: 'Tokenomics and data',
+    date: '2026-11-13',
+    tags: ['ai', 'tokenomics', 'data', 'privacy'],
+    excerpt:
+      'A $20 AI subscription buys hundreds of dollars of inference at API prices, and your chats are worth far less to AI labs than you think. A rough guide to the economics, and why you should learn these tools while they are cheap.',
+    readingMinutes: 14,
+    content: `
+      <p>
+        Hi. If you're reading this, there's a good chance I sent you this link. I wrote it for
+        conversations where I'm talking about AI, metrics or the money behind it, and I can tell
+        the other person isn't quite following. This is my shortcut: a summary you can read on
+        your own time, so we can pick the conversation back up later.
+      </p>
+      <p>
+        If you found this page on your own, thank you for reading. What follows is a rough summary
+        of what I've learned over the past few months digging into AI companies and their
+        economics. I also cover how the business side of these companies affects you, and how you
+        can use it to your advantage.
+      </p>
+      <p>I'll cover two things: tokenomics, and your data. Here's the short version first.</p>
+      <ul>
+        <li>
+          A $20 subscription buys hundreds of dollars of inference at API prices. That works because
+          inference margins are high, most subscribers underuse their limits, and companies pay
+          full price.
+        </li>
+        <li>
+          You won't get that deal at work. Learn the tools now, while your mistakes are cheap.
+        </li>
+        <li>
+          Don't judge a model by its sticker price. Most of what an agent reads comes from cache,
+          billed at a tenth of the input price or less. Smarter models usually end up cheaper, so
+          use them.
+        </li>
+        <li>Working outside peak hours gets you more usage. Use them.</li>
+        <li>
+          Your chats aren't what makes models smarter. Turn the training toggle off if you want, but
+          your data isn't the product here. Your subscription is.
+        </li>
+      </ul>
+
+      <h2>Part 1: Tokenomics</h2>
+      <p>
+        "Tokenomics" has been thrown around a lot over the past couple of months. People use it to
+        talk about how many tokens they burn, what a token even is, and what tokens cost. Most
+        people don't really understand it, so let me start with a simple question.
+      </p>
+
+      <h3>What does a $20 subscription actually buy you?</h3>
+      <p>
+        Say you pay $20 a month for <a href="https://chatgpt.com/pricing" target="_blank" rel="noopener">ChatGPT</a>
+        or <a href="https://claude.com/pricing" target="_blank" rel="noopener">Claude</a>. How much
+        inference do you think you get out of it? $20? $100? $200?
+      </p>
+      <p>
+        Look at the figures people have reported for their own usage. Track which models you call
+        and how many tokens you spend, then price that at API rates. A $20 subscription gets you
+        roughly <strong>$400 to $700</strong> worth of API usage. My own numbers match that.
+      </p>
+
+      <h3>So how are they not losing money?</h3>
+      <p>
+        This is where most people get it wrong. API prices are not what it costs these companies to
+        run inference. They are what the companies charge, and the companies need to make a profit.
+      </p>
+      <p>
+        Nobody outside these companies knows the exact numbers. But analyst estimates of API margins
+        are very high.
+        <a href="https://cryptobriefing.com/anthropic-inference-margins-semianalysis-88-percent/" target="_blank" rel="noopener">SemiAnalysis</a>
+        puts Anthropic's inference margin as high as 88%, and
+        <a href="https://finance.biggo.com/news/173039423dab79be" target="_blank" rel="noopener">another estimate</a>
+        puts the blended API gross margin above 90%. Take the rough version of that. If they charge
+        you $100 at API rates, the compute to serve it costs them somewhere around $5 to $10.
+      </p>
+      <p>
+        At those margins, $400 of usage at API prices costs the company about $20 to $40 to serve.
+        That's close to what you pay, but not quite. Heavy users who stretch a Claude subscription
+        to around $700 of usage cost $35 to $70 to serve, more than their $20. So on its own, the
+        margin doesn't explain it. Three more things close the gap.
+      </p>
+      <ol>
+        <li>
+          <strong>Most people don't use their full limit.</strong> I try to max out my subscription.
+          If I have limits left near the end of the week, I throw them at random tasks. Most people
+          don't do that. My mom uses maybe 20% of her limit in a typical week, and some weeks she
+          doesn't touch it at all because she's on vacation. Light users pay for heavy users.
+        </li>
+        <li>
+          <strong>Companies pay full price.</strong> Many businesses can't have their data stored on
+          Anthropic's or OpenAI's servers at all. They sign
+          <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention" target="_blank" rel="noopener">zero data retention (ZDR)</a>
+          contracts and pay API prices, maybe with a 20 to 30% discount depending on how big the
+          contract is. If I do $400 of inference on my $20 subscription, the same work at a company
+          costs that company about $400.
+        </li>
+        <li>
+          <strong>Compute outside peak hours is nearly free for them.</strong> More on that below.
+        </li>
+      </ol>
+      <p>
+        Put together, light users and companies paying full price cover the heavy users. The subscription
+        is priced for the average subscriber, not for people like me.
+      </p>
+
+      <h3>Learn it now, while it's cheap</h3>
+      <p>
+        That gap is the whole point. On a subsidized subscription, I have room to play. I can try a
+        new model like <a href="https://www.anthropic.com/claude/fable" target="_blank" rel="noopener">Claude Fable 5.2</a>
+        and burn tokens on it. I can throw it at a useless task to see what happens, and it costs
+        me almost nothing. I couldn't do that at a company, where every token is billed at the full
+        rate.
+      </p>
+      <p>
+        So if you're a student, or anyone on a subsidized subscription, learn to use it well
+        <em>now</em>, while it's cheap. Don't wait until your company is paying full price for
+        your mistakes.
+      </p>
+      <p>
+        Some of my friends, and plenty of people online, are still very strict about AI. They
+        haven't gone deep, and they say they'll try it when they have real work to do. That's
+        backwards. Try it now, so that when the real work comes, you already know what you're doing.
+      </p>
+      <p>
+        Picture two people at the same company, each with $1,000 of inference. One has spent months
+        experimenting and gets a lot of work out of that $1,000. The other is still failing, still
+        writing the wrong prompts, and gets far less out of the same money. The company will notice.
+        At the end of the day, AI is a tool you pay for to get more done. It's an expensive tool.
+        Agent runs that go for days cost real money. But if you tune things well and set up the
+        right environment, it works very well, and you need to learn how to do that.
+      </p>
+
+      <h3>My last 30 days</h3>
+      <img
+        src="${blogImagePath('tokenomics-and-data', 'usage-last-30-days.png')}"
+        alt="Usage dashboard for the last 30 days: $3,416.35 estimated cost at API prices across 2,260 sessions. Claude Code $1,559.89, Antigravity $1,147.17, Codex $673.75, OpenCode $35.53. 14.6B processed tokens, of which 13.8B were cached input, and $22,859.31 in cache savings."
+      />
+      <p>
+        Here's my own usage for roughly the last 30 days. At API prices, it says I spent
+        <strong>$3,416.35</strong> on inference across 2,260 sessions in
+        <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener">Claude Code</a>,
+        <a href="https://antigravity.google/" target="_blank" rel="noopener">Antigravity</a>,
+        <a href="https://openai.com/codex/" target="_blank" rel="noopener">Codex</a> and
+        <a href="https://opencode.ai/" target="_blank" rel="noopener">OpenCode</a>.
+      </p>
+      <p>
+        That number looks scary, and yes, a lot of it is me burning tokens. Because I get these
+        subsidies, I've been using them to learn how to use these tools as well as I can. That
+        meant a lot of experiments, and some of it was wasteful. But that waste is how I learned
+        to get every dollar of value out of the subscriptions we're given. Here's what I actually
+        pay:
+      </p>
+      <ul>
+        <li>
+          <strong>Claude:</strong> a $20 Pro subscription. When I have more work, I add a second
+          account, so $40 at most.
+        </li>
+        <li>
+          <strong>ChatGPT:</strong> $20 a month, which OpenAI gave me free for four months as a
+          student.
+        </li>
+        <li><strong>Gemini:</strong> a free year through a student offer.</li>
+        <li><strong>OpenCode:</strong> I only use the free models when I need to test something.</li>
+      </ul>
+      <p>
+        So I pay about $20 to $40 a month for the subsidized usage, and I get real work out of it.
+        If you don't learn to do this, I think you'll get left behind.
+      </p>
+
+      <h3>The sticker price isn't what you pay</h3>
+      <p>
+        Every model launch comes with a headline price, like $5 per million input tokens and $20 per
+        million output tokens. People see a new model cost $5 more and decide it's too expensive.
+        That price is not what you actually end up paying.
+      </p>
+      <p>
+        Look at the "Cost by type" bar in my screenshot. Fresh input cost $528 and output cost
+        $669, about a third of the total. The other two thirds is caching: $1,561 of cache reads
+        and $658 of cache writes. Of the roughly 14.4 billion input tokens I sent, 13.8 billion, about
+        96%, were cache reads.
+      </p>
+      <p>
+        Cache reads are cheap. On most Anthropic models a cache read costs a tenth of the normal
+        input price, according to
+        <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic's pricing docs</a>,
+        and Opus 5.5 charges a twentieth: $0.20 per million cached tokens against $4.
+        <a href="https://www.requesty.ai/blog/gpt-6-sol-luna-pricing-release-api" target="_blank" rel="noopener">GPT-6 Luna</a>
+        charges $0.01 per million cached tokens against $0.10 for fresh input. That's why my
+        dashboard shows $22,859 in cache savings.
+      </p>
+      <img
+        src="${blogImagePath('tokenomics-and-data', 'opus-5-5-cost.png')}"
+        alt="Claude Opus 5.5 in Claude Code over the last 30 days: $1,463.21 across 3.09B tokens, $0.47 per million tokens, 96.1% cache hit. Cost by type: input $0.37, cache read $590.56, cache write $592.22, output $280.06."
+      />
+      <p>
+        Here's one model on its own.
+        <a href="https://www.anthropic.com/claude/opus" target="_blank" rel="noopener">Claude Opus 5.5</a>
+        lists at $4 per million input tokens and $20 per million output tokens. Over the last 30
+        days in Claude Code, I pushed 3.09 billion tokens through it, and it cost $1,463 at API
+        prices. That's <strong>$0.47 per million tokens</strong>, against a $4 sticker price for
+        input. The cache hit rate was 96.1%. Fresh, uncached input cost me 37 cents for the whole
+        month. Nearly everything else was cache reads, cache writes and output.
+      </p>
+      <p>
+        That's the gap between the price on the launch page and the real economics of using these
+        models.
+      </p>
+      <p>
+        Coding agents reread the same context over and over: the same files, the same instructions,
+        the same conversation so far. The tools from the big labs cache around 90% of it as a matter
+        of course. So don't get hung up on a model's sticker price. If it's smart enough and caching
+        90% of the time, a few dollars more per million tokens barely changes your bill. A smarter
+        model that finishes in fewer steps can even cost less (most of the time, it does).
+      </p>
+      <p>
+        In my experience, using a smart model is cheaper than using a dumb one about 95% of the
+        time. So please use the smarter models. They cost less, waste less electricity, give you
+        better answers, and are just better to work with.
+      </p>
+      <p>
+        Every new model release also tends to bring the price down, because the companies keep
+        finding ways to run models more efficiently on their GPUs while making them smarter.
+        <a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/" target="_blank" rel="noopener">Opus 5.5</a>
+        launched at a lower price than Opus 5, and
+        <a href="https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html" target="_blank" rel="noopener">Fable 5.2</a>
+        at a lower price than Fable 5.1. So if you're sticking with older models to "save money",
+        you aren't saving anything. Use the smarter model. It's cheaper for you, it's better for
+        you, and it's just the better choice.
+      </p>
+      <p>
+        To be fair about the numbers: nobody outside these companies knows the exact margins, and
+        my figures come from analyst reports, not official filings. The 90%+ figure covers inference
+        alone. These companies also pay to train models, run research and pay their employees, so
+        their actual profit is much lower. But inference is cheap for them, and the subscription is
+        subsidized.
+      </p>
+
+      <h3>Work at 3 AM</h3>
+      <p>
+        There's one more layer of subsidy. Anthropic and OpenAI run their GPUs 24/7. They don't turn
+        them off when traffic drops. The models stay loaded in memory and ready to serve at all
+        hours.
+      </p>
+      <p>
+        If you use these subscriptions a lot, you'll notice you get less usage during weekday work
+        hours, and much more if you're working at 3 AM. Anthropic has said this outright. In March
+        2026 it
+        <a href="https://www.theregister.com/2026/03/26/anthropic_tweaks_usage_limits/" target="_blank" rel="noopener">tightened session limits during weekday peak hours</a>
+        and recommended moving heavy work outside peak hours. Before that, it
+        <a href="https://thenewstack.io/anthropic-doubles-claude-usage-outside-peak-hours/" target="_blank" rel="noopener">doubled usage outside peak hours for two weeks</a>.
+      </p>
+      <p>
+        The reason is opportunity cost. During the day, those GPUs serve companies paying full API
+        prices, and those companies get priority. At night, when San Francisco and New York aren't
+        working, the GPUs sit mostly idle, and the companies don't mind you using them. Work late and
+        your requests will often run faster, and you'll probably get more usage too.
+      </p>
+
+      <h2>Part 2: Data</h2>
+      <p>
+        I was talking to a friend recently and she asked, "Aren't you scared they're taking all your
+        data?"
+      </p>
+      <p>
+        First, you can opt out. ChatGPT has an
+        <a href="https://help.openai.com/en/articles/7730893-data-controls-in-chatgpt" target="_blank" rel="noopener">"Improve the model for everyone"</a>
+        setting, and Claude has a "Help improve Claude" setting under Settings &gt; Privacy. Turn
+        it off and they won't train on your chats.
+      </p>
+      <p>
+        The bigger point is that, frankly, your individual chats aren't worth much to them, and
+        they aren't building an ad profile of you. Here's why.
+      </p>
+
+      <h3>You can't pay for AI with ads</h3>
+      <p>
+        We still think of AI companies like the previous generation of tech companies, Meta and
+        Google, which make their money from ads. To sell ads, you need data on people: what they
+        like, what they don't like. You build a profile, run statistics and algorithms on it, then
+        target ads precisely. That's how they make hundreds of billions of dollars.
+      </p>
+      <p>
+        That model doesn't work for AI. When I send a message, the thread might run for 40 minutes.
+        It calls other models and gets its work verified. I look at it when I send the message, and
+        again when the report comes back, maybe going back and forth a bit to finish up. Most of the
+        time, nobody is staring at the screen where an ad would go.
+      </p>
+      <p>
+        And the math doesn't come close. A YouTuber earns roughly
+        <a href="https://www.post-bridge.com/blog/how-much-does-youtube-pay-for-1000-views" target="_blank" rel="noopener">$2 to $10 per 1,000 views</a>
+        on long videos, usually $3 to $5. A single message of mine can cost $20 to $50 at API rates.
+        Some people send messages that run for days and cost hundreds or thousands of dollars. Bun,
+        the JavaScript runtime, was
+        <a href="https://www.developersdigest.tech/blog/bun-rust-rewrite-535k-lines" target="_blank" rel="noopener">rewritten from Zig to Rust</a>
+        mostly by Claude agents, about 535,000 lines in 11 days. No ad business pays for that kind
+        of inference.
+      </p>
+      <p>
+        Yes, ChatGPT
+        <a href="https://www.forbes.com/sites/anishasircar/2026/01/20/openai-brings-ads-to-chatgpt-as-costs-mount/" target="_blank" rel="noopener">now shows ads</a>
+        on its Free and $8 Go plans. But those plans give you barely any usage. I see it as mostly a
+        marketing move to reach people who won't pay $20, especially in poorer countries. It
+        doesn't pay for the heavy work, and it isn't where the money is.
+      </p>
+      <p>
+        So these companies will always charge you something, whether it's a subsidized subscription
+        or full API prices. I don't think that changes in 10 months, or even 5 years. AI is not going
+        to be free.
+      </p>
+
+      <h3>Your chats don't teach models new skills</h3>
+      <p>
+        Yes, the companies would like to collect data. That's why the toggle exists. Your thumbs up
+        and thumbs down, and the real problems you bring, do help a little, mostly by showing them
+        where the model fails. But one person's chats aren't worth much on their own. Sorry to say
+        it, but most of us aren't that interesting.
+      </p>
+      <p>
+        Human chat data was useful at one point. Conversations helped models learn to talk. That's
+        part of why older models sounded stiff and odd, and today's models write fluent, natural
+        English.
+      </p>
+      <p>
+        But new capabilities don't come from people like you and me chatting. They come from
+        reinforcement learning:
+        <a href="https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback" target="_blank" rel="noopener">RLHF</a>
+        (reinforcement learning from human feedback) and
+        <a href="https://www.patronus.ai/guide-to-rl-environments/reinforcement-learning-with-verifiable-rewards" target="_blank" rel="noopener">RLVR</a>
+        (reinforcement learning with verifiable rewards). The labs build simulated environments, and
+        the model is rewarded based on how well it does the task. RLVR uses an automatic check to
+        decide if the answer is correct, such as whether the tests pass or the math works out. That's how models
+        learned to code, generate images, build 3D models and everything else.
+      </p>
+      <p>
+        Most of this happens in the terminal. Look at how Claude Code or Codex actually work, and
+        you'll see they run commands under the hood. When ChatGPT makes you a PDF, it doesn't open
+        Word and type. It writes structured, odd commands in the
+        <a href="https://en.wikipedia.org/wiki/Command-line_interface" target="_blank" rel="noopener">command line</a>
+        that no human would write. When I ask it to plot some data, it doesn't open VS Code, create a
+        Python file, type the code and run it. It puts the whole Python program inside a single
+        terminal command, which writes the image to disk and shows it to me.
+      </p>
+      <p>
+        These systems work very differently from how people work, and that's why they're fast. If
+        the model had to create a file for every small step, all those writes would add up and slow
+        it down. Your chats about how to make a PDF don't teach it any of this. Labs build this
+        training data synthetically, in highly structured environments for things like computer use,
+        running commands, networking and monitoring.
+      </p>
+
+      <h3>Average data makes average models</h3>
+      <p>
+        There's one more reason. Models do learn from huge amounts of ordinary text early in
+        training. But if labs trained them on everyone's chats without filtering, the model would
+        pick up average behavior. You don't want an average model. Models like
+        <a href="https://www.anthropic.com/claude/fable" target="_blank" rel="noopener">Fable 5.2</a>
+        and <a href="https://www.anthropic.com/claude/opus" target="_blank" rel="noopener">Opus 5.5</a>
+        get better because they train on narrow, carefully built data where the model does much
+        smarter things than an average user asks for. Asking it how to make a PDF won't make the
+        next model better.
+      </p>
+      <p>
+        Sorry to say it, but OpenAI didn't
+        <a href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/" target="_blank" rel="noopener">crack the Navier-Stokes problem</a>
+        and a pile of other math problems by reading your chats. Maybe the data of highly skilled researchers helped, maybe. But
+        certainly not yours, assuming you're part of the 99% reading this (I think I am).
+      </p>
+      <p>
+        So you don't need to worry that they're building a bigger model out of you. That's the part
+        I want people to really understand.
+      </p>
+
+      <hr />
+      <h2>Found something wrong?</h2>
+      <p>
+        This field moves fast, and I can't keep this post updated all the time. If you spot
+        something wrong, or something has changed since I wrote it,
+        <a href="mailto:contact@dkritarth.com">email me</a>. I will read it and update the post so
+        it stays as accurate and useful as I can make it.
+      </p>
+      <p>
+        If I sent you this link, let's pick up where we left off. If you found it on your own and
+        want to talk about any of it, email me at
+        <a href="mailto:contact@dkritarth.com">contact@dkritarth.com</a>.
+      </p>
+    `,
+  },
 ];
 
 /** Posts with `draft` falsy, sorted by `date` descending (newest first), tie-broken by slug. */
