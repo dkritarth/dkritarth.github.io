@@ -1,5 +1,7 @@
 /**
- * View counters for dkritarth.com.
+ * Worker for dkritarth.com: serves the built site from dist/ (static assets, SPA
+ * fallback) and the view-counter API below. Only /api/* runs this script; every
+ * other path is served straight from assets (see wrangler.jsonc).
  *
  *   GET  /api/views          -> { total, posts: { <slug>: count } }   (all blog posts)
  *   GET  /api/views/<slug>   -> { slug, views }
@@ -100,7 +102,10 @@ export default {
 
     // One blog post
     const match = pathname.match(/^\/api\/views\/([^/]+)\/?$/);
-    if (!match) return json(request, { error: 'not found' }, 404);
+    if (!match) {
+      if (pathname.startsWith('/api/')) return json(request, { error: 'not found' }, 404);
+      return env.ASSETS.fetch(request);
+    }
 
     const slug = decodeURIComponent(match[1]);
     if (!SLUG_RE.test(slug)) return json(request, { error: 'bad slug' }, 400);

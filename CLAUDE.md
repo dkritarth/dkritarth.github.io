@@ -8,14 +8,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev        # dev server at http://localhost:3000
 npm run build      # vite build + postbuild SEO script (sitemap, 404.html)
 npm run preview    # serve the built dist/ locally
-npm run deploy     # build then push dist/ to GitHub Pages via gh-pages
+npm run deploy     # manual deploy: build, then `wrangler deploy` to Cloudflare (CI normally does this)
 ```
 
 There are no tests and no linter config in this repo.
 
 ## Architecture
 
-**Stack:** React 19 + TypeScript + Vite, deployed to `dkritarth.com` via GitHub Pages (`gh-pages` package).
+**Stack:** React 19 + TypeScript + Vite, served at `dkritarth.com` by a Cloudflare Worker with static assets (`wrangler.jsonc`, Worker `dkritarth-site`, route `dkritarth.com/*`).
+
+**Deployment is automatic:** every push to `main` runs `.github/workflows/deploy-cloudflare.yml` (npm ci, build, apply D1 migrations, `wrangler deploy`), using the `CLOUDFLARE_API_TOKEN` repo secret. Assets use `not_found_handling: single-page-application`, so every route (e.g. `/blog/<slug>/`) returns `index.html` with a 200. Only `/api/*` runs the Worker script (`worker/index.js`).
 
 ### Routing
 
@@ -40,13 +42,13 @@ When adding or updating content (new publication, news item, project, etc.), edi
 
 `scripts/postbuild-seo.mjs` runs after `vite build` and:
 - Writes `dist/sitemap.xml` and `public/sitemap.xml`
-- Writes `dist/404.html` — a GitHub Pages SPA fallback that stores `location.href` in `sessionStorage` and redirects to `/`, where the React router re-parses the path
+- Writes `dist/404.html`, a legacy GitHub Pages SPA fallback. Cloudflare doesn't use it (its SPA mode serves `index.html` directly); it's kept only while GitHub Pages still answers for `www`.
 
 If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo.mjs`, `PAGE_PATHS` and `SEO` in `seoMeta.ts`, the switch in `App.tsx`, and `ALLOWED_PAGES` in `useSiteRoute.ts`.
 
 ### View counters (blog views, site visits)
 
-A Cloudflare Worker in `workers/blog-views/` (D1 database `blog-views`, table `views`) serves counts on the same domain:
+The site Worker (`worker/index.js`, D1 database `blog-views`, table `views`) serves counts on the same domain:
 
 - `POST /api/views/<slug>` counts a post view, `GET /api/views/<slug>` reads it, `GET /api/views` returns `{ total, posts }` for all posts.
 - `POST|GET /api/visits` is the whole-site visit counter (stored as row `_site`).
@@ -55,7 +57,7 @@ Client code is `viewCounts.ts`. `components/ViewCount.tsx` shows views on a post
 
 **New blog posts need no counter setup.** The Worker only accepts slugs listed as `/blog/<slug>/` in the live `sitemap.xml`, so a post starts counting once it is published (not `draft`) and deployed. Draft posts don't show a count.
 
-Worker changes: edit `workers/blog-views/src/index.js`, then `cd workers/blog-views && npx wrangler deploy`. Schema changes go in `workers/blog-views/migrations/` (`npx wrangler d1 migrations apply blog-views --remote`). The Worker is deployed separately from the site; pushing to `main` does not redeploy it.
+Worker changes: edit `worker/index.js`. Schema changes: add a new SQL file in `worker/migrations/`. Both ship automatically on push to `main` (CI applies migrations, then deploys).
 
 ### Theming
 

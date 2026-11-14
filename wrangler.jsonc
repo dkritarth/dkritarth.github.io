@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Serves dkritarth.com: the Vite build in dist/ plus the view-counter API (worker/index.js).
+  // Deployed by .github/workflows/deploy-cloudflare.yml on every push to main.
+  "name": "dkritarth-site",
+  "account_id": "3958d9ca12cb6486372bea1420899987",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "dkritarth.com/*", "zone_name": "dkritarth.com" }],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "blog-views",
+      "database_id": "c5e477ab-fd5b-4b06-bd5f-db3900592e22",
+      "migrations_dir": "worker/migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}
