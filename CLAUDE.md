@@ -17,7 +17,11 @@ There are no tests and no linter config in this repo.
 
 **Stack:** React 19 + TypeScript + Vite, served at `dkritarth.com` by a Cloudflare Worker with static assets (`wrangler.jsonc`, Worker `dkritarth-site`, route `dkritarth.com/*`).
 
-**Deployment is automatic:** every push to `main` runs `.github/workflows/deploy-cloudflare.yml` (npm ci, build, apply D1 migrations, `wrangler deploy`), using the `CLOUDFLARE_API_TOKEN` repo secret. Assets use `not_found_handling: single-page-application`, so every route (e.g. `/blog/<slug>/`) returns `index.html` with a 200. Only `/api/*` runs the Worker script (`worker/index.js`).
+**Deployment is automatic:** every push to `main` runs `.github/workflows/deploy-cloudflare.yml` (npm ci, build, apply D1 migrations, `wrangler deploy`), using the `CLOUDFLARE_API_TOKEN` repo secret. The Worker script (`worker/index.js`) runs on every request:
+- `/api/*`: view-counter API.
+- Portfolio routes (first path segment in `SITE_ROUTES`: about, research, publications, projects, news, blog, plus legacy notes/education): a file from `dist/` if it exists, else `index.html` with a 200.
+- Other files in `dist/` (`/assets/`, `/data/`, `sitemap.xml`, ...): served as is.
+- Anything else goes to the zone origin, **GitHub Pages**, which still hosts the project sites at `dkritarth.com/<repo>/` (scopewatch, Vellum, FreeFlow, context-kernel, PaddockPsychRL, skills-personal, CSE-840-Demo). Keep the DNS records pointing at GitHub and keep GitHub Pages enabled on `dkritarth.github.io` with custom domain `dkritarth.com`, or those break. If you add a portfolio route, add it to `SITE_ROUTES` too, and never name a route the same as a project repo.
 
 ### Routing
 
@@ -42,9 +46,9 @@ When adding or updating content (new publication, news item, project, etc.), edi
 
 `scripts/postbuild-seo.mjs` runs after `vite build` and:
 - Writes `dist/sitemap.xml` and `public/sitemap.xml`
-- Writes `dist/404.html`, a legacy GitHub Pages SPA fallback. Cloudflare doesn't use it (its SPA mode serves `index.html` directly); it's kept only while GitHub Pages still answers for `www`.
+- Writes `dist/404.html`, a legacy GitHub Pages SPA fallback. The Cloudflare Worker doesn't use it.
 
-If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo.mjs`, `PAGE_PATHS` and `SEO` in `seoMeta.ts`, the switch in `App.tsx`, and `ALLOWED_PAGES` in `useSiteRoute.ts`.
+If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo.mjs`, `PAGE_PATHS` and `SEO` in `seoMeta.ts`, the switch in `App.tsx`, `ALLOWED_PAGES` in `useSiteRoute.ts`, and `SITE_ROUTES` in `worker/index.js`.
 
 ### View counters (blog views, site visits)
 

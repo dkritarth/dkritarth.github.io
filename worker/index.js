@@ -1,7 +1,14 @@
 /**
- * Worker for dkritarth.com: serves the built site from dist/ (static assets, SPA
- * fallback) and the view-counter API below. Only /api/* runs this script; every
- * other path is served straight from assets (see wrangler.jsonc).
+ * Worker for dkritarth.com (route dkritarth.com/*). Every request runs this script:
+ *
+ *   /api/*                     -> view-counter API (below)
+ *   portfolio routes           -> the React SPA from dist/ (index.html for any sub-path)
+ *   files that exist in dist/  -> served from dist/ (/assets/..., /data/..., sitemap.xml)
+ *   anything else              -> passed through to GitHub Pages, which still hosts the
+ *                                 project sites at dkritarth.com/<repo>/ (scopewatch,
+ *                                 Vellum, FreeFlow, ...). New project repos work with
+ *                                 no change here, as long as their name isn't a
+ *                                 portfolio route.
  *
  *   GET  /api/views          -> { total, posts: { <slug>: count } }   (all blog posts)
  *   GET  /api/views/<slug>   -> { slug, views }
@@ -9,7 +16,7 @@
  *   GET  /api/visits         -> { visits }                            (whole site)
  *   POST /api/visits         -> increments, then { visits }
  *
- * Only slugs listed as /blog/<slug>/ in the live sitemap are counted, so random
+ * Only slugs listed as /blog/<slug>/ in the deployed sitemap are counted, so random
  * POSTs can't create junk rows. Counts live in D1 (binding DB), table `views`.
  * The site-wide counter is the row `_site`; real slugs can't contain "_".
  */
@@ -46,9 +53,9 @@ function json(request, body, status = 200) {
   });
 }
 
-async function isKnownPost(slug) {
-  // Cached at the edge for 5 minutes so we don't refetch the sitemap on every view.
-  const res = await fetch(SITEMAP_URL, { cf: { cacheTtl: 300, cacheEverything: true } });
+async function isKnownPost(env, slug) {
+  // Read the sitemap bundled with this deploy, so it always matches the published posts.
+  const res = await env.ASSETS.fetch(new Request(SITEMAP_URL));
   if (!res.ok) return false;
   const xml = await res.text();
   return xml.includes(`/blog/${slug}/</loc>`);
@@ -69,52 +76,74 @@ async function read(env, key) {
   return row ? row.count : 0;
 }
 
+// First path segments owned by the portfolio SPA (see useSiteRoute.ts; notes/education are legacy aliases).
+const SITE_ROUTES = new Set(['', 'about', 'research', 'publications', 'projects', 'news', 'blog', 'notes', 'education']);
+
+function serveSpaShell(request, env) {
+  return env.ASSETS.fetch(new Request(new URL('/', request.url), request));
+}
+
 export default {
   async fetch(request, env) {
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders(request) });
-    }
-
     const { pathname } = new URL(request.url);
-    const method = request.method;
+    if (pathname.startsWith('/api/')) return handleApi(request, env);
 
-    // Whole-site visits
-    if (/^\/api\/visits\/?$/.test(pathname)) {
-      if (method === 'GET') return json(request, { visits: await read(env, SITE_KEY) });
-      if (method === 'POST') return json(request, { visits: (await increment(env, SITE_KEY)).count });
-      return json(request, { error: 'method not allowed' }, 405);
+    const first = pathname.split('/').filter(Boolean)[0] ?? '';
+    if (SITE_ROUTES.has(first)) {
+      // Portfolio page: a real file if one exists, otherwise the SPA shell (200).
+      const asset = await env.ASSETS.fetch(request);
+      return asset.status === 404 ? serveSpaShell(request, env) : asset;
     }
 
-    // All blog posts
-    if (/^\/api\/views\/?$/.test(pathname)) {
-      if (method !== 'GET') return json(request, { error: 'method not allowed' }, 405);
-      const { results } = await env.DB.prepare('SELECT slug, count FROM views WHERE slug != ?')
-        .bind(SITE_KEY)
-        .all();
-      const posts = {};
-      let total = 0;
-      for (const r of results) {
-        posts[r.slug] = r.count;
-        total += r.count;
-      }
-      return json(request, { total, posts });
-    }
+    const asset = await env.ASSETS.fetch(request);
+    if (asset.status !== 404) return asset;
 
-    // One blog post
-    const match = pathname.match(/^\/api\/views\/([^/]+)\/?$/);
-    if (!match) {
-      if (pathname.startsWith('/api/')) return json(request, { error: 'not found' }, 404);
-      return env.ASSETS.fetch(request);
-    }
-
-    const slug = decodeURIComponent(match[1]);
-    if (!SLUG_RE.test(slug)) return json(request, { error: 'bad slug' }, 400);
-
-    if (method === 'GET') return json(request, { slug, views: await read(env, slug) });
-    if (method === 'POST') {
-      if (!(await isKnownPost(slug))) return json(request, { error: 'unknown post' }, 404);
-      return json(request, { slug, views: (await increment(env, slug)).count });
-    }
-    return json(request, { error: 'method not allowed' }, 405);
+    // Not ours: hand off to GitHub Pages (the zone's origin) for project sites.
+    return fetch(request);
   },
 };
+
+async function handleApi(request, env) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders(request) });
+  }
+
+  const { pathname } = new URL(request.url);
+  const method = request.method;
+
+  // Whole-site visits
+  if (/^\/api\/visits\/?$/.test(pathname)) {
+    if (method === 'GET') return json(request, { visits: await read(env, SITE_KEY) });
+    if (method === 'POST') return json(request, { visits: (await increment(env, SITE_KEY)).count });
+    return json(request, { error: 'method not allowed' }, 405);
+  }
+
+  // All blog posts
+  if (/^\/api\/views\/?$/.test(pathname)) {
+    if (method !== 'GET') return json(request, { error: 'method not allowed' }, 405);
+    const { results } = await env.DB.prepare('SELECT slug, count FROM views WHERE slug != ?')
+      .bind(SITE_KEY)
+      .all();
+    const posts = {};
+    let total = 0;
+    for (const r of results) {
+      posts[r.slug] = r.count;
+      total += r.count;
+    }
+    return json(request, { total, posts });
+  }
+
+  // One blog post
+  const match = pathname.match(/^\/api\/views\/([^/]+)\/?$/);
+  if (!match) return json(request, { error: 'not found' }, 404);
+
+  const slug = decodeURIComponent(match[1]);
+  if (!SLUG_RE.test(slug)) return json(request, { error: 'bad slug' }, 400);
+
+  if (method === 'GET') return json(request, { slug, views: await read(env, slug) });
+  if (method === 'POST') {
+    if (!(await isKnownPost(env, slug))) return json(request, { error: 'unknown post' }, 404);
+    return json(request, { slug, views: (await increment(env, slug)).count });
+  }
+  return json(request, { error: 'method not allowed' }, 405);
+}
