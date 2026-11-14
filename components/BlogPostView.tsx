@@ -4,6 +4,7 @@ import { Section } from './Section';
 import { AppLink } from './AppLink';
 import { ContentImageGrid } from './ContentImageGrid';
 import { BlogProse } from './BlogProse';
+import { ViewCount } from './ViewCount';
 
 type BlogPostViewProps = {
   slug: string | null;
@@ -40,6 +41,7 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ slug }) => {
             {formatBlogDate(post.date)}
           </time>
           {post.readingMinutes ? <span>· {post.readingMinutes} min read</span> : null}
+          {post.draft ? null : <ViewCount slug={post.slug} />}
         </div>
         {post.tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-1.5">

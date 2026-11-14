@@ -98,6 +98,10 @@ Hard rules:
 
 ## Verify
 
+View counts need no setup: once the post is published (not `draft`) and deployed, it appears in
+`sitemap.xml` and the counter Worker (`workers/blog-views/`) starts counting it. See the
+"View counters" section in `CLAUDE.md`.
+
 ```bash
 npm run dev
 ```

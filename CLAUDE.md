@@ -44,6 +44,19 @@ When adding or updating content (new publication, news item, project, etc.), edi
 
 If you add a new route (new `SitePage` value), update `ROUTES` in `postbuild-seo.mjs`, `PAGE_PATHS` and `SEO` in `seoMeta.ts`, the switch in `App.tsx`, and `ALLOWED_PAGES` in `useSiteRoute.ts`.
 
+### View counters (blog views, site visits)
+
+A Cloudflare Worker in `workers/blog-views/` (D1 database `blog-views`, table `views`) serves counts on the same domain:
+
+- `POST /api/views/<slug>` counts a post view, `GET /api/views/<slug>` reads it, `GET /api/views` returns `{ total, posts }` for all posts.
+- `POST|GET /api/visits` is the whole-site visit counter (stored as row `_site`).
+
+Client code is `viewCounts.ts`. `components/ViewCount.tsx` shows views on a post page, `BlogList`/`BlogCard` show the total and per-post counts, `Footer` shows site visits. Each browser counts once per post (localStorage) and once per session for site visits (sessionStorage). On localhost it only reads, never increments.
+
+**New blog posts need no counter setup.** The Worker only accepts slugs listed as `/blog/<slug>/` in the live `sitemap.xml`, so a post starts counting once it is published (not `draft`) and deployed. Draft posts don't show a count.
+
+Worker changes: edit `workers/blog-views/src/index.js`, then `cd workers/blog-views && npx wrangler deploy`. Schema changes go in `workers/blog-views/migrations/` (`npx wrangler d1 migrations apply blog-views --remote`). The Worker is deployed separately from the site; pushing to `main` does not redeploy it.
+
 ### Theming
 
 Light/dark mode is class-based (`html.dark`). The `ink-*`, `surface` and `deep` colors in the Tailwind config (`index.html`) are CSS variables, so existing `text-ink-*` / `bg-ink-*` classes flip automatically; use `bg-surface` instead of `bg-white`, and `text-ink-50` (not `text-white`) on `bg-ink-900` buttons. Always-dark elements (footer, image overlays, code blocks) use `bg-deep` or `bg-black/*`. `theme.ts` holds the system/light/dark preference (saved in `localStorage` under `theme`); an inline script in `index.html` applies it before first paint.

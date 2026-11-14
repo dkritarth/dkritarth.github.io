@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { formatCount, recordSiteVisit } from '../viewCounts';
 import { CONTACT_INFO } from '../constants';
 import { Mail, MapPin } from 'lucide-react';
 import { GoogleScholarIcon, OrcidIcon } from './BrandIcons';
 
 export const Footer: React.FC = () => {
+  const [visits, setVisits] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    recordSiteVisit().then((n) => {
+      if (!cancelled) setVisits(n);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <footer className="bg-deep text-stone-300 py-14 border-t border-stone-800">
       <div className="max-w-6xl mx-auto px-6">
@@ -66,6 +79,9 @@ export const Footer: React.FC = () => {
               month: 'long',
               day: 'numeric',
             })}
+            {visits !== null ? (
+              <span className="tabular-nums"> · {formatCount(visits, 'visit', 'visits')}</span>
+            ) : null}
           </p>
         </div>
       </div>

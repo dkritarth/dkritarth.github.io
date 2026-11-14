@@ -2,12 +2,15 @@ import React from 'react';
 import type { BlogPost } from '../types';
 import { formatBlogDate } from '../blogPosts';
 import { AppLink } from './AppLink';
+import { formatCount } from '../viewCounts';
 
 type BlogCardProps = {
   post: BlogPost;
+  /** Total views for this post; omitted while loading or if the counter is down. */
+  views?: number;
 };
 
-export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
+export const BlogCard: React.FC<BlogCardProps> = ({ post, views }) => {
   return (
     <AppLink
       href={`/blog/${post.slug}/`}
@@ -21,6 +24,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <time dateTime={post.date} className="shrink-0 text-[14px] tabular-nums text-ink-700">
             {formatBlogDate(post.date)}
             {post.readingMinutes ? ` · ${post.readingMinutes} min read` : ''}
+            {views !== undefined ? ` · ${formatCount(views, 'view', 'views')}` : ''}
           </time>
         </header>
 

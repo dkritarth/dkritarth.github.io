@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/wrangler@4.112.0/config-schema.json",
+  "name": "blog-views",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "dkritarth.com/api/views*", "zone_name": "dkritarth.com" },
+    { "pattern": "dkritarth.com/api/visits*", "zone_name": "dkritarth.com" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "blog-views",
+      "database_id": "c5e477ab-fd5b-4b06-bd5f-db3900592e22",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}
