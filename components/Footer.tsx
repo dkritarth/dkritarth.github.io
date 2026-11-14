@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { formatCount, recordSiteVisit } from '../viewCounts';
+import { cachedSiteVisits, formatCount, recordSiteVisit } from '../viewCounts';
 import { CONTACT_INFO } from '../constants';
 import { Mail, MapPin } from 'lucide-react';
 import { GoogleScholarIcon, OrcidIcon } from './BrandIcons';
 
 export const Footer: React.FC = () => {
-  const [visits, setVisits] = useState<number | null>(null);
+  const [visits, setVisits] = useState<number | null>(() => cachedSiteVisits() ?? null);
 
   useEffect(() => {
+    if (cachedSiteVisits() !== undefined) return;
     let cancelled = false;
     recordSiteVisit().then((n) => {
       if (!cancelled) setVisits(n);

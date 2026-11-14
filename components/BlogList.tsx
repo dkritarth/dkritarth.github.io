@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Section } from './Section';
 import { getPublishedPosts } from '../blogPosts';
 import { BlogCard } from './BlogCard';
-import { fetchAllPostViews, formatCount } from '../viewCounts';
+import { cachedAllPostViews, fetchAllPostViews, formatCount } from '../viewCounts';
 
 export const BlogList: React.FC = () => {
   const posts = getPublishedPosts();
-  const [views, setViews] = useState<{ total: number; posts: Record<string, number> } | null>(null);
+  const [views, setViews] = useState<{ total: number; posts: Record<string, number> } | null>(
+    () => cachedAllPostViews() ?? null,
+  );
 
   useEffect(() => {
+    if (cachedAllPostViews() !== undefined) return;
     let cancelled = false;
     fetchAllPostViews().then((data) => {
       if (!cancelled) setViews(data);
